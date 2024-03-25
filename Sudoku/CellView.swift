@@ -25,6 +25,7 @@ struct CellView: View {
         }
     }
     
+    
     let number: Int
     let selectedNumber: Int
     let highlightState: HighlightState
@@ -38,6 +39,7 @@ struct CellView: View {
             return String(number)
         }
     }
+    
     
     var foregroundColor: Color {
         if isCorrect {
@@ -62,6 +64,7 @@ struct CellView: View {
                 .background(highlightState.color)
         }
         .buttonStyle(.plain)
+        .accessibilityShowsLargeContentViewer()
     }
 }
 

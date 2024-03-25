@@ -27,7 +27,10 @@ struct ContentView: View {
                     ForEach(0..<9) { row in
                         GridRow {
                             ForEach(0..<9) { col in
-                                CellView(number: board.playerBoard[row][col], selectedNumber: selectedNum, highlightState: highlightState(for: row, col: col), isCorrect: board.playerBoard[row][col] == board.fullBoard[row][col]) {
+                                CellView(number: board.playerBoard[row][col], 
+                                         selectedNumber: selectedNum,
+                                         highlightState: highlightState(for: row, col: col),
+                                         isCorrect: board.playerBoard[row][col] == board.fullBoard[row][col]) {
                                     selectedRow = row
                                     selectedCol = col
                                     selectedNum = board.playerBoard[row][col]
@@ -38,7 +41,7 @@ struct ContentView: View {
                                 }
                             }
                         }
-                        .padding(.bottom, row == 2 || row == 5 ?spacing : 0)
+                        .padding(.bottom, row == 2 || row == 5 ? spacing : 0)
                     }
                 }
                 .padding(5)
@@ -56,6 +59,13 @@ struct ContentView: View {
                 .padding()
             }
             .navigationTitle("Sudoku")
+            .toolbar {
+                Button {
+                    showingNewGame = true
+                } label: {
+                    Label("Start a new game", systemImage: "plus")
+                }
+            }
         }
         .preferredColorScheme(.dark)
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
@@ -96,12 +106,14 @@ struct ContentView: View {
     
     
     func enter(_ number: Int) {
-        if board.playerBoard[selectedRow][selectedCol] == number {
-            board.playerBoard[selectedRow][selectedCol] = 0
-            selectedNum = 0
-        } else {
-            board.playerBoard[selectedRow][selectedCol] = number
-            selectedNum = number
+        if selectedRow != -1 {         //Square must be selected
+            if board.playerBoard[selectedRow][selectedCol] == number {
+                board.playerBoard[selectedRow][selectedCol] = 0
+                selectedNum = 0
+            } else {
+                board.playerBoard[selectedRow][selectedCol] = number
+                selectedNum = number
+            }
         }
     }
     
