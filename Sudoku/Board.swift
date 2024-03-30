@@ -7,17 +7,19 @@
 
 import Foundation
 
+
+
 struct Board: Equatable {
     
     enum Difficulty: Int, CaseIterable {
-        #if DEBUG
-        case testing = 2
-        #endif
-        case trivial = 10
-        case easy = 20
-        case medium = 24
-        case hard = 27
-        case extreme = 29
+//        #if DEBUG
+//        case Testing = 2
+//        #endif
+        case Trivial = 10
+        case Easy = 20
+        case Medium = 24
+        case Hard = 27
+        case Extreme = 29
     }
     
     
@@ -26,11 +28,11 @@ struct Board: Equatable {
     var fullBoard = [[Int]]()
     var playerBoard = [[Int]]()
     
-    init(difficulty: Difficulty = .easy) {
+    init(difficulty: Difficulty = .Trivial) {
         self.difficulty = difficulty
-        
         create()
         prepareForPlay()
+        print(getPuzzle(level: 2))
     }
     
     
@@ -57,7 +59,7 @@ struct Board: Equatable {
     }
     
     
-    private mutating func prepareForPlay() {
+    mutating private func prepareForPlay() {
         let empties = difficulty.rawValue
         let allCells = 0..<Int(ceil(Double(size * size) / 2))
         

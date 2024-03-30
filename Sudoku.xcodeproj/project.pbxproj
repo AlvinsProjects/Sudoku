@@ -14,6 +14,13 @@
 		4AAA851A2BB0A8CF009DD948 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA85192BB0A8CF009DD948 /* Board.swift */; };
 		4AAA851C2BB0B54D009DD948 /* Color-Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA851B2BB0B54D009DD948 /* Color-Cells.swift */; };
 		4AAA851E2BB0B71B009DD948 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA851D2BB0B71B009DD948 /* CellView.swift */; };
+		4AE06C762BB35F7B00C01FB9 /* LoneRangers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C752BB35F7B00C01FB9 /* LoneRangers.swift */; };
+		4AE06C792BB45FA200C01FB9 /* GeneratePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C782BB45FA200C01FB9 /* GeneratePuzzle.swift */; };
+		4AE06C7B2BB47EA300C01FB9 /* VaribleStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C7A2BB47EA300C01FB9 /* VaribleStructs.swift */; };
+		4AE06C7D2BB5D20B00C01FB9 /* SolvePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C7C2BB5D20B00C01FB9 /* SolvePuzzle.swift */; };
+		4AE06C7F2BB611CE00C01FB9 /* Twins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C7E2BB611CE00C01FB9 /* Twins.swift */; };
+		4AE06C812BB611DC00C01FB9 /* Triplets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C802BB611DC00C01FB9 /* Triplets.swift */; };
+		4AE06C832BB6127500C01FB9 /* MiscFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C822BB6127500C01FB9 /* MiscFuncs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +32,13 @@
 		4AAA85192BB0A8CF009DD948 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		4AAA851B2BB0B54D009DD948 /* Color-Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Cells.swift"; sourceTree = "<group>"; };
 		4AAA851D2BB0B71B009DD948 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		4AE06C752BB35F7B00C01FB9 /* LoneRangers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoneRangers.swift; sourceTree = "<group>"; };
+		4AE06C782BB45FA200C01FB9 /* GeneratePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePuzzle.swift; sourceTree = "<group>"; };
+		4AE06C7A2BB47EA300C01FB9 /* VaribleStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaribleStructs.swift; sourceTree = "<group>"; };
+		4AE06C7C2BB5D20B00C01FB9 /* SolvePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvePuzzle.swift; sourceTree = "<group>"; };
+		4AE06C7E2BB611CE00C01FB9 /* Twins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Twins.swift; sourceTree = "<group>"; };
+		4AE06C802BB611DC00C01FB9 /* Triplets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triplets.swift; sourceTree = "<group>"; };
+		4AE06C822BB6127500C01FB9 /* MiscFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscFuncs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +76,7 @@
 				4AAA851B2BB0B54D009DD948 /* Color-Cells.swift */,
 				4AAA851D2BB0B71B009DD948 /* CellView.swift */,
 				4AAA85192BB0A8CF009DD948 /* Board.swift */,
+				4AE06C742BB35ED200C01FB9 /* Book Routines */,
 				4AAA850F2BB0A878009DD948 /* Assets.xcassets */,
 				4AAA85112BB0A878009DD948 /* Preview Content */,
 			);
@@ -74,6 +89,20 @@
 				4AAA85122BB0A878009DD948 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4AE06C742BB35ED200C01FB9 /* Book Routines */ = {
+			isa = PBXGroup;
+			children = (
+				4AE06C7A2BB47EA300C01FB9 /* VaribleStructs.swift */,
+				4AE06C782BB45FA200C01FB9 /* GeneratePuzzle.swift */,
+				4AE06C7C2BB5D20B00C01FB9 /* SolvePuzzle.swift */,
+				4AE06C752BB35F7B00C01FB9 /* LoneRangers.swift */,
+				4AE06C7E2BB611CE00C01FB9 /* Twins.swift */,
+				4AE06C802BB611DC00C01FB9 /* Triplets.swift */,
+				4AE06C822BB6127500C01FB9 /* MiscFuncs.swift */,
+			);
+			path = "Book Routines";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,11 +175,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AE06C792BB45FA200C01FB9 /* GeneratePuzzle.swift in Sources */,
 				4AAA850E2BB0A877009DD948 /* ContentView.swift in Sources */,
+				4AE06C762BB35F7B00C01FB9 /* LoneRangers.swift in Sources */,
+				4AE06C7F2BB611CE00C01FB9 /* Twins.swift in Sources */,
 				4AAA851E2BB0B71B009DD948 /* CellView.swift in Sources */,
+				4AE06C832BB6127500C01FB9 /* MiscFuncs.swift in Sources */,
+				4AE06C7B2BB47EA300C01FB9 /* VaribleStructs.swift in Sources */,
 				4AAA850C2BB0A877009DD948 /* SudokuApp.swift in Sources */,
 				4AAA851A2BB0A8CF009DD948 /* Board.swift in Sources */,
 				4AAA851C2BB0B54D009DD948 /* Color-Cells.swift in Sources */,
+				4AE06C812BB611DC00C01FB9 /* Triplets.swift in Sources */,
+				4AE06C7D2BB5D20B00C01FB9 /* SolvePuzzle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

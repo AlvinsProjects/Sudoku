@@ -7,8 +7,9 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
-    @State private var board = Board(difficulty: .testing)
+    @State private var board = Board(difficulty: .Trivial)
     let spacing = 1.0
     
     @State private var selectedRow = -1
@@ -23,11 +24,16 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                let textCol = getHeaderColor(difficulty: "\(board.difficulty)")
+                Text("Difficulty:   \(board.difficulty)   \(textCol.icon) ")
+                    .font(.title)
+                    .foregroundStyle(textCol.col)
+                
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
                         GridRow {
                             ForEach(0..<9) { col in
-                                CellView(number: board.playerBoard[row][col], 
+                                CellView(number: board.playerBoard[row][col],
                                          selectedNumber: selectedNum,
                                          highlightState: highlightState(for: row, col: col),
                                          isCorrect: board.playerBoard[row][col] == board.fullBoard[row][col]) {
@@ -45,7 +51,7 @@ struct ContentView: View {
                     }
                 }
                 .padding(5)
-                
+
                 HStack {
                     ForEach(1..<10) { i in
                         Button(String(i)) {
@@ -76,7 +82,6 @@ struct ContentView: View {
                     newGame(difficulty: difficulty)
                 }
             }
-            
             Button("Cancel", role: .cancel) { }
         } message: {
             if solved {
@@ -87,6 +92,9 @@ struct ContentView: View {
         .onChange(of: board, initial: true) {
             updateCounts()
         }
+//        .onTapGesture {
+//            print(self.$selectedRow.wrappedValue, self.$selectedCol.wrappedValue)
+//        }
     }
     
     
@@ -145,11 +153,38 @@ struct ContentView: View {
         
         if correctCount == board.size * board.size {
             Task {
-                try await Task.sleep(for: .seconds(0.5))
+                try await Task.sleep(for: .seconds(1.0))
                 showingNewGame = true
                 solved = true
             }
         }
+    }
+    
+    
+    func getHeaderColor(difficulty: String) -> (col: Color, icon: String) {
+        var col = Color.red
+        var icon = ""
+        switch difficulty {
+            case "Trivial":
+                col = Color.cyan
+                icon = "😃"
+            case "Easy":
+                col = Color.green
+                icon = "☺️"
+            case "Medium":
+                col = Color.yellow
+                icon = "🥸"
+            case "Hard":
+                col = Color.orange
+                icon = "😠"
+            case "Extreme":
+                col = Color.red
+                icon = "😡"
+            default:
+                col = Color.orange
+                icon = ""
+        }
+        return (col, icon)
     }
 }
 
@@ -158,3 +193,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
