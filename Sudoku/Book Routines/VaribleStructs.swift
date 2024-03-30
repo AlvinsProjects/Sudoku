@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Variables {
+struct Vars {
     
     static var actual = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))
     static var possible = Array(Array(repeating: Array(repeating: "", count: 9), count: 9))

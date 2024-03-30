@@ -31,7 +31,7 @@ func lookForLoneRangersInMinigrids() -> Bool {
                 occurrence = 0
                 for rr in 0...2 {
                     for cc in 0...2 {
-                        if Variables.actual[c + cc][r + rr] == 0 && Variables.possible[c + cc][r + rr] == String(n) {
+                        if Vars.actual[c + cc][r + rr] == 0 && Vars.possible[c + cc][r + rr] == String(n) {
                             occurrence += 1
                             cPos = c + cc
                             rPos = r + rr
@@ -46,10 +46,10 @@ func lookForLoneRangersInMinigrids() -> Bool {
                 
                 if !nextMiniGrid && occurrence == 1 {
                     // ---that means number is confirmed---
-                    Variables.actual[cPos][rPos] = n
+                    Vars.actual[cPos][rPos] = n
                     changes = true
                     // ---accumulate the total score---
-                    Variables.totalScore += 2
+                    Vars.totalScore += 2
                 }
             }
         }
@@ -72,7 +72,7 @@ func lookForLoneRangersInRows() -> Bool  {
         for n in 0..<9 {
             occurence = 0
             for c in 0..<9 {
-                if Variables.actual[c][r] == 0  && Variables.possible[c][r] == String(n)  {
+                if Vars.actual[c][r] == 0  && Vars.possible[c][r] == String(n)  {
                     occurence += 1
                     //---if multiple occurrence, not a lone ranger anymore
                     if occurence > 1 { break }
@@ -82,11 +82,11 @@ func lookForLoneRangersInRows() -> Bool  {
             }
             if occurence == 1 {
                 // --number is confirmed---
-                if Variables.actual[cPos][rPos] == n {
+                if Vars.actual[cPos][rPos] == n {
                     changes = true
                 }
                 // ---accumulate the total score---
-                Variables.totalScore += 2
+                Vars.totalScore += 2
             }
         }
     }
@@ -108,7 +108,7 @@ func lookForLoneRangersInColumns() -> Bool {
         for n in 0..<9 {
             occurence = 0
             for r in 0..<9 {
-                if Variables.actual[c][r] == 0  && Variables.possible[c][r] == String(n)  {
+                if Vars.actual[c][r] == 0  && Vars.possible[c][r] == String(n)  {
                     occurence += 1
                     //---if multiple occurrence, not a lone ranger anymore
                     if occurence > 1 { break }
@@ -118,11 +118,11 @@ func lookForLoneRangersInColumns() -> Bool {
             }
             if occurence == 1 {
                 // --number is confirmed---
-                if Variables.actual[cPos][rPos] == n {
+                if Vars.actual[cPos][rPos] == n {
                     changes = true
                 }
                 // ---accumulate the total score---
-                Variables.totalScore += 2
+                Vars.totalScore += 2
             }
         }
     }

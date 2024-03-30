@@ -15,10 +15,10 @@ func findCellWithFewestPossibleValues(col: Int, row: Int) {
     var min = 10
     for r in 0..<9 {
         for c in 0..<9 {
-            if Variables.actual[c][r] == 0 && Variables.possible[c][r].count < min {
-                min = Variables.possible[c][r].count
-                Variables.col = c
-                Variables.row = r
+            if Vars.actual[c][r] == 0 && Vars.possible[c][r].count < min {
+                min = Vars.possible[c][r].count
+                Vars.col = c
+                Vars.row = r
             }
         }
     }
@@ -33,13 +33,13 @@ func solvePuzzleByBruteForce() {
     var r = 0
     
     // ---accumulate the total score---
-    Variables.totalScore += 5
+    Vars.totalScore += 5
     
     // ---find out which cell has the smallest number of possible values---
     findCellWithFewestPossibleValues(col: c, row: r)
     
     // ---get the possible values for the chosen cell---
-    var possibleValues = Variables.possible[c][r]
+    var possibleValues = Vars.possible[c][r]
     
 // ---randomize the possible values----
     randomizeThePossibleValues(str: possibleValues)
@@ -85,7 +85,7 @@ func isPuzzleSolved() -> Bool {
     for r in 0..<9 {
         pattern = "123456789"
         for c in 0..<9 {
-            pattern = pattern.replacingOccurrences(of: String(Variables.actual[c][r]), with: "")
+            pattern = pattern.replacingOccurrences(of: String(Vars.actual[c][r]), with: "")
         }
         if pattern.count > 0 {
             return false
@@ -96,7 +96,7 @@ func isPuzzleSolved() -> Bool {
     for c in 0..<9 {
         pattern = "123456789"
         for r in 0..<9 {
-            pattern = pattern.replacingOccurrences(of: String(Variables.actual[c][r]), with: "")
+            pattern = pattern.replacingOccurrences(of: String(Vars.actual[c][r]), with: "")
         }
         if pattern.count > 0 {
             return false
@@ -109,7 +109,7 @@ func isPuzzleSolved() -> Bool {
         for r in stride(from: 0, through: 8, by: 3) {
             for cc in 0...2 {
                 for rr in 0...2 {
-                    pattern = pattern.replacingOccurrences(of: String(Variables.actual[c + cc][r + rr]), with: "")
+                    pattern = pattern.replacingOccurrences(of: String(Vars.actual[c + cc][r + rr]), with: "")
                 }
             }
         }

@@ -32,7 +32,7 @@ struct Board: Equatable {
         self.difficulty = difficulty
         create()
         prepareForPlay()
-        print(getPuzzle(level: 2))
+//        print(getPuzzle(level: 2))
     }
     
     

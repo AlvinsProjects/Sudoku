@@ -61,8 +61,8 @@ func generateNewPuzzle(level: Int, score: Int) -> String {
     //'---initialize the entire board---
     for r in 0..<9 {
         for c in 0..<9 {
-            Variables.actual[c][r] = 0
-            Variables.possible[c][r] = ""
+            Vars.actual[c][r] = 0
+            Vars.possible[c][r] = ""
         }
     }
     
@@ -70,8 +70,8 @@ func generateNewPuzzle(level: Int, score: Int) -> String {
     //ActualStack.Clear()
     //PossibleStack.Clear()
     
-    print(Variables.actual)
-    print(Variables.possible)
+    print(Vars.actual)
+    print(Vars.possible)
 
     
     //'---populate the board with numbers by solving an empty grid---
@@ -100,7 +100,7 @@ func generateNewPuzzle(level: Int, score: Int) -> String {
     //ActualStack.Clear()
     //PossibleStack.Clear()
     
-    Variables.bruteForceStop = false
+    Vars.bruteForceStop = false
    
     // ----create empty cells----
     createEmptyCells(empty: numberOfEmptyCells)
@@ -109,14 +109,14 @@ func generateNewPuzzle(level: Int, score: Int) -> String {
     str  = ""
     for r in 0..<9 {
         for c in 0..<9 {
-            str = String(Variables.actual[c][r])
+            str = String(Vars.actual[c][r])
         }
     }
     
     // ---verify the puzzle has only one solution---
     var tries = 0
     
-    Variables.totalScore = 0
+    Vars.totalScore = 0
     
     repeat {
         if !solvePuzzle() {
@@ -143,7 +143,7 @@ func generateNewPuzzle(level: Int, score: Int) -> String {
         }
     } while true
     //---return the score as well as the puzzle as a string---
-    score = Variables.totalScore
+    score = Vars.totalScore
     return str
 }
 

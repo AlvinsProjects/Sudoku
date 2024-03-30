@@ -38,7 +38,7 @@
 				<key>leading</key>
 				<string>        create()
         prepareForPlay()
-        print(getPuzzle(level: 2))</string>
+//        print(getPuzzle(level: 2))</string>
 				<key>trailing</key>
 				<string>
     }

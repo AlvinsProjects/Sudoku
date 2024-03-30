@@ -136,18 +136,18 @@ func checkColumnsAndRows() -> Bool {
     var changes = false
     for row in 0..<9 {
         for col in 0..<9 {
-            if Variables.actual[col][row] == 0 {
-                Variables.possible[col][row] = (calculatePossibleValues(col: col, row: row))
+            if Vars.actual[col][row] == 0 {
+                Vars.possible[col][row] = (calculatePossibleValues(col: col, row: row))
             }
             
-            if Variables.possible[col][row].count == 1 {
+            if Vars.possible[col][row].count == 1 {
                
                 //---number is confirmed---
-                Variables.actual[col][row] = Int(Variables.possible[col][row]) ?? 123
+                Vars.actual[col][row] = Int(Vars.possible[col][row]) ?? 123
                 changes = true
                 
                 //---accumulate the total score---
-                Variables.totalScore += 1
+                Vars.totalScore += 1
             }
         }
     }
@@ -162,26 +162,26 @@ func checkColumnsAndRows() -> Bool {
 func calculatePossibleValues(col: Int, row: Int) -> String {
     var str = ""
 
-    if Variables.possible[col][row] == "" {
+    if Vars.possible[col][row] == "" {
         str = "123456789"
     } else {
-        str = Variables.possible[col][row]
+        str = Vars.possible[col][row]
     }
 
     var r = 0
     var c = 0
     
     for r in 0..<9 {
-        if Variables.actual[col][r] != 0 {
-            str = str.replacingOccurrences(of: String(Variables.actual[col][r]), with: "")
+        if Vars.actual[col][r] != 0 {
+            str = str.replacingOccurrences(of: String(Vars.actual[col][r]), with: "")
         }
     }
     
     //---Step (2) check by row---
     for c in 0..<9 {
-        if Variables.actual[c][row] != 0 {
+        if Vars.actual[c][row] != 0 {
             //---that means there is a actual value in it---
-            str = str.replacingOccurrences(of: String(Variables.actual[c][row]), with: "")
+            str = str.replacingOccurrences(of: String(Vars.actual[c][row]), with: "")
         }
     }
     
@@ -192,8 +192,8 @@ func calculatePossibleValues(col: Int, row: Int) -> String {
     startR = row - ((row - 1) % 3)
     for rr in startR..<startR + 2 {
         for cc in startC..<startC + 2 {
-            if Variables.actual[cc][rr] != 0 {
-                str = str.replacingOccurrences(of: String(Variables.actual[cc][rr]), with: "")
+            if Vars.actual[cc][rr] != 0 {
+                str = str.replacingOccurrences(of: String(Vars.actual[cc][rr]), with: "")
             }
         }
     }
