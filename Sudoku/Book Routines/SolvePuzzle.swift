@@ -11,9 +11,10 @@ import Foundation
 struct SolvePuzzle {
     
     
-    // ==================================================
-    //  Steps to solve the puzzle
-    // ==================================================
+    /*
+    ==================================================
+     Steps to solve the puzzle
+    ==================================================*/
     func solvePuzzle() -> Bool {
         var changes = false
         var exitLoop = false
@@ -132,25 +133,27 @@ struct SolvePuzzle {
     
     
     
-    //==================================================
-    //  Calculates the possible values for all the cells
-    //==================================================
+    /*
+    =====================================================
+        Calculates the possible values for all the cells
+    =====================================================*/
     func checkColumnsAndRows() -> Bool {
         var changes = false
+        //---check all cells---
         for row in 0..<9 {
             for col in 0..<9 {
-                if Vars.actual[col][row] == 0 {
-                    Vars.possible[col][row] = (calculatePossibleValues(col: col, row: row))
+                if Globals.actual[col][row] == 0 {
+                    Globals.possible[col][row] = (calculatePossibleValues(col: col, row: row))
                 }
                 
-                if Vars.possible[col][row].count == 1 {
+                if Globals.possible[col][row].count == 1 {
                     
                     //---number is confirmed---
-                    Vars.actual[col][row] = Int(Vars.possible[col][row]) ?? 123
+                    Globals.actual[col][row] = Int(Globals.possible[col][row]) ?? 123
                     changes = true
                     
                     //---accumulate the total score---
-                    Vars.totalScore += 1
+                    Globals.totalScore += 1
                 }
             }
         }
@@ -159,32 +162,31 @@ struct SolvePuzzle {
     
     
     
-    //==================================================
-    // Calculates the possible values for a cell
-    //==================================================
+    /*
+    ==================================================
+     Calculates the possible values for a cell
+    ==================================================*/
     func calculatePossibleValues(col: Int, row: Int) -> String {
         var str = ""
         
-        if Vars.possible[col][row] == "" {
+        if Globals.possible[col][row] == "" {
             str = "123456789"
         } else {
-            str = Vars.possible[col][row]
+            str = Globals.possible[col][row]
         }
         
-        //    var r = 0
-        //    var c = 0
-        
+        //---Step (1) check by column---
         for r in 0..<9 {
-            if Vars.actual[col][r] != 0 {
-                str = str.replacingOccurrences(of: String(Vars.actual[col][r]), with: "")
+            if Globals.actual[col][r] != 0 {
+                str = str.replacingOccurrences(of: String(Globals.actual[col][r]), with: "")
             }
         }
         
         //---Step (2) check by row---
         for c in 0..<9 {
-            if Vars.actual[c][row] != 0 {
+            if Globals.actual[c][row] != 0 {
                 //---that means there is a actual value in it---
-                str = str.replacingOccurrences(of: String(Vars.actual[c][row]), with: "")
+                str = str.replacingOccurrences(of: String(Globals.actual[c][row]), with: "")
             }
         }
         
@@ -195,8 +197,8 @@ struct SolvePuzzle {
         startR = row - ((row - 1) % 3)
         for rr in startR..<startR + 2 {
             for cc in startC..<startC + 2 {
-                if Vars.actual[cc][rr] != 0 {
-                    str = str.replacingOccurrences(of: String(Vars.actual[cc][rr]), with: "")
+                if Globals.actual[cc][rr] != 0 {
+                    str = str.replacingOccurrences(of: String(Globals.actual[cc][rr]), with: "")
                 }
             }
         }

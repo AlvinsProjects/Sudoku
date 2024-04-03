@@ -17,4 +17,5 @@ extension Color {
     static let squareTextCorrect = Color.white
     static let squareTextWrong = Color.red
     static let squareTextSame = Color.yellow
+//    static let squareOpen = Color.secondary
 }

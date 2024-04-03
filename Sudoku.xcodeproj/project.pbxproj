@@ -14,6 +14,7 @@
 		4AAA851A2BB0A8CF009DD948 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA85192BB0A8CF009DD948 /* Board.swift */; };
 		4AAA851C2BB0B54D009DD948 /* Color-Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA851B2BB0B54D009DD948 /* Color-Cells.swift */; };
 		4AAA851E2BB0B71B009DD948 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA851D2BB0B71B009DD948 /* CellView.swift */; };
+		4ACD5CE22BBD9851001BA60D /* QueueStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD5CE12BBD9851001BA60D /* QueueStack.swift */; };
 		4AE06C762BB35F7B00C01FB9 /* LoneRangers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C752BB35F7B00C01FB9 /* LoneRangers.swift */; };
 		4AE06C792BB45FA200C01FB9 /* GeneratePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C782BB45FA200C01FB9 /* GeneratePuzzle.swift */; };
 		4AE06C7B2BB47EA300C01FB9 /* VaribleStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C7A2BB47EA300C01FB9 /* VaribleStructs.swift */; };
@@ -32,6 +33,7 @@
 		4AAA85192BB0A8CF009DD948 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		4AAA851B2BB0B54D009DD948 /* Color-Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Cells.swift"; sourceTree = "<group>"; };
 		4AAA851D2BB0B71B009DD948 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		4ACD5CE12BBD9851001BA60D /* QueueStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueStack.swift; sourceTree = "<group>"; };
 		4AE06C752BB35F7B00C01FB9 /* LoneRangers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoneRangers.swift; sourceTree = "<group>"; };
 		4AE06C782BB45FA200C01FB9 /* GeneratePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePuzzle.swift; sourceTree = "<group>"; };
 		4AE06C7A2BB47EA300C01FB9 /* VaribleStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaribleStructs.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				4AE06C7E2BB611CE00C01FB9 /* Twins.swift */,
 				4AE06C802BB611DC00C01FB9 /* Triplets.swift */,
 				4AE06C822BB6127500C01FB9 /* MiscFuncs.swift */,
+				4ACD5CE12BBD9851001BA60D /* QueueStack.swift */,
 			);
 			path = "Book Routines";
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AE06C792BB45FA200C01FB9 /* GeneratePuzzle.swift in Sources */,
+				4ACD5CE22BBD9851001BA60D /* QueueStack.swift in Sources */,
 				4AAA850E2BB0A877009DD948 /* ContentView.swift in Sources */,
 				4AE06C762BB35F7B00C01FB9 /* LoneRangers.swift in Sources */,
 				4AE06C7F2BB611CE00C01FB9 /* Twins.swift in Sources */,

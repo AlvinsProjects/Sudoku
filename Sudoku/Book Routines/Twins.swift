@@ -11,9 +11,10 @@ import Foundation
 struct Twins {
     
     
-    // ==================================================
-    //       Look for Twins in Minigrids
-    // ==================================================
+    /* 
+    ==================================================
+           Look for Twins in Minigrids
+    ==================================================*/
     func lookForTwinsInMinigrids() -> Bool {
         var changes = false
         
@@ -22,7 +23,7 @@ struct Twins {
             for c in 0..<9 {
                 
                 // ---if two possible values, check for twins---
-                if Vars.actual[c][r] == 0 && Vars.possible[c][r].count == 2 {
+                if Globals.actual[c][r] == 0 && Globals.possible[c][r].count == 2 {
                     
                     //---scan by the mini-grid that the current cell is
                     var startC = 0
@@ -33,32 +34,32 @@ struct Twins {
                         for cc in startC...startC + 2 {
                             
                             //---for cells other than the pair of twins---
-                            if !(cc == c && rr == r) && Vars.possible[cc][rr] == Vars.possible[c][r] {
+                            if !(cc == c && rr == r) && Globals.possible[cc][rr] == Globals.possible[c][r] {
                                 // ---remove the twins from all the other possible
                                 for rrr in startR...startR + 2 {
                                     for ccc in startC...startC + 2 {
-                                        if Vars.actual[ccc][rrr] == 0 && Vars.possible[ccc][rrr] != Vars.possible[c][r] {
+                                        if Globals.actual[ccc][rrr] == 0 && Globals.possible[ccc][rrr] != Globals.possible[c][r] {
                                             
                                             //---save a copy of the original
                                             // possible values (twins)---
-                                            var original_possible = Vars.possible[c][r]
+                                            let original_possible = Globals.possible[c][r]
                                             
                                             //MARK: Following has (0) in last term
                                             //---remove first twin number from
                                             // possible values---
-                                            Vars.possible[ccc][rrr] = Vars.possible[ccc][rrr].replacingOccurrences(of: Vars.possible[c][r], with: "")
+                                            Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: Globals.possible[c][r], with: "")
                                             
                                             //MARK: Following has (1) in last term
                                             //---remove second twin number from
                                             // possible values---
-                                            Vars.possible[ccc][rrr] = Vars.possible[ccc][rrr].replacingOccurrences(of: Vars.possible[c][r], with: "")
+                                            Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: Globals.possible[c][r], with: "")
                                             
                                             //---if the possible values are
                                             // modified, then set the changes
                                             // variable to true to indicate
                                             // that the possible values of cells
                                             // in the minigrid have been modified---
-                                            if original_possible != Vars.possible[ccc][rrr] {
+                                            if original_possible != Globals.possible[ccc][rrr] {
                                                 changes = true
                                             }
                                             
@@ -66,16 +67,16 @@ struct Twins {
                                             // empty string, then the user has
                                             // placed a move that results in
                                             // the puzzle not solvable---
-                                            if Vars.possible[ccc][rrr] == "" {
+                                            if Globals.possible[ccc][rrr] == "" {
                                                 print("Invalid Move")
                                             }
                                             
                                             //---if left with 1 possible value
                                             // for the current cell, cell is
                                             // confirmed---
-                                            if Vars.possible[ccc][rrr].count == 1 {
-                                                Vars.actual[ccc][rrr] = Int(Vars.possible[ccc][rrr]) ?? 999
-                                                Vars.totalScore += 3
+                                            if Globals.possible[ccc][rrr].count == 1 {
+                                                Globals.actual[ccc][rrr] = Int(Globals.possible[ccc][rrr]) ?? 999
+                                                Globals.totalScore += 3
                                             }
                                         }
                                     }
@@ -91,9 +92,10 @@ struct Twins {
     
     
     
-    // ==================================================
-    //       Look for Twins in Rows
-    // ==================================================
+    /*
+     ==================================================
+     Look for Twins in Rows
+     ==================================================*/
     
     func lookForTwinsInRows() -> Bool {
         var changes = false
@@ -103,51 +105,51 @@ struct Twins {
             for c in 0..<9 {
                 
                 // ---if two possible values, check for twins---
-                if Vars.actual[c][r] == 0 && Vars.possible[c][r].count == 2 {
+                if Globals.actual[c][r] == 0 && Globals.possible[c][r].count == 2 {
                     
                     //--scan columns in this row---
                     for cc in (c + 1)..<9 {
-                        if Vars.possible[cc][r] == Vars.possible[c][r] {
+                        if Globals.possible[cc][r] == Globals.possible[c][r] {
                             
                             //---remove the twins from all the other possible
                             //   values in the row---
                             for ccc in 0..<9 {
-                                if Vars.actual[ccc][r] == 0 && (ccc != c) && (ccc != cc) {
+                                if Globals.actual[ccc][r] == 0 && (ccc != c) && (ccc != cc) {
                                     
                                     //---save a copy of the original possible
                                     // values (twins)---
-                                    var original_possible = Vars.possible[ccc][r]
+                                    let original_possible = Globals.possible[ccc][r]
                                     
                                     //---remove first twin number from possible
                                     // values--- MARK: ########### (0)
-                                    Vars.possible[ccc][r] = Vars.possible[ccc][r].replacingOccurrences(of: Vars.possible[c][r], with: "")
+                                    Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: Globals.possible[c][r], with: "")
                                     
                                     //---remove second twin number from possible
                                     // values--- MARK: ########### (1)
-                                    Vars.possible[ccc][r] = Vars.possible[ccc][r].replacingOccurrences(of: Vars.possible[c][r], with: "")
+                                    Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: Globals.possible[c][r], with: "")
                                     
                                     //--if the possible values are modified, then
                                     // set the changes variable to true to indicate
                                     // that the possible values of cells in the
                                     // minigrid have been modified---
-                                    if original_possible != Vars.possible[ccc][r] {
+                                    if original_possible != Globals.possible[ccc][r] {
                                         changes = true
                                     }
                                     
                                     //---if possible value reduces to empty string,
                                     // then the user has placed a move that results
                                     // in the puzzle not solvable---
-                                    if original_possible != Vars.possible[ccc][r] {
+                                    if original_possible != Globals.possible[ccc][r] {
                                         print("Invalid Move")
                                     }
                                     
                                     //---if left with 1 possible value for the
                                     // current cell, cell is confirmed---
-                                    if  Vars.possible[ccc][r].count == 1 {
-                                        Vars.actual[ccc][r] = Int(Vars.possible[ccc][r]) ?? 999
+                                    if  Globals.possible[ccc][r].count == 1 {
+                                        Globals.actual[ccc][r] = Int(Globals.possible[ccc][r]) ?? 999
                                         
                                         //---accumulate the total score---
-                                        Vars.totalScore += 3
+                                        Globals.totalScore += 3
                                     }
                                 }
                             }
@@ -161,9 +163,10 @@ struct Twins {
     
     
     
-    // ==================================================
-    //       Look for Twins in Columns
-    // ==================================================
+    /*
+    ==================================================
+     Look for Twins in Columns
+    ==================================================*/
     func lookForTwinsInColumns() -> Bool {
         var changes = false
         
@@ -172,51 +175,51 @@ struct Twins {
             for c in 0..<9 {
                 
                 //---if two possible values, check for twins---
-                if Vars.actual[c][r] == 0 && Vars.possible[c][r].count == 2 {
+                if Globals.actual[c][r] == 0 && Globals.possible[c][r].count == 2 {
                     
                     //--scan rows in this column---
                     for rr in 0..<9 {
-                        if Vars.possible[c][rr] == Vars.possible[c][r] {
+                        if Globals.possible[c][rr] == Globals.possible[c][r] {
                             
                             //---remove the twins from all the other possible
                             //values in the row---
                             for rrr in 0..<9 {
-                                if Vars.actual[c][rr] == 0 && (rrr != r) && (rrr != rr) {
+                                if Globals.actual[c][rr] == 0 && (rrr != r) && (rrr != rr) {
                                     
                                     //---save a copy of the original possible
                                     // values (twins)---
-                                    var original_possible = Vars.possible[c][rrr]
+                                    let original_possible = Globals.possible[c][rrr]
                                     
                                     //---remove first twin number from possible
                                     // values---  MARK: ########### (0)
-                                    Vars.possible[c][rrr] = Vars.possible[c][rrr].replacingOccurrences(of: Vars.possible[c][r], with: "")
+                                    Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: Globals.possible[c][r], with: "")
                                     
                                     //---remove second twin number from possible
                                     // values---  MARK: ########### (1)
-                                    Vars.possible[c][rrr] = Vars.possible[c][rrr].replacingOccurrences(of: Vars.possible[c][r], with: "")
+                                    Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: Globals.possible[c][r], with: "")
                                     
                                     //---if the possible values are modified, then
                                     // set the changes variable to true to indicate
                                     // that the possible values of cells in the
                                     //minigrid have been modified---
-                                    if original_possible != Vars.possible[c][rrr] {
+                                    if original_possible != Globals.possible[c][rrr] {
                                         changes = true
                                     }
                                     
                                     //---if possible value reduces to empty string,
                                     // then the user has placed a move that results
                                     // in the puzzle not solvable---
-                                    if Vars.possible[c][rrr] == "" {
+                                    if Globals.possible[c][rrr] == "" {
                                         print("Invalid Move")
                                     }
                                     
                                     //--if left with 1 possible value for the
                                     // current cell, cell is confirmed---
-                                    if  Vars.possible[c][rrr].count == 1 {
-                                        Vars.actual[c][rrr] = Int(Vars.possible[c][rrr]) ?? 999
+                                    if  Globals.possible[c][rrr].count == 1 {
+                                        Globals.actual[c][rrr] = Int(Globals.possible[c][rrr]) ?? 999
                                         
                                         //---accumulate the total score---
-                                        Vars.totalScore += 3
+                                        Globals.totalScore += 3
                                     }
                                 }
                             }

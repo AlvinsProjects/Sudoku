@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct ContentView: View {
+    
     @State private var board = Board(difficulty: .Trivial)
     let spacing = 1.0
     
@@ -73,7 +74,7 @@ struct ContentView: View {
                 }
             }
         }
-        .preferredColorScheme(.dark)
+//        .preferredColorScheme(.dark)
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         
         .alert("Start a new game", isPresented: $showingNewGame) {

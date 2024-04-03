@@ -21,6 +21,8 @@ struct CellView: View {
                     return .squareHighlighted
                 case .selected:
                     return .squareSelected
+//                case .open:
+//                    return .squareOpen
             }
         }
     }
@@ -39,6 +41,14 @@ struct CellView: View {
             return String(number)
         }
     }
+    
+//    var backgroundCol: Color {
+//        if number == 0 {
+//            return .squareOpen
+//        } else {
+//            return .squareStandard
+//        }
+//    }
     
     
     var foregroundColor: Color {
@@ -62,9 +72,12 @@ struct CellView: View {
                 .frame(maxWidth: 100, maxHeight: 100)
                 .aspectRatio(1, contentMode: .fit)
                 .background(highlightState.color)
+//                .background(backgroundCol)
         }
         .buttonStyle(.plain)
         .accessibilityShowsLargeContentViewer()
+        
+        
     }
 }
 

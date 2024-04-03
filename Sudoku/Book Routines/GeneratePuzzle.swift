@@ -21,9 +21,10 @@ struct GeneratePuzzle {
     
     
     
-    //============================================================
-    //      Get Puzzle
-    //============================================================
+    /*
+    ============================================================
+          Get Puzzle
+    ============================================================*/
     public func getPuzzle(level: Int) -> String {
         var score = 0
         var result = ""
@@ -51,9 +52,10 @@ struct GeneratePuzzle {
     
     
     
-    // ============================================================
-    //      Generate a new Sudoku puzzle
-    // ============================================================
+    /*
+    ============================================================
+          Generate a new Sudoku puzzle
+    ============================================================*/
     func generateNewPuzzle(level: Int, score: Int) -> String {
         
         var str = ""
@@ -63,8 +65,8 @@ struct GeneratePuzzle {
         //'---initialize the entire board---
         for r in 0..<9 {
             for c in 0..<9 {
-                Vars.actual[c][r] = 0
-                Vars.possible[c][r] = ""
+                Globals.actual[c][r] = 0
+                Globals.possible[c][r] = ""
             }
         }
         
@@ -72,12 +74,12 @@ struct GeneratePuzzle {
         //ActualStack.Clear()
         //PossibleStack.Clear()
         
-        print(Vars.actual)
-        print(Vars.possible)
+        print(Globals.actual)
+        print(Globals.possible)
         
         
         //'---populate the board with numbers by solving an empty grid---
-        if !solvePuzzle() {
+        if !SolvePuzzle().solvePuzzle() {
             //---then use brute-force---
             MiscFuncs().solvePuzzleByBruteForce()
         } else {
@@ -102,7 +104,7 @@ struct GeneratePuzzle {
         //ActualStack.Clear()
         //PossibleStack.Clear()
         
-        Vars.bruteForceStop = false
+        Globals.bruteForceStop = false
         
         // ----create empty cells----
         createEmptyCells(empty: numberOfEmptyCells)
@@ -111,17 +113,17 @@ struct GeneratePuzzle {
         str  = ""
         for r in 0..<9 {
             for c in 0..<9 {
-                str = String(Vars.actual[c][r])
+                str = String(Globals.actual[c][r])
             }
         }
         
         // ---verify the puzzle has only one solution---
         var tries = 0
         
-        Vars.totalScore = 0
+        Globals.totalScore = 0
         
         repeat {
-            if !solvePuzzle() {
+            if !SolvePuzzle().solvePuzzle() {
                 // ---if puzzle is not solved and
                 // this is a level 1 to 3 puzzle---
                 if level < 4 {
@@ -145,15 +147,16 @@ struct GeneratePuzzle {
             }
         } while true
         //---return the score as well as the puzzle as a string---
-        score = Vars.totalScore
+        score = Globals.totalScore
         return str
     }
     
     
     
-    //============================================================
-    //  Create empty cells in the grid
-    //============================================================
+    /*
+    ============================================================
+      Create empty cells in the grid
+    ============================================================*/
     func createEmptyCells(empty: Int) {
 //        var c = 0
 //        var r = 0
@@ -198,9 +201,10 @@ struct GeneratePuzzle {
     
     
     
-    //============================================================
-    // Vacate another pair of cells
-    //============================================================
+    /*
+    ============================================================
+     Vacate another pair of cells
+    ============================================================*/
     func vacateAnotherPairOfCells(str: String) {
 //        var c = 0
 //        var r = 0

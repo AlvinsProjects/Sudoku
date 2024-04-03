@@ -11,48 +11,57 @@ import Foundation
 struct MiscFuncs {
     
     
-    //=========================================================
-    //   Find the cell with the small number of possible values
-    //=========================================================
+    /*
+    =========================================================
+       Find the cell with the small number of possible values
+    =========================================================*/
     func findCellWithFewestPossibleValues(col: Int, row: Int) {
         var min = 10
         for r in 0..<9 {
             for c in 0..<9 {
-                if Vars.actual[c][r] == 0 && Vars.possible[c][r].count < min {
-                    min = Vars.possible[c][r].count
-                    Vars.col = c
-                    Vars.row = r
+                if Globals.actual[c][r] == 0 && Globals.possible[c][r].count < min {
+                    min = Globals.possible[c][r].count
+                    Globals.col = c
+                    Globals.row = r
                 }
             }
         }
     }
     
     
-    // ==================================================
-    //      Solve puzzle by brute force
-    // ==================================================
+    /*
+    ==================================================
+          Solve puzzle by brute force
+    ==================================================*/
     func solvePuzzleByBruteForce() {
         var c = 0
         var r = 0
         
         // ---accumulate the total score---
-        Vars.totalScore += 5
+        Globals.totalScore += 5
         
         // ---find out which cell has the smallest number of possible values---
         findCellWithFewestPossibleValues(col: c, row: r)
         
         // ---get the possible values for the chosen cell---
-        var possibleValues = Vars.possible[c][r]
+        let possibleValues = Globals.possible[c][r]
         
         // ---randomize the possible values----
         randomizeThePossibleValues(str: possibleValues)
-        //    '-------------------
-        //
-        //    '---push the actual and possible stacks into the stack---
+        //    ------------------
+        
+        //    ---push the actual and possible stacks into the stack---
+        Globals.actualStack = Globals.actual
+        Globals.possibleStack = Globals.possible
+        
         //    ActualStack.Push(CType(actual.Clone(), Integer(,)))
         //    PossibleStack.Push(CType(possible.Clone(), String(,)))
-        //
-        //    '---select one value and try---
+        
+        //    ---select one value and try---
+        
+        for i in 0..<(Int(possibleValues) ?? 999) {
+            
+        }
         //    For i As Integer = 0 To possibleValues.Length - 1
         //    actual(c, r) = CInt(possibleValues(i).ToString())
         //    Try
@@ -78,9 +87,10 @@ struct MiscFuncs {
     
     
     
-    // ==================================================
-    //   Check if the puzzle is solved
-    // ==================================================
+    /*
+    ==================================================
+       Check if the puzzle is solved
+    ==================================================*/
     func isPuzzleSolved() -> Bool {
         var pattern = ""
         
@@ -88,7 +98,7 @@ struct MiscFuncs {
         for r in 0..<9 {
             pattern = "123456789"
             for c in 0..<9 {
-                pattern = pattern.replacingOccurrences(of: String(Vars.actual[c][r]), with: "")
+                pattern = pattern.replacingOccurrences(of: String(Globals.actual[c][r]), with: "")
             }
             if pattern.count > 0 {
                 return false
@@ -99,7 +109,7 @@ struct MiscFuncs {
         for c in 0..<9 {
             pattern = "123456789"
             for r in 0..<9 {
-                pattern = pattern.replacingOccurrences(of: String(Vars.actual[c][r]), with: "")
+                pattern = pattern.replacingOccurrences(of: String(Globals.actual[c][r]), with: "")
             }
             if pattern.count > 0 {
                 return false
@@ -112,7 +122,7 @@ struct MiscFuncs {
             for r in stride(from: 0, through: 8, by: 3) {
                 for cc in 0...2 {
                     for rr in 0...2 {
-                        pattern = pattern.replacingOccurrences(of: String(Vars.actual[c + cc][r + rr]), with: "")
+                        pattern = pattern.replacingOccurrences(of: String(Globals.actual[c + cc][r + rr]), with: "")
                     }
                 }
             }
@@ -124,9 +134,10 @@ struct MiscFuncs {
     }
     
     
-    //=========================================================
-    // Randomly swap the list of possible values
-    //=========================================================
+    /*
+    =========================================================
+     Randomly swap the list of possible values
+    =========================================================*/
     func randomizeThePossibleValues(str: String) {
         //    var s[str.count - 1] = ""
         
@@ -149,17 +160,6 @@ struct MiscFuncs {
         //str = s
         //End Sub
     }
-    
-    
-    
-    
-    //'============================================================
-    //' Generate a random number between the specified range
-    //'============================================================
-    //Private Function RandomNumber(ByVal min As Integer, ByVal max As Integer) As Integer
-    //Return CType(Int((max - min + 1) * Rnd()) + min, Integer)
-    //End Function
-    
     
     
 }
