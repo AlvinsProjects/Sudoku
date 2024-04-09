@@ -19,102 +19,109 @@ struct SolvePuzzle {
         var changes = false
         var exitLoop = false
         
-        //Try
-        //Do '---Look for Triplets in Columns---
-        
-        repeat {  //---Look for Triplets in Rows---
-            repeat {    //---Look for Triplets in Minigrids---
-                repeat {    //---Look for Twins in Columns---
-                    repeat {    //---Look for Twins in Rows---
-                        repeat {   //---Look for Twins in Minigrids---
-                            repeat {    //---Look for Lone Rangers in Columns---
-                                repeat {    //---Look for Lone Rangers in Rows---
-                                    repeat {    //---Look for Lone Rangers in
+        repeat {  //---Look for Triplets in Columns---
+            repeat {    //---Look for Triplets in Rows---
+                repeat {    //---Look for Twins in Minigrids---
+                    
+                    repeat {    //---Look for Twins in Columns---
+                        repeat {   //---Look for Twins in Rows---
+                            repeat {    //---Look for Twins in Minigrids---
+                                
+                                repeat {    //---Look for Lone Rangers in Columns---
+                                    repeat {    //---Look for Lone Rangers in Rows---
                                         repeat {    //---Look for Lone Rangers in Minigrids---
+                                            
                                             repeat {   //---Perform Col/Row and Minigrid Elimination---
                                                 changes = checkColumnsAndRows()
-                                                if MiscFuncs().isPuzzleSolved() {
+                                                print("1 MG Elimination")
+//                                                if MiscFuncs.isPuzzleSolved() {
+                                                let x = MiscFuncs.isPuzzleSolved()
+                                                if x {
+                                                    print("qqqq")
                                                     exitLoop = true
                                                     break
                                                 }
                                             } while !changes
                                             
                                             if exitLoop { break }
-                                            //    '---Look for Lone Rangers in Minigrids---
+                                            //---Look for Lone Rangers in Minigrids---
                                             changes = LoneRangers().lookForLoneRangersInMinigrids()
-                                            if  MiscFuncs().isPuzzleSolved() {
+                                            print("2 LR in Minigrid")
+                                            if  MiscFuncs.isPuzzleSolved() {
                                                 exitLoop = true
                                                 break
                                             }
                                         } while !changes
                                         
                                         if exitLoop { break }
-                                        //    '---Look for Lone Rangers in Rows---
+                                        //---Look for Lone Rangers in Rows---
                                         changes = LoneRangers().lookForLoneRangersInRows()
-                                        if MiscFuncs().isPuzzleSolved() {
+                                        print("3 LR in Rows")
+                                        if MiscFuncs.isPuzzleSolved() {
                                             exitLoop = true
                                             break
                                         }
                                     } while !changes
                                     
                                     if exitLoop { break }
-                                    //    '---Look for Lone Rangers in Columns---
+                                    //---Look for Lone Rangers in Columns---
                                     changes = LoneRangers().lookForLoneRangersInColumns()
-                                    if MiscFuncs().isPuzzleSolved() {
+                                    print("4 LR in Columns")
+                                    if MiscFuncs.isPuzzleSolved() {
                                         exitLoop = true
                                         break
                                     }
                                 } while !changes
                                 
                                 if exitLoop { break }
-                                //    '---Look For Twins in Minigrids---
+                                //---Look For Twins in Minigrids---
                                 changes = Twins().lookForTwinsInMinigrids()
-                                if MiscFuncs().isPuzzleSolved() {
+                                if MiscFuncs.isPuzzleSolved() {
                                     exitLoop = true
                                     break
                                 }
                             } while !changes
                             
                             if exitLoop { break }
-                            //    '---Look For Twins in Rows---
+                            //---Look For Twins in Rows---
                             changes = Twins().lookForTwinsInRows()
-                            if MiscFuncs().isPuzzleSolved() {
+                            if MiscFuncs.isPuzzleSolved() {
                                 exitLoop = true
                                 break
                             }
                         } while !changes
                         
                         if exitLoop { break }
-                        //    '---Look For Twins in Columns---
+                        //---Look For Twins in Columns---
                         changes = Twins().lookForTwinsInColumns()
-                        if MiscFuncs().isPuzzleSolved() {
+                        if MiscFuncs.isPuzzleSolved() {
                             exitLoop = true
                             break
                         }
                     } while !changes
                     
                     if exitLoop { break }
-                    //    '---Look For Triplets in MiniGrids---
+                    //---Look For Triplets in MiniGrids---
                     changes = Triplets().lookForTripletsInMinigrids()
-                    if MiscFuncs().isPuzzleSolved() {
+                    if MiscFuncs.isPuzzleSolved() {
                         exitLoop = true
                         break
                     }
                 } while !changes
                 
                 if exitLoop { break }
-                //    '---Look For Triplets in Rows---
+                //---Look For Triplets in Rows---
                 changes = Triplets().lookForTripletsInRows()
-                if MiscFuncs().isPuzzleSolved() {
+                if MiscFuncs.isPuzzleSolved() {
                     exitLoop = true
                     break
                 }
             } while !changes
             
             if exitLoop { break }
-            //    '---Look For Triplets in Columns---
+            //---Look For Triplets in Columns---
             changes = Triplets().lookForTripletsInColumns()
-            if MiscFuncs().isPuzzleSolved() {
+            if MiscFuncs.isPuzzleSolved() {
                 exitLoop = true
                 break
             }
@@ -124,7 +131,7 @@ struct SolvePuzzle {
         //                    Throw New Exception("Invalid Move")
         //                    End Try
         
-        if MiscFuncs().isPuzzleSolved() {
+        if MiscFuncs.isPuzzleSolved() {
             return true
         } else {
             return false
@@ -143,7 +150,7 @@ struct SolvePuzzle {
         for row in 0..<9 {
             for col in 0..<9 {
                 if Globals.actual[col][row] == 0 {
-                    Globals.possible[col][row] = (calculatePossibleValues(col: col, row: row))
+                    Globals.possible[col][row] = calculatePossibleValues(col: col, row: row)
                 }
                 
                 if Globals.possible[col][row].count == 1 {

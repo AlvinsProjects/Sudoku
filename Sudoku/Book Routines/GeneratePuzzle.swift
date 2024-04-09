@@ -10,28 +10,20 @@ import Foundation
 
 struct GeneratePuzzle {
     
-    
-    /*
-     '============================================================
-     ' Generate a random number between the specified range
-     '============================================================
-     Private Function RandomNumber(ByVal min As Integer, ByVal max As Integer) As Integer
-     Return CType(Int((max - min + 1) * Rnd()) + min, Integer)
-     End Function   */
-    
-    
-    
     /*
     ============================================================
-          Get Puzzle
+        Get Puzzle
     ============================================================*/
     public func getPuzzle(level: Int) -> String {
         var score = 0
-        var result = ""
+        var result = (str: "", score: 0)
         
         repeat {
             result = generateNewPuzzle(level: level, score: score)
-            if result != "" {
+            score = result.score
+            print(result)
+            
+            if result.str != "" {
                 //---check if puzzle matches the level of difficulty---
                 switch level {
                     case 1:
@@ -47,7 +39,8 @@ struct GeneratePuzzle {
                 }
             }
         } while true
-        return result
+        
+        return result.str
     }
     
     
@@ -56,13 +49,13 @@ struct GeneratePuzzle {
     ============================================================
           Generate a new Sudoku puzzle
     ============================================================*/
-    func generateNewPuzzle(level: Int, score: Int) -> String {
+    func generateNewPuzzle(level: Int, score: Int) -> (str: String, score: Int) {
         
         var str = ""
         var numberOfEmptyCells = 0
         var score = score
         
-        //'---initialize the entire board---
+        //---initialize the entire board---
         for r in 0..<9 {
             for c in 0..<9 {
                 Globals.actual[c][r] = 0
@@ -70,24 +63,22 @@ struct GeneratePuzzle {
             }
         }
         
-        // ---clear the stacks---
-        //ActualStack.Clear()
-        //PossibleStack.Clear()
-        
-        print(Globals.actual)
-        print(Globals.possible)
+        //---clear the stacks---
+        Globals.actualStack.removeAll()
+        Globals.possibleStack.removeAll()
         
         
-        //'---populate the board with numbers by solving an empty grid---
+        //---populate the board with numbers by solving an empty grid---
         if !SolvePuzzle().solvePuzzle() {
-            //---then use brute-force---
+            //MARK: ---then use bruteforce---
             MiscFuncs().solvePuzzleByBruteForce()
         } else {
-            return "Error!"
+            print("Error!")
         }
         
         
-        //'---make a backup copy of the Actual array---
+        //---make a backup copy of the Actual array---
+        Globals.actualBackup = Globals.actual
         //actual_backup = CType(actual.Clone(), Integer(,))
         
         //---set the number of empty cells based on the level of difficulty---
@@ -97,13 +88,13 @@ struct GeneratePuzzle {
             case 3: numberOfEmptyCells = Int.random(in: 50...53)
             case 4: numberOfEmptyCells = Int.random(in: 54...58)
             default:
+                print("Error at line 87 of generateNewPuzzle")
                 break
         }
         
         //---clear the stacks that are used in brute-force elimination ---
-        //ActualStack.Clear()
-        //PossibleStack.Clear()
-        
+        Globals.actualStack.removeAll()
+        Globals.possibleStack.removeAll()
         Globals.bruteForceStop = false
         
         // ----create empty cells----
@@ -125,14 +116,14 @@ struct GeneratePuzzle {
         repeat {
             if !SolvePuzzle().solvePuzzle() {
                 // ---if puzzle is not solved and
-                // this is a level 1 to 3 puzzle---
+                //    this is a level 1 to 3 puzzle---
                 if level < 4 {
                     //---choose another pair of cells to empty---
                     vacateAnotherPairOfCells(str: str)
                     tries += 1
                 } else {
                     //---level 4 puzzles does not guarantee single
-                    // solution and potentially need guessing---
+                    //   solution and potentially need guessing---
                     MiscFuncs().solvePuzzleByBruteForce()
                     break
                 }
@@ -140,15 +131,14 @@ struct GeneratePuzzle {
                 //---puzzle does indeed have 1 solution---
                 break
             }
-            
             // ---if too many tries, exit the loop---
             if tries > 50 {
-                return ""
+                break
             }
         } while true
         //---return the score as well as the puzzle as a string---
         score = Globals.totalScore
-        return str
+        return (str, score)
     }
     
     
@@ -158,80 +148,86 @@ struct GeneratePuzzle {
       Create empty cells in the grid
     ============================================================*/
     func createEmptyCells(empty: Int) {
-//        var c = 0
-//        var r = 0
+        var c = 0
+        var r = 0
         
-        //    ----choose random locations for empty cells----
-        //    var emptyCells(empty - 1) = ""
+        //----choose random locations for empty cells----
         
-        //    Dim emptyCells(empty - 1) As String
-        //    For i As Integer = 0 To (empty \ 2)
-        //    Dim duplicate As Boolean
-        //    Do
-        //    duplicate = False
-        //    '---get a cell in the first half of the grid
-        //    Do
-        //    c = RandomNumber(1, 9)
-        //    r = RandomNumber(1, 5)
-        //    Loop While (r = 5 And c > 5)
-        //
-        //    For j As Integer = 0 To i
-        //    '---if cell is already selected to be empty
-        //            If emptyCells(j) = c.ToString() & r.ToString() Then
-        //            duplicate = True
-        //            Exit For
-        //            End If
-        //            Next
-        //
-        //            If Not duplicate Then
-        //            '---set the empty cell---
-        //            emptyCells(i) = c.ToString() & r.ToString()
-        //            actual(c, r) = 0
-        //            possible(c, r) = String.Empty
-        //            '---reflect the top half of the grid and make it symmetrical---
-        //            emptyCells(empty - 1 - i) = _
-        //            (10 - c).ToString() & (10 - r).ToString()
-        //            actual(10 - c, 10 - r) = 0
-        //            possible(10 - c, 10 - r) = String.Empty
-        //            End If
-        //            Loop While duplicate
-        //            Next
-        //            End Sub
+        var emptyCells = Array(Array(repeating: "", count: empty - 1))
+        for i in 0...Int(empty / 2) {
+            var duplicate = false
+            
+            repeat {
+                duplicate = false
+                //---get a cell in the first half of the grid
+                repeat {
+                    c = Int.random(in: 1...9)
+                    r = Int.random(in: 1...9)
+                } while (r == 5 && c > 5)
+                
+                for j in 0...i {
+                    //---if cell is already selected to be empty
+                    if emptyCells[j] == String(c) + String(r) {
+                        duplicate = true
+                        break
+                    }
+                }
+                
+                if !duplicate {
+                    //---set the empty cell---
+                    emptyCells[i] = String(c) + String(r)
+                    Globals.actual[c][r] = 0
+                    Globals.possible[c][r] = ""
+                    //---reflect the top half of the grid and make it symmetrical---
+                    emptyCells[empty - 1 - i] = String(10 - c) + String(10 - c)
+                    Globals.actual[10 - c][10 - r] = 0
+                    Globals.possible[10 - c][10 - r] = ""
+                }
+            } while duplicate
+        }
     }
-    
-    
+            
     
     /*
     ============================================================
      Vacate another pair of cells
     ============================================================*/
     func vacateAnotherPairOfCells(str: String) {
-//        var c = 0
-//        var r = 0
+        var c = 0
+        var r = 0
         
-        //'---look for a pair of cells to restore---
-        //                Do
-        //                c = RandomNumber(1, 9)
-        //                r = RandomNumber(1, 9)
-        //                Loop Until ((c - 1) + (r - 1) * 9) = 0
-        //
-        //                '---restore the value of the cell from the actual_backup array---
+        //---look for a pair of cells to restore---
+        repeat {
+            c = Int.random(in: 1...9)
+            r = Int.random(in: 1...9)
+        } while ((c - 1) + (r - 1) * 9)  == 0
+        
+        //---restore the value of the cell from the actual_backup array---
+        
+        //MARK: // str = str.replacingOccurrences(of: <#T##StringProtocol#>, with: <#T##StringProtocol#>)
+        
         //                str = str.Remove((c - 1) + (r - 1) * 9, 1)
         //                str = str.Insert((c - 1) + (r - 1) * 9, _
         //                                 actual_backup(c, r).ToString())
-        //
-        //                '---restore the value of the symmetrical cell from
-        //                ' the actual_backup array---
+        
+        //---restore the value of the symmetrical cell from
+        //   the actual_backup array---
+        
         //                str = str.Remove((10 - c - 1) + (10 - r - 1) * 9, 1)
         //                str = str.Insert((10 - c - 1) + (10 - r - 1) * 9, _
         //                                 actual_backup(10 - c, 10 - r).ToString())
         //
-        //                '---look for another pair of cells to vacate---
+        //---look for another pair of cells to vacate---
+        repeat {
+            c = Int.random(in: 1...9)
+            r = Int.random(in: 1...9)
+        } while ((c - 1) + (r - 1) * 9)  == 0
         //                Do
         //                c = RandomNumber(1, 9)
         //                r = RandomNumber(1, 9)
         //                Loop Until ((c - 1) + (r - 1) * 9) <> 0
         //
+        
         //                '---remove the cell from the str---
         //                str = str.Remove((c - 1) + (r - 1) * 9, 1)
         //                str = str.Insert((c - 1) + (r - 1) * 9, "0")

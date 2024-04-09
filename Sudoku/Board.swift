@@ -32,7 +32,9 @@ struct Board: Equatable {
         self.difficulty = difficulty
         create()
         prepareForPlay()
-//        print(getPuzzle(level: 2))
+        //MARK: Enter the Sudoku Program
+        let result = GeneratePuzzle().getPuzzle(level: 1)
+        print(result)
     }
     
     

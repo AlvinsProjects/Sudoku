@@ -32,9 +32,9 @@ struct LoneRangers  {
                     
                     // ---check within the mini-grid---
                     occurrence = 0
-                    for rr in 0...2 {
-                        for cc in 0...2 {
-                            if Globals.actual[c + cc][r + rr] == 0 && 
+                    for rr in 0..<3 {
+                        for cc in 0..<3 {
+                            if Globals.actual[c + cc][r + rr] == 0 &&
                                 Globals.possible[c + cc][r + rr].contains(String(n)) {
                                 occurrence += 1
                                 cPos = c + cc
