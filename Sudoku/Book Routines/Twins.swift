@@ -15,7 +15,7 @@ struct Twins {
     ==================================================
            Look for Twins in Minigrids
     ==================================================*/
-    func lookForTwinsInMinigrids() -> Bool {
+    static func lookForTwinsInMinigrids() -> Bool {
         var changes = false
         
         // ---look for twins in each cell---
@@ -97,7 +97,7 @@ struct Twins {
      Look for Twins in Rows
      ==================================================*/
     
-    func lookForTwinsInRows() -> Bool {
+    static func lookForTwinsInRows() -> Bool {
         var changes = false
         
         // ---for each row, check each column in the row---
@@ -167,7 +167,7 @@ struct Twins {
     ==================================================
      Look for Twins in Columns
     ==================================================*/
-    func lookForTwinsInColumns() -> Bool {
+    static func lookForTwinsInColumns() -> Bool {
         var changes = false
         
         // ---for each row, check each column in the row---

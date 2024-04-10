@@ -19,6 +19,7 @@ struct MiscFuncs {
         var min = 9  //10
         var col = 0
         var row = 0
+        
         for r in 0..<9 {
             for c in 0..<9 {
                 if Globals.actual[c][r] == 0 && Globals.possible[c][r].count < min {
@@ -44,10 +45,10 @@ struct MiscFuncs {
         Globals.totalScore += 5
         
         // ---find out which cell has the smallest number of possible values---
-        var cellWithMinValues = findCellWithFewestPossibleValues
+        var cellWithMinValues = findCellWithFewestPossibleValues()
         
         // ---get the possible values for the chosen cell---
-        let possibleValues = Globals.possible[cellWithMinValues().col][cellWithMinValues().row]
+        let possibleValues = Globals.possible[cellWithMinValues.col][cellWithMinValues.row]
         
         // ---randomize the possible values----
         let randomValues = randomizeThePossibleValues(str: possibleValues)
@@ -55,17 +56,18 @@ struct MiscFuncs {
         
         // ---push the actual and possible stacks into the stack---
 //        Globals.actualStack.append(Globals.actual)
+        
+        Globals.actualStack = Globals.actual
         Globals.possibleStack = Globals.possible
-        //    Globals.actualStack.Queue().enqueue(item: Int(Globals.actual))
         
         //    ActualStack.Push(CType(actual.Clone(), Integer(,)))
         //    PossibleStack.Push(CType(possible.Clone(), String(,)))
         
-        //    ---select one value and try---
+        // ---select one value and try---
         for i in possibleValues {
             Globals.actual[c][r] = Int(String(i)) ?? 999
             
-            if SolvePuzzle().solvePuzzle() {
+            if SolvePuzzle.solvePuzzle() {
                 //---if the puzzle is solved, the recursion can stop now---
                 Globals.bruteForceStop = true
                 return
@@ -101,7 +103,7 @@ struct MiscFuncs {
                 pattern = pattern.replacingOccurrences(of: String(Globals.actual[c][r]), with: "")
             }
             if pattern.count > 0 {
-                print(pattern.count)
+                print("IsPuzzleSolved: pattern count = \(pattern.count)")
                 return false
             }
         }

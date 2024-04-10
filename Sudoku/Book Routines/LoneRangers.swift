@@ -15,7 +15,7 @@ struct LoneRangers  {
     ==================================================
           Look for lone rangers in Minigrids
     ==================================================*/
-    func lookForLoneRangersInMinigrids() -> Bool {
+    static func lookForLoneRangersInMinigrids() -> Bool {
         var changes = false
         var nextMiniGrid = false
         var occurrence = 0
@@ -66,7 +66,7 @@ struct LoneRangers  {
     =========================================================
                 Look for Lone Rangers in Rows
     =========================================================*/
-    func lookForLoneRangersInRows() -> Bool  {
+    static func lookForLoneRangersInRows() -> Bool  {
         var changes = false
         var occurence = 0
         var cPos = 0
@@ -104,7 +104,7 @@ struct LoneRangers  {
     =========================================================
           Look for Lone Rangers in Columns
     =========================================================*/
-    func lookForLoneRangersInColumns() -> Bool {
+    static func lookForLoneRangersInColumns() -> Bool {
         var changes = false
         var occurence = 0
         var cPos = 0

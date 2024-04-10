@@ -15,7 +15,7 @@ struct Triplets {
      ==================================================
      Look for Triplets in Minigrids
      ==================================================*/
-    func lookForTripletsInMinigrids() -> Bool {
+    static func lookForTripletsInMinigrids() -> Bool {
         var changes = false
         
         //    ---check each cell---
@@ -55,7 +55,7 @@ struct Triplets {
                             for ccc in startC...startC + 2 {
                                 
                                 //'---look for the cell that is not part of the
-                                // 3 cells found--- (using GetNo func)
+                                //    3 cells found--- (using GetNo func)
                                 if Globals.actual[ccc][rrr] == 0 &&
                                     ccc != getNo(str: tripletsLocation, item: 0) &&
                                     rrr != getNo(str: tripletsLocation, item: 1) &&
@@ -117,7 +117,7 @@ struct Triplets {
     ==================================================
      Look for Triplets in Rows
     ==================================================*/
-    func lookForTripletsInRows() -> Bool {
+    static func lookForTripletsInRows() -> Bool {
         var changes = false
         
         //---for each row, check each column in the row---
@@ -209,7 +209,7 @@ struct Triplets {
     ==================================================
      Look for Triplets in Columns
     ==================================================*/
-    func lookForTripletsInColumns() -> Bool {
+    static func lookForTripletsInColumns() -> Bool {
         var changes = false
         
         //---for each row, check each row in the column---
@@ -220,7 +220,7 @@ struct Triplets {
                 if Globals.actual[c][r] == 0  && Globals.possible[c][r].count == 3 {
                     
                     //--first potential triplet found---
-                    let tripletsLocation = String(c) + String(r)
+                    var tripletsLocation = String(c) + String(r)
                     
                     //---scans columns in this row---
                     for rr in 0..<9 {
@@ -231,7 +231,7 @@ struct Triplets {
                             Globals.possible[c][r].contains(String(Globals.possible[c][rr])) {
                             
                             //---save the original possible values ---
-                            let tripletsLoction = String(c) + String(rr)
+                            tripletsLocation = String(c) + String(rr)
                         }
                     }
                     
@@ -299,7 +299,7 @@ struct Triplets {
     ==================================================
      Get the Integer by index number, from a string
     ==================================================*/
-    func getNo(str: String, item: Int) -> Int {
+    static func getNo(str: String, item: Int) -> Int {
         (Int(String(str[str.index(str.startIndex, offsetBy: item)])) ?? 999)
     }
     

@@ -14,14 +14,14 @@ struct GeneratePuzzle {
     ============================================================
         Get Puzzle
     ============================================================*/
-    public func getPuzzle(level: Int) -> String {
+    func getPuzzle(level: Int) -> String {
         var score = 0
         var result = (str: "", score: 0)
         
         repeat {
             result = generateNewPuzzle(level: level, score: score)
             score = result.score
-            print(result)
+            print(result.score)
             
             if result.str != "" {
                 //---check if puzzle matches the level of difficulty---
@@ -40,7 +40,7 @@ struct GeneratePuzzle {
             }
         } while true
         
-        return result.str
+        return result.str  //(from a tuple)
     }
     
     
@@ -69,7 +69,7 @@ struct GeneratePuzzle {
         
         
         //---populate the board with numbers by solving an empty grid---
-        if !SolvePuzzle().solvePuzzle() {
+        if !SolvePuzzle.solvePuzzle() {
             //MARK: ---then use bruteforce---
             MiscFuncs().solvePuzzleByBruteForce()
         } else {
@@ -114,7 +114,7 @@ struct GeneratePuzzle {
         Globals.totalScore = 0
         
         repeat {
-            if !SolvePuzzle().solvePuzzle() {
+            if !SolvePuzzle.solvePuzzle() {
                 // ---if puzzle is not solved and
                 //    this is a level 1 to 3 puzzle---
                 if level < 4 {
@@ -162,7 +162,7 @@ struct GeneratePuzzle {
                 //---get a cell in the first half of the grid
                 repeat {
                     c = Int.random(in: 1...9)
-                    r = Int.random(in: 1...9)
+                    r = Int.random(in: 1...5)
                 } while (r == 5 && c > 5)
                 
                 for j in 0...i {
@@ -198,9 +198,9 @@ struct GeneratePuzzle {
         
         //---look for a pair of cells to restore---
         repeat {
-            c = Int.random(in: 1...9)
-            r = Int.random(in: 1...9)
-        } while ((c - 1) + (r - 1) * 9)  == 0
+            c = Int.random(in: 0..<9)
+            r = Int.random(in: 0..<9)
+        } while ((c - 1) + (r - 1) * 9) == 0
         
         //---restore the value of the cell from the actual_backup array---
         
@@ -221,7 +221,7 @@ struct GeneratePuzzle {
         repeat {
             c = Int.random(in: 1...9)
             r = Int.random(in: 1...9)
-        } while ((c - 1) + (r - 1) * 9)  == 0
+        } while ((c - 1) + (r - 1) * 9) == 0
         //                Do
         //                c = RandomNumber(1, 9)
         //                r = RandomNumber(1, 9)
