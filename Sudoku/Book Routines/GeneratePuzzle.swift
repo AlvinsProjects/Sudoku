@@ -14,7 +14,7 @@ struct GeneratePuzzle {
     ============================================================
         Get Puzzle
     ============================================================*/
-    func getPuzzle(level: Int) -> String {
+    static func getPuzzle(level: Int) -> String {
         var score = 0
         var result = (str: "", score: 0)
         
@@ -49,7 +49,7 @@ struct GeneratePuzzle {
     ============================================================
           Generate a new Sudoku puzzle
     ============================================================*/
-    func generateNewPuzzle(level: Int, score: Int) -> (str: String, score: Int) {
+    static func generateNewPuzzle(level: Int, score: Int) -> (str: String, score: Int) {
         
         var str = ""
         var numberOfEmptyCells = 0
@@ -71,7 +71,7 @@ struct GeneratePuzzle {
         //---populate the board with numbers by solving an empty grid---
         if !SolvePuzzle.solvePuzzle() {
             //MARK: ---then use bruteforce---
-            MiscFuncs().solvePuzzleByBruteForce()
+            MiscFuncs.solvePuzzleByBruteForce()
         } else {
             print("Error!")
         }
@@ -124,7 +124,7 @@ struct GeneratePuzzle {
                 } else {
                     //---level 4 puzzles does not guarantee single
                     //   solution and potentially need guessing---
-                    MiscFuncs().solvePuzzleByBruteForce()
+                    MiscFuncs.solvePuzzleByBruteForce()
                     break
                 }
             } else {
@@ -147,7 +147,7 @@ struct GeneratePuzzle {
     ============================================================
       Create empty cells in the grid
     ============================================================*/
-    func createEmptyCells(empty: Int) {
+    static func createEmptyCells(empty: Int) {
         var c = 0
         var r = 0
         
@@ -192,7 +192,7 @@ struct GeneratePuzzle {
     ============================================================
      Vacate another pair of cells
     ============================================================*/
-    func vacateAnotherPairOfCells(str: String) {
+    static func vacateAnotherPairOfCells(str: String) {
         var c = 0
         var r = 0
         

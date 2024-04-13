@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A34FDBD2BC8747B0037E008 /* TestPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A34FDBC2BC8747B0037E008 /* TestPuzzle.swift */; };
 		4AAA850C2BB0A877009DD948 /* SudokuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA850B2BB0A877009DD948 /* SudokuApp.swift */; };
 		4AAA850E2BB0A877009DD948 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA850D2BB0A877009DD948 /* ContentView.swift */; };
 		4AAA85102BB0A878009DD948 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AAA850F2BB0A878009DD948 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A34FDBC2BC8747B0037E008 /* TestPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle.swift; sourceTree = "<group>"; };
 		4AAA85082BB0A877009DD948 /* Sudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AAA850B2BB0A877009DD948 /* SudokuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuApp.swift; sourceTree = "<group>"; };
 		4AAA850D2BB0A877009DD948 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				4AE06C7A2BB47EA300C01FB9 /* Globals.swift */,
+				4A34FDBC2BC8747B0037E008 /* TestPuzzle.swift */,
 				4AE06C782BB45FA200C01FB9 /* GeneratePuzzle.swift */,
 				4AE06C7C2BB5D20B00C01FB9 /* SolvePuzzle.swift */,
 				4AE06C752BB35F7B00C01FB9 /* LoneRangers.swift */,
@@ -185,6 +188,7 @@
 				4AE06C7F2BB611CE00C01FB9 /* Twins.swift in Sources */,
 				4AAA851E2BB0B71B009DD948 /* CellView.swift in Sources */,
 				4AE06C832BB6127500C01FB9 /* MiscFuncs.swift in Sources */,
+				4A34FDBD2BC8747B0037E008 /* TestPuzzle.swift in Sources */,
 				4AE06C7B2BB47EA300C01FB9 /* Globals.swift in Sources */,
 				4AAA850C2BB0A877009DD948 /* SudokuApp.swift in Sources */,
 				4AAA851A2BB0A8CF009DD948 /* Board.swift in Sources */,

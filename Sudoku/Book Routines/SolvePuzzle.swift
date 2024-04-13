@@ -22,40 +22,27 @@ struct SolvePuzzle {
         repeat {  //---Look for Triplets in Columns---
             repeat {    //---Look for Triplets in Rows---
                 repeat {    //---Look for Twins in Minigrids---
-                    
                     repeat {    //---Look for Twins in Columns---
                         repeat {   //---Look for Twins in Rows---
                             repeat {    //---Look for Twins in Minigrids---
-                                
                                 repeat {    //---Look for Lone Rangers in Columns---
                                     repeat {    //---Look for Lone Rangers in Rows---
                                         repeat {    //---Look for Lone Rangers in Minigrids---
-                                            
-                                            
-                                            var count = 0
                                             repeat {   //---Perform Col/Row and Minigrid Elimination---
                                                 changes = checkColumnsAndRows()
-                                                count += 1
-//                                                if MiscFuncs.isPuzzleSolved() {
-                                                let x = MiscFuncs.isPuzzleSolved()
-                                                
-                                                print("1 MG Elim. Changes: \(changes), \(count), \(x)")
-                                                
-                                                if x {
-                                                    print("qqqq")
+                                                if MiscFuncs.isPuzzleSolved() {
+                                                    print("1. Puzzle Solved")
                                                     exitLoop = true
                                                     break
                                                 }
-                                                if count > 81 { break }
                                             } while !changes
-                                            
-                                            
                                             
                                             if exitLoop { break }
                                             //---Look for Lone Rangers in Minigrids---
                                             changes = LoneRangers.lookForLoneRangersInMinigrids()
-                                            print("2 LR in Minigrid")
+                                            print("2 LoneR in Minigrid")
                                             if  MiscFuncs.isPuzzleSolved() {
+                                                print("2. Puzzle Solved")
                                                 exitLoop = true
                                                 break
                                             }
@@ -64,8 +51,9 @@ struct SolvePuzzle {
                                         if exitLoop { break }
                                         //---Look for Lone Rangers in Rows---
                                         changes = LoneRangers.lookForLoneRangersInRows()
-                                        print("3 LR in Rows")
+                                        print("3 LoneR in Rows")
                                         if MiscFuncs.isPuzzleSolved() {
+                                            print("3. Puzzle Solved")
                                             exitLoop = true
                                             break
                                         }
@@ -74,8 +62,9 @@ struct SolvePuzzle {
                                     if exitLoop { break }
                                     //---Look for Lone Rangers in Columns---
                                     changes = LoneRangers.lookForLoneRangersInColumns()
-                                    print("4 LR in Columns")
+                                    print("4 LoneR in Columns")
                                     if MiscFuncs.isPuzzleSolved() {
+                                        print("4. Puzzle Solved")
                                         exitLoop = true
                                         break
                                     }
@@ -152,24 +141,29 @@ struct SolvePuzzle {
     =====================================================
         Calculates the possible values for all the cells
     =====================================================*/
-    static func checkColumnsAndRows() -> Bool {
+    static func checkColumnsAndRows() ->  Bool {
         var changes = false
         //---check all cells---
         for row in 0..<9 {
             for col in 0..<9 {
                 if Globals.actual[col][row] == 0 {
-                    Globals.possible[col][row] = calculatePossibleValues(col: col, row: row)
+                    do {
+                        Globals.possible[col][row] = try calculatePossibleValues(col: col, row: row)
+                    } catch {
+                        print("Exception")
+                    }
                 }
-                print(Globals.possible[col][row], col, row)
+                
                 if Globals.possible[col][row].count == 1 {
-                    
                     //---number is confirmed---
                     Globals.actual[col][row] = Int(Globals.possible[col][row]) ?? 123
                     changes = true
-                    
                     //---accumulate the total score---
                     Globals.totalScore += 1
+                    
                 }
+                print("Inserted \(Globals.actual[col][row]) at  [\(col), \(row)]:  Poss: \(Globals.possible[col][row])")
+                
             }
         }
         return changes
@@ -180,7 +174,7 @@ struct SolvePuzzle {
     ==================================================
      Calculates the possible values for a cell
     ==================================================*/
-    static func calculatePossibleValues(col: Int, row: Int) -> String {
+    static func calculatePossibleValues(col: Int, row: Int) throws -> String {
         var str = ""
         
         if Globals.possible[col][row] == "" {
@@ -192,6 +186,7 @@ struct SolvePuzzle {
         //---Step (1) check by column---
         for r in 0..<9 {
             if Globals.actual[col][r] != 0 {
+                //---that means there is an actual value in it---  
                 str = str.replacingOccurrences(of: String(Globals.actual[col][r]), with: "")
             }
         }
@@ -207,18 +202,22 @@ struct SolvePuzzle {
         //---Step (3) check within the minigrid---
         var startC = 0
         var startR = 0
-        startC = col - ((col - 1) % 3)
-        startR = row - ((row - 1) % 3)
-        for rr in startR..<startR + 2 {
-            for cc in startC..<startC + 2 {
+//        startC = col - ((col - 1) % 3) - 1
+//        startR = row - ((row - 1) % 3) - 1
+        startC = col - (col % 3)
+        startR = row - (row % 3)
+
+        for rr in startR...startR + 2 {
+            for cc in startC...startC + 2 {
                 if Globals.actual[cc][rr] != 0 {
+                    //---that means there is an actual value in it---
                     str = str.replacingOccurrences(of: String(Globals.actual[cc][rr]), with: "")
                 }
             }
         }
-        //---if possible value is string.Empty, then error---
-        if str == "" {
-            print("Invalid Move")
+        //---if possible value is string.Empty, then error because of invalid move------
+        if str.isEmpty {
+            print("Invalid Move:  string.Empty")
         }
         return str
     }
