@@ -18,7 +18,7 @@
 					<key>StartingLineNumber</key>
 					<string>39</string>
 					<key>Timestamp</key>
-					<string>734558328.942432</string>
+					<string>734903692.807</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,16 +34,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>//        print(result)
+				<string>
 </string>
 				<key>leading</key>
 				<string>//        let result = GeneratePuzzle.getPuzzle(level: 4)
         Globals.actual = TestPuzzle.getTestPuzzle()
 </string>
 				<key>trailing</key>
-				<string>        let testResult = SolvePuzzle.solvePuzzle()
-        print(testResult)
-        for j in 0..&lt;9 {
+				<string>        let start = CFAbsoluteTimeGetCurrent()
+        // run your work
+        
 </string>
 			</dict>
 			<key>type</key>

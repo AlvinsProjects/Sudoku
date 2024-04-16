@@ -55,7 +55,7 @@ struct MiscFuncs {
         //    ------------------
         
         // ---push the actual and possible stacks into the stack---
-//        Globals.actualStack.append(Globals.actual)
+        //        Globals.actualStack.append(Globals.actual)
         
         Globals.actualStack = Globals.actual
         Globals.possibleStack = Globals.possible
@@ -99,6 +99,7 @@ struct MiscFuncs {
         // ---check row by row---
         for r in 0..<9 {
             pattern = "123456789"
+//            print(Globals.actual)
             for c in 0..<9 {
                 pattern = pattern.replacingOccurrences(of: String(Globals.actual[c][r]), with: "")
             }

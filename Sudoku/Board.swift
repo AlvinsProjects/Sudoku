@@ -37,15 +37,24 @@ struct Board: Equatable {
         //MARK: Call the Sudoku Program
 //        let result = GeneratePuzzle.getPuzzle(level: 4)
         Globals.actual = TestPuzzle.getTestPuzzle()
-//        print(result)
+
+        let start = CFAbsoluteTimeGetCurrent()
+        // run your work
+        
         let testResult = SolvePuzzle.solvePuzzle()
         print(testResult)
+        
+        let diff = CFAbsoluteTimeGetCurrent() - start
+
+        print("Execution Time:  \(String(format: "%.4f", diff)) secs")
+        
+        print("Solution:\n")
         for j in 0..<9 {
             print(Globals.actual[j])
-//            var newRow = Globals.actual[j]
-//            print(Globals.possible[j])
-//            fullBoard.append(newRow)
         }
+        
+
+
     }
     
     
@@ -66,7 +75,6 @@ struct Board: Equatable {
                 newRow.append(numbers[position])
             }
             fullBoard.append(newRow)
-//            print(newRow)
         }
         playerBoard = fullBoard
     }
@@ -83,6 +91,9 @@ struct Board: Equatable {
             playerBoard[8 - row][8 - column] = 0
         }
     }
+    
+    
+    
     
     
 //    let testGrid = [[1, 2, 3],

@@ -37,6 +37,7 @@ struct LoneRangers  {
                             if Globals.actual[c + cc][r + rr] == 0 &&
                                 Globals.possible[c + cc][r + rr].contains(String(n)) {
                                 occurrence += 1
+//                                print("occurrence:  \(occurrence)")
                                 cPos = c + cc
                                 rPos = r + rr
                                 if occurrence > 1 {
@@ -80,6 +81,7 @@ struct LoneRangers  {
                     if Globals.actual[c][r] == 0  && 
                         Globals.possible[c][r].contains(String(n))  {
                         occurence += 1
+                        
                         //---if multiple occurrence, not a lone ranger anymore
                         if occurence > 1 { break }
                         cPos = c
