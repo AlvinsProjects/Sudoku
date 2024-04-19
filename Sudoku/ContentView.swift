@@ -26,9 +26,11 @@ struct ContentView: View {
         NavigationStack {
             VStack {
                 let textCol = getHeaderColor(difficulty: "\(board.difficulty)")
-                Text("Difficulty:   \(board.difficulty)   \(textCol.icon) ")
+                Text("  Difficulty:   \(board.difficulty)   \(textCol.icon)  ")
                     .font(.title)
-                    .foregroundStyle(textCol.col)
+                    .background(textCol.col)
+                    .clipShape(.capsule)
+                Text("Difficulty Score = \(Globals.totalScore)")
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
@@ -68,13 +70,14 @@ struct ContentView: View {
             .navigationTitle("Sudoku")
             .toolbar {
                 Button {
+                    Globals.totalScore = 0
                     showingNewGame = true
                 } label: {
                     Label("Start a new game", systemImage: "plus")
                 }
             }
         }
-//        .preferredColorScheme(.dark)
+        .preferredColorScheme(.dark)
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         
         .alert("Start a new game", isPresented: $showingNewGame) {

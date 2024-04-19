@@ -28,21 +28,24 @@ struct Twins {
                     //---scan by the mini-grid that the current cell is
                     var startC = 0
                     var startR = 0
-                    startC = c - ((c - 1) % 3)
-                    startR = r - ((r - 1) % 3)
+                    startC = c - (c % 3)
+                    startR = r - (r % 3)
                     for rr in startR...startR + 2 {
                         for cc in startC...startC + 2 {
                             
                             //---for cells other than the pair of twins---
                             if !(cc == c && rr == r) && Globals.possible[cc][rr] == Globals.possible[c][r] {
-                                // ---remove the twins from all the other possible
+                                
+                                // ---remove the twins from all the other possible values in
+                                //    the minigrid---
                                 for rrr in startR...startR + 2 {
                                     for ccc in startC...startC + 2 {
+                                        
                                         if Globals.actual[ccc][rrr] == 0 && Globals.possible[ccc][rrr] != Globals.possible[c][r] {
                                             
                                             //---save a copy of the original
                                             // possible values (twins)---
-                                            let original_possible = Globals.possible[c][r]
+                                            let original_possible = Globals.possible[ccc][rrr]
                                             
                                             //MARK: Following has (0) in last term
                                             //---remove first twin number from
@@ -139,7 +142,7 @@ struct Twins {
                                     //---if possible value reduces to empty string,
                                     // then the user has placed a move that results
                                     // in the puzzle not solvable---
-                                    if original_possible != Globals.possible[ccc][r] {
+                                    if Globals.possible[ccc][r].isEmpty {
                                         print("Invalid Move")
                                     }
                                     
@@ -178,11 +181,11 @@ struct Twins {
                 if Globals.actual[c][r] == 0 && Globals.possible[c][r].count == 2 {
                     
                     //--scan rows in this column---
-                    for rr in 0..<9 {
+                    for rr in (r + 1)..<9 {
                         if Globals.possible[c][rr] == Globals.possible[c][r] {
                             
                             //---remove the twins from all the other possible
-                            //values in the row---
+                            //   values in the row---
                             for rrr in 0..<9 {
                                 if Globals.actual[c][rr] == 0 && (rrr != r) && (rrr != rr) {
                                     

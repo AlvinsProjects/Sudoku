@@ -99,15 +99,14 @@ struct MiscFuncs {
         // ---check row by row---
         for r in 0..<9 {
             pattern = "123456789"
-//            print(Globals.actual)
             for c in 0..<9 {
                 pattern = pattern.replacingOccurrences(of: String(Globals.actual[c][r]), with: "")
             }
             if pattern.count > 0 {
-                print("Row by Row: pattern: \(pattern),  count = \(pattern.count)")
                 return false
             }
         }
+            
         
         // ---check column by column---
         for c in 0..<9 {

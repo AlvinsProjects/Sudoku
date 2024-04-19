@@ -21,35 +21,34 @@ struct SolvePuzzle {
         
 //        repeat {  //---Look for Triplets in Columns---
 //            repeat {    //---Look for Triplets in Rows---
-//                repeat {    //---Look for Twins in Minigrids---
+//                repeat {    //---Look for Triplets in Minigrids---
 //                    repeat {    //---Look for Twins in Columns---
 //                        repeat {   //---Look for Twins in Rows---
 //                            repeat {    //---Look for Twins in Minigrids---
-//                                repeat {    //---Look for Lone Rangers in Columns---
+                                repeat {    //---Look for Lone Rangers in Columns---
                                     repeat {    //---Look for Lone Rangers in Rows---
                                         repeat {    //---Look for Lone Rangers in Minigrids---
                                            
-                                            
                                             repeat {   //---Perform Col/Row and Minigrid Elimination---
                                                 changes = checkColumnsAndRows()
                                                 if MiscFuncs.isPuzzleSolved() {
-                                                    print("1. Puzzle Solved by checkColumns&Rows")
+                                                    print("1. Puzzle Solved by CRME")
                                                     exitLoop = true
                                                     break
                                                 }
-                                            } while !changes
+                                            } while changes
                                             
                                             
                                             if exitLoop { break }
                                             //---Look for Lone Rangers in Minigrids---
-//                                            changes = LoneRangers.lookForLoneRangersInMinigrids()
+                                            changes = LoneRangers.lookForLoneRangersInMinigrids()
                                             print("2 LoneR in Minigrid")
                                             if  MiscFuncs.isPuzzleSolved() {
                                                 print("2. Puzzle Solved")
                                                 exitLoop = true
                                                 break
                                             }
-                                        } while !changes
+                                        } while changes
                                         
                                         
                                         if exitLoop { break }
@@ -61,19 +60,19 @@ struct SolvePuzzle {
                                             exitLoop = true
                                             break
                                         }
-                                    } while !changes
+                                    } while changes
                                     
-//                                    if exitLoop { break }
+                                    if exitLoop { break }
 //                                    //---Look for Lone Rangers in Columns---
-//                                    changes = LoneRangers.lookForLoneRangersInColumns()
-//                                    print("4 LoneR in Columns")
-//                                    if MiscFuncs.isPuzzleSolved() {
-//                                        print("4. Puzzle Solved")
-//                                        exitLoop = true
-//                                        break
-//                                    }
-//                                } while !changes
-//                                
+                                    changes = LoneRangers.lookForLoneRangersInColumns()
+                                    print("4 LoneR in Columns")
+                                    if MiscFuncs.isPuzzleSolved() {
+                                        print("4. Puzzle Solved")
+                                        exitLoop = true
+                                        break
+                                    }
+                                } while changes
+////                                
 //                                if exitLoop { break }
 //                                //---Look For Twins in Minigrids---
 //                                changes = Twins.lookForTwinsInMinigrids()
@@ -81,7 +80,7 @@ struct SolvePuzzle {
 //                                    exitLoop = true
 //                                    break
 //                                }
-//                            } while !changes
+//                            } while changes
                             
 //                            if exitLoop { break }
 //                            //---Look For Twins in Rows---
@@ -90,7 +89,7 @@ struct SolvePuzzle {
 //                                exitLoop = true
 //                                break
 //                            }
-//                        } while !changes
+//                        } while changes
 //                        
 //                        if exitLoop { break }
 //                        //---Look For Twins in Columns---
@@ -99,7 +98,7 @@ struct SolvePuzzle {
 //                            exitLoop = true
 //                            break
 //                        }
-//                    } while !changes
+//                    } while changes
                     
 //                    if exitLoop { break }
 //                    //---Look For Triplets in MiniGrids---
@@ -108,7 +107,7 @@ struct SolvePuzzle {
 //                        exitLoop = true
 //                        break
 //                    }
-//                } while !changes
+//                } while changes
 //                
 //                if exitLoop { break }
 //                //---Look For Triplets in Rows---
@@ -117,7 +116,7 @@ struct SolvePuzzle {
 //                    exitLoop = true
 //                    break
 //                }
-//            } while !changes
+//            } while changes
             
 //            if exitLoop { break }
 //            //---Look For Triplets in Columns---
@@ -126,7 +125,7 @@ struct SolvePuzzle {
 //                exitLoop = true
 //                break
 //            }
-//        } while !changes
+//        } while changes
         
         //                    Catch ex As Exception
         //                    Throw New Exception("Invalid Move")
@@ -169,7 +168,6 @@ struct SolvePuzzle {
 //                print("Inserted \(Globals.actual[col][row]) at [\(col), \(row)]:  Poss: \(Globals.possible[col][row]):       \(Globals.totalScore)")
             }
         }
-        //                displayResult()
         return changes
     }
     
@@ -187,7 +185,6 @@ struct SolvePuzzle {
             str = Globals.possible[col][row]
         }
         
-
         //---Step (1) check by column---
         for r in 0..<9 {
             if Globals.actual[col][r] != 0 {
@@ -196,7 +193,6 @@ struct SolvePuzzle {
             }
         }
         
-
         //---Step (2) check by row---
         for c in 0..<9 {
             if Globals.actual[c][row] != 0 {
@@ -224,20 +220,4 @@ struct SolvePuzzle {
         }
         return str
     }
-    
-    
-    
-    static func displayResult() {
-        var a1 = [Int]()
-        var b1 = [String]()
-        
-        for col in 0..<9 {
-            a1.append(Globals.actual[col][0])
-            b1.append(Globals.possible[col][0])
-            print(a1)
-            print(b1)
-        }
-    }
-    
-    
 }
