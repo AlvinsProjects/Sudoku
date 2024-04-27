@@ -52,6 +52,7 @@ struct Board: Equatable {
         print("\nSolution:")
         for j in 0..<9 {
             print(Globals.actual[j])
+//            print(Globals.possible[j])
         }
     }
     

@@ -55,12 +55,12 @@ struct MiscFuncs {
         //    ------------------
         
         // ---push the actual and possible stacks into the stack---
-        //        Globals.actualStack.append(Globals.actual)
+//                Globals.actualStack.append(Globals.actual)
         
         Globals.actualStack = Globals.actual
         Globals.possibleStack = Globals.possible
         
-        //    ActualStack.Push(CType(actual.Clone(), Integer(,)))
+//            ActualStack.Push(CType(actual.Clone(), Integer(,)))
         //    PossibleStack.Push(CType(possible.Clone(), String(,)))
         
         // ---select one value and try---
@@ -106,7 +106,6 @@ struct MiscFuncs {
                 return false
             }
         }
-            
         
         // ---check column by column---
         for c in 0..<9 {

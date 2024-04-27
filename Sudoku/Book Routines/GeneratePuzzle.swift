@@ -79,6 +79,7 @@ struct GeneratePuzzle {
         
         //---make a backup copy of the Actual array---
         Globals.actualBackup = Globals.actual
+//        Globals.actualBackup.append(Globals.actual)
         //actual_backup = CType(actual.Clone(), Integer(,))
         
         //---set the number of empty cells based on the level of difficulty---
