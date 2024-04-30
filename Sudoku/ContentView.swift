@@ -76,8 +76,23 @@ struct ContentView: View {
                     Label("Start a new game", systemImage: "plus")
                 }
             }
+            NavigationLink {
+                StepsTakenView()
+            } label: {
+                Text("List Solution Steps")
+            }
+//            Button {
+//                                Globals.totalScore = 0
+//                StepsTakenView()
+//                NavigationLink(destination: StepsTakenView(), label: "Press")
+//                showingNewGame = false
+//            } label: {
+//             Text("Show possible values")
+//            }
+//            .buttonStyle(.bordered)
+            
         }
-        .preferredColorScheme(.dark)
+//        .preferredColorScheme(.dark)
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         
         .alert("Start a new game", isPresented: $showingNewGame) {
@@ -97,7 +112,10 @@ struct ContentView: View {
             updateCounts()
         }
 //        .onTapGesture {
-//            print(self.$selectedRow.wrappedValue, self.$selectedCol.wrappedValue)
+//            print(self.$selectedCol.wrappedValue, self.$selectedRow.wrappedValue)
+//            let c = self.$selectedCol.wrappedValue
+//            let r = self.$selectedRow.wrappedValue
+//            print(Globals.possible[r][c])
 //        }
     }
     

@@ -157,21 +157,22 @@ struct SolvePuzzle {
         for row in 0..<9 {
             for col in 0..<9 {
                 if Globals.actual[col][row] == 0 {
-                    do {
-                        Globals.possible[col][row] = try calculatePossibleValues(col: col, row: row)
-                    } catch {
-                        print("Exception")
-                    }
+                    Globals.possible[col][row] = calculatePossibleValues(col: col, row: row)
                     
                     if Globals.possible[col][row].count == 1 {
                         //---number is confirmed---
                         Globals.actual[col][row] = Int(Globals.possible[col][row]) ?? 999
+                        
+                        print("Col Row MiniGrid Elim.  Added \(Globals.actual[col][row]) to (\(row), \(col))")
+                        Globals.stepsCount += 1
+                        Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Col Row MiniGrid Elim.  Added \(Globals.actual[col][row]) to (\(row), \(col))"))
+                        
+                        
                         changes = true
                         //---accumulate the total score---
                         Globals.totalScore += 1
                     }
                 }
-//                print("Inserted \(Globals.actual[col][row]) at [\(col), \(row)]:  Poss: \(Globals.possible[col][row]):       \(Globals.totalScore)")
             }
         }
         return changes
@@ -182,7 +183,7 @@ struct SolvePuzzle {
     ==================================================
      Calculates the possible values for a cell
     ==================================================*/
-    static func calculatePossibleValues(col: Int, row: Int) throws -> String {
+    static func calculatePossibleValues(col: Int, row: Int) -> String {
         var str = ""
         
         if Globals.possible[col][row].isEmpty {
@@ -208,10 +209,8 @@ struct SolvePuzzle {
         }
 
         //---Step (3) check within the minigrid---
-        var startC = 0
-        var startR = 0
-        startC = col - (col % 3)
-        startR = row - (row % 3)
+        let startC = col - (col % 3)
+        let startR = row - (row % 3)
         for rr in startR...startR + 2 {
             for cc in startC...startC + 2 {
                 if Globals.actual[cc][rr] != 0 {
@@ -222,9 +221,20 @@ struct SolvePuzzle {
         }
         //---if possible value is string.Empty, then error because of invalid move------
         if str.isEmpty {
-            print("Invalid Move:  string.Empty - Calc Poss Values")
+            print("Invalid Move:  string.Empty - Calc Possible Values, line 222")
         }
         return str
     }
+    
+    var index = 0
+    mutating func saveSolutionSteps(entry: String)  {
+        index += 1
+        
+        
+        Globals.stepsTakenArray.append(StepsTaken(index: index, steps: entry))
+        
+    }
+    
+    
 }
 

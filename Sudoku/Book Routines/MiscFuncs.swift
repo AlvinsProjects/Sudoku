@@ -52,15 +52,13 @@ struct MiscFuncs {
         
         // ---randomize the possible values----
         possibleValues = randomizeThePossibleValues(str: possibleValues)
-        //    ------------------
+        
         
         // ---push the actual and possible stacks into the stack---
-//                Globals.actualStack.append(Globals.actual)
+        Globals.actualStack.append(Globals.actual)
+        Globals.possibleStack.append(Globals.possible)
         
-        Globals.actualStack = Globals.actual
-        Globals.possibleStack = Globals.possible
-        
-//            ActualStack.Push(CType(actual.Clone(), Integer(,)))
+        //    ActualStack.Push(CType(actual.Clone(), Integer(,)))
         //    PossibleStack.Push(CType(possible.Clone(), String(,)))
         
         // ---select one value and try---

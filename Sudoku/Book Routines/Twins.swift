@@ -50,37 +50,41 @@ struct Twins {
                                             //MARK: Following has (0) in last term
                                             //---remove first twin number from
                                             //   possible values---
-//                                            print(Globals.possible[c][rrr],  "mg1")
                                             Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: Globals.possible[c][r].prefix(1), with: "")
                                             
                                             //MARK: Following has (1) in last term
                                             //---remove second twin number from
                                             //   possible values---
-//                                            print(Globals.possible[c][rrr],  "mg2")
                                             Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: Globals.possible[c][r].suffix(1), with: "")
 
-                                            //---if the possible values are
-                                            //   modified, then set the changes
-                                            //   variable to true to indicate
-                                            //   that the possible values of cells
-                                            //   in the minigrid have been modified---
+                                            /*---if the possible values are
+                                                 modified, then set the changes
+                                                 variable to true to indicate
+                                                 that the possible values of cells
+                                                 in the minigrid have been modified--- */
                                             if original_possible != Globals.possible[ccc][rrr] {
                                                 changes = true
                                             }
                                             
-                                            //---if possible value reduces to
-                                            //   empty string, then the user has
-                                            //   placed a move that results in
-                                            //   the puzzle not solvable---
+                                            /*---if possible value reduces to
+                                                 empty string, then the user has
+                                                 placed a move that results in
+                                                 the puzzle not solvable--- */
                                             if Globals.possible[ccc][rrr] == "" {
                                                 print("Invalid Move")
                                             }
                                             
-                                            //---if left with 1 possible value
-                                            //   for the current cell, cell is
-                                            //   confirmed---
+                                            /*---if left with 1 possible value
+                                                 for the current cell, cell is
+                                                 confirmed--- */
                                             if Globals.possible[ccc][rrr].count == 1 {
                                                 Globals.actual[ccc][rrr] = Int(Globals.possible[ccc][rrr]) ?? 999
+                                                
+                                                print("Twins MiniGrid.  Added \(Globals.actual[ccc][rrr]) to (\(ccc), \(rrr))")
+                                                Globals.stepsCount += 1
+                                                Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Twins MiniGrid.            Added \(Globals.actual[ccc][rrr]) to (\(ccc), \(rrr))"))
+                                                
+                                                
                                                 Globals.totalScore += 3
                                             }
                                         }
@@ -111,29 +115,27 @@ struct Twins {
                 // ---if two possible values, check for twins---
                 if Globals.actual[c][r] == 0 && Globals.possible[c][r].count == 2 {
                     
-                    //--scan columns in this row---
+                    // --scan columns in this row---
                     for cc in (c + 1)..<9 {
                         if Globals.possible[cc][r] == Globals.possible[c][r] {
                             
-                            //---remove the twins from all the other possible
-                            //   values in the row---
+                            // ---remove the twins from all the other possible
+                            //    values in the row---
                             for ccc in 0..<9 {
                                 if Globals.actual[ccc][r] == 0 && (ccc != c) && (ccc != cc) {
                                     
-                                    //---save a copy of the original possible
-                                    //   values (twins)---
+                                    // ---save a copy of the original possible
+                                    //    values (twins)---
                                     let original_possible = Globals.possible[ccc][r]
                                     
-                                    //---remove first twin number from possible
-                                    //   values--- MARK: ########### (0)
-//                                    print(Globals.possible[ccc][r],  "rows1", Globals.possible[c][r])
+                                    // ---remove first twin number from possible
+                                    //    values--- MARK: ########### (0)
                                     Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: Globals.possible[c][r].prefix(1), with: "")
                                     
                                     //---remove second twin number from possible
                                     //   values--- MARK: ########### (1)
-//                                    print(Globals.possible[ccc][r],  "rows2", Globals.possible[c][r])
                                     Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: Globals.possible[c][r].suffix(1), with: "")
-//                                    print(Globals.possible[ccc][r],  "rows3", Globals.possible[c][r])
+
                                     
                                     //---if the possible values are modified, then
                                     //   set the changes variable to true to indicate
@@ -154,6 +156,10 @@ struct Twins {
                                     //   current cell, cell is confirmed---
                                     if  Globals.possible[ccc][r].count == 1 {
                                         Globals.actual[ccc][r] = Int(Globals.possible[ccc][r]) ?? 999
+                                        
+                                        print("Twins Row.  Added \(Globals.actual[ccc][r]) to (\(ccc), \(r))")
+                                        Globals.stepsCount += 1
+                                        Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Twins Row.                     Added \(Globals.actual[ccc][r]) to (\(ccc), \(r))"))
                                         
                                         //---accumulate the total score---
                                         Globals.totalScore += 3
@@ -199,12 +205,10 @@ struct Twins {
                                     
                                     //---remove first twin number from possible
                                     //   values---  MARK: ########### (0)
-//                                    print(Globals.possible[c][rrr], Globals.possible[c][r], "cols1")
                                     Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: Globals.possible[c][r].prefix(1), with: "")
                                    
                                     //---remove second twin number from possible
                                     //   values---  MARK: ########### (1)
-//                                    print(Globals.possible[c][rrr], "cols2")
                                     Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: Globals.possible[c][r].suffix(1), with: "")
                                     
                                     //---if the possible values are modified, then
@@ -227,6 +231,10 @@ struct Twins {
                                     if  Globals.possible[c][rrr].count == 1 {
                                         Globals.actual[c][rrr] = Int(Globals.possible[c][rrr]) ?? 999
                                         
+                                        print("Twins Column.  Added \(Globals.actual[c][rrr]) to (\(c), \(rrr))")
+                                        Globals.stepsCount += 1
+                                        Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Twins Column.                Added \(Globals.actual[c][rrr]) to (\(c), \(rrr))"))
+                                                                                    
                                         //---accumulate the total score---
                                         Globals.totalScore += 3
                                     }

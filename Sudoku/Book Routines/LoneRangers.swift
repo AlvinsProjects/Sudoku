@@ -51,6 +51,14 @@ struct LoneRangers  {
                     if !nextMiniGrid && occurrence == 1 {
                         // ---that means number is confirmed---
                         Globals.actual[cPos][rPos] = n
+                        
+                        print("Lone Ranger MiniGrid.   Added \(Globals.actual[cPos][rPos]) to (\(rPos), \(cPos))")
+//                        Globals.stepsTakenArray.append("Lone Ranger MiniGrid.   Added \(Globals.actual[cPos][rPos]) to (\(rPos), \(cPos))")
+                        
+                        Globals.stepsCount += 1
+                        Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Lone Ranger MiniGrid.   Added \(Globals.actual[cPos][rPos]) to (\(rPos), \(cPos))"))
+                        
+                        
                         changes = true
                         // ---accumulate the total score---
                         Globals.totalScore += 2
@@ -90,6 +98,13 @@ struct LoneRangers  {
                 if occurence == 1 {
                     // --number is confirmed---
                     if Globals.actual[cPos][rPos] == n {
+                        
+                        print("Lone Ranger Row.   Added \(Globals.actual[cPos][rPos]) to (\(rPos), \(cPos))")
+                        
+                        Globals.stepsCount += 1
+                        Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Lone Ranger Row.   Added \(Globals.actual[cPos][rPos]) to (\(rPos), \(cPos))"))
+                        
+                        
                         changes = true
                     }
                     // ---accumulate the total score---
@@ -129,6 +144,12 @@ struct LoneRangers  {
                 if occurence == 1 {
                     // --number is confirmed---
                     if Globals.actual[cPos][rPos] == n {
+                        
+                        print("Lone Ranger Col.   Added \(Globals.actual[cPos][rPos]) to ((\(rPos), \(cPos))")
+
+                        Globals.stepsCount += 1
+                        Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Lone Ranger Col.   Added \(Globals.actual[cPos][rPos]) to ((\(rPos), \(cPos))"))
+                        
                         changes = true
                     }
                     // ---accumulate the total score---
