@@ -46,7 +46,6 @@ struct Triplets {
                             }
                         }
                     }
-//                    print("Triplets Location (c, r):  \(tripletsLocation): (\(startC),\(startR)) \(Globals.possible[c][r])")  //MARK: For testing
                     
                     //--found 3 cells as triplets; remove all from the other cells---
                     if tripletsLocation.count == 6 {
@@ -100,8 +99,6 @@ struct Triplets {
                                          current cell, cell is confirmed--- */
                                     if Globals.possible[ccc][rrr].count == 1 {
                                         Globals.actual[ccc][rrr] = Int(Globals.possible[ccc][rrr]) ?? 999
-                                        
-                                        print("Triplet MiniGrid.  Added \(Globals.actual[ccc][rrr]) to (\(ccc), \(rrr))")
 
                                         Globals.stepsCount += 1
                                         Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Triplet MiniGrid.  Added \(Globals.actual[ccc][rrr]) to (\(ccc), \(rrr))"))
@@ -200,8 +197,6 @@ struct Triplets {
                                 //   current cell, cell is confirmed---
                                 if Globals.possible[ccc][r].count == 1 {
                                     Globals.actual[ccc][r] = Int(Globals.possible[ccc][r]) ?? 999
-                                    
-                                    print("Triplet Rows.  Added \(Globals.actual[ccc][r]) to (\(ccc), \(r))")
 
                                     Globals.stepsCount += 1
                                     Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Triplet Rows.  Added \(Globals.actual[ccc][r]) to (\(ccc), \(r))"))
@@ -254,11 +249,6 @@ struct Triplets {
                     //--found 3 cells as triplets; remove all from the other cells---
                     if tripletsLocation.count == 6 {
                         
-//                        print("Triplets Location  \(tripletsLocation):  \(Globals.possible[c][r])")
-//                        print(getNo(str: tripletsLocation, item: 1))
-//                        print(getNo(str: tripletsLocation, item: 3))
-//                        print(getNo(str: tripletsLocation, item: 5))
-                        
                         //---remove each cell's possible values containing the
                         //   triplet---
                         for rrr in 0..<9 {
@@ -274,18 +264,14 @@ struct Triplets {
                                 //---remove first triplet number from possible
                                 //   values---MARK: (0)
                                 Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: String(getNo(str: str, item: 0)), with: "")
-                                print(Globals.possible[c][rrr])
-                                
                                 
                                 //---remove second triplet number from possible
                                 //   values---MARK: (1)
                                 Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: String(getNo(str: str, item: 1)), with: "")
-                                print(Globals.possible[c][rrr])
                                 
                                 //---remove third triplet number from possible
                                 //   values---MARK: (2)
                                 Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: String(getNo(str: str, item: 2)), with: "")
-                                print(Globals.possible[c][rrr])
                                 
                                 
                                 //---if the possible values are modified, then
@@ -307,8 +293,6 @@ struct Triplets {
                                 //   current cell, cell is confirmed---
                                 if Globals.possible[c][rrr].count == 1 {
                                     Globals.actual[c][rrr] = Int(Globals.possible[c][rrr]) ?? 999
-                                    
-                                    print("Triplet Cols.  Added \(Globals.actual[c][rrr]) to (\(c), \(rrr))")
 
                                     Globals.stepsCount += 1
                                     Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Triplet Cols.  Added \(Globals.actual[c][rrr]) to (\(c), \(rrr))"))

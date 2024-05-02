@@ -30,9 +30,7 @@ struct SolvePuzzle {
                                         repeat {    //---Look for Lone Rangers in Minigrids---
                                             repeat {    //---Perform Col/Row and Minigrid Elimination---
                                                 changes = checkColumnsAndRows()
-                                                print("CRME")
-                                                if MiscFuncs.isPuzzleSolved() {
-                                                    print("1. Puzzle Solved by CRME")
+                                                if BruteForce.isPuzzleSolved() {
                                                     exitLoop = true
                                                     break
                                                 }
@@ -42,9 +40,7 @@ struct SolvePuzzle {
                                             if exitLoop { break }
                                             //---Look for Lone Rangers in Minigrids---
                                             changes = LoneRangers.lookForLoneRangersInMinigrids()
-                                            print("2 LoneR in Minigrid")
-                                            if  MiscFuncs.isPuzzleSolved() {
-                                                print("2. Puzzle Solved")
+                                            if  BruteForce.isPuzzleSolved() {
                                                 exitLoop = true
                                                 break
                                             }
@@ -54,9 +50,7 @@ struct SolvePuzzle {
                                         if exitLoop { break }
                                         //---Look for Lone Rangers in Rows---
                                         changes = LoneRangers.lookForLoneRangersInRows()
-                                        print("3 LoneR in Rows")
-                                        if MiscFuncs.isPuzzleSolved() {
-                                            print("3. Puzzle Solved")
+                                        if BruteForce.isPuzzleSolved() {
                                             exitLoop = true
                                             break
                                         }
@@ -65,9 +59,7 @@ struct SolvePuzzle {
                                     if exitLoop { break }
                                     //---Look for Lone Rangers in Columns---
                                     changes = LoneRangers.lookForLoneRangersInColumns()
-                                    print("4 LoneR in Columns")
-                                    if MiscFuncs.isPuzzleSolved() {
-                                        print("4. Puzzle Solved")
+                                    if BruteForce.isPuzzleSolved() {
                                         exitLoop = true
                                         break
                                     }
@@ -76,8 +68,7 @@ struct SolvePuzzle {
                                 if exitLoop { break }
                                 //---Look For Twins in Minigrids---
                                 changes = Twins.lookForTwinsInMinigrids()
-                                print("5 Twins in Minigrids")
-                                if MiscFuncs.isPuzzleSolved() {
+                                if BruteForce.isPuzzleSolved() {
                                     exitLoop = true
                                     break
                                 }
@@ -86,8 +77,7 @@ struct SolvePuzzle {
                             if exitLoop { break }
                             //---Look For Twins in Rows---
                             changes = Twins.lookForTwinsInRows()
-                            print("6 Twins in Rows")
-                            if MiscFuncs.isPuzzleSolved() {
+                            if BruteForce.isPuzzleSolved() {
                                 exitLoop = true
                                 break
                             }
@@ -96,8 +86,7 @@ struct SolvePuzzle {
                         if exitLoop { break }
                         //---Look For Twins in Columns---
                         changes = Twins.lookForTwinsInColumns()
-                        print("7 Twins in Columns")
-                        if MiscFuncs.isPuzzleSolved() {
+                        if BruteForce.isPuzzleSolved() {
                             exitLoop = true
                             break
                         }
@@ -106,8 +95,7 @@ struct SolvePuzzle {
                     if exitLoop { break }
                     //---Look For Triplets in MiniGrids---
                     changes = Triplets.lookForTripletsInMinigrids()
-                    print("8 Triplets in MiniGrids")
-                    if MiscFuncs.isPuzzleSolved() {
+                    if BruteForce.isPuzzleSolved() {
                         exitLoop = true
                         break
                     }
@@ -116,8 +104,7 @@ struct SolvePuzzle {
                 if exitLoop { break }
                 //---Look For Triplets in Rows---
                 changes = Triplets.lookForTripletsInRows()
-                print("9 Triplets in Rows")
-                if MiscFuncs.isPuzzleSolved() {
+                if BruteForce.isPuzzleSolved() {
                     exitLoop = true
                     break
                 }
@@ -126,8 +113,7 @@ struct SolvePuzzle {
             if exitLoop { break }
             //---Look For Triplets in Columns---
             changes = Triplets.lookForTripletsInColumns()
-            print("10 Triplets in Columns")
-            if MiscFuncs.isPuzzleSolved() {
+            if BruteForce.isPuzzleSolved() {
                 exitLoop = true
                 break
             }
@@ -137,7 +123,7 @@ struct SolvePuzzle {
         //                    Throw New Exception("Invalid Move")
         //                    End Try
         
-        if MiscFuncs.isPuzzleSolved() {
+        if BruteForce.isPuzzleSolved() {
             return true
         } else {
             return false
@@ -163,7 +149,6 @@ struct SolvePuzzle {
                         //---number is confirmed---
                         Globals.actual[col][row] = Int(Globals.possible[col][row]) ?? 999
                         
-                        print("Col Row MiniGrid Elim.  Added \(Globals.actual[col][row]) to (\(row), \(col))")
                         Globals.stepsCount += 1
                         Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Col Row MiniGrid Elim.  Added \(Globals.actual[col][row]) to (\(row), \(col))"))
                         

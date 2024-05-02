@@ -48,7 +48,7 @@ struct Board: Equatable {
             print("\nPuzzle Solved")
         } else {
             print("\nPuzzle Solution Failed")
-            MiscFuncs.solvePuzzleByBruteForce()
+            BruteForce.solvePuzzleByBruteForce()
             if SolvePuzzle.solvePuzzle() {
                 print("\nPuzzle Solved using Brute Force")
             }

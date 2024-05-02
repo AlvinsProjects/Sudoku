@@ -23,7 +23,7 @@
 		4AE06C7D2BB5D20B00C01FB9 /* SolvePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C7C2BB5D20B00C01FB9 /* SolvePuzzle.swift */; };
 		4AE06C7F2BB611CE00C01FB9 /* Twins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C7E2BB611CE00C01FB9 /* Twins.swift */; };
 		4AE06C812BB611DC00C01FB9 /* Triplets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C802BB611DC00C01FB9 /* Triplets.swift */; };
-		4AE06C832BB6127500C01FB9 /* MiscFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C822BB6127500C01FB9 /* MiscFuncs.swift */; };
+		4AE06C832BB6127500C01FB9 /* BruteForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C822BB6127500C01FB9 /* BruteForce.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +44,7 @@
 		4AE06C7C2BB5D20B00C01FB9 /* SolvePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvePuzzle.swift; sourceTree = "<group>"; };
 		4AE06C7E2BB611CE00C01FB9 /* Twins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Twins.swift; sourceTree = "<group>"; };
 		4AE06C802BB611DC00C01FB9 /* Triplets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triplets.swift; sourceTree = "<group>"; };
-		4AE06C822BB6127500C01FB9 /* MiscFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscFuncs.swift; sourceTree = "<group>"; };
+		4AE06C822BB6127500C01FB9 /* BruteForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForce.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,7 @@
 				4AE06C752BB35F7B00C01FB9 /* LoneRangers.swift */,
 				4AE06C7E2BB611CE00C01FB9 /* Twins.swift */,
 				4AE06C802BB611DC00C01FB9 /* Triplets.swift */,
-				4AE06C822BB6127500C01FB9 /* MiscFuncs.swift */,
+				4AE06C822BB6127500C01FB9 /* BruteForce.swift */,
 				4ACD5CE12BBD9851001BA60D /* QueueStack.swift */,
 			);
 			path = "Book Routines";
@@ -190,7 +190,7 @@
 				4AE06C762BB35F7B00C01FB9 /* LoneRangers.swift in Sources */,
 				4AE06C7F2BB611CE00C01FB9 /* Twins.swift in Sources */,
 				4AAA851E2BB0B71B009DD948 /* CellView.swift in Sources */,
-				4AE06C832BB6127500C01FB9 /* MiscFuncs.swift in Sources */,
+				4AE06C832BB6127500C01FB9 /* BruteForce.swift in Sources */,
 				4A34FDBD2BC8747B0037E008 /* TestPuzzle.swift in Sources */,
 				4A43B01E2BE001FF00F0399A /* StepsTakenView.swift in Sources */,
 				4AE06C7B2BB47EA300C01FB9 /* Globals.swift in Sources */,

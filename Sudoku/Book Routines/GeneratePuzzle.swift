@@ -21,7 +21,6 @@ struct GeneratePuzzle {
         repeat {
             result = generateNewPuzzle(level: level, score: score)
             score = result.score
-            print(result.score)
             
             if result.str != "" {
                 //---check if puzzle matches the level of difficulty---
@@ -71,7 +70,7 @@ struct GeneratePuzzle {
         //---populate the board with numbers by solving an empty grid---
         if !SolvePuzzle.solvePuzzle() {
             //MARK: ---then use bruteforce---
-            MiscFuncs.solvePuzzleByBruteForce()
+            BruteForce.solvePuzzleByBruteForce()
         } else {
             print("Error!")
         }
@@ -123,7 +122,7 @@ struct GeneratePuzzle {
                 } else {
                     //---level 4 puzzles does not guarantee single
                     //   solution and potentially need guessing---
-                    MiscFuncs.solvePuzzleByBruteForce()
+                    BruteForce.solvePuzzleByBruteForce()
                     break
                 }
             } else {

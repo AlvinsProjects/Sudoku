@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct MiscFuncs {
+struct BruteForce {
     
     
     /*
@@ -65,7 +65,7 @@ struct MiscFuncs {
         for i in 0..<possibleValues.count {
             Globals.actual[c][r] = Triplets.getNo(str: possibleValues, item: i)
             
-            print("Brute Force Used")
+//            print("Brute Force Used")
             Globals.stepsCount += 1
             Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Solved by Brute Force.  Added \(Globals.actual[c][r]) to (\(r), \(c))"))
             

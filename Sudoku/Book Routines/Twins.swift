@@ -47,12 +47,12 @@ struct Twins {
                                             //   possible values (twins)---
                                             let original_possible = Globals.possible[ccc][rrr]
                                             
-                                            //MARK: Following has (0) in last term
+                                            //MARK: Following has (0) in last term - used Prefix
                                             //---remove first twin number from
                                             //   possible values---
                                             Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: Globals.possible[c][r].prefix(1), with: "")
                                             
-                                            //MARK: Following has (1) in last term
+                                            //MARK: Following has (1) in last term - used Suffix
                                             //---remove second twin number from
                                             //   possible values---
                                             Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: Globals.possible[c][r].suffix(1), with: "")
@@ -80,7 +80,6 @@ struct Twins {
                                             if Globals.possible[ccc][rrr].count == 1 {
                                                 Globals.actual[ccc][rrr] = Int(Globals.possible[ccc][rrr]) ?? 999
                                                 
-                                                print("Twins MiniGrid.  Added \(Globals.actual[ccc][rrr]) to (\(ccc), \(rrr))")
                                                 Globals.stepsCount += 1
                                                 Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Twins MiniGrid.            Added \(Globals.actual[ccc][rrr]) to (\(ccc), \(rrr))"))
                                                 
@@ -157,7 +156,6 @@ struct Twins {
                                     if  Globals.possible[ccc][r].count == 1 {
                                         Globals.actual[ccc][r] = Int(Globals.possible[ccc][r]) ?? 999
                                         
-                                        print("Twins Row.  Added \(Globals.actual[ccc][r]) to (\(ccc), \(r))")
                                         Globals.stepsCount += 1
                                         Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Twins Row.                     Added \(Globals.actual[ccc][r]) to (\(ccc), \(r))"))
                                         
@@ -231,7 +229,6 @@ struct Twins {
                                     if  Globals.possible[c][rrr].count == 1 {
                                         Globals.actual[c][rrr] = Int(Globals.possible[c][rrr]) ?? 999
                                         
-                                        print("Twins Column.  Added \(Globals.actual[c][rrr]) to (\(c), \(rrr))")
                                         Globals.stepsCount += 1
                                         Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Twins Column.                Added \(Globals.actual[c][rrr]) to (\(c), \(rrr))"))
                                                                                     
