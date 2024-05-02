@@ -67,20 +67,31 @@ struct ContentView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Sudoku")
+            .navigationTitle("Sudoku Puzzle")
             .toolbar {
+                NavigationLink {
+                    StepsTakenView()
+                } label: {
+                    VStack {
+                        Text(Image(systemName: "list.number"))
+                        Text("Step List")
+                            .font(.footnote)
+                    }
+                }
+                
                 Button {
                     Globals.totalScore = 0
                     showingNewGame = true
                 } label: {
-                    Label("Start a new game", systemImage: "plus")
+                    VStack {
+                        Text(Image(systemName: "plus"))
+                        Text("New Game")
+                            .font(.footnote)
+                    }
                 }
             }
-            NavigationLink {
-                StepsTakenView()
-            } label: {
-                Text("List Solution Steps")
-            }
+            
+            
 //            Button {
 //                                Globals.totalScore = 0
 //                StepsTakenView()
@@ -92,7 +103,7 @@ struct ContentView: View {
 //            .buttonStyle(.bordered)
             
         }
-//        .preferredColorScheme(.dark)
+        .preferredColorScheme(.dark)
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         
         .alert("Start a new game", isPresented: $showingNewGame) {

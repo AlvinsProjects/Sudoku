@@ -14,7 +14,7 @@ struct Board: Equatable {
 //        #if DEBUG
 //        case Testing = 2
 //        #endif
-        case Trivial = 2
+        case Trivial = 1
         case Easy = 20
         case Medium = 24
         case Hard = 27
@@ -43,14 +43,17 @@ struct Board: Equatable {
         
         //---Measure the time it takes to complete a solution
         let start = CFAbsoluteTimeGetCurrent()
-//        let testResult = SolvePuzzle.solvePuzzle()
+        
         if SolvePuzzle.solvePuzzle() {
             print("\nPuzzle Solved")
         } else {
             print("\nPuzzle Solution Failed")
+            MiscFuncs.solvePuzzleByBruteForce()
+            if SolvePuzzle.solvePuzzle() {
+                print("\nPuzzle Solved using Brute Force")
+            }
         }
         
-//        print("\(testResult):  End of calc")
         let diff = CFAbsoluteTimeGetCurrent() - start
         print("Execution Time:  \(String(format: "%.4f", diff)) secs")
         
@@ -58,14 +61,17 @@ struct Board: Equatable {
         print("\nSolution:")
         for j in 0..<9 {
             print(Globals.actual[j], Globals.possible[j])
-//            print(Globals.possible[j])
         }
-
-        for item in Globals.stepsTakenArray {
-            if item.index < 10 {
-                print("\(item.index)  \(item.steps)")
-            } else {
-                print("\(item.index) \(item.steps)")
+        
+        if Globals.stepsTakenArray.isEmpty {
+            print("There were no solution steps available!")
+        } else {
+            for item in Globals.stepsTakenArray {
+                if item.index < 10 {
+                    print("\(item.index)  \(item.steps)")
+                } else {
+                    print("\(item.index) \(item.steps)")
+                }
             }
         }
     }

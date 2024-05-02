@@ -79,8 +79,6 @@ struct GeneratePuzzle {
         
         //---make a backup copy of the Actual array---
         Globals.actualBackup = Globals.actual
-//        Globals.actualBackup.append(Globals.actual)
-        //actual_backup = CType(actual.Clone(), Integer(,))
         
         //---set the number of empty cells based on the level of difficulty---
         switch level {
@@ -105,7 +103,7 @@ struct GeneratePuzzle {
         str  = ""
         for r in 0..<9 {
             for c in 0..<9 {
-                str = String(Globals.actual[c][r])
+                str += String(Globals.actual[c][r])
             }
         }
         
@@ -162,11 +160,11 @@ struct GeneratePuzzle {
                 duplicate = false
                 //---get a cell in the first half of the grid
                 repeat {
-                    c = Int.random(in: 1...9)
-                    r = Int.random(in: 1...5)
-                } while (r == 5 && c > 5)
+                    c = Int.random(in: 0...8)
+                    r = Int.random(in: 0...4)
+                } while (r == 4 && c > 4)
                 
-                for j in 0...i {
+                for j in 0..<i {
                     //---if cell is already selected to be empty
                     if emptyCells[j] == String(c) + String(r) {
                         duplicate = true
@@ -180,9 +178,9 @@ struct GeneratePuzzle {
                     Globals.actual[c][r] = 0
                     Globals.possible[c][r] = ""
                     //---reflect the top half of the grid and make it symmetrical---
-                    emptyCells[empty - 1 - i] = String(10 - c) + String(10 - c)
-                    Globals.actual[10 - c][10 - r] = 0
-                    Globals.possible[10 - c][10 - r] = ""
+                    emptyCells[empty - 1 - i] = String(9 - c) + String(9 - c)
+                    Globals.actual[9 - c][9 - r] = 0
+                    Globals.possible[9 - c][9 - r] = ""
                 }
             } while duplicate
         }

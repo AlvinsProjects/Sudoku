@@ -16,7 +16,7 @@ struct MiscFuncs {
        Find the cell with the smallest number of possible values
     =============================================================*/
     static func findCellWithFewestPossibleValues() -> (col: Int, row: Int) {
-        var min = 9  //10
+        var min = 10
         var col = 0
         var row = 0
         
@@ -38,51 +38,53 @@ struct MiscFuncs {
           Solve puzzle by Brute Force
     ==================================================*/
     static func solvePuzzleByBruteForce() {
-        let c = 0
-        let r = 0
+        var c = 0
+        var r = 0
         
         // ---accumulate the total score---
         Globals.totalScore += 5
         
         // ---find out which cell has the smallest number of possible values---
         let cellWithMinValues = findCellWithFewestPossibleValues()
+        c = cellWithMinValues.col
+        r = cellWithMinValues.row
         
         // ---get the possible values for the chosen cell---
-        var possibleValues = Globals.possible[cellWithMinValues.col][cellWithMinValues.row]
+        var possibleValues = Globals.possible[c][r]
         
         // ---randomize the possible values----
         possibleValues = randomizeThePossibleValues(str: possibleValues)
-        
         
         // ---push the actual and possible stacks into the stack---
         Globals.actualStack.append(Globals.actual)
         Globals.possibleStack.append(Globals.possible)
         
-        //    ActualStack.Push(CType(actual.Clone(), Integer(,)))
-        //    PossibleStack.Push(CType(possible.Clone(), String(,)))
+        //MARK:  Randomize the possible values!!!
         
         // ---select one value and try---
-        for i in possibleValues {
-            Globals.actual[c][r] = Int(String(i)) ?? 999
+        for i in 0..<possibleValues.count {
+            Globals.actual[c][r] = Triplets.getNo(str: possibleValues, item: i)
+            
+            print("Brute Force Used")
+            Globals.stepsCount += 1
+            Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Solved by Brute Force.  Added \(Globals.actual[c][r]) to (\(r), \(c))"))
+            
             
             if SolvePuzzle.solvePuzzle() {
                 //---if the puzzle is solved, the recursion can stop now---
                 Globals.bruteForceStop = true
-                return
+                break
             } else {
                 //---no problem with current selection, proceed with next cell---
                 solvePuzzleByBruteForce()
-                if Globals.bruteForceStop { return }
+                if Globals.bruteForceStop { break }
             }
 
             //---accumulate the total score---
             Globals.totalScore += 5
             
-            //            actual = ActualStack.Pop()
-            //            possible = PossibleStack.Pop()
-            //            End Try
-            //            Next
-            //            End Sub
+            Globals.actual = Globals.actualStack.removeLast()
+            Globals.possible = Globals.possibleStack.removeLast()
         }
     }
     

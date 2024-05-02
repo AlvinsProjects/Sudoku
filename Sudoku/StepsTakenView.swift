@@ -15,11 +15,19 @@ struct StepsTakenView: View {
     var body: some View {
         NavigationStack {
             
-            List(steps) {
-                Text("\($0.index).  \($0.steps)")
-                    .font(.footnote)
+            if steps.isEmpty {
+                List {
+                    Text("There were no solution steps available!")
+                        .bold()
+                        .foregroundStyle(.red)
+                }
+            } else {
+                List(steps) {
+                    Text("\($0.index).  \($0.steps)")
+                        .font(.footnote).bold()
+                }
+                .navigationTitle("Solution Steps")
             }
-            .navigationTitle("Solution Steps")
         }
     }
 }
