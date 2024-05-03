@@ -25,6 +25,7 @@ struct StepsTakenView: View {
                 List(steps) {
                     Text("\($0.index).  \($0.steps)")
                         .font(.footnote).bold()
+                        .foregroundStyle($0.steps.contains("Brute") ? .pink : .white)
                 }
                 .navigationTitle("Solution Steps")
             }

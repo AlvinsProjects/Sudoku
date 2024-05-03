@@ -129,7 +129,7 @@ struct Triplets {
             for c in 0..<9 {
                 
                 //--- three possible values; check for triplets---
-                if Globals.actual[c][r] == 0  && Globals.possible[c][r].count == 3 {
+                if Globals.actual[c][r] == 0 && Globals.possible[c][r].count == 3 {
                     
                     //--first potential triplet found---
                     var tripletsLocation = (String(c) + String(r))
@@ -139,13 +139,14 @@ struct Triplets {
                         
                         //---look for other triplets---
                         if (cc != c) &&                     //MARK: (0)  (1)
-                            Globals.possible[cc][r] == Globals.possible[c][r] ||
-                            Globals.possible[cc][r].count == 2 &&
+                            ((Globals.possible[cc][r] == Globals.possible[c][r]) ||
+                            (Globals.possible[cc][r].count == 2) &&
                             Globals.possible[c][r].contains(String(Globals.possible[cc][r].prefix(1))) &&
-                            Globals.possible[c][r].contains(String(Globals.possible[cc][r].suffix(1))) {
+                            Globals.possible[c][r].contains(String(Globals.possible[cc][r].suffix(1))))  {
                             
                             //---save the coorindates of the triplet---
                             tripletsLocation += (String(cc) + String(r))
+//                            print(tripletsLocation)
                         }
                     }
                     
@@ -162,35 +163,37 @@ struct Triplets {
                                 ccc != getNo(str: tripletsLocation, item: 4 ) {
                                  
                                 //---save the original possible values ---
-                                let original_possible = Globals.possible[ccc][r]
-                                
-//                                print(Globals.possible[ccc][r], "hello")
+                                let originalPossible = Globals.possible[ccc][r]
+//                                print(Globals.possible[ccc][r], Globals.possible[c][r])
                                 //---remove first triplet number from possible
                                 //   values--- //MARK:  (0)
                                 let str = Globals.possible[c][r]
                                 Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: String(getNo(str: str, item: 0)), with: "")
+//                                print(1, Globals.possible[ccc][r])
                                 
                                 //---remove second triplet number from possible
                                 //   values--- //MARK:  (1)
                                 Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: String(getNo(str: str, item: 1)), with: "")
+//                                print(2, Globals.possible[ccc][r])
                                 
                                 //---remove third triplet number from possible
                                 //   values--- //MARK:  (2)
                                 Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: String(getNo(str: str, item: 2)), with: "")
+//                                print(3, Globals.possible[ccc][r])
                                 
                                 //---if the possible values are modified, then
                                 //   set the changes variable to true to indicate
                                 //   that the possible values of cells in the
                                 //   minigrid have been modified---
-                                if original_possible != Globals.possible[ccc][r] {
+                                if originalPossible != Globals.possible[ccc][r] {
                                     changes = true
                                 }
                                 
                                 //---if possible value reduces to empty string,
                                 //   then the user has placed a move that results
                                 //   in the puzzle not solvable---
-                                if original_possible != Globals.possible[ccc][r] {
-                                    print("Invalid move   tir")
+                                if originalPossible != Globals.possible[ccc][r] {
+                                    print("Invalid move.  Triplets in row")
                                 }
                                 
                                 //---if left with 1 possible value for the

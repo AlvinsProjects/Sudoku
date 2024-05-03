@@ -14,7 +14,7 @@ struct Board: Equatable {
 //        #if DEBUG
 //        case Testing = 2
 //        #endif
-        case Trivial = 1
+        case Trivial = 10
         case Easy = 20
         case Medium = 24
         case Hard = 27
@@ -65,15 +65,15 @@ struct Board: Equatable {
         
         if Globals.stepsTakenArray.isEmpty {
             print("There were no solution steps available!")
-        } else {
-            for item in Globals.stepsTakenArray {
-                if item.index < 10 {
-                    print("\(item.index)  \(item.steps)")
-                } else {
-                    print("\(item.index) \(item.steps)")
-                }
-            }
-        }
+        } //else {
+//            for item in Globals.stepsTakenArray {
+//                if item.index < 10 {
+//                    print("\(item.index)  \(item.steps)")
+//                } else {
+//                    print("\(item.index) \(item.steps)")
+//                }
+//            }
+//        }
     }
     
     

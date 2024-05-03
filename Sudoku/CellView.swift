@@ -11,7 +11,7 @@ import SwiftUI
 struct CellView: View {
     
     enum HighlightState {
-        case standard, highlighted, selected
+        case standard, highlighted, selected, open
         
         var color: Color {
             switch self {
@@ -21,12 +21,11 @@ struct CellView: View {
                     return .squareHighlighted
                 case .selected:
                     return .squareSelected
-//                case .open:
-//                    return .squareOpen
+                case .open:
+                    return .squareOpen
             }
         }
     }
-    
     
     let number: Int
     let selectedNumber: Int
@@ -42,13 +41,13 @@ struct CellView: View {
         }
     }
     
-//    var backgroundCol: Color {
-//        if number == 0 {
-//            return .squareOpen
-//        } else {
-//            return .squareStandard
-//        }
-//    }
+    var backgroundCol: Color {
+        if number == 0 {
+            return .squareOpen
+        } else {
+            return .squareStandard
+        }
+    }
     
     
     var foregroundColor: Color {
@@ -84,5 +83,8 @@ struct CellView: View {
 
 
 #Preview {
-    CellView(number: 3, selectedNumber: 3, highlightState: .standard, isCorrect: true, onSelected: { } )
+    CellView(number: 5, selectedNumber: 5,
+             highlightState: .standard,
+             isCorrect: true,
+             onSelected: { } )
 }

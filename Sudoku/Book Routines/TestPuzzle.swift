@@ -12,10 +12,11 @@ struct TestPuzzle: Equatable {
     
     
     static func getTestPuzzle() -> [[Int]]  {
+    
+        let testInfo = Globals.bfEmpty
         
         var testGrid = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))
         var count = 0
-        let testInfo = Globals.bfTest2
         
         //put numbers into the puzzle matrix - use getNo() func
         for col in 0..<9 {

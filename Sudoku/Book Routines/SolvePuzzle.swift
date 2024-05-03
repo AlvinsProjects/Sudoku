@@ -206,19 +206,19 @@ struct SolvePuzzle {
         }
         //---if possible value is string.Empty, then error because of invalid move------
         if str.isEmpty {
-            print("Invalid Move:  string.Empty - Calc Possible Values, line 222")
+            print("Invalid Move:  string.Empty - Calc Possible Values, line 209 poss values")
         }
         return str
     }
     
-    var index = 0
-    mutating func saveSolutionSteps(entry: String)  {
-        index += 1
-        
-        
-        Globals.stepsTakenArray.append(StepsTaken(index: index, steps: entry))
-        
-    }
+    
+    
+//    var index = 0
+//    mutating func saveSolutionSteps(entry: String)  {
+//        index += 1
+//        Globals.stepsTakenArray.append(StepsTaken(index: index, steps: entry))
+//        
+//    }
     
     
 }

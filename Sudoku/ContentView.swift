@@ -68,6 +68,7 @@ struct ContentView: View {
                 .padding()
             }
             .navigationTitle("Sudoku Puzzle")
+            
             .toolbar {
                 NavigationLink {
                     StepsTakenView()
@@ -90,18 +91,6 @@ struct ContentView: View {
                     }
                 }
             }
-            
-            
-//            Button {
-//                                Globals.totalScore = 0
-//                StepsTakenView()
-//                NavigationLink(destination: StepsTakenView(), label: "Press")
-//                showingNewGame = false
-//            } label: {
-//             Text("Show possible values")
-//            }
-//            .buttonStyle(.bordered)
-            
         }
         .preferredColorScheme(.dark)
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
@@ -119,17 +108,20 @@ struct ContentView: View {
             }
         }
         .onAppear(perform: updateCounts)
+        
         .onChange(of: board, initial: true) {
             updateCounts()
         }
-//        .onTapGesture {
-//            print(self.$selectedCol.wrappedValue, self.$selectedRow.wrappedValue)
-//            let c = self.$selectedCol.wrappedValue
-//            let r = self.$selectedRow.wrappedValue
-//            print(Globals.possible[r][c])
-//        }
+        .onTapGesture {
+            let c = self.$selectedCol.wrappedValue
+            let r = self.$selectedRow.wrappedValue
+            print("hello  \(c),\(r)")
+        }
+
+        
+
     }
-    
+        
     
     func highlightState(for row: Int, col: Int) -> CellView.HighlightState {
         if row == selectedRow {
@@ -183,6 +175,10 @@ struct ContentView: View {
             }
         }
         counts = newCounts
+//        print(correctCount)
+//        for j in 0..<9 {
+//            print(board.playerBoard[j])
+//        }
         
         if correctCount == board.size * board.size {
             Task {

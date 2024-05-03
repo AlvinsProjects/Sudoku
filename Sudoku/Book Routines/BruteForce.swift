@@ -59,15 +59,14 @@ struct BruteForce {
         Globals.actualStack.append(Globals.actual)
         Globals.possibleStack.append(Globals.possible)
         
-        //MARK:  Randomize the possible values!!!
-        
         // ---select one value and try---
         for i in 0..<possibleValues.count {
             Globals.actual[c][r] = Triplets.getNo(str: possibleValues, item: i)
             
 //            print("Brute Force Used")
             Globals.stepsCount += 1
-            Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Solved by Brute Force.  Added \(Globals.actual[c][r]) to (\(r), \(c))"))
+            Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, 
+                                                      steps: "Solved by Brute Force.  Added \(Globals.actual[c][r]) to (\(r), \(c))"))
             
             
             if SolvePuzzle.solvePuzzle() {
