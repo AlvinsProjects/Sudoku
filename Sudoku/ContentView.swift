@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var board = Board(difficulty: .Trivial)
+    @State private var board = Board(difficulty: .Medium)
     let spacing = 1.0
     
     @State private var selectedRow = -1
@@ -19,6 +19,9 @@ struct ContentView: View {
     
     @State private var solved = false
     @State private var showingNewGame = false
+    @State private var showingPossibles = false
+    @State private var getNumbers = ""
+    @State private var isDark = true
     
     @State private var counts = [Int: Int]()
     
@@ -54,7 +57,7 @@ struct ContentView: View {
                     }
                 }
                 .padding(5)
-
+                
                 HStack {
                     ForEach(1..<10) { i in
                         Button(String(i)) {
@@ -69,57 +72,104 @@ struct ContentView: View {
             }
             .navigationTitle("Sudoku Puzzle")
             
+            // Button to toggle the display mode
+            Button(isDark ? "Light Mode" : "Dark Mode") {
+                self.isDark.toggle()
+            }
+            .buttonStyle(.borderedProminent)
+            
+            
             .toolbar {
+                
+                // Solve the puzzle
+                Button {
+                    board.playerBoard = board.fullBoard
+                } label: {
+                    VStack {
+                        Text(Image(systemName: "sum"))
+                        Text("Solve")
+                            .font(.footnote)
+                    }
+                }
+                
+                
+                // Display the possible numbers for the selected cell
+                Button {
+                    let c = self.$selectedCol.wrappedValue
+                    let r = self.$selectedRow.wrappedValue
+                    
+                    // if no cell is selected, return
+                    if c == -1 || r == -1 { return }
+                    
+                    //if selected cell has a value, return
+                    if board.playerBoard[r][c] != 0 { return }
+                    
+                    // get the numbers that are available for the selected cell
+                    getNumbers = calculatePlayerBoardValues(col: r, row: c)
+                    showingPossibles = true
+                } label: {
+                    VStack {
+                        Text(Image(systemName: "questionmark.circle.fill"))
+                        Text("Hint")
+                            .font(.footnote)
+                    }
+                }
+                
+                // Display the steps take by the computer solution of the puzzle
                 NavigationLink {
                     StepsTakenView()
                 } label: {
                     VStack {
                         Text(Image(systemName: "list.number"))
-                        Text("Step List")
+                        Text("Steps")
                             .font(.footnote)
                     }
                 }
                 
+                // Add a new puzzle, change the difficulty, or cancel
                 Button {
                     Globals.totalScore = 0
                     showingNewGame = true
                 } label: {
                     VStack {
                         Text(Image(systemName: "plus"))
-                        Text("New Game")
+                        Text("Games")
                             .font(.footnote)
                     }
                 }
             }
         }
-        .preferredColorScheme(.dark)
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+        .environment(\.colorScheme, isDark ? .dark : .light)
         
+        // Alert to allow changes in difficulty and to start a new game, or cancel
         .alert("Start a new game", isPresented: $showingNewGame) {
             ForEach(Board.Difficulty.allCases, id: \.self) { difficulty in
                 Button(String(describing: difficulty).capitalized) {
                     newGame(difficulty: difficulty)
                 }
             }
+            Button("New Game!") { }
             Button("Cancel", role: .cancel) { }
         } message: {
             if solved {
                 Text("You solved the board correctly - goood job!")
             }
         }
-        .onAppear(perform: updateCounts)
         
+        .onAppear(perform: updateCounts)
         .onChange(of: board, initial: true) {
             updateCounts()
         }
-        .onTapGesture {
-            let c = self.$selectedCol.wrappedValue
-            let r = self.$selectedRow.wrappedValue
-            print("hello  \(c),\(r)")
+     
+        // Alert to show the numbers available for the selected cell
+        .alert("Possible Numbers", isPresented: $showingPossibles) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("Numbers available for this cell are:\n\(getNumbers)")
         }
-
         
-
+        .background(ignoresSafeAreaEdges: .vertical)
     }
         
     
@@ -175,14 +225,10 @@ struct ContentView: View {
             }
         }
         counts = newCounts
-//        print(correctCount)
-//        for j in 0..<9 {
-//            print(board.playerBoard[j])
-//        }
         
         if correctCount == board.size * board.size {
             Task {
-                try await Task.sleep(for: .seconds(1.0))
+                try await Task.sleep(for: .seconds(3.0))
                 showingNewGame = true
                 solved = true
             }
@@ -214,6 +260,52 @@ struct ContentView: View {
                 icon = ""
         }
         return (col, icon)
+    }
+    
+    
+    /*
+     =====================================================
+     Calculates the possible values for a playerBoard cell
+     =====================================================*/
+    func calculatePlayerBoardValues(col: Int, row: Int) -> String {
+        var str = ""
+        
+        if board.playerBoard[col][row] == 0 {
+            str = "123456789"
+        }
+
+        //---Step (1) check by column---
+        for r in 0..<9 {
+            if board.playerBoard[col][r] != 0 {
+                //---that means there is an actual value in it---
+                str = str.replacingOccurrences(of: String(board.playerBoard[col][r]), with: "")
+            }
+        }
+        
+        //---Step (2) check by row---
+        for c in 0..<9 {
+            if board.playerBoard[c][row] != 0 {
+                //---that means there is a actual value in it---
+                str = str.replacingOccurrences(of: String(board.playerBoard[c][row]), with: "")
+            }
+        }
+        
+        //---Step (3) check within the minigrid---
+        let startC = col - (col % 3)
+        let startR = row - (row % 3)
+        for rr in startR...startR + 2 {
+            for cc in startC...startC + 2 {
+                if board.playerBoard[cc][rr] != 0 {
+                    //---that means there is an actual value in it---
+                    str = str.replacingOccurrences(of: String(board.playerBoard[cc][rr]), with: "")
+                }
+            }
+        }
+        //---if possible value is string.Empty, then error because of invalid move------
+        if str.isEmpty {
+            print("Invalid Move:  string.Empty - Calc Possible Values, line 289 poss values")
+        }
+        return str
     }
 }
 

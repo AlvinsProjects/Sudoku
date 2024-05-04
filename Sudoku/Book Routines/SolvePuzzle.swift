@@ -119,10 +119,6 @@ struct SolvePuzzle {
             }
         } while changes
         
-        //                    Catch ex As Exception
-        //                    Throw New Exception("Invalid Move")
-        //                    End Try
-        
         if BruteForce.isPuzzleSolved() {
             return true
         } else {
@@ -210,16 +206,5 @@ struct SolvePuzzle {
         }
         return str
     }
-    
-    
-    
-//    var index = 0
-//    mutating func saveSolutionSteps(entry: String)  {
-//        index += 1
-//        Globals.stepsTakenArray.append(StepsTaken(index: index, steps: entry))
-//        
-//    }
-    
-    
 }
 

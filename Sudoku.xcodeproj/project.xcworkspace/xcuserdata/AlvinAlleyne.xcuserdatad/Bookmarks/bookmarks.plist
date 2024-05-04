@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>34</string>
+					<string>97</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>33</string>
+					<string>96</string>
 					<key>Timestamp</key>
-					<string>734986445.609722</string>
+					<string>736480126.665049</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -27,23 +27,23 @@
 					<key>payload</key>
 					<dict>
 						<key>relative-path</key>
-						<string>Sudoku/Board.swift</string>
+						<string>Sudoku/ContentView.swift</string>
 					</dict>
 				</dict>
 			</dict>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>        prepareForPlay()
+				<string>                Button {
 </string>
 				<key>leading</key>
-				<string>        getPuzzle()
-        create()
+				<string>                
+                // Display the possible numbers for the selected cell
 </string>
 				<key>trailing</key>
-				<string>    }
-    
-    
+				<string>                    let c = self.$selectedCol.wrappedValue
+                    let r = self.$selectedRow.wrappedValue
+                    
 </string>
 			</dict>
 			<key>type</key>
@@ -55,15 +55,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>41</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>17</string>
+					<string>270</string>
 					<key>StartingColumnNumber</key>
-					<string>9</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>17</string>
+					<string>269</string>
 					<key>Timestamp</key>
-					<string>734314704.80511</string>
+					<string>736526728.775052</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -72,66 +72,23 @@
 					<key>payload</key>
 					<dict>
 						<key>relative-path</key>
-						<string>Sudoku/Book Routines/MiscFuncs.swift</string>
+						<string>Sudoku/ContentView.swift</string>
 					</dict>
 				</dict>
 			</dict>
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>c func findCellWithFewestPossibl</string>
-				<key>leading</key>
-				<string>       Find the cell with the smallest number of possible values
-    =============================================================*/
-    stati</string>
-				<key>trailing</key>
-				<string>eValues() -&gt; (col: Int, row: Int) {
-        var min = 10
-        var col = 0
+				<string>    func calculatePlayerBoardValues(col: Int, row: Int) -&gt; String {
 </string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>10</string>
-					<key>EndingLineNumber</key>
-					<string>39</string>
-					<key>StartingColumnNumber</key>
-					<string>4</string>
-					<key>StartingLineNumber</key>
-					<string>39</string>
-					<key>Timestamp</key>
-					<string>736195434.264937</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>Sudoku/Book Routines/MiscFuncs.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>static</string>
 				<key>leading</key>
-				<string>          Solve puzzle by Brute Force
-    ==================================================*/
-    </string>
+				<string>     Calculates the possible values for a playerBoard cell
+     =====================================================*/
+</string>
 				<key>trailing</key>
-				<string> func solvePuzzleByBruteForce() {
-        var c = 0
-        var r = 0
+				<string>        var str = ""
+        
+        if board.playerBoard[col][row] == 0 {
 </string>
 			</dict>
 			<key>type</key>

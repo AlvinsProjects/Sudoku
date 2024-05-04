@@ -35,8 +35,7 @@ struct Board: Equatable {
     }
     
     
-    func getPuzzle () {
-        //MARK: Call the Sudoku Program
+    func getPuzzle() {
         
         //---Get the puzzle that is to be tested
         Globals.actual = TestPuzzle.getTestPuzzle()
@@ -47,10 +46,10 @@ struct Board: Equatable {
         if SolvePuzzle.solvePuzzle() {
             print("\nPuzzle Solved")
         } else {
-            print("\nPuzzle Solution Failed")
+            print("CRME Solution Failed")
             BruteForce.solvePuzzleByBruteForce()
             if SolvePuzzle.solvePuzzle() {
-                print("\nPuzzle Solved using Brute Force")
+                print("Puzzle Solved using Brute Force")
             }
         }
         
@@ -60,7 +59,7 @@ struct Board: Equatable {
         //---Print the solution (for reference)
         print("\nSolution:")
         for j in 0..<9 {
-            print(Globals.actual[j], Globals.possible[j])
+            print(Globals.actual[j]) //, Globals.possible[j])
         }
         
         if Globals.stepsTakenArray.isEmpty {
