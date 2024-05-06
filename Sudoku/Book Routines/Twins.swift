@@ -83,7 +83,6 @@ struct Twins {
                                                 Globals.stepsCount += 1
                                                 Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Twins MiniGrid.            Added \(Globals.actual[ccc][rrr]) to (\(ccc), \(rrr))"))
                                                 
-                                                
                                                 Globals.totalScore += 3
                                             }
                                         }

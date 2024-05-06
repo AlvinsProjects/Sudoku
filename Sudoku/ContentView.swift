@@ -10,8 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var board = Board(difficulty: .Medium)
-    let spacing = 1.0
+    @State private var board = Board()
+    let spacing = 2.0
     
     @State private var selectedRow = -1
     @State private var selectedCol = -1
@@ -28,12 +28,13 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                let textCol = getHeaderColor(difficulty: "\(board.difficulty)")
+                let textCol = ContentView().getHeaderColor(difficulty: "\(board.difficulty)")
                 Text("  Difficulty:   \(board.difficulty)   \(textCol.icon)  ")
                     .font(.title)
                     .background(textCol.col)
                     .clipShape(.capsule)
-                Text("Difficulty Score = \(Globals.totalScore)")
+                Text("Difficulty = \(board.difficulty.rawValue * 2)")
+                Text(Globals.exTime)
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
@@ -72,69 +73,88 @@ struct ContentView: View {
             }
             .navigationTitle("Sudoku Puzzle")
             
-            // Button to toggle the display mode
-            Button(isDark ? "Light Mode" : "Dark Mode") {
-                self.isDark.toggle()
-            }
-            .buttonStyle(.borderedProminent)
             
-            
+            //MARK: Bottom Toolbar
             .toolbar {
-                
-                // Solve the puzzle
-                Button {
-                    board.playerBoard = board.fullBoard
-                } label: {
-                    VStack {
-                        Text(Image(systemName: "sum"))
-                        Text("Solve")
-                            .font(.footnote)
+                ToolbarItemGroup(placement: .bottomBar) {
+                    NavigationLink {
+                        PossiblesView()
+                    } label: {
+                        VStack {
+                            Text(Image(systemName: "lightbulb.min.badge.exclamationmark"))
+                            Text("Possibles")
+                                .font(.footnote)
+                        }
                     }
+                    
+                    // Button to toggle the display mode
+                    Button(isDark ? "Light Mode" : "Dark Mode") {
+                        self.isDark.toggle()
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
                 
-                
-                // Display the possible numbers for the selected cell
-                Button {
-                    let c = self.$selectedCol.wrappedValue
-                    let r = self.$selectedRow.wrappedValue
-                    
-                    // if no cell is selected, return
-                    if c == -1 || r == -1 { return }
-                    
-                    //if selected cell has a value, return
-                    if board.playerBoard[r][c] != 0 { return }
-                    
-                    // get the numbers that are available for the selected cell
-                    getNumbers = calculatePlayerBoardValues(col: r, row: c)
-                    showingPossibles = true
-                } label: {
-                    VStack {
-                        Text(Image(systemName: "questionmark.circle.fill"))
-                        Text("Hint")
-                            .font(.footnote)
+            }
+            
+            //MARK: Top Toolbar
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button {
+                        board.playerBoard = board.fullBoard
+                    } label: {
+                        VStack {
+                            Text(Image(systemName: "sum"))
+                            Text("Solve")
+                                .font(.footnote)
+                        }
                     }
-                }
-                
-                // Display the steps take by the computer solution of the puzzle
-                NavigationLink {
-                    StepsTakenView()
-                } label: {
-                    VStack {
-                        Text(Image(systemName: "list.number"))
-                        Text("Steps")
-                            .font(.footnote)
+                    
+                    
+                    // Display the possible numbers for the selected cell
+                    Button {
+                        let c = self.$selectedCol.wrappedValue
+                        let r = self.$selectedRow.wrappedValue
+                        
+                        // if no cell is selected, return
+                        if c == -1 || r == -1 { return }
+                        
+                        //if selected cell has a value, return
+                        if board.playerBoard[r][c] != 0 { return }
+                        
+                        // get the numbers that are available for the selected cell
+                        getNumbers = calculatePlayerBoardValues(col: r, row: c)
+                        showingPossibles = true
+                    } label: {
+                        VStack {
+                            Text(Image(systemName: "questionmark.circle.fill"))
+                            Text("Hint")
+                                .font(.footnote)
+                        }
                     }
-                }
-                
-                // Add a new puzzle, change the difficulty, or cancel
-                Button {
-                    Globals.totalScore = 0
-                    showingNewGame = true
-                } label: {
-                    VStack {
-                        Text(Image(systemName: "plus"))
-                        Text("Games")
-                            .font(.footnote)
+                    
+                    // Display the steps taken by the computer solution of the puzzle
+                    NavigationLink {
+                        StepsTakenView()
+                    } label: {
+                        VStack {
+                            Text(Image(systemName: "list.number"))
+                            Text("Steps")
+                                .font(.footnote)
+                        }
+                    }
+                    
+                    
+                    
+                    // Add a new puzzle, change the difficulty, or cancel
+                    Button {
+                        Globals.totalScore = 0
+                        showingNewGame = true
+                    } label: {
+                        VStack {
+                            Text(Image(systemName: "plus"))
+                            Text("Games")
+                                .font(.footnote)
+                        }
                     }
                 }
             }
@@ -142,14 +162,21 @@ struct ContentView: View {
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         .environment(\.colorScheme, isDark ? .dark : .light)
         
-        // Alert to allow changes in difficulty and to start a new game, or cancel
+        .onAppear(perform: updateCounts)
+        .onChange(of: board, initial: true) {
+            updateCounts()
+            updatePlayerBoard()
+        }
+        
+        
+        //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
         .alert("Start a new game", isPresented: $showingNewGame) {
             ForEach(Board.Difficulty.allCases, id: \.self) { difficulty in
                 Button(String(describing: difficulty).capitalized) {
                     newGame(difficulty: difficulty)
                 }
             }
-            Button("New Game!") { }
+            
             Button("Cancel", role: .cancel) { }
         } message: {
             if solved {
@@ -157,19 +184,14 @@ struct ContentView: View {
             }
         }
         
-        .onAppear(perform: updateCounts)
-        .onChange(of: board, initial: true) {
-            updateCounts()
-        }
-     
-        // Alert to show the numbers available for the selected cell
+        
+        //MARK: Alert to show the numbers available for the selected cell
         .alert("Possible Numbers", isPresented: $showingPossibles) {
             Button("OK", role: .cancel) { }
         } message: {
-            Text("Numbers available for this cell are:\n\(getNumbers)")
+            Text("Numbers available for this cell are:\n\n\(getNumbers)")
         }
         
-        .background(ignoresSafeAreaEdges: .vertical)
     }
         
     
@@ -259,8 +281,22 @@ struct ContentView: View {
                 col = Color.orange
                 icon = ""
         }
+//        Globals.diff = difficulty
         return (col, icon)
     }
+    
+    
+    func updatePlayerBoard() {
+        var str = ""
+        for c in 0..<9 {
+            for r in 0..<9 {
+                str = calculatePlayerBoardValues(col: c, row: r)
+                Globals.GlobePlayers[c][r] = str
+            }
+        }
+    }
+    
+    
     
     
     /*
@@ -270,10 +306,13 @@ struct ContentView: View {
     func calculatePlayerBoardValues(col: Int, row: Int) -> String {
         var str = ""
         
+        //if selected cell has a value, return
+        if board.playerBoard[col][row] != 0 { return "" }
+        
         if board.playerBoard[col][row] == 0 {
             str = "123456789"
         }
-
+        
         //---Step (1) check by column---
         for r in 0..<9 {
             if board.playerBoard[col][r] != 0 {
@@ -314,4 +353,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
 

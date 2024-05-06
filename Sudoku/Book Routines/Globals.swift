@@ -23,8 +23,10 @@ struct Globals {
     
     static var totalScore = 0
     static var actualBackup = [[Int]]()
-//    static var col = 0
-//    static var row = 0
+    static var exTime = ""
+    static var GlobePlayers = Array(Array(repeating: Array(repeating: "", count: 9), count: 9))
+    static var diff = ""
+
     
     
     // CRME (Column, Row, MiniGrid Elimination) puzzles

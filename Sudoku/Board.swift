@@ -27,7 +27,8 @@ struct Board: Equatable {
     var fullBoard = [[Int]]()
     var playerBoard = [[Int]]()
     
-    init(difficulty: Difficulty = .Trivial) {
+
+    init(difficulty: Difficulty = .Medium) {
         self.difficulty = difficulty
         getPuzzle()
         create()
@@ -35,11 +36,11 @@ struct Board: Equatable {
     }
     
     
-    func getPuzzle() {
-        
+    mutating func getPuzzle() {
+       
         //---Get the puzzle that is to be tested
         Globals.actual = TestPuzzle.getTestPuzzle()
-        
+
         //---Measure the time it takes to complete a solution
         let start = CFAbsoluteTimeGetCurrent()
         
@@ -54,12 +55,13 @@ struct Board: Equatable {
         }
         
         let diff = CFAbsoluteTimeGetCurrent() - start
-        print("Execution Time:  \(String(format: "%.4f", diff)) secs")
+        Globals.exTime = "Execution Time:  \(String(format: "%.3f", diff)) secs"
+        
         
         //---Print the solution (for reference)
         print("\nSolution:")
         for j in 0..<9 {
-            print(Globals.actual[j]) //, Globals.possible[j])
+            print(Globals.actual[j])  //, playerBoard[j])
         }
         
         if Globals.stepsTakenArray.isEmpty {
@@ -99,7 +101,6 @@ struct Board: Equatable {
         
         fullBoard = Globals.actual  //The solved puzzle
         playerBoard = fullBoard
-        
     }
     
     

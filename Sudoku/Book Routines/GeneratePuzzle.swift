@@ -25,14 +25,10 @@ struct GeneratePuzzle {
             if result.str != "" {
                 //---check if puzzle matches the level of difficulty---
                 switch level {
-                    case 1:
-                        if score >= 42 && score <= 46 { break }     //Average 44
-                    case 2:
-                        if score >= 49 && score <= 53 { break }     //Average 51
-                    case 3:
-                        if score >= 56 && score <= 60 { break }     //Average 58
-                    case 4:
-                        if score >= 112 && score <= 116 { break }   //Average 114
+                    case 1: if score >= 42 && score <= 46 { break }     //Average 44
+                    case 2: if score >= 49 && score <= 53 { break }     //Average 51
+                    case 3: if score >= 56 && score <= 60 { break }     //Average 58
+                    case 4: if score >= 112 && score <= 116 { break }   //Average 114
                     default:
                         break
                 }
@@ -74,7 +70,6 @@ struct GeneratePuzzle {
         } else {
             print("Error!")
         }
-        
         
         //---make a backup copy of the Actual array---
         Globals.actualBackup = Globals.actual

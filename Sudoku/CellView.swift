@@ -71,11 +71,9 @@ struct CellView: View {
                 .frame(maxWidth: 100, maxHeight: 100)
                 .aspectRatio(1, contentMode: .fit)
                 .background(highlightState.color)
-//                .background(backgroundCol)
         }
         .buttonStyle(.plain)
         .accessibilityShowsLargeContentViewer()
-        
         
     }
 }
@@ -83,7 +81,8 @@ struct CellView: View {
 
 
 #Preview {
-    CellView(number: 5, selectedNumber: 5,
+    CellView(number: 3,
+             selectedNumber: 5,
              highlightState: .standard,
              isCorrect: true,
              onSelected: { } )
