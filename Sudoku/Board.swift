@@ -11,9 +11,6 @@ import Foundation
 struct Board: Equatable {
     
     enum Difficulty: Int, CaseIterable {
-//        #if DEBUG
-//        case Testing = 2
-//        #endif
         case Trivial = 10
         case Easy = 20
         case Medium = 24
@@ -21,7 +18,7 @@ struct Board: Equatable {
         case Extreme = 29
     }
     
-    
+
     let size = 9
     let difficulty: Difficulty
     var fullBoard = [[Int]]()
@@ -33,6 +30,7 @@ struct Board: Equatable {
         getPuzzle()
         create()
         prepareForPlay()
+//        Globals.difficult = difficulty
     }
     
     
@@ -44,25 +42,23 @@ struct Board: Equatable {
         //---Measure the time it takes to complete a solution
         let start = CFAbsoluteTimeGetCurrent()
         
-        if SolvePuzzle.solvePuzzle() {
-            print("\nPuzzle Solved")
-        } else {
+        if !SolvePuzzle.solvePuzzle() {
             print("CRME Solution Failed")
             BruteForce.solvePuzzleByBruteForce()
             if SolvePuzzle.solvePuzzle() {
                 print("Puzzle Solved using Brute Force")
             }
         }
-        
-        let diff = CFAbsoluteTimeGetCurrent() - start
-        Globals.exTime = "Execution Time:  \(String(format: "%.3f", diff)) secs"
-        
+        let executionTime = CFAbsoluteTimeGetCurrent() - start
+        Globals.exTime.append("Solution Execution Time:  \(String(format: "%.3f", executionTime)) secs")
+
         
         //---Print the solution (for reference)
         print("\nSolution:")
         for j in 0..<9 {
             print(Globals.actual[j])  //, playerBoard[j])
         }
+        
         
         if Globals.stepsTakenArray.isEmpty {
             print("There were no solution steps available!")
@@ -100,7 +96,7 @@ struct Board: Equatable {
 //        fullBoard = TestPuzzle.getTestPuzzle()
         
         fullBoard = Globals.actual  //The solved puzzle
-        playerBoard = fullBoard
+        playerBoard = Globals.actual
     }
     
     

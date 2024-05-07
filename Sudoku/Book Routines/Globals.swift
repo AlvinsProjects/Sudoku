@@ -7,6 +7,7 @@
 
 
 import Foundation
+import SwiftUI
 
 
 struct Globals {
@@ -23,11 +24,9 @@ struct Globals {
     
     static var totalScore = 0
     static var actualBackup = [[Int]]()
-    static var exTime = ""
+    static var exTime = [String]()
     static var GlobePlayers = Array(Array(repeating: Array(repeating: "", count: 9), count: 9))
-    static var diff = ""
-
-    
+    static var bdDifficulty = Board().difficulty
     
     // CRME (Column, Row, MiniGrid Elimination) puzzles
     static let crme1 = "400280010609430500070050040300840000097103480000092006080010070002079804050028001"

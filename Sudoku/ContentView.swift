@@ -8,6 +8,7 @@
 import SwiftUI
 
 
+
 struct ContentView: View {
     
     @State private var board = Board()
@@ -16,25 +17,27 @@ struct ContentView: View {
     @State private var selectedRow = -1
     @State private var selectedCol = -1
     @State private var selectedNum = 0
-    
     @State private var solved = false
     @State private var showingNewGame = false
     @State private var showingPossibles = false
     @State private var getNumbers = ""
     @State private var isDark = true
-    
     @State private var counts = [Int: Int]()
+
+    
     
     var body: some View {
         NavigationStack {
             VStack {
-                let textCol = ContentView().getHeaderColor(difficulty: "\(board.difficulty)")
+                
+                let textCol = getHeaderColor(difficulty: "\(board.difficulty)")
                 Text("  Difficulty:   \(board.difficulty)   \(textCol.icon)  ")
                     .font(.title)
+                    .frame(height: 45)
                     .background(textCol.col)
                     .clipShape(.capsule)
                 Text("Difficulty = \(board.difficulty.rawValue * 2)")
-                Text(Globals.exTime)
+                Text(Globals.exTime[0])
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
@@ -73,10 +76,19 @@ struct ContentView: View {
             }
             .navigationTitle("Sudoku Puzzle")
             
+                    
+            // Button to toggle the display mode
+            Button(isDark ? "Light Mode" : "Dark Mode") {
+                self.isDark.toggle()
+            }
+            .buttonStyle(.borderedProminent)
+
             
-            //MARK: Bottom Toolbar
+            //MARK: Top Toolbar
             .toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    
+                    //MARK: Display all possible numbers
                     NavigationLink {
                         PossiblesView()
                     } label: {
@@ -87,30 +99,7 @@ struct ContentView: View {
                         }
                     }
                     
-                    // Button to toggle the display mode
-                    Button(isDark ? "Light Mode" : "Dark Mode") {
-                        self.isDark.toggle()
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-                
-            }
-            
-            //MARK: Top Toolbar
-            .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    Button {
-                        board.playerBoard = board.fullBoard
-                    } label: {
-                        VStack {
-                            Text(Image(systemName: "sum"))
-                            Text("Solve")
-                                .font(.footnote)
-                        }
-                    }
-                    
-                    
-                    // Display the possible numbers for the selected cell
+                    //MARK: Display the possible numbers for the selected cell
                     Button {
                         let c = self.$selectedCol.wrappedValue
                         let r = self.$selectedRow.wrappedValue
@@ -132,7 +121,7 @@ struct ContentView: View {
                         }
                     }
                     
-                    // Display the steps taken by the computer solution of the puzzle
+                    //MARK: Display the steps taken by the computer solution of the puzzle
                     NavigationLink {
                         StepsTakenView()
                     } label: {
@@ -144,8 +133,7 @@ struct ContentView: View {
                     }
                     
                     
-                    
-                    // Add a new puzzle, change the difficulty, or cancel
+                    //MARK: Add a new puzzle, change the difficulty, or cancel
                     Button {
                         Globals.totalScore = 0
                         showingNewGame = true
@@ -170,12 +158,20 @@ struct ContentView: View {
         
         
         //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
-        .alert("Start a new game", isPresented: $showingNewGame) {
+        .alert("Change Difficulty or \nStart a New Game", isPresented: $showingNewGame) {
             ForEach(Board.Difficulty.allCases, id: \.self) { difficulty in
                 Button(String(describing: difficulty).capitalized) {
                     newGame(difficulty: difficulty)
+                    Globals.bdDifficulty = difficulty
                 }
             }
+            Button {
+                board.playerBoard = board.fullBoard
+            } label: {
+                Text("Solve the Puzzle")
+                    .font(.footnote)
+            }
+            Button("New Game") { print("Hello") } //TODO:  ********???
             
             Button("Cancel", role: .cancel) { }
         } message: {
@@ -191,7 +187,6 @@ struct ContentView: View {
         } message: {
             Text("Numbers available for this cell are:\n\n\(getNumbers)")
         }
-        
     }
         
     
@@ -266,10 +261,10 @@ struct ContentView: View {
                 col = Color.cyan
                 icon = "😃"
             case "Easy":
-                col = Color.green
+                col = Color.blue
                 icon = "☺️"
             case "Medium":
-                col = Color.yellow
+                col = Color.green
                 icon = "🥸"
             case "Hard":
                 col = Color.orange
@@ -281,7 +276,6 @@ struct ContentView: View {
                 col = Color.orange
                 icon = ""
         }
-//        Globals.diff = difficulty
         return (col, icon)
     }
     
@@ -353,5 +347,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-
 

@@ -11,7 +11,7 @@ import SwiftUI
 
 struct PossiblesView: View {
     
-    @State private var board = Board() //Board(difficulty: .Medium)
+    @State private var board = Board() 
     let spacing = 2.0
     
     @State private var getNumbers = ""
@@ -20,13 +20,16 @@ struct PossiblesView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                let textCol = ContentView().getHeaderColor(difficulty: "\(board.difficulty)")
-                Text("  Difficulty:   \(board.difficulty)   \(textCol.icon)  ")
+                
+                let textCol = ContentView().getHeaderColor(difficulty: "\(Globals.bdDifficulty)")
+                Text("  Difficulty:   \(Globals.bdDifficulty)   \(textCol.icon)  ")
                     .font(.title)
+                    .frame(height: 45)
                     .background(textCol.col)
                     .clipShape(.capsule)
-                Text("Difficulty = \(board.difficulty.rawValue * 2)")
-                Text(Globals.exTime)
+                    .padding(.top, 25)
+                Text("Difficulty = \(Globals.bdDifficulty.rawValue * 2)")
+                Text(Globals.exTime[0])
             
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in

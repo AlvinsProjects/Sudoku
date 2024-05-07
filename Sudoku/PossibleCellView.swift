@@ -11,7 +11,6 @@ struct PossibleCellView: View {
     
     var number: String
 
-    
     var displayPoss: String {
         var newNo = ""
         var numArray = Array(repeating: " ", count: 9)
@@ -30,9 +29,10 @@ struct PossibleCellView: View {
         return newNo
     }
     
+    
     var body: some View {
         Text(displayPoss)
-            .font(.caption2)
+            .font(.caption2).bold()
             .foregroundStyle(.white)
             .frame(maxWidth: 100, maxHeight: 100)
             .aspectRatio(1, contentMode: .fit)
