@@ -30,14 +30,14 @@ struct Board: Equatable {
         getPuzzle()
         create()
         prepareForPlay()
-//        Globals.difficult = difficulty
     }
     
     
-    mutating func getPuzzle() {
+    func getPuzzle() {
        
         //---Get the puzzle that is to be tested
         Globals.actual = TestPuzzle.getTestPuzzle()
+//        Globals.actual = puzArray().SudokuFiles[0].content
 
         //---Measure the time it takes to complete a solution
         let start = CFAbsoluteTimeGetCurrent()
@@ -54,7 +54,7 @@ struct Board: Equatable {
 
         
         //---Print the solution (for reference)
-        print("\nSolution:")
+        print("\nSolution: for \(puzArray.SudokuFiles[12].name)")
         for j in 0..<9 {
             print(Globals.actual[j])  //, playerBoard[j])
         }
@@ -62,15 +62,7 @@ struct Board: Equatable {
         
         if Globals.stepsTakenArray.isEmpty {
             print("There were no solution steps available!")
-        } //else {
-//            for item in Globals.stepsTakenArray {
-//                if item.index < 10 {
-//                    print("\(item.index)  \(item.steps)")
-//                } else {
-//                    print("\(item.index) \(item.steps)")
-//                }
-//            }
-//        }
+        } 
     }
     
     

@@ -21,17 +21,18 @@ struct StepsTakenView: View {
                         .bold()
                         .foregroundStyle(.red)
                 }
-            } else {
-                List(steps) {
-                    Text("\($0.index).  \($0.steps)")
-                        .font(.footnote).bold()
-                        .foregroundStyle($0.steps.contains("Brute") ? .pink : .cyan)
-                }
-                .navigationTitle("Solution Steps")
             }
+            
+            List(steps) {
+                Text("\($0.index).  \($0.steps)")
+                    .font(.footnote).bold()
+                    .foregroundStyle($0.steps.contains("Brute") ? .pink : .cyan)
+            }
+            .navigationTitle("Solution Steps")
         }
     }
 }
+
 
 
 

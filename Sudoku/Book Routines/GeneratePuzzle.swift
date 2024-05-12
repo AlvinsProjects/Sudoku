@@ -44,25 +44,25 @@ struct GeneratePuzzle {
     ============================================================
           Generate a new Sudoku puzzle
     ============================================================*/
-//    static func generateNewPuzzle(level: Int, score: Int) -> (str: String, score: Int) {
-//        
+    static func generateNewPuzzle() { //(level: Int, score: Int) -> (str: String, score: Int) {
+//
 //        var str = ""
 ////        var numberOfEmptyCells = 0
 //        var score = score
 //        
-//        //---initialize the entire board---
-//        for r in 0..<9 {
-//            for c in 0..<9 {
-//                Globals.actual[c][r] = 0
-//                Globals.possible[c][r] = ""
-//            }
-//        }
-//        
-//        //---clear the stacks---
-//        Globals.actualStack.removeAll()
-//        Globals.possibleStack.removeAll()
-//        
-//        
+        //---initialize the entire board---
+        Globals.actual.removeAll()
+        Globals.GlobePlayers.removeAll()
+        
+        //---clear the stacks---
+        Globals.actualStack.removeAll()
+        Globals.possibleStack.removeAll()
+        Globals.bruteForceStop = false
+        Globals.actualBackup.removeAll()
+        Globals.GlobePlayers.removeAll()
+        Globals.stepsTakenArray.removeAll()
+        Globals.stepsCount = 0
+        
 //        //---populate the board with numbers by solving an empty grid---
 //        if !SolvePuzzle.solvePuzzle() {
 //            //MARK: ---then use bruteforce---
@@ -85,13 +85,16 @@ struct GeneratePuzzle {
 ////                break
 ////        }
 //        
-//        //---clear the stacks that are used in brute-force elimination ---
+        //---clear the stacks that are used in brute-force elimination ---
 //        Globals.actualStack.removeAll()
 //        Globals.possibleStack.removeAll()
 //        Globals.bruteForceStop = false
-//        
+        
+//        Board.playerBoard.removeAll()
+//        Board().fullBoard.removeAll()
+        
 //        // ----create empty cells----
-////        createEmptyCells(empty: numberOfEmptyCells)
+//        createEmptyCells(empty: numberOfEmptyCells)
 //        
 //        // ---convert the values in the actual array to a string---
 //        str  = ""
@@ -132,7 +135,8 @@ struct GeneratePuzzle {
 //        //---return the score as well as the puzzle as a string---
 //        score = Globals.totalScore
 //        return (str, score)
-//    }
+        Board().getPuzzle()
+    }
     
     
     

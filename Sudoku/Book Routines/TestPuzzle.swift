@@ -13,7 +13,8 @@ struct TestPuzzle: Equatable {
     
     static func getTestPuzzle() -> [[Int]]  {
     
-        let testInfo = Globals.bfEmpty
+//        let testInfo = Globals.bfEmpty
+        let testInfo = puzArray.SudokuFiles[12].content
         
         var testGrid = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))
         var count = 0
@@ -25,6 +26,7 @@ struct TestPuzzle: Equatable {
                 count += 1
             }
         }
+//        print(puzArray.SudokuFiles[12].name)
         return testGrid
     }
 }

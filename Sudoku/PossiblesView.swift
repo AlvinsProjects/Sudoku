@@ -22,6 +22,7 @@ struct PossiblesView: View {
             VStack {
                 
                 let textCol = ContentView().getHeaderColor(difficulty: "\(Globals.bdDifficulty)")
+                
                 Text("  Difficulty:   \(Globals.bdDifficulty)   \(textCol.icon)  ")
                     .font(.title)
                     .frame(height: 45)

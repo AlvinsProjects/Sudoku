@@ -25,11 +25,10 @@ struct ContentView: View {
     @State private var counts = [Int: Int]()
 
     
-    
     var body: some View {
         NavigationStack {
+            
             VStack {
-                
                 let textCol = getHeaderColor(difficulty: "\(board.difficulty)")
                 Text("  Difficulty:   \(board.difficulty)   \(textCol.icon)  ")
                     .font(.title)
@@ -165,13 +164,18 @@ struct ContentView: View {
                     Globals.bdDifficulty = difficulty
                 }
             }
+            
             Button {
                 board.playerBoard = board.fullBoard
             } label: {
                 Text("Solve the Puzzle")
                     .font(.footnote)
             }
-            Button("New Game") { print("Hello") } //TODO:  ********???
+            
+            Button("New Game") {
+//                GeneratePuzzle.generateNewPuzzle()   //TODO:  ********???
+//                Board().getPuzzle()
+            }
             
             Button("Cancel", role: .cancel) { }
         } message: {
