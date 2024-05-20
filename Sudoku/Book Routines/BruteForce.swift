@@ -19,7 +19,6 @@ struct BruteForce {
         var min = 10
         var col = 0
         var row = 0
-        
         for r in 0..<9 {
             for c in 0..<9 {
                 if Globals.actual[c][r] == 0 && Globals.possible[c][r].count < min {

@@ -13,7 +13,7 @@ struct LoneRangers  {
     
     /*
     ==================================================
-          Look for lone rangers in Minigrids
+    Look for lone rangers in Minigrids
     ==================================================*/
     static func lookForLoneRangersInMinigrids() -> Bool {
         var changes = false
@@ -68,7 +68,7 @@ struct LoneRangers  {
     
     /*
     =========================================================
-                Look for Lone Rangers in Rows
+    Look for Lone Rangers in Rows
     =========================================================*/
     static func lookForLoneRangersInRows() -> Bool  {
         var changes = false
@@ -111,7 +111,7 @@ struct LoneRangers  {
     
     /*
     =========================================================
-          Look for Lone Rangers in Columns
+    Look for Lone Rangers in Columns
     =========================================================*/
     static func lookForLoneRangersInColumns() -> Bool {
         var changes = false

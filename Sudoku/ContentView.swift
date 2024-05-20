@@ -27,16 +27,20 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            
             VStack {
                 let textCol = getHeaderColor(difficulty: "\(board.difficulty)")
-                Text("  Difficulty:   \(board.difficulty)   \(textCol.icon)  ")
+                
+                Text("    Difficulty:      \(board.difficulty)   \(textCol.icon)    ")
                     .font(.title)
                     .frame(height: 45)
                     .background(textCol.col)
                     .clipShape(.capsule)
-                Text("Difficulty = \(board.difficulty.rawValue * 2)")
-                Text(Globals.exTime[0])
+                Group {
+                    Text("Puzzle Name:  \(Globals.puzzName)")
+                    Text("Difficulty = \(board.difficulty.rawValue * 2)")
+                    Text(Globals.exTime[0])
+                }
+                .font(.footnote)
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
@@ -72,15 +76,22 @@ struct ContentView: View {
                     }
                 }
                 .padding()
+           
+            
+                HStack {
+                    // Button to toggle the display mode
+                    Button(isDark ? "Light Mode" : "Dark Mode") {
+                        self.isDark.toggle()
+                    }
+                    
+                    // Navigate to load or save a new puzzle
+                    NavigationLink("New Puzzle", destination: MenuView())
+                }
+                .buttonStyle(.borderedProminent)
+            
             }
             .navigationTitle("Sudoku Puzzle")
-            
-                    
-            // Button to toggle the display mode
-            Button(isDark ? "Light Mode" : "Dark Mode") {
-                self.isDark.toggle()
-            }
-            .buttonStyle(.borderedProminent)
+
 
             
             //MARK: Top Toolbar
@@ -172,10 +183,6 @@ struct ContentView: View {
                     .font(.footnote)
             }
             
-            Button("New Game") {
-//                GeneratePuzzle.generateNewPuzzle()   //TODO:  ********???
-//                Board().getPuzzle()
-            }
             
             Button("Cancel", role: .cancel) { }
         } message: {
@@ -344,6 +351,21 @@ struct ContentView: View {
         }
         return str
     }
+    
+//    func LoadAndSavePuzzle() {
+//        NavigationLink {
+//            MenuView()
+//        } label: {
+//            VStack {
+//                Text(Image(systemName: "list.number"))
+//                Text("Steps")
+//                    .font(.footnote)
+//            }
+//        }
+//        
+//        
+//        
+//    }
 }
 
 

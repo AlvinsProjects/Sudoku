@@ -10,10 +10,9 @@ import Foundation
 
 struct Twins {
     
-    
     /* 
     ==================================================
-           Look for Twins in Minigrids
+    Look for Twins in Minigrids
     ==================================================*/
     static func lookForTwinsInMinigrids() -> Bool {
         var changes = false
@@ -245,19 +244,3 @@ struct Twins {
     }
 }
 
-
-
-//extension String {
-//    
-//    public func replaceFirst(of pattern: String,
-//                             with replacement: String,
-//                             for index: Int) -> String {
-//        
-//        if let range = self.range(of: pattern.prefix(index)) {
-//            return self.replacingCharacters(in: range, with: replacement)
-//        } else {
-//            return self
-//        }
-//    }
-//    
-//}

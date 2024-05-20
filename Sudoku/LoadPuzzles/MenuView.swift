@@ -23,33 +23,31 @@ struct MenuView: View {
     
     @State private var dm = DataModel()
     @State private var readFile = ""
-    @State private var count = 0
-    var word = ""
-    @State private var selectedPuzzle = Puzzle(number: 0, name: "crme1", content: "")
+//    @State private var count = 0
+    @State private var selectedPuzzle = Puzzle(number: 0, name: "BruteForceEmpty", content: "")
 
     var body: some View {
         NavigationStack {
             Form() {
                 Section(header: Text("SELECT THE PUZZLE TO LOAD OR SAVE")) {
-                    //                List(dm.content) {
-                    //                    Text("\($0.number).  \($0.name)")
-                    //                }
-                    
                     VStack {
                         Picker("Please choose a puzzle:", selection: $selectedPuzzle) {
                             ForEach(dm.content, id: \.self) {
                                 Text("\($0.number).  \($0.name)")
                             }
                         }
-                        Text("You selected:  \(selectedPuzzle.name)")
-                            .bold()
-                            .padding()
                     }
                 }
-                //            }
                 
-                Text(word)
-                Text("FileName:  \(selectedPuzzle.name)").padding(.horizontal)
+                Text("FileName:  \(selectedPuzzle.name)")
+                    .bold()
+
+                
+                Text("The files (puzzles) listed are the puzzles presented in the \"Programming SUDOKU\" book by Wei-Ming Lee.\n\nCRME are puzzles solved by Column, Row, and Minigrid elimination.\n\nThe remaining puzzles are listed by increasing difficulty - upto \"Brute Force\" methods.\n\nThe \"BruteForceEmpty\" puzzle is a blank puzzle that is solved by the computer and presented to the user.  The solutions are random and are selected by default.")
+//                    .font(.system(size: 15, weight: .regular, design: .serif))
+//                    .italic()
+                    .font(.body)
+                
                 
                     .toolbar {
                         ToolbarItem(placement: .primaryAction) {
@@ -78,32 +76,16 @@ struct MenuView: View {
                         }
                         }
                     }
-                    .navigationTitle("Menu Trial")
+                    .navigationTitle("Puzzle Selection")
                 
                 Text("\n \(readFile)")
                     .padding(.horizontal)
                     .foregroundStyle(.green)
                 
-                Spacer()
-                
+//                Spacer()
             }
         }
     }
-    
-//    func loadFile() {
-//        print("File Created")
-////        ImportingExampleView()
-//    }
-    
-    
-//    func saveFile() {
-//        print("File Saved")
-//    }
-    
-//    func deleteFile() {
-//        print("File Deleted")
-//    }
-
 }
 
 

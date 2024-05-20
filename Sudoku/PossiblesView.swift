@@ -29,9 +29,12 @@ struct PossiblesView: View {
                     .background(textCol.col)
                     .clipShape(.capsule)
                     .padding(.top, 25)
-                Text("Difficulty = \(Globals.bdDifficulty.rawValue * 2)")
-                Text(Globals.exTime[0])
-            
+                Group {
+                    Text("Puzzle Name:  \(Globals.puzzName)")
+                    Text("Difficulty = \(board.difficulty.rawValue * 2)")
+                    Text(Globals.exTime[0])
+                }
+                .font(.footnote)
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
                         GridRow {
@@ -49,6 +52,7 @@ struct PossiblesView: View {
                 }
                 .padding(5)
                 
+                //Selection numbers at the base of the puzzle
                 HStack {
                     ForEach(0..<9) { i in
                         Text("\(i) ")

@@ -11,46 +11,46 @@ import Foundation
 struct GeneratePuzzle {
     
     /*
-    ============================================================
-        Get Puzzle
-    ============================================================*/
-//    static func getPuzzle(level: Int) -> String {
-//        var score = 0
-//        var result = (str: "", score: 0)
-//        
-//        repeat {
-//            result = generateNewPuzzle(level: level, score: score)
-//            score = result.score
-//            
-//            if result.str != "" {
-//                //---check if puzzle matches the level of difficulty---
-//                switch level {
-//                    case 1: if score >= 42 && score <= 46 { break }     //Average 44
-//                    case 2: if score >= 49 && score <= 53 { break }     //Average 51
-//                    case 3: if score >= 56 && score <= 60 { break }     //Average 58
-//                    case 4: if score >= 112 && score <= 116 { break }   //Average 114
-//                    default:
-//                        break
-//                }
-//            }
-//        } while true
-//        
-//        return result.str  //(from a tuple)
-//    }
+     ============================================================
+     Get Puzzle
+     ============================================================*/
+    //    static func getPuzzle(level: Int) -> String {
+    //        var score = 0
+    //        var result = (str: "", score: 0)
+    //        
+    //        repeat {
+    //            result = generateNewPuzzle(level: level, score: score)
+    //            score = result.score
+    //            
+    //            if result.str != "" {
+    //                //---check if puzzle matches the level of difficulty---
+    //                switch level {
+    //                    case 1: if score >= 42 && score <= 46 { break }     //Average 44
+    //                    case 2: if score >= 49 && score <= 53 { break }     //Average 51
+    //                    case 3: if score >= 56 && score <= 60 { break }     //Average 58
+    //                    case 4: if score >= 112 && score <= 116 { break }   //Average 114
+    //                    default:
+    //                        break
+    //                }
+    //            }
+    //        } while true
+    //        
+    //        return result.str  //(from a tuple)
+    //    }
     
     
     
     /*
-    ============================================================
-          Generate a new Sudoku puzzle
-    ============================================================*/
+     ============================================================
+     Generate a new Sudoku puzzle
+     ============================================================*/
     static func generateNewPuzzle() { //(level: Int, score: Int) -> (str: String, score: Int) {
-//
-//        var str = ""
-////        var numberOfEmptyCells = 0
-//        var score = score
-//        
-        //---initialize the entire board---
+                                      //
+                                      //        var str = ""
+                                      ////        var numberOfEmptyCells = 0
+                                      //        var score = score
+                                      //        
+                                      //---initialize the entire board---
         Globals.actual.removeAll()
         Globals.GlobePlayers.removeAll()
         
@@ -63,81 +63,81 @@ struct GeneratePuzzle {
         Globals.stepsTakenArray.removeAll()
         Globals.stepsCount = 0
         
-//        //---populate the board with numbers by solving an empty grid---
-//        if !SolvePuzzle.solvePuzzle() {
-//            //MARK: ---then use bruteforce---
-//            BruteForce.solvePuzzleByBruteForce()
-//        } else {
-//            print("Error!")
-//        }
-//        
-//        //---make a backup copy of the Actual array---
-//        Globals.actualBackup = Globals.actual
-//        
-//        //---set the number of empty cells based on the level of difficulty---
-////        switch level {
-////            case 1: numberOfEmptyCells = Int.random(in: 40...45)
-////            case 2: numberOfEmptyCells = Int.random(in: 46...49)
-////            case 3: numberOfEmptyCells = Int.random(in: 50...53)
-////            case 4: numberOfEmptyCells = Int.random(in: 54...58)
-////            default:
-////                print("Error at line 87 of generateNewPuzzle")
-////                break
-////        }
-//        
+        //        //---populate the board with numbers by solving an empty grid---
+        //        if !SolvePuzzle.solvePuzzle() {
+        //            //MARK: ---then use bruteforce---
+        //            BruteForce.solvePuzzleByBruteForce()
+        //        } else {
+        //            print("Error!")
+        //        }
+        //        
+        //        //---make a backup copy of the Actual array---
+        //        Globals.actualBackup = Globals.actual
+        //        
+        //        //---set the number of empty cells based on the level of difficulty---
+        ////        switch level {
+        ////            case 1: numberOfEmptyCells = Int.random(in: 40...45)
+        ////            case 2: numberOfEmptyCells = Int.random(in: 46...49)
+        ////            case 3: numberOfEmptyCells = Int.random(in: 50...53)
+        ////            case 4: numberOfEmptyCells = Int.random(in: 54...58)
+        ////            default:
+        ////                print("Error at line 87 of generateNewPuzzle")
+        ////                break
+        ////        }
+        //        
         //---clear the stacks that are used in brute-force elimination ---
-//        Globals.actualStack.removeAll()
-//        Globals.possibleStack.removeAll()
-//        Globals.bruteForceStop = false
+        //        Globals.actualStack.removeAll()
+        //        Globals.possibleStack.removeAll()
+        //        Globals.bruteForceStop = false
         
-//        Board.playerBoard.removeAll()
-//        Board().fullBoard.removeAll()
+        //        Board.playerBoard.removeAll()
+        //        Board().fullBoard.removeAll()
         
-//        // ----create empty cells----
-//        createEmptyCells(empty: numberOfEmptyCells)
-//        
-//        // ---convert the values in the actual array to a string---
-//        str  = ""
-//        for r in 0..<9 {
-//            for c in 0..<9 {
-//                str += String(Globals.actual[c][r])
-//            }
-//        }
-//        
-//        // ---verify the puzzle has only one solution---
-//        var tries = 0
-//        
-//        Globals.totalScore = 0
-//        
-//        repeat {
-//            if !SolvePuzzle.solvePuzzle() {
-//                // ---if puzzle is not solved and
-//                //    this is a level 1 to 3 puzzle---
-//                if level < 4 {
-//                    //---choose another pair of cells to empty---
-////                    vacateAnotherPairOfCells(str: str)
-//                    tries += 1
-//                } else {
-//                    //---level 4 puzzles does not guarantee single
-//                    //   solution and potentially need guessing---
-//                    BruteForce.solvePuzzleByBruteForce()
-//                    break
-//                }
-//            } else {
-//                //---puzzle does indeed have 1 solution---
-//                break
-//            }
-//            // ---if too many tries, exit the loop---
-//            if tries > 50 {
-//                break
-//            }
-//        } while true
-//        //---return the score as well as the puzzle as a string---
-//        score = Globals.totalScore
-//        return (str, score)
+        //        // ----create empty cells----
+        //        createEmptyCells(empty: numberOfEmptyCells)
+        //        
+        //        // ---convert the values in the actual array to a string---
+        //        str  = ""
+        //        for r in 0..<9 {
+        //            for c in 0..<9 {
+        //                str += String(Globals.actual[c][r])
+        //            }
+        //        }
+        //        
+        //        // ---verify the puzzle has only one solution---
+        //        var tries = 0
+        //        
+        //        Globals.totalScore = 0
+        //        
+        //        repeat {
+        //            if !SolvePuzzle.solvePuzzle() {
+        //                // ---if puzzle is not solved and
+        //                //    this is a level 1 to 3 puzzle---
+        //                if level < 4 {
+        //                    //---choose another pair of cells to empty---
+        ////                    vacateAnotherPairOfCells(str: str)
+        //                    tries += 1
+        //                } else {
+        //                    //---level 4 puzzles does not guarantee single
+        //                    //   solution and potentially need guessing---
+        //                    BruteForce.solvePuzzleByBruteForce()
+        //                    break
+        //                }
+        //            } else {
+        //                //---puzzle does indeed have 1 solution---
+        //                break
+        //            }
+        //            // ---if too many tries, exit the loop---
+        //            if tries > 50 {
+        //                break
+        //            }
+        //        } while true
+        //        //---return the score as well as the puzzle as a string---
+        //        score = Globals.totalScore
+        //        return (str, score)
         Board().getPuzzle()
     }
-    
+}
     
     
     /*
@@ -251,4 +251,4 @@ struct GeneratePuzzle {
 //        //                End Class
 //    }
     
-}
+//}

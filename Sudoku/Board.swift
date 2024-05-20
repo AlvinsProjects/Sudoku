@@ -54,7 +54,7 @@ struct Board: Equatable {
 
         
         //---Print the solution (for reference)
-        print("\nSolution: for \(puzArray.SudokuFiles[12].name)")
+        print("\nSolution: for \(Globals.puzzName)")
         for j in 0..<9 {
             print(Globals.actual[j])  //, playerBoard[j])
         }

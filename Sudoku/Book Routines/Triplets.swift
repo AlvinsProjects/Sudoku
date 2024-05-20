@@ -10,15 +10,14 @@ import Foundation
 
 struct Triplets {
     
-    
     /*
      ==================================================
      Look for Triplets in Minigrids
      ==================================================*/
     static func lookForTripletsInMinigrids() -> Bool {
         var changes = false
-       
-        //    ---check each cell---
+        
+        //---check each cell---
         for r in 0..<9 {
             for c in 0..<9 {
                 
@@ -119,7 +118,7 @@ struct Triplets {
     
     /*
     ==================================================
-     Look for Triplets in Rows
+    Look for Triplets in Rows
     ==================================================*/
     static func lookForTripletsInRows() -> Bool {
         var changes = false
@@ -218,7 +217,7 @@ struct Triplets {
     
     /*
     ==================================================
-     Look for Triplets in Columns
+    Look for Triplets in Columns
     ==================================================*/
     static func lookForTripletsInColumns() -> Bool {
         var changes = false

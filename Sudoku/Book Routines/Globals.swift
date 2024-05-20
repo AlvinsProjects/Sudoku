@@ -15,7 +15,7 @@ struct Globals {
     //---used to store the state of the grid---
     static var actual = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))
     static var possible = Array(Array(repeating: Array(repeating: "", count: 9), count: 9))
-    
+    static var puzzName = "bfEmpty"
     static var bruteForceStop = false
     
     static var actualStack = [[[Int]]]()

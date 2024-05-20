@@ -33,10 +33,10 @@ struct PossibleCellView: View {
     var body: some View {
         Text(displayPoss)
             .font(.caption2).bold()
-            .foregroundStyle(.white)
-            .frame(maxWidth: 100, maxHeight: 100)
+            .foregroundStyle(.yellow).opacity(0.7)
+            .frame(maxWidth: 90, maxHeight: 100)
             .aspectRatio(1, contentMode: .fit)
-            .border(Color.gray, width: 1)
+//            .border(Color.black, width: 1)
             .background(Color.squareStandard)
             .accessibilityShowsLargeContentViewer()
     }
