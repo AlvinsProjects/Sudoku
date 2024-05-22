@@ -13,9 +13,13 @@ struct TestPuzzle: Equatable {
     
     static func getTestPuzzle() -> [[Int]]  {
     
-        let puzIndex = 12
-        let testInfo = puzArray.SudokuFiles[puzIndex].content
-        Globals.puzzName = puzArray.SudokuFiles[puzIndex].name
+//        GeneratePuzzle.generateNewPuzzle()
+//        let puzIndex = Globals.puzzle.number
+        let name = Globals.puzzle.name
+//        let cont = Globals.puzzle.content
+//        print(puzIndex, name, cont)
+        let testInfo = puzArray.SudokuFiles[Globals.puzIndex].content
+        Globals.puzzName = name  //puzArray.SudokuFiles[puzIndex].name
         
         var testGrid = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))
         var count = 0

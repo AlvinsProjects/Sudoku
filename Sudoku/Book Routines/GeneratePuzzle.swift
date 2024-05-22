@@ -51,15 +51,20 @@ struct GeneratePuzzle {
                                       //        var score = score
                                       //        
                                       //---initialize the entire board---
-        Globals.actual.removeAll()
-        Globals.GlobePlayers.removeAll()
+        for j in 0..<9 {
+            for k in 0..<9 {
+                Globals.actual[j][k] = 0
+                Globals.possible[j][k] = ""
+                Globals.GlobePlayers[j][k] = ""
+            }
+        }
         
         //---clear the stacks---
         Globals.actualStack.removeAll()
         Globals.possibleStack.removeAll()
         Globals.bruteForceStop = false
         Globals.actualBackup.removeAll()
-        Globals.GlobePlayers.removeAll()
+        
         Globals.stepsTakenArray.removeAll()
         Globals.stepsCount = 0
         
@@ -135,7 +140,7 @@ struct GeneratePuzzle {
         //        //---return the score as well as the puzzle as a string---
         //        score = Globals.totalScore
         //        return (str, score)
-        Board().getPuzzle()
+//        Board().getPuzzle()
     }
 }
     

@@ -35,6 +35,7 @@ struct PossiblesView: View {
                     Text(Globals.exTime[0])
                 }
                 .font(.footnote)
+                
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
                         GridRow {

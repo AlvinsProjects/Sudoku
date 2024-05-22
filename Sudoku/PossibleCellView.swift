@@ -22,7 +22,7 @@ struct PossibleCellView: View {
         }
         
         for k in 0..<9  {
-            if numArray[k] == " " { newNo += " " }
+            if numArray[k] == "" { newNo += "" }
             if k == 3 || k == 6 { newNo += "\n"}
             newNo += numArray[k] + " "
         }
@@ -32,13 +32,17 @@ struct PossibleCellView: View {
     
     var body: some View {
         Text(displayPoss)
-            .font(.caption2).bold()
-            .foregroundStyle(.yellow).opacity(0.7)
-            .frame(maxWidth: 90, maxHeight: 100)
+            .font(.system(size: 10, weight: .bold, design: .monospaced))
+            .multilineTextAlignment(.leading)
+            .padding(.leading, 4)
+            .bold()
+            .foregroundStyle(.yellow).opacity(0.8)
+            .frame(maxWidth: 50, maxHeight: 50)
             .aspectRatio(1, contentMode: .fit)
 //            .border(Color.black, width: 1)
             .background(Color.squareStandard)
             .accessibilityShowsLargeContentViewer()
+
     }
 }
 

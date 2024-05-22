@@ -23,7 +23,9 @@ struct ContentView: View {
     @State private var getNumbers = ""
     @State private var isDark = true
     @State private var counts = [Int: Int]()
-
+    @State private var newNo = ""
+    @State private var location = 0
+    @State private var numArray = Array(repeating: " ", count: 9)
     
     var body: some View {
         NavigationStack {
@@ -65,6 +67,7 @@ struct ContentView: View {
                 }
                 .padding(5)
                 
+                //draw numbers below puzzle for entering data
                 HStack {
                     ForEach(1..<10) { i in
                         Button(String(i)) {
@@ -120,8 +123,27 @@ struct ContentView: View {
                         //if selected cell has a value, return
                         if board.playerBoard[r][c] != 0 { return }
                         
+                        // Re-set the variables
+                        getNumbers = ""
+                        newNo = ""
+                        for j in 0..<9 {
+                            numArray[j] = ""
+                        }
                         // get the numbers that are available for the selected cell
                         getNumbers = calculatePlayerBoardValues(col: r, row: c)
+
+                        // Arrange the numbers into a grid
+                        for j in 0..<getNumbers.count {
+                            location = Triplets.getNo(str: getNumbers, item: j) - 1
+                            numArray[location] = String(Triplets.getNo(str: getNumbers, item: j))
+                        }
+                        for k in 0..<9  {
+                            if numArray[k] == "" { newNo += "" }
+                            if k == 3 || k == 6 { newNo += "\n"}
+                            newNo += numArray[k] + " "
+                        }
+                        getNumbers = newNo
+
                         showingPossibles = true
                     } label: {
                         VStack {
@@ -303,7 +325,6 @@ struct ContentView: View {
     
     
     
-    
     /*
      =====================================================
      Calculates the possible values for a playerBoard cell
@@ -345,27 +366,8 @@ struct ContentView: View {
                 }
             }
         }
-        //---if possible value is string.Empty, then error because of invalid move------
-        if str.isEmpty {
-            print("Invalid Move:  string.Empty - Calc Possible Values, line 289 poss values")
-        }
         return str
     }
-    
-//    func LoadAndSavePuzzle() {
-//        NavigationLink {
-//            MenuView()
-//        } label: {
-//            VStack {
-//                Text(Image(systemName: "list.number"))
-//                Text("Steps")
-//                    .font(.footnote)
-//            }
-//        }
-//        
-//        
-//        
-//    }
 }
 
 

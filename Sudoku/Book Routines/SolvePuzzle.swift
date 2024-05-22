@@ -148,7 +148,6 @@ struct SolvePuzzle {
                         Globals.stepsCount += 1
                         Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Col Row MiniGrid Elim.  Added \(Globals.actual[col][row]) to (\(row), \(col))"))
                         
-                        
                         changes = true
                         //---accumulate the total score---
                         Globals.totalScore += 1

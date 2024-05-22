@@ -39,6 +39,7 @@ struct puzArray {
     
 struct LoadAndSaveFiles {
     
+    //MARK: Save Puzzle Files to disc - as String
     /// Save Puzzle Files to disc - as String
     /// - Parameters:
     ///   - fileName:     File name
@@ -61,14 +62,7 @@ struct LoadAndSaveFiles {
         }
     }
     
-    
-    /// Function to get the sandbox URL that will be used for all save and reads
-    /// - Returns: URL
-    static func getDocumentsDirectory() -> URL {
-        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return directoryURL[0]
-    }
-    
+
     
     //MARK: Read the Puzzle data from file on disc
     /// Read the puzzle data files from disk.
@@ -90,6 +84,14 @@ struct LoadAndSaveFiles {
             print("Unable to read the file \(fileName).  \(error.localizedDescription)")
         }
         return savedString1
+    }
+    
+    
+    /// Function to get the sandbox URL that will be used for all save and reads
+    /// - Returns: URL
+    static func getDocumentsDirectory() -> URL {
+        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return directoryURL[0]
     }
     
 }

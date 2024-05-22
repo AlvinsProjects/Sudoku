@@ -41,6 +41,7 @@ struct CellView: View {
         }
     }
     
+    
     var backgroundCol: Color {
         if number == 0 {
             return .squareOpen
@@ -74,14 +75,13 @@ struct CellView: View {
         }
         .buttonStyle(.plain)
         .accessibilityShowsLargeContentViewer()
-        
     }
 }
 
 
 
 #Preview {
-    CellView(number: 3,
+    CellView(number: 4,
              selectedNumber: 5,
              highlightState: .standard,
              isCorrect: true,

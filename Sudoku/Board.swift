@@ -37,9 +37,9 @@ struct Board: Equatable {
        
         //---Get the puzzle that is to be tested
         Globals.actual = TestPuzzle.getTestPuzzle()
-//        Globals.actual = puzArray().SudokuFiles[0].content
 
-        //---Measure the time it takes to complete a solution
+
+        //---Measure the time it takes to complete a computer solution
         let start = CFAbsoluteTimeGetCurrent()
         
         if !SolvePuzzle.solvePuzzle() {
