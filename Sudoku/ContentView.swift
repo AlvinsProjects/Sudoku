@@ -21,22 +21,25 @@ struct ContentView: View {
     @State private var showingNewGame = false
     @State private var showingPossibles = false
     @State private var getNumbers = ""
-    @State private var isDark = true
+    @State private var isDarkMode = true
     @State private var counts = [Int: Int]()
     @State private var newNo = ""
     @State private var location = 0
     @State private var numArray = Array(repeating: " ", count: 9)
     
+    @State private var hintMode = false
+    
     var body: some View {
         NavigationStack {
             VStack {
-                let textCol = getHeaderColor(difficulty: "\(board.difficulty)")
+                let textCol = getHeaderColor(difficulty: "\(Globals.bdDifficulty)")
                 
-                Text("    Difficulty:      \(board.difficulty)   \(textCol.icon)    ")
+                Text("    Difficulty:      \(Globals.bdDifficulty)   \(textCol.icon)    ")
                     .font(.title)
                     .frame(height: 45)
                     .background(textCol.col)
                     .clipShape(.capsule)
+                    .padding(.top, 5)
                 Group {
                     Text("Puzzle Name:  \(Globals.puzzName)")
                     Text("Difficulty = \(board.difficulty.rawValue * 2)")
@@ -75,23 +78,30 @@ struct ContentView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .font(.largeTitle)
+                        .foregroundColor(hintMode ? .yellow : .blue)
+                        // hide the numbers that are no longer available
                         .opacity(counts[i, default: 0] == 9 ? 0 : 1)
                     }
                 }
-                .padding()
-           
+
+                // Insert toggle for entry of possible numbers
+                Toggle("Enter Hints:",
+                       systemImage: "square.grid.3x3",isOn: $hintMode)
+                .font(.title3)
+                .foregroundStyle((hintMode ? .yellow : .secondary))
+                .padding(.horizontal, 90)
+                .offset(x: 0, y: -10)
+                
             
                 HStack {
                     // Button to toggle the display mode
-                    Button(isDark ? "Light Mode" : "Dark Mode") {
-                        self.isDark.toggle()
+                    Button(isDarkMode ? "Light Mode" : "Dark Mode") {
+                        self.isDarkMode.toggle()
                     }
-                    
                     // Navigate to load or save a new puzzle
                     NavigationLink("New Puzzle", destination: MenuView())
                 }
                 .buttonStyle(.borderedProminent)
-            
             }
             .navigationTitle("Sudoku Puzzle")
 
@@ -180,7 +190,7 @@ struct ContentView: View {
             }
         }
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
-        .environment(\.colorScheme, isDark ? .dark : .light)
+        .environment(\.colorScheme, isDarkMode ? .dark : .light)
         
         .onAppear(perform: updateCounts)
         .onChange(of: board, initial: true) {
@@ -224,6 +234,16 @@ struct ContentView: View {
         
     
     func highlightState(for row: Int, col: Int) -> CellView.HighlightState {
+//        let startC = col - (col % 3)
+//        let startR = row - (row % 3)
+//        for startC in startC..<startC + 3 {
+//            for startR in startR..<startR + 3 {
+////                CellView[selectedRow][selectedCol]
+////                highlightState(for: startR, col: startC) = .highlighted
+//                return .highlighted
+//            }
+//        }
+        
         if row == selectedRow {
             if col == selectedCol {
                 return .selected
@@ -240,6 +260,9 @@ struct ContentView: View {
     
     func enter(_ number: Int) {
         if selectedRow != -1 {         //Square must be selected
+            // Don't allow any original number to be changed
+            if board.playerBoard[selectedRow][selectedCol] == board.fullBoard[selectedRow][selectedCol] { return }
+            
             if board.playerBoard[selectedRow][selectedCol] == number {
                 board.playerBoard[selectedRow][selectedCol] = 0
                 selectedNum = 0

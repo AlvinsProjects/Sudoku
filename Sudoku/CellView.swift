@@ -81,8 +81,8 @@ struct CellView: View {
 
 
 #Preview {
-    CellView(number: 4,
-             selectedNumber: 5,
+    CellView(number: 3,
+             selectedNumber: 3,
              highlightState: .standard,
              isCorrect: true,
              onSelected: { } )

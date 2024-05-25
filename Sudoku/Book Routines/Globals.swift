@@ -16,7 +16,8 @@ struct Globals {
     static var actual = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))
     static var possible = Array(Array(repeating: Array(repeating: "", count: 9), count: 9))
     static var puzzName = "bfEmpty"
-    static var puzzle = puzArray.SudokuFiles[12]
+    static var puzzle = puzArray.SudokuFiles[12]  //default puzzle
+    static var puzIndex = 12
     static var bruteForceStop = false
     
     static var actualStack = [[[Int]]]()
@@ -31,7 +32,7 @@ struct Globals {
     static var stepsTakenArray = [StepsTaken]()
     static var stepsCount = 0
     
-    static var puzIndex = 12
+    
 }
     
 

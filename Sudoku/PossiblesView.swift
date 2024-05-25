@@ -28,13 +28,14 @@ struct PossiblesView: View {
                     .frame(height: 45)
                     .background(textCol.col)
                     .clipShape(.capsule)
-                    .padding(.top, 25)
+                    .padding(.top, 35)
                 Group {
                     Text("Puzzle Name:  \(Globals.puzzName)")
                     Text("Difficulty = \(board.difficulty.rawValue * 2)")
                     Text(Globals.exTime[0])
                 }
                 .font(.footnote)
+                
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
@@ -55,11 +56,11 @@ struct PossiblesView: View {
                 
                 //Selection numbers at the base of the puzzle
                 HStack {
-                    ForEach(0..<9) { i in
+                    ForEach(1..<10) { i in
                         Text("\(i) ")
                             .frame(maxWidth: .infinity)
                             .font(.largeTitle)
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(.blue).opacity(0.4)
                     }
                 }
                 .padding(5)

@@ -44,13 +44,8 @@ struct GeneratePuzzle {
      ============================================================
      Generate a new Sudoku puzzle
      ============================================================*/
-    static func generateNewPuzzle() { //(level: Int, score: Int) -> (str: String, score: Int) {
-                                      //
-                                      //        var str = ""
-                                      ////        var numberOfEmptyCells = 0
-                                      //        var score = score
-                                      //        
-                                      //---initialize the entire board---
+    func generateNewPuzzle() {
+        
         for j in 0..<9 {
             for k in 0..<9 {
                 Globals.actual[j][k] = 0
@@ -89,11 +84,12 @@ struct GeneratePuzzle {
         ////                print("Error at line 87 of generateNewPuzzle")
         ////                break
         ////        }
-        //        
+        
+        
         //---clear the stacks that are used in brute-force elimination ---
-        //        Globals.actualStack.removeAll()
-        //        Globals.possibleStack.removeAll()
-        //        Globals.bruteForceStop = false
+                Globals.actualStack.removeAll()
+                Globals.possibleStack.removeAll()
+                Globals.bruteForceStop = false
         
         //        Board.playerBoard.removeAll()
         //        Board().fullBoard.removeAll()

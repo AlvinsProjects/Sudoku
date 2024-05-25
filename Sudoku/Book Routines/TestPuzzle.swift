@@ -13,7 +13,7 @@ struct TestPuzzle: Equatable {
     
     static func getTestPuzzle() -> [[Int]]  {
     
-//        GeneratePuzzle.generateNewPuzzle()
+//        GeneratePuzzle().generateNewPuzzle()
 //        let puzIndex = Globals.puzzle.number
         let name = Globals.puzzle.name
 //        let cont = Globals.puzzle.content

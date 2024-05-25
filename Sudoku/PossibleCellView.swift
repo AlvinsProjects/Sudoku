@@ -20,7 +20,6 @@ struct PossibleCellView: View {
             location = Triplets.getNo(str: number, item: j) - 1
             numArray[location] = String(Triplets.getNo(str: number, item: j))
         }
-        
         for k in 0..<9  {
             if numArray[k] == "" { newNo += "" }
             if k == 3 || k == 6 { newNo += "\n"}

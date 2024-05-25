@@ -29,6 +29,7 @@ struct MenuView: View {
 //    @State private var count = 0
     @State private var puzzle = puzArray.SudokuFiles[12]
     @State private var index = 0
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationStack {
@@ -84,11 +85,15 @@ struct MenuView: View {
     func puzNum(puzzle: Puzzle) {
         print(puzzle.number, puzzle.name, puzzle.content)
         Globals.puzzle = puzzle
-//        selectedPuzzle.number = index
+        Globals.puzIndex = puzzle.number
+        
+//        return
+        
+//        selectedPuzzle.number = indexc
 //        TestPuzzle.getTestPuzzle()
-//        Board().getPuzzle()
-        
-        
+//        Board().getNewPuzzle()
+//        ContentView().newGame(difficulty: .Medium)
+        dismiss()
     }
 }
 
