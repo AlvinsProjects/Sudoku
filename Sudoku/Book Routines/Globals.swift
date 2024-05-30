@@ -15,9 +15,10 @@ struct Globals {
     //---used to store the state of the grid---
     static var actual = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))
     static var possible = Array(Array(repeating: Array(repeating: "", count: 9), count: 9))
-    static var puzzName = "bfEmpty"
-    static var puzzle = puzArray.SudokuFiles[12]  //default puzzle
+    static var puzzName = ""
     static var puzIndex = 12
+    static var puzzle = puzArray.SudokuFiles[puzIndex]  //default puzzle
+    
     static var bruteForceStop = false
     
     static var actualStack = [[[Int]]]()

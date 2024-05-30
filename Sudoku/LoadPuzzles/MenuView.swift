@@ -89,7 +89,7 @@ struct MenuView: View {
         
 //        return
         
-//        selectedPuzzle.number = indexc
+//        selectedPuzzle.number = index
 //        TestPuzzle.getTestPuzzle()
 //        Board().getNewPuzzle()
 //        ContentView().newGame(difficulty: .Medium)

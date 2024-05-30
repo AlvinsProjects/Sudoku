@@ -49,7 +49,7 @@ struct Board: Equatable {
             }
         }
         let executionTime = CFAbsoluteTimeGetCurrent() - start
-        Globals.exTime.append("Solution Execution Time:  \(String(format: "%.3f", executionTime)) secs")
+        Globals.exTime.append("Computer Execution Time:  \(String(format: "%.3f", executionTime)) secs")
         
         
         //---Print the solution (for reference)

@@ -26,7 +26,8 @@ extension Color {
     static let squareTextWrong = Color.red
     
     // text for a square that has the same number as our selected square
-    static let squareTextSame = Color.yellow
+    static let squareTextSame = Color.orange
+//    static let squareBackSame = Color.red
     
     // ?
     static let squareOpen = Color.secondary

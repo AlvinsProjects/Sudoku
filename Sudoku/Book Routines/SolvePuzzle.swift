@@ -10,7 +10,6 @@ import Foundation
 
 struct SolvePuzzle {
     
-    
     /*
     ==================================================
      Steps to solve the puzzle

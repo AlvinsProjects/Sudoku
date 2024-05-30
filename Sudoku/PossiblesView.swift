@@ -42,7 +42,6 @@ struct PossiblesView: View {
                         GridRow {
                             ForEach(0..<9) { col in
                                 PossibleCellView(number: Globals.GlobePlayers[row][col])
-                                
                                 if col == 2 || col == 5 {
                                     Spacer()
                                         .frame(width: spacing, height: 1)

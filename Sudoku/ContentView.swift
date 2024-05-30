@@ -28,6 +28,7 @@ struct ContentView: View {
     @State private var numArray = Array(repeating: " ", count: 9)
     
     @State private var hintMode = false
+    @State private var hints = ""
     
     var body: some View {
         NavigationStack {
@@ -88,7 +89,7 @@ struct ContentView: View {
                 Toggle("Enter Hints:",
                        systemImage: "square.grid.3x3",isOn: $hintMode)
                 .font(.title3)
-                .foregroundStyle((hintMode ? .yellow : .secondary))
+                .foregroundStyle(hintMode ? .yellow : .secondary)
                 .padding(.horizontal, 90)
                 .offset(x: 0, y: -10)
                 
@@ -234,16 +235,6 @@ struct ContentView: View {
         
     
     func highlightState(for row: Int, col: Int) -> CellView.HighlightState {
-//        let startC = col - (col % 3)
-//        let startR = row - (row % 3)
-//        for startC in startC..<startC + 3 {
-//            for startR in startR..<startR + 3 {
-////                CellView[selectedRow][selectedCol]
-////                highlightState(for: startR, col: startC) = .highlighted
-//                return .highlighted
-//            }
-//        }
-        
         if row == selectedRow {
             if col == selectedCol {
                 return .selected
@@ -259,19 +250,31 @@ struct ContentView: View {
     
     
     func enter(_ number: Int) {
-        if selectedRow != -1 {         //Square must be selected
+        
+        if selectedRow != -1 {   //Square must be selected
+            
             // Don't allow any original number to be changed
             if board.playerBoard[selectedRow][selectedCol] == board.fullBoard[selectedRow][selectedCol] { return }
             
-            if board.playerBoard[selectedRow][selectedCol] == number {
-                board.playerBoard[selectedRow][selectedCol] = 0
-                selectedNum = 0
+            if !hintMode {
+                if board.playerBoard[selectedRow][selectedCol] == number {
+                    board.playerBoard[selectedRow][selectedCol] = 0
+                    selectedNum = 0
+                } else {
+                    board.playerBoard[selectedRow][selectedCol] = number
+                    selectedNum = number
+                }
             } else {
-                board.playerBoard[selectedRow][selectedCol] = number
-                selectedNum = number
+                hints += String(number)
+//                print("\(number)  hello world  \(hints)")
+                //                let demo = 12345
+                
+                
+                
             }
         }
     }
+        
     
     
     func newGame(difficulty: Board.Difficulty) {

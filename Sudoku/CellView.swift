@@ -65,16 +65,26 @@ struct CellView: View {
     
     
     var body: some View {
-        Button(action: onSelected) {
-            Text(displayNumber)
-                .font(.title)
-                .foregroundStyle(foregroundColor)
-                .frame(maxWidth: 100, maxHeight: 100)
-                .aspectRatio(1, contentMode: .fit)
-                .background(highlightState.color)
+        ZStack {
+            Button(action: onSelected) {
+                Text(displayNumber)
+                    .font(.title)
+                    .foregroundStyle(foregroundColor)
+                    .frame(maxWidth: 100, maxHeight: 100)
+                    .aspectRatio(1, contentMode: .fit)
+                    .background(highlightState.color)
+            }
+            .buttonStyle(.plain)
+            .accessibilityShowsLargeContentViewer()
+            
+            
+//            Text("1 2 3\n4 5 6\n789")
+//                .font(.system(size: 10, weight: .bold, design: .monospaced))
+//                .multilineTextAlignment(.leading)
+//                .padding(.leading, 5)
+//                .bold()
+//                .foregroundStyle(.yellow)
         }
-        .buttonStyle(.plain)
-        .accessibilityShowsLargeContentViewer()
     }
 }
 

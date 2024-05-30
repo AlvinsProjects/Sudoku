@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>88</string>
+					<string>89</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>87</string>
+					<string>88</string>
 					<key>Timestamp</key>
-					<string>738340629.548782</string>
+					<string>738358553.036508</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -43,7 +43,97 @@
 				<key>trailing</key>
 				<string>                       systemImage: "square.grid.3x3",isOn: $hintMode)
                 .font(.title3)
-                .foregroundStyle((hintMode ? .yellow : .secondary))
+                .foregroundStyle(hintMode ? .yellow : .secondary)
+</string>
+			</dict>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>14</string>
+					<key>EndingLineNumber</key>
+					<string>251</string>
+					<key>StartingColumnNumber</key>
+					<string>9</string>
+					<key>StartingLineNumber</key>
+					<string>251</string>
+					<key>Timestamp</key>
+					<string>738359933.1930341</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Sudoku/ContentView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>enter</string>
+				<key>leading</key>
+				<string>    
+    
+    func </string>
+				<key>trailing</key>
+				<string>(_ number: Int) {
+        
+        if selectedRow != -1 {   //Square must be selected
+</string>
+			</dict>
+			<key>title</key>
+			<string>Enter the Cell Number</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>7</string>
+					<key>EndingLineNumber</key>
+					<string>66</string>
+					<key>StartingColumnNumber</key>
+					<string>4</string>
+					<key>StartingLineNumber</key>
+					<string>66</string>
+					<key>Timestamp</key>
+					<string>738681138.618066</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Sudoku/CellView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>var</string>
+				<key>leading</key>
+				<string>    
+    
+    </string>
+				<key>trailing</key>
+				<string> body: some View {
+        ZStack {
+            Button(action: onSelected) {
 </string>
 			</dict>
 			<key>type</key>
