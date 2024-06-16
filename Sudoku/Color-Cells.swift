@@ -27,10 +27,9 @@ extension Color {
     
     // text for a square that has the same number as our selected square
     static let squareTextSame = Color.orange
-//    static let squareBackSame = Color.red
     
-    // ?
-    static let squareOpen = Color.secondary
+    // background color of cells with no number
+    static let squareOpen = Color(red: 0.38, green: 0.38, blue: 0.44) //Color.gray
     
     // Numbers under the puzzle - for data entry
     static let hintMode = Color.yellow

@@ -33,6 +33,5 @@ struct TestPuzzle: Equatable {
         }
         return testGrid
     }
-    
 }
 

@@ -55,15 +55,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>14</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>251</string>
+					<string>252</string>
 					<key>StartingColumnNumber</key>
-					<string>9</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
 					<string>251</string>
 					<key>Timestamp</key>
-					<string>738359933.1930341</string>
+					<string>739564028.513382</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -79,15 +79,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>enter</string>
+				<string>    func enter(_ number: Int) {
+</string>
 				<key>leading</key>
 				<string>    
     
-    func </string>
+</string>
 				<key>trailing</key>
-				<string>(_ number: Int) {
-        
+				<string>        
         if selectedRow != -1 {   //Square must be selected
+            
 </string>
 			</dict>
 			<key>title</key>
@@ -101,15 +102,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>7</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>66</string>
+					<string>71</string>
 					<key>StartingColumnNumber</key>
-					<string>4</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>66</string>
+					<string>70</string>
 					<key>Timestamp</key>
-					<string>738681138.618066</string>
+					<string>739727612.365465</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -125,15 +126,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>var</string>
+				<string>    var body: some View {
+</string>
 				<key>leading</key>
 				<string>    
     
-    </string>
+</string>
 				<key>trailing</key>
-				<string> body: some View {
-        ZStack {
-            Button(action: onSelected) {
+				<string>        Button(action: onSelected) {
+            ZStack {
+                if hintMode {
 </string>
 			</dict>
 			<key>type</key>

@@ -43,44 +43,53 @@ struct MenuView: View {
                         }
                     }
                 }
-                Section(header: Text("AVAILABLE PUZZLES")) {
-//                    Text("Selected:    \(selectedPuzzle.number).  \(selectedPuzzle.name)").bold()
-                    
-                    Text("The files (puzzles) listed are the puzzles presented in the \"Programming SUDOKU\" book by Wei-Ming Lee.\n\nCRME are puzzles solved by Column, Row, and Minigrid elimination.\n\nThe remaining puzzles are listed by increasing difficulty - upto \"Brute Force\" methods.\n\nThe \"BruteForceEmpty\" puzzle is a blank puzzle that is solved by the computer and presented to the user.  BruteForce is the default setting and it generates random puzzles.\n\nIn order of difficulty, the computer solution methods are:\n\n1.  CRME\n2.  Lone Rangers\n3.  Twins\n4.  Triplets\n5.  Brute Force.")
-                        .font(.system(size: 15, weight: .regular, design: .serif))
+                
+                
+                Button(action: { puzNum(puzzle: puzzle)}) {
+                    Text("Create New Puzzle").bold()
                 }
+                .buttonStyle(.borderedProminent)
+                .frame(width: 200, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                
             }
+            
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Menu {
-                        Section("FILES:") {
-                            
-                            Button(action: { readFile = LoadAndSaveFiles.readFile(fileName: puzzle.name) }) {
-                                Label("Load a file", systemImage: "folder")
-                            }
-                            Button(action: { LoadAndSaveFiles.saveFile(fileName: puzzle.name, fileContents: puzzle.content) } ) {
-                                Label("Save a file", systemImage: "doc")
-                            }
-                        }
-                        Section(header: Text("Secondary actions")) {
-                            Button(action: { puzNum(puzzle: puzzle)}) {
-                                Label("Create new puzzle", systemImage: "trash")
-                            }
-                        }
-                    }
-                label: {
+                //MARK: Display all possible numbers
+                NavigationLink {
+                    HelpView()
+                } label: {
                     VStack {
-                        Text(Image(systemName: "folder"))
-                        Text("File Menu")
+                        Text(Image(systemName: "questionmark.circle"))
+                        Text("Help")
                             .font(.footnote)
                     }
                 }
+            }
+            
+            .toolbar {
+                Menu {
+                    Section("FILES:") {
+                        Button(action: { readFile = LoadAndSaveFiles.readFile(fileName: puzzle.name) }) {
+                            Label("Load a file", systemImage: "folder")
+                        }
+                        Button(action: { LoadAndSaveFiles.saveFile(fileName: puzzle.name, fileContents: puzzle.content) } ) {
+                            Label("Save a file", systemImage: "doc")
+                        }
+                    }
                 }
+            label: {
+                VStack {
+                    Text(Image(systemName: "folder"))
+                    Text("File Menu")
+                        .font(.footnote)
+                }
+            }
             }
             .navigationTitle("Puzzle Selection")
         }
     }
 
+    
     
     func puzNum(puzzle: Puzzle) {
         print(puzzle.number, puzzle.name, puzzle.content)

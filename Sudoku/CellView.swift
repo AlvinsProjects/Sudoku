@@ -10,6 +10,8 @@ import SwiftUI
 
 struct CellView: View {
     
+    @State private var hintMode = true
+    
     enum HighlightState {
         case standard, highlighted, selected, open
         
@@ -32,6 +34,8 @@ struct CellView: View {
     let highlightState: HighlightState
     let isCorrect: Bool
     var onSelected: () -> Void
+//    var hintMode: Bool
+//    var hintString: String
     
     var displayNumber: String {
         if number == 0 {
@@ -42,13 +46,13 @@ struct CellView: View {
     }
     
     
-    var backgroundCol: Color {
-        if number == 0 {
-            return .squareOpen
-        } else {
-            return .squareStandard
-        }
-    }
+//    var backgroundCol: Color {
+//        if number == 0 {
+//            return .squareOpen
+//        } else {
+//            return .squareStandard
+//        }
+//    }
     
     
     var foregroundColor: Color {
@@ -65,25 +69,32 @@ struct CellView: View {
     
     
     var body: some View {
-        ZStack {
-            Button(action: onSelected) {
-                Text(displayNumber)
-                    .font(.title)
-                    .foregroundStyle(foregroundColor)
-                    .frame(maxWidth: 100, maxHeight: 100)
-                    .aspectRatio(1, contentMode: .fit)
-                    .background(highlightState.color)
+        Button(action: onSelected) {
+            ZStack {
+                if hintMode {
+                    Text(displayNumber)
+                        .font(.title)
+                        .foregroundStyle(foregroundColor)
+                        .frame(maxWidth: 100, maxHeight: 100)
+                        .aspectRatio(1, contentMode: .fit)
+                        .background(highlightState.color)
+                    
+                } else {
+                    Text("1 2 3\n4 5 6\n7 8 9")
+                        .font(.system(size: 10, weight: .bold, design: .monospaced))
+                        .bold()
+//                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: 100, maxHeight: 100)
+//                        .padding(.leading, 5)
+                        .foregroundStyle(.white)
+                        .background(highlightState.color)
+                    
+                }
             }
             .buttonStyle(.plain)
             .accessibilityShowsLargeContentViewer()
             
-            
-//            Text("1 2 3\n4 5 6\n789")
-//                .font(.system(size: 10, weight: .bold, design: .monospaced))
-//                .multilineTextAlignment(.leading)
-//                .padding(.leading, 5)
-//                .bold()
-//                .foregroundStyle(.yellow)
+
         }
     }
 }
@@ -95,5 +106,6 @@ struct CellView: View {
              selectedNumber: 3,
              highlightState: .standard,
              isCorrect: true,
-             onSelected: { } )
+             onSelected: { })//, hintMode: true )  //, hintString: "123" )
 }
+

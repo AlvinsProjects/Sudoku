@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A2E77B12C1F7B280006162E /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2E77B02C1F7B280006162E /* HelpView.swift */; };
 		4A34FDBD2BC8747B0037E008 /* TestPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A34FDBC2BC8747B0037E008 /* TestPuzzle.swift */; };
 		4A43B01E2BE001FF00F0399A /* StepsTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A43B01D2BE001FF00F0399A /* StepsTakenView.swift */; };
 		4A43B0202BE6BB7900F0399A /* PossibleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A43B01F2BE6BB7900F0399A /* PossibleCellView.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A2E77B02C1F7B280006162E /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		4A34FDBC2BC8747B0037E008 /* TestPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle.swift; sourceTree = "<group>"; };
 		4A43B01D2BE001FF00F0399A /* StepsTakenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsTakenView.swift; sourceTree = "<group>"; };
 		4A43B01F2BE6BB7900F0399A /* PossibleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleCellView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				4AF10D432BF13E1300A7D6B4 /* LoadAndSaveFiles.swift */,
 				4AF10D442BF13E1300A7D6B4 /* MenuView.swift */,
+				4A2E77B02C1F7B280006162E /* HelpView.swift */,
 			);
 			path = LoadPuzzles;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				4A34FDBD2BC8747B0037E008 /* TestPuzzle.swift in Sources */,
 				4A43B01E2BE001FF00F0399A /* StepsTakenView.swift in Sources */,
 				4AE06C7B2BB47EA300C01FB9 /* Globals.swift in Sources */,
+				4A2E77B12C1F7B280006162E /* HelpView.swift in Sources */,
 				4AAA850C2BB0A877009DD948 /* SudokuApp.swift in Sources */,
 				4AAA851A2BB0A8CF009DD948 /* Board.swift in Sources */,
 				4AAA851C2BB0B54D009DD948 /* Color-Cells.swift in Sources */,

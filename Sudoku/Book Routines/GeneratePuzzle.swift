@@ -75,15 +75,15 @@ struct GeneratePuzzle {
         //        Globals.actualBackup = Globals.actual
         //        
         //        //---set the number of empty cells based on the level of difficulty---
-        ////        switch level {
-        ////            case 1: numberOfEmptyCells = Int.random(in: 40...45)
-        ////            case 2: numberOfEmptyCells = Int.random(in: 46...49)
-        ////            case 3: numberOfEmptyCells = Int.random(in: 50...53)
-        ////            case 4: numberOfEmptyCells = Int.random(in: 54...58)
-        ////            default:
-        ////                print("Error at line 87 of generateNewPuzzle")
-        ////                break
-        ////        }
+        //        switch level {
+        //            case 1: numberOfEmptyCells = Int.random(in: 40...45)
+        //            case 2: numberOfEmptyCells = Int.random(in: 46...49)
+        //            case 3: numberOfEmptyCells = Int.random(in: 50...53)
+        //            case 4: numberOfEmptyCells = Int.random(in: 54...58)
+        //            default:
+        //                print("Error at line 87 of generateNewPuzzle")
+        //                break
+        //        }
         
         
         //---clear the stacks that are used in brute-force elimination ---

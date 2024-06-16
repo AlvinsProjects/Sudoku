@@ -25,7 +25,7 @@ struct ContentView: View {
     @State private var counts = [Int: Int]()
     @State private var newNo = ""
     @State private var location = 0
-    @State private var numArray = Array(repeating: " ", count: 9)
+    @State private var numArray = Array(repeating: "", count: 9)
     
     @State private var hintMode = false
     @State private var hints = ""
@@ -93,7 +93,6 @@ struct ContentView: View {
                 .padding(.horizontal, 90)
                 .offset(x: 0, y: -10)
                 
-            
                 HStack {
                     // Button to toggle the display mode
                     Button(isDarkMode ? "Light Mode" : "Dark Mode") {
@@ -140,6 +139,7 @@ struct ContentView: View {
                         for j in 0..<9 {
                             numArray[j] = ""
                         }
+                        
                         // get the numbers that are available for the selected cell
                         getNumbers = calculatePlayerBoardValues(col: r, row: c)
 
@@ -257,6 +257,7 @@ struct ContentView: View {
             if board.playerBoard[selectedRow][selectedCol] == board.fullBoard[selectedRow][selectedCol] { return }
             
             if !hintMode {
+                
                 if board.playerBoard[selectedRow][selectedCol] == number {
                     board.playerBoard[selectedRow][selectedCol] = 0
                     selectedNum = 0
@@ -264,14 +265,15 @@ struct ContentView: View {
                     board.playerBoard[selectedRow][selectedCol] = number
                     selectedNum = number
                 }
-            } else {
-                hints += String(number)
+            } //else {
+//                hints += String(number)
 //                print("\(number)  hello world  \(hints)")
                 //                let demo = 12345
+//                board.playerBoard[selectedRow][selectedCol] = number
+//                selectedNum = number
                 
                 
-                
-            }
+//            }
         }
     }
         
@@ -304,7 +306,7 @@ struct ContentView: View {
         
         if correctCount == board.size * board.size {
             Task {
-                try await Task.sleep(for: .seconds(3.0))
+                try await Task.sleep(for: .seconds(2.0))
                 showingNewGame = true
                 solved = true
             }

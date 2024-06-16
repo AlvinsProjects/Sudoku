@@ -6,7 +6,7 @@
 //
 
 
-import Foundation
+
 import SwiftUI
 
 
@@ -16,7 +16,7 @@ struct Globals {
     static var actual = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))
     static var possible = Array(Array(repeating: Array(repeating: "", count: 9), count: 9))
     static var puzzName = ""
-    static var puzIndex = 12
+    static var puzIndex = 10
     static var puzzle = puzArray.SudokuFiles[puzIndex]  //default puzzle
     
     static var bruteForceStop = false
@@ -42,3 +42,6 @@ struct StepsTaken: Identifiable {
     var index: Int
     let steps: String
 }
+
+
+

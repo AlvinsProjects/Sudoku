@@ -23,19 +23,20 @@ struct Board: Equatable {
     let difficulty: Difficulty
     var fullBoard = [[Int]]()
     var playerBoard = [[Int]]()
-    
+//    var count = 0
     
     init(difficulty: Difficulty = .Medium) {
         self.difficulty = difficulty
         getPuzzle()
         create()
         prepareForPlay()
+//        printSolution()
     }
     
     
     func getPuzzle() {
         
-        //---Get the puzzle that is to be tested
+        //---Get the puzzle that is to be solved
         Globals.actual = TestPuzzle.getTestPuzzle()
         
         //---Measure the time it takes to complete a computer solution
@@ -44,20 +45,21 @@ struct Board: Equatable {
         if !SolvePuzzle.solvePuzzle() {
             print("CRME Solution Failed")
             BruteForce.solvePuzzleByBruteForce()
-            if SolvePuzzle.solvePuzzle() {
-                print("Puzzle Solved using Brute Force")
-            }
         }
+        
+        if SolvePuzzle.solvePuzzle() {
+            print("Puzzle Solved using Brute Force")
+        }
+        
         let executionTime = CFAbsoluteTimeGetCurrent() - start
         Globals.exTime.append("Computer Execution Time:  \(String(format: "%.3f", executionTime)) secs")
         
-        
+//        print(count)
         //---Print the solution (for reference)
         print("\nSolution: for \(Globals.puzzName)")
         for j in 0..<9 {
             print(Globals.actual[j])  //, playerBoard[j])
         }
-        
         
         if Globals.stepsTakenArray.isEmpty {
             print("There were no solution steps available!")
@@ -67,25 +69,26 @@ struct Board: Equatable {
     
     mutating private func create() {
         //MARK: Paul Hudson's code
-        //        let numbers = Array(1...size).shuffled()
-        //        let positions = [0, 3, 6, 1, 4, 7, 2, 5, 8]
-        //
-        //        let rows = Array([[0, 1, 2].shuffled(), [3, 4, 5].shuffled(),
-        //                          [6, 7, 8].shuffled()].shuffled()).joined()
-        //
-        //        let columns = Array([[0, 1, 2].shuffled(), [3, 4, 5].shuffled(),
-        //                             [6, 7, 8].shuffled()].shuffled()).joined()
-        //        for row in rows {
-        //            var newRow = [Int]()
-        //
-        //            for column in columns {
-        //                let position = (positions[row] + column) % size
-        //                newRow.append(numbers[position])
-        //            }
-        //            fullBoard.append(newRow)
-        //        }
-        //        fullBoard = TestPuzzle.getTestPuzzle()
-        
+//        let numbers = Array(1...size).shuffled()
+//        let positions = [0, 3, 6, 1, 4, 7, 2, 5, 8]
+//        
+//        let rows = Array([[0, 1, 2].shuffled(), [3, 4, 5].shuffled(),
+//                          [6, 7, 8].shuffled()].shuffled()).joined()
+//        
+//        let columns = Array([[0, 1, 2].shuffled(), [3, 4, 5].shuffled(),
+//                             [6, 7, 8].shuffled()].shuffled()).joined()
+//        for row in rows {
+//            var newRow = [Int]()
+//            
+//            for column in columns {
+//                let position = (positions[row] + column) % size
+//                newRow.append(numbers[position])
+//            }
+//            fullBoard.append(newRow)
+//            print(newRow)
+//        }
+//        fullBoard = TestPuzzle.getTestPuzzle()
+        print("Hello")
         fullBoard = Globals.actual  //The solved puzzle
         playerBoard = Globals.actual
     }
@@ -104,9 +107,21 @@ struct Board: Equatable {
     }
     
     
-    mutating func getNewPuzzle() {
-        getPuzzle()
-        create()
-        prepareForPlay()
-    }
+    
+//    func printSolution() {
+//        //---Print the solution (for reference)
+//        print("\nSolution: for \(Globals.puzzName)")
+//        for j in 0..<9 {
+//            print(Globals.actual[j])  //, playerBoard[j])
+//        }
+//    }
+    
+    
+    
+    
+//    mutating func getNewPuzzle() {
+//        getPuzzle()
+//        create()
+//        prepareForPlay()
+//    }
 }

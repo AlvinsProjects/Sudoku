@@ -35,7 +35,6 @@ struct SolvePuzzle {
                                                 }
                                             } while changes
                                             
-                                            
                                             if exitLoop { break }
                                             //---Look for Lone Rangers in Minigrids---
                                             changes = LoneRangers.lookForLoneRangersInMinigrids()
@@ -44,7 +43,6 @@ struct SolvePuzzle {
                                                 break
                                             }
                                         } while changes
-                                        
                                         
                                         if exitLoop { break }
                                         //---Look for Lone Rangers in Rows---
