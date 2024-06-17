@@ -52,9 +52,9 @@ struct Board: Equatable {
         }
         
         let executionTime = CFAbsoluteTimeGetCurrent() - start
-        Globals.exTime.append("Computer Execution Time:  \(String(format: "%.3f", executionTime)) secs")
+        Globals.exTime = "\(String(format: "%.4f", executionTime)) secs"
         
-//        print(count)
+        print(Globals.exTime)
         //---Print the solution (for reference)
         print("\nSolution: for \(Globals.puzzName)")
         for j in 0..<9 {

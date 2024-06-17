@@ -12,6 +12,7 @@
 		4A43B01E2BE001FF00F0399A /* StepsTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A43B01D2BE001FF00F0399A /* StepsTakenView.swift */; };
 		4A43B0202BE6BB7900F0399A /* PossibleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A43B01F2BE6BB7900F0399A /* PossibleCellView.swift */; };
 		4A43B0242BE723AA00F0399A /* PossiblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A43B0232BE723AA00F0399A /* PossiblesView.swift */; };
+		4A670EC32C20A41F00B65EA7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A670EC22C20A41F00B65EA7 /* HeaderView.swift */; };
 		4AAA850C2BB0A877009DD948 /* SudokuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA850B2BB0A877009DD948 /* SudokuApp.swift */; };
 		4AAA850E2BB0A877009DD948 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA850D2BB0A877009DD948 /* ContentView.swift */; };
 		4AAA85102BB0A878009DD948 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AAA850F2BB0A878009DD948 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		4A43B01D2BE001FF00F0399A /* StepsTakenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsTakenView.swift; sourceTree = "<group>"; };
 		4A43B01F2BE6BB7900F0399A /* PossibleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleCellView.swift; sourceTree = "<group>"; };
 		4A43B0232BE723AA00F0399A /* PossiblesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossiblesView.swift; sourceTree = "<group>"; };
+		4A670EC22C20A41F00B65EA7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		4AAA85082BB0A877009DD948 /* Sudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AAA850B2BB0A877009DD948 /* SudokuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuApp.swift; sourceTree = "<group>"; };
 		4AAA850D2BB0A877009DD948 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				4AAA850B2BB0A877009DD948 /* SudokuApp.swift */,
 				4AAA850D2BB0A877009DD948 /* ContentView.swift */,
+				4A670EC22C20A41F00B65EA7 /* HeaderView.swift */,
 				4A43B01D2BE001FF00F0399A /* StepsTakenView.swift */,
 				4AAA851B2BB0B54D009DD948 /* Color-Cells.swift */,
 				4AAA851D2BB0B71B009DD948 /* CellView.swift */,
@@ -220,6 +223,7 @@
 				4A34FDBD2BC8747B0037E008 /* TestPuzzle.swift in Sources */,
 				4A43B01E2BE001FF00F0399A /* StepsTakenView.swift in Sources */,
 				4AE06C7B2BB47EA300C01FB9 /* Globals.swift in Sources */,
+				4A670EC32C20A41F00B65EA7 /* HeaderView.swift in Sources */,
 				4A2E77B12C1F7B280006162E /* HelpView.swift in Sources */,
 				4AAA850C2BB0A877009DD948 /* SudokuApp.swift in Sources */,
 				4AAA851A2BB0A8CF009DD948 /* Board.swift in Sources */,

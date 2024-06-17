@@ -34,4 +34,10 @@ extension Color {
     // Numbers under the puzzle - for data entry
     static let hintMode = Color.yellow
     
+    //Help screen background gradient
+    static let centerColor = Color(red: 0.06, green: 0.23, blue: 0.90, opacity: 0.6)
+    static let outerColor = Color(red: 0.28, green: 0.38, blue: 0.44, opacity: 0.5)
 }
+
+
+//rgba( 16, 61, 230, 100%)

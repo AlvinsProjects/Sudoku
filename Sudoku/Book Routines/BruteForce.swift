@@ -63,8 +63,9 @@ struct BruteForce {
             Globals.actual[c][r] = Triplets.getNo(str: possibleValues, item: i)
             
             Globals.stepsCount += 1
-            Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, 
-                                                      steps: "Solved by Brute Force.  Added \(Globals.actual[c][r]) to (\(r), \(c))"))
+            Globals.stepsTakenArray.append(
+                StepsTaken(index: Globals.stepsCount,
+                           steps: "Solved by Brute Force.  Added \(Globals.actual[c][r]) to (\(r), \(c))"))
             
             
             if SolvePuzzle.solvePuzzle() {

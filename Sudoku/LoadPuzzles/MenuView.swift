@@ -45,12 +45,11 @@ struct MenuView: View {
                 }
                 
                 
-                Button(action: { puzNum(puzzle: puzzle)}) {
+                Button(action: { self.puzNum(puzzle: puzzle) } ) {
                     Text("Create New Puzzle").bold()
                 }
                 .buttonStyle(.borderedProminent)
                 .frame(width: 200, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                
             }
             
             .toolbar {

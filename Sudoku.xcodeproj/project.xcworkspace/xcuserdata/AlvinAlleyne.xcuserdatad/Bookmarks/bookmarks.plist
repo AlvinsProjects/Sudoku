@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>89</string>
+					<string>99</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>88</string>
+					<string>98</string>
 					<key>Timestamp</key>
-					<string>738358553.036508</string>
+					<string>740342302.759994</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,16 +34,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>                Toggle("Enter Hints:",
+				<string>            }
 </string>
 				<key>leading</key>
-				<string>
-                // Insert toggle for entry of possible numbers
+				<string>                }
+                .buttonStyle(.borderedProminent)
 </string>
 				<key>trailing</key>
-				<string>                       systemImage: "square.grid.3x3",isOn: $hintMode)
-                .font(.title3)
-                .foregroundStyle(hintMode ? .yellow : .secondary)
+				<string>            .navigationTitle("Sudoku Puzzle")
+            Spacer()
+            
 </string>
 			</dict>
 			<key>type</key>
@@ -57,13 +57,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>252</string>
+					<string>245</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>251</string>
+					<string>244</string>
 					<key>Timestamp</key>
-					<string>739564028.513382</string>
+					<string>740342381.533914</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>

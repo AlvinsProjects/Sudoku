@@ -33,21 +33,12 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                let textCol = getHeaderColor(difficulty: "\(Globals.bdDifficulty)")
-                
-                Text("    Difficulty:      \(Globals.bdDifficulty)   \(textCol.icon)    ")
-                    .font(.title)
-                    .frame(height: 45)
-                    .background(textCol.col)
-                    .clipShape(.capsule)
-                    .padding(.top, 5)
-                Group {
-                    Text("Puzzle Name:  \(Globals.puzzName)")
-                    Text("Difficulty = \(board.difficulty.rawValue * 2)")
-                    Text(Globals.exTime[0])
-                }
-                .font(.footnote)
-                
+
+                HeaderView(diff: "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)",
+                           puzzName: Globals.puzzName,
+                           exTime: Globals.exTime)
+                .padding(.bottom, 8)
+            
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
                         GridRow {
@@ -68,8 +59,10 @@ struct ContentView: View {
                         }
                         .padding(.bottom, row == 2 || row == 5 ? spacing : 0)
                     }
+                    
                 }
-                .padding(5)
+
+//                Spacer()
                 
                 //draw numbers below puzzle for entering data
                 HStack {
@@ -84,6 +77,7 @@ struct ContentView: View {
                         .opacity(counts[i, default: 0] == 9 ? 0 : 1)
                     }
                 }
+//                Spacer()
 
                 // Insert toggle for entry of possible numbers
                 Toggle("Enter Hints:",
@@ -104,8 +98,7 @@ struct ContentView: View {
                 .buttonStyle(.borderedProminent)
             }
             .navigationTitle("Sudoku Puzzle")
-
-
+            Spacer()
             
             //MARK: Top Toolbar
             .toolbar {
@@ -403,4 +396,6 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+
 

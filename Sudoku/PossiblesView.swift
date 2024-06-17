@@ -21,21 +21,10 @@ struct PossiblesView: View {
         NavigationStack {
             VStack {
                 
-                let textCol = ContentView().getHeaderColor(difficulty: "\(Globals.bdDifficulty)")
-                
-                Text("  Difficulty:   \(Globals.bdDifficulty)   \(textCol.icon)  ")
-                    .font(.title)
-                    .frame(height: 45)
-                    .background(textCol.col)
-                    .clipShape(.capsule)
-                    .padding(.top, 35)
-                Group {
-                    Text("Puzzle Name:  \(Globals.puzzName)")
-                    Text("Difficulty = \(board.difficulty.rawValue * 2)")
-                    Text(Globals.exTime[0])
-                }
-                .font(.footnote)
-                
+                HeaderView(diff: "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)",
+                           puzzName: Globals.puzzName,
+                           exTime: Globals.exTime)
+                .padding(.bottom, 8)
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
@@ -51,7 +40,6 @@ struct PossiblesView: View {
                         .padding(.bottom, row == 2 || row == 5 ? spacing : 0)
                     }
                 }
-                .padding(5)
                 
                 //Selection numbers at the base of the puzzle
                 HStack {
@@ -62,8 +50,8 @@ struct PossiblesView: View {
                             .foregroundStyle(.blue).opacity(0.4)
                     }
                 }
-                .padding(5)
                 Spacer()
+                
             }
             .navigationTitle("Possible Cell Values")
         }
