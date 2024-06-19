@@ -30,14 +30,13 @@ struct Board: Equatable {
         getPuzzle()
         create()
         prepareForPlay()
-//        printSolution()
     }
     
     
     func getPuzzle() {
         
         //---Get the puzzle that is to be solved
-        Globals.actual = TestPuzzle.getTestPuzzle()
+        Globals.actual = SelectPuzzle.readSelectedPuzzle()
         
         //---Measure the time it takes to complete a computer solution
         let start = CFAbsoluteTimeGetCurrent()
@@ -58,7 +57,7 @@ struct Board: Equatable {
         //---Print the solution (for reference)
         print("\nSolution: for \(Globals.puzzName)")
         for j in 0..<9 {
-            print(Globals.actual[j])  //, playerBoard[j])
+            print(Globals.actual[j])//, Globals.possible[j])  //, playerBoard[j])
         }
         
         if Globals.stepsTakenArray.isEmpty {
@@ -68,29 +67,10 @@ struct Board: Equatable {
     
     
     mutating private func create() {
-        //MARK: Paul Hudson's code
-//        let numbers = Array(1...size).shuffled()
-//        let positions = [0, 3, 6, 1, 4, 7, 2, 5, 8]
-//        
-//        let rows = Array([[0, 1, 2].shuffled(), [3, 4, 5].shuffled(),
-//                          [6, 7, 8].shuffled()].shuffled()).joined()
-//        
-//        let columns = Array([[0, 1, 2].shuffled(), [3, 4, 5].shuffled(),
-//                             [6, 7, 8].shuffled()].shuffled()).joined()
-//        for row in rows {
-//            var newRow = [Int]()
-//            
-//            for column in columns {
-//                let position = (positions[row] + column) % size
-//                newRow.append(numbers[position])
-//            }
-//            fullBoard.append(newRow)
-//            print(newRow)
-//        }
-//        fullBoard = TestPuzzle.getTestPuzzle()
         print("Hello")
         fullBoard = Globals.actual  //The solved puzzle
         playerBoard = Globals.actual
+//        print(fullBoard)
     }
     
     

@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4A2E77B12C1F7B280006162E /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2E77B02C1F7B280006162E /* HelpView.swift */; };
-		4A34FDBD2BC8747B0037E008 /* TestPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A34FDBC2BC8747B0037E008 /* TestPuzzle.swift */; };
+		4A34FDBD2BC8747B0037E008 /* SelectPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A34FDBC2BC8747B0037E008 /* SelectPuzzle.swift */; };
 		4A43B01E2BE001FF00F0399A /* StepsTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A43B01D2BE001FF00F0399A /* StepsTakenView.swift */; };
 		4A43B0202BE6BB7900F0399A /* PossibleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A43B01F2BE6BB7900F0399A /* PossibleCellView.swift */; };
 		4A43B0242BE723AA00F0399A /* PossiblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A43B0232BE723AA00F0399A /* PossiblesView.swift */; };
 		4A670EC32C20A41F00B65EA7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A670EC22C20A41F00B65EA7 /* HeaderView.swift */; };
+		4A670EC52C20BD3D00B65EA7 /* CountUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A670EC42C20BD3D00B65EA7 /* CountUpView.swift */; };
 		4AAA850C2BB0A877009DD948 /* SudokuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA850B2BB0A877009DD948 /* SudokuApp.swift */; };
 		4AAA850E2BB0A877009DD948 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA850D2BB0A877009DD948 /* ContentView.swift */; };
 		4AAA85102BB0A878009DD948 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AAA850F2BB0A878009DD948 /* Assets.xcassets */; };
@@ -22,7 +23,7 @@
 		4AAA851E2BB0B71B009DD948 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA851D2BB0B71B009DD948 /* CellView.swift */; };
 		4ACD5CE22BBD9851001BA60D /* QueueStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD5CE12BBD9851001BA60D /* QueueStack.swift */; };
 		4AE06C762BB35F7B00C01FB9 /* LoneRangers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C752BB35F7B00C01FB9 /* LoneRangers.swift */; };
-		4AE06C792BB45FA200C01FB9 /* GeneratePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C782BB45FA200C01FB9 /* GeneratePuzzle.swift */; };
+		4AE06C792BB45FA200C01FB9 /* ClearPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C782BB45FA200C01FB9 /* ClearPuzzle.swift */; };
 		4AE06C7B2BB47EA300C01FB9 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C7A2BB47EA300C01FB9 /* Globals.swift */; };
 		4AE06C7D2BB5D20B00C01FB9 /* SolvePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C7C2BB5D20B00C01FB9 /* SolvePuzzle.swift */; };
 		4AE06C7F2BB611CE00C01FB9 /* Twins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE06C7E2BB611CE00C01FB9 /* Twins.swift */; };
@@ -34,11 +35,12 @@
 
 /* Begin PBXFileReference section */
 		4A2E77B02C1F7B280006162E /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
-		4A34FDBC2BC8747B0037E008 /* TestPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPuzzle.swift; sourceTree = "<group>"; };
+		4A34FDBC2BC8747B0037E008 /* SelectPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPuzzle.swift; sourceTree = "<group>"; };
 		4A43B01D2BE001FF00F0399A /* StepsTakenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsTakenView.swift; sourceTree = "<group>"; };
 		4A43B01F2BE6BB7900F0399A /* PossibleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleCellView.swift; sourceTree = "<group>"; };
 		4A43B0232BE723AA00F0399A /* PossiblesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossiblesView.swift; sourceTree = "<group>"; };
 		4A670EC22C20A41F00B65EA7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		4A670EC42C20BD3D00B65EA7 /* CountUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountUpView.swift; sourceTree = "<group>"; };
 		4AAA85082BB0A877009DD948 /* Sudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AAA850B2BB0A877009DD948 /* SudokuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuApp.swift; sourceTree = "<group>"; };
 		4AAA850D2BB0A877009DD948 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,7 +51,7 @@
 		4AAA851D2BB0B71B009DD948 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		4ACD5CE12BBD9851001BA60D /* QueueStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueStack.swift; sourceTree = "<group>"; };
 		4AE06C752BB35F7B00C01FB9 /* LoneRangers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoneRangers.swift; sourceTree = "<group>"; };
-		4AE06C782BB45FA200C01FB9 /* GeneratePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePuzzle.swift; sourceTree = "<group>"; };
+		4AE06C782BB45FA200C01FB9 /* ClearPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearPuzzle.swift; sourceTree = "<group>"; };
 		4AE06C7A2BB47EA300C01FB9 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		4AE06C7C2BB5D20B00C01FB9 /* SolvePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvePuzzle.swift; sourceTree = "<group>"; };
 		4AE06C7E2BB611CE00C01FB9 /* Twins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Twins.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				4AAA851D2BB0B71B009DD948 /* CellView.swift */,
 				4A43B01F2BE6BB7900F0399A /* PossibleCellView.swift */,
 				4A43B0232BE723AA00F0399A /* PossiblesView.swift */,
+				4A670EC42C20BD3D00B65EA7 /* CountUpView.swift */,
 				4AAA85192BB0A8CF009DD948 /* Board.swift */,
 				4AF10D452BF13E1300A7D6B4 /* LoadPuzzles */,
 				4AE06C742BB35ED200C01FB9 /* Book Routines */,
@@ -118,8 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				4AE06C7A2BB47EA300C01FB9 /* Globals.swift */,
-				4A34FDBC2BC8747B0037E008 /* TestPuzzle.swift */,
-				4AE06C782BB45FA200C01FB9 /* GeneratePuzzle.swift */,
+				4A34FDBC2BC8747B0037E008 /* SelectPuzzle.swift */,
+				4AE06C782BB45FA200C01FB9 /* ClearPuzzle.swift */,
 				4AE06C7C2BB5D20B00C01FB9 /* SolvePuzzle.swift */,
 				4AE06C752BB35F7B00C01FB9 /* LoneRangers.swift */,
 				4AE06C7E2BB611CE00C01FB9 /* Twins.swift */,
@@ -210,9 +213,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AE06C792BB45FA200C01FB9 /* GeneratePuzzle.swift in Sources */,
+				4AE06C792BB45FA200C01FB9 /* ClearPuzzle.swift in Sources */,
 				4ACD5CE22BBD9851001BA60D /* QueueStack.swift in Sources */,
 				4AAA850E2BB0A877009DD948 /* ContentView.swift in Sources */,
+				4A670EC52C20BD3D00B65EA7 /* CountUpView.swift in Sources */,
 				4AF10D472BF13E1300A7D6B4 /* MenuView.swift in Sources */,
 				4AE06C762BB35F7B00C01FB9 /* LoneRangers.swift in Sources */,
 				4AE06C7F2BB611CE00C01FB9 /* Twins.swift in Sources */,
@@ -220,7 +224,7 @@
 				4AF10D462BF13E1300A7D6B4 /* LoadAndSaveFiles.swift in Sources */,
 				4AE06C832BB6127500C01FB9 /* BruteForce.swift in Sources */,
 				4A43B0242BE723AA00F0399A /* PossiblesView.swift in Sources */,
-				4A34FDBD2BC8747B0037E008 /* TestPuzzle.swift in Sources */,
+				4A34FDBD2BC8747B0037E008 /* SelectPuzzle.swift in Sources */,
 				4A43B01E2BE001FF00F0399A /* StepsTakenView.swift in Sources */,
 				4AE06C7B2BB47EA300C01FB9 /* Globals.swift in Sources */,
 				4A670EC32C20A41F00B65EA7 /* HeaderView.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  GeneratePuzzle.swift
+//  ClearPuzzle.swift
 //  Sudoku
 //
 //  Created by Alvin Alleyne on 3/27/24.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct GeneratePuzzle {
+struct ClearPuzzle {
     
     /*
      ============================================================
@@ -17,11 +17,11 @@ struct GeneratePuzzle {
     //    static func getPuzzle(level: Int) -> String {
     //        var score = 0
     //        var result = (str: "", score: 0)
-    //        
+    //
     //        repeat {
     //            result = generateNewPuzzle(level: level, score: score)
     //            score = result.score
-    //            
+    //
     //            if result.str != "" {
     //                //---check if puzzle matches the level of difficulty---
     //                switch level {
@@ -34,7 +34,7 @@ struct GeneratePuzzle {
     //                }
     //            }
     //        } while true
-    //        
+    //
     //        return result.str  //(from a tuple)
     //    }
     
@@ -42,9 +42,9 @@ struct GeneratePuzzle {
     
     /*
      ============================================================
-     Generate a new Sudoku puzzle
+     Clear the previous Sudoku puzzle
      ============================================================*/
-    func generateNewPuzzle() {
+    func clearPreviousPuzzle() {
         
         for j in 0..<9 {
             for k in 0..<9 {
@@ -54,18 +54,22 @@ struct GeneratePuzzle {
             }
         }
         
-        //---clear the stacks---
+        //---clear the stacks and backups---
         Globals.actualStack.removeAll()
         Globals.possibleStack.removeAll()
-        Globals.bruteForceStop = false
         Globals.actualBackup.removeAll()
-        
         Globals.stepsTakenArray.removeAll()
-        Globals.stepsCount = 0
         
+        Globals.bruteForceStop = false
+        Globals.stepsCount = 0
+    }
+}
+        
+        
+
         //        //---populate the board with numbers by solving an empty grid---
         //        if !SolvePuzzle.solvePuzzle() {
-        //            //MARK: ---then use bruteforce---
+        //            // ---then use bruteforce---
         //            BruteForce.solvePuzzleByBruteForce()
         //        } else {
         //            print("Error!")
@@ -87,9 +91,9 @@ struct GeneratePuzzle {
         
         
         //---clear the stacks that are used in brute-force elimination ---
-                Globals.actualStack.removeAll()
-                Globals.possibleStack.removeAll()
-                Globals.bruteForceStop = false
+//                Globals.actualStack.removeAll()
+//                Globals.possibleStack.removeAll()
+//                Globals.bruteForceStop = false
         
         //        Board.playerBoard.removeAll()
         //        Board().fullBoard.removeAll()
@@ -137,8 +141,8 @@ struct GeneratePuzzle {
         //        score = Globals.totalScore
         //        return (str, score)
 //        Board().getPuzzle()
-    }
-}
+//    }
+//}
     
     
     /*
@@ -202,7 +206,7 @@ struct GeneratePuzzle {
 //        
 //        //---restore the value of the cell from the actual_backup array---
 //        
-//        //MARK: // str = str.replacingOccurrences(of: <#T##StringProtocol#>, with: <#T##StringProtocol#>)
+//        // str = str.replacingOccurrences(of: <#T##StringProtocol#>, with: <#T##StringProtocol#>)
 //        
 //        //                str = str.Remove((c - 1) + (r - 1) * 9, 1)
 //        //                str = str.Insert((c - 1) + (r - 1) * 9, _

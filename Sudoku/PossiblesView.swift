@@ -21,9 +21,18 @@ struct PossiblesView: View {
         NavigationStack {
             VStack {
                 
-                HeaderView(diff: "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)",
+                let diffColIcon = ContentView().getHeaderColor(difficulty: "\(Globals.bdDifficulty)")
+                let col = diffColIcon.col
+                let icon = diffColIcon.icon
+                
+                let diff = "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
+                
+                // call headerView to display header - common to possiblesView
+                HeaderView(diff: diff,
                            puzzName: Globals.puzzName,
-                           exTime: Globals.exTime)
+                           exTime: Globals.exTime,
+                           col: col,
+                           icon: icon)
                 .padding(.bottom, 8)
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {

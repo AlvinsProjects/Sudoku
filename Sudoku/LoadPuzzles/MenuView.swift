@@ -44,7 +44,6 @@ struct MenuView: View {
                     }
                 }
                 
-                
                 Button(action: { self.puzNum(puzzle: puzzle) } ) {
                     Text("Create New Puzzle").bold()
                 }
@@ -95,12 +94,13 @@ struct MenuView: View {
         Globals.puzzle = puzzle
         Globals.puzIndex = puzzle.number
         
-//        return
+        ContentView().newGame(difficulty: .Medium)
+        ClearPuzzle().clearPreviousPuzzle()
         
-//        selectedPuzzle.number = index
-//        TestPuzzle.getTestPuzzle()
-//        Board().getNewPuzzle()
-//        ContentView().newGame(difficulty: .Medium)
+//        Board().getPuzzle()
+//        Board().create()
+//        Board().prepareForPlay()
+
         dismiss()
     }
 }

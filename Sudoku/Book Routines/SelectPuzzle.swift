@@ -1,5 +1,5 @@
 //
-//  TestPuzzle.swift
+//  SelectPuzzle.swift
 //  Sudoku
 //
 //  Created by Alvin Alleyne on 4/11/24.
@@ -8,16 +8,19 @@
 import Foundation
 
 
-struct TestPuzzle: Equatable {
+struct SelectPuzzle: Equatable {
     
     
-    static func getTestPuzzle() -> [[Int]]  {
+    static func readSelectedPuzzle() -> [[Int]]  {
     
 //        GeneratePuzzle().generateNewPuzzle()
 //        let puzIndex = Globals.puzzle.number
+        
         let name = Globals.puzzle.name
+        
 //        let cont = Globals.puzzle.content
 //        print(puzIndex, name, cont)
+        
         let testInfo = puzArray.SudokuFiles[Globals.puzIndex].content
         Globals.puzzName = name  //puzArray.SudokuFiles[puzIndex].name
         

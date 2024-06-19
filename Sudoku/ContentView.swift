@@ -33,12 +33,20 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-
-                HeaderView(diff: "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)",
+                
+                let diffColIcon = getHeaderColor(difficulty: "\(Globals.bdDifficulty)")
+                let col = diffColIcon.col
+                let icon = diffColIcon.icon
+                let diff = "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
+                
+                // call headerView to display header - common to possiblesView
+                HeaderView(diff: diff,
                            puzzName: Globals.puzzName,
-                           exTime: Globals.exTime)
+                           exTime: Globals.exTime,
+                           col: col,
+                           icon: icon)
                 .padding(.bottom, 8)
-            
+                
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
                         GridRow {
@@ -59,10 +67,7 @@ struct ContentView: View {
                         }
                         .padding(.bottom, row == 2 || row == 5 ? spacing : 0)
                     }
-                    
                 }
-
-//                Spacer()
                 
                 //draw numbers below puzzle for entering data
                 HStack {
@@ -77,7 +82,6 @@ struct ContentView: View {
                         .opacity(counts[i, default: 0] == 9 ? 0 : 1)
                     }
                 }
-//                Spacer()
 
                 // Insert toggle for entry of possible numbers
                 Toggle("Enter Hints:",
@@ -94,8 +98,10 @@ struct ContentView: View {
                     }
                     // Navigate to load or save a new puzzle
                     NavigationLink("New Puzzle", destination: MenuView())
+//                        .disabled(true)
                 }
                 .buttonStyle(.borderedProminent)
+                
             }
             .navigationTitle("Sudoku Puzzle")
             Spacer()
@@ -147,7 +153,6 @@ struct ContentView: View {
                             newNo += numArray[k] + " "
                         }
                         getNumbers = newNo
-
                         showingPossibles = true
                     } label: {
                         VStack {
@@ -315,16 +320,16 @@ struct ContentView: View {
                 col = Color.cyan
                 icon = "😃"
             case "Easy":
-                col = Color.blue
+                col = Color.green
                 icon = "☺️"
             case "Medium":
-                col = Color.green
+                col = Color.yellow
                 icon = "🥸"
             case "Hard":
                 col = Color.orange
                 icon = "😠"
             case "Extreme":
-                col = Color.red
+                col = Color.pink
                 icon = "😡"
             default:
                 col = Color.orange
