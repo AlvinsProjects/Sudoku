@@ -16,7 +16,7 @@ struct PossibleCellView: View {
         var newNo = ""
         var numArray = Array(repeating: " ", count: 9)
         var location = 0
-        
+                        
         for j in 0..<number.count {
             location = Triplets.getNo(str: number, item: j) - 1
             numArray[location] = String(Triplets.getNo(str: number, item: j))
@@ -33,7 +33,7 @@ struct PossibleCellView: View {
     var body: some View {
         Text(displayPoss)
             .font(.system(size: 10, weight: .bold, design: .monospaced))
-//            .multilineTextAlignment(.leading)
+
             .padding(.leading, 5)
             .foregroundStyle(.yellow)  //.opacity(0.8)
             .frame(maxWidth: 70, maxHeight: 70)
@@ -45,5 +45,5 @@ struct PossibleCellView: View {
 
 
 #Preview {
-    PossibleCellView(number: "123456789")
+    PossibleCellView(number: "432159867")
 }

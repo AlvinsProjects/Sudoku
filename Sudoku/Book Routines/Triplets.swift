@@ -91,7 +91,7 @@ struct Triplets {
                                          then the user has placed a move that results
                                          in the puzzle not solvable--- */
                                     if Globals.possible[ccc][rrr] == "" {
-                                        print("Invalid Move   tig")
+                                        print("Invalid Move   Triplets Minigrid")
                                     }
                                     
                                     /*---if left with 1 possible value for the
@@ -189,7 +189,7 @@ struct Triplets {
                                 //   then the user has placed a move that results
                                 //   in the puzzle not solvable---
                                 if Globals.possible[ccc][r] == "" {
-                                    print("Invalid move.  Triplets in row")
+                                    print("Invalid move.  Triplets Row")
                                 }
                                 
                                 //---if left with 1 possible value for the
@@ -285,7 +285,7 @@ struct Triplets {
                                 //   then the user has placed a move that results
                                 //   in the puzzle not solvable---
                                 if Globals.possible[c][rrr] == "" {
-                                    print("Invalid move   triplets in columns")
+                                    print("Invalid move   Triplets Column")
                                 }
                                 
                                 //---if left with 1 possible value for the
@@ -294,7 +294,7 @@ struct Triplets {
                                     Globals.actual[c][rrr] = Int(Globals.possible[c][rrr]) ?? 999
 
                                     Globals.stepsCount += 1
-                                    Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Triplet Cols.  Added \(Globals.actual[c][rrr]) to (\(c), \(rrr))"))
+                                    Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Triplet Columns.                Added \(Globals.actual[c][rrr]) to (\(c), \(rrr))"))
                                     
                                     //---accumulate the total score---
                                     Globals.totalScore += 4

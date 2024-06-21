@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>105</string>
+					<string>106</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>104</string>
+					<string>105</string>
 					<key>Timestamp</key>
-					<string>740433280.8019921</string>
+					<string>740626437.495635</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -57,13 +57,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>250</string>
+					<string>255</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>249</string>
+					<string>254</string>
 					<key>Timestamp</key>
-					<string>740433280.8019741</string>
+					<string>740628624.90575</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -136,50 +136,6 @@
 				<string>        Button(action: onSelected) {
             ZStack {
                 if hintMode {
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>38</string>
-					<key>EndingLineNumber</key>
-					<string>100</string>
-					<key>StartingColumnNumber</key>
-					<string>34</string>
-					<key>StartingLineNumber</key>
-					<string>100</string>
-					<key>Timestamp</key>
-					<string>740433350.023108</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>Sudoku/ContentView.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>true</string>
-				<key>leading</key>
-				<string>                    // Navigate to load or save a new puzzle
-                    NavigationLink("New Puzzle", destination: MenuView())
-//                        .disabled(</string>
-				<key>trailing</key>
-				<string>)
-                }
-                .buttonStyle(.borderedProminent)
 </string>
 			</dict>
 			<key>type</key>

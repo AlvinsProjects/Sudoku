@@ -94,7 +94,7 @@ struct MenuView: View {
         Globals.puzzle = puzzle
         Globals.puzIndex = puzzle.number
         
-        ContentView().newGame(difficulty: .Medium)
+        ContentView().newGame(difficulty: .Easy)
         ClearPuzzle().clearPreviousPuzzle()
         
 //        Board().getPuzzle()

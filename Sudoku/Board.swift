@@ -25,11 +25,13 @@ struct Board: Equatable {
     var playerBoard = [[Int]]()
 //    var count = 0
     
-    init(difficulty: Difficulty = .Medium) {
+    init(difficulty: Difficulty = .Easy) {
         self.difficulty = difficulty
         getPuzzle()
         create()
-        prepareForPlay()
+        if Globals.puzIndex == 12 {  //Blank puzzle for brute force solution
+            prepareForPlay()
+        }
     }
     
     
@@ -37,27 +39,26 @@ struct Board: Equatable {
         
         //---Get the puzzle that is to be solved
         Globals.actual = SelectPuzzle.readSelectedPuzzle()
-        
+        Globals.inputPuzzle = Globals.actual
+
         //---Measure the time it takes to complete a computer solution
         let start = CFAbsoluteTimeGetCurrent()
         
-        if !SolvePuzzle.solvePuzzle() {
-            print("CRME Solution Failed")
+        if SolvePuzzle.solvePuzzle() {
+            print("CRME Solution Succeded")
+        } else {
+            print("Puzzle Solved using Brute Force")
             BruteForce.solvePuzzleByBruteForce()
         }
         
-        if SolvePuzzle.solvePuzzle() {
-            print("Puzzle Solved using Brute Force")
-        }
-        
         let executionTime = CFAbsoluteTimeGetCurrent() - start
-        Globals.exTime = "\(String(format: "%.4f", executionTime)) secs"
+        Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
         
         print(Globals.exTime)
         //---Print the solution (for reference)
-        print("\nSolution: for \(Globals.puzzName)")
+        print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")
         for j in 0..<9 {
-            print(Globals.actual[j])//, Globals.possible[j])  //, playerBoard[j])
+            print(Globals.actual[j])
         }
         
         if Globals.stepsTakenArray.isEmpty {
@@ -69,8 +70,12 @@ struct Board: Equatable {
     mutating private func create() {
         print("Hello")
         fullBoard = Globals.actual  //The solved puzzle
-        playerBoard = Globals.actual
-//        print(fullBoard)
+        
+        if Globals.puzIndex == 12 { //Blank puzzle for brute force solution
+            playerBoard = Globals.actual
+        } else {
+            playerBoard = Globals.inputPuzzle
+        }
     }
     
     
@@ -85,6 +90,8 @@ struct Board: Equatable {
             playerBoard[8 - row][8 - column] = 0
         }
     }
+    
+    
     
     
     

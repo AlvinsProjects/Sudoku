@@ -70,7 +70,7 @@ struct Twins {
                                                  placed a move that results in
                                                  the puzzle not solvable--- */
                                             if Globals.possible[ccc][rrr] == "" {
-                                                print("Invalid Move")
+                                                print("Invalid Move = Twins Minigrid")
                                             }
                                             
                                             /*---if left with 1 possible value
@@ -146,7 +146,7 @@ struct Twins {
                                     //   then the user has placed a move that results
                                     //   in the puzzle not solvable---
                                     if Globals.possible[ccc][r].isEmpty {
-                                        print("Invalid Move - Rows")
+                                        print("Invalid Move - Twins Rows")
                                     }
                                     
                                     //---if left with 1 possible value for the
@@ -219,7 +219,7 @@ struct Twins {
                                     //   then the user has placed a move that results
                                     //   in the puzzle not solvable---
                                     if Globals.possible[c][rrr] == "" {
-                                        print("Invalid Move - Cols")
+                                        print("Invalid Move - Twin Columns")
                                     }
                                     
                                     //---if left with 1 possible value for the

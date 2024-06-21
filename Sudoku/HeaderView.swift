@@ -10,6 +10,7 @@ import SwiftUI
 struct HeaderView: View {
     
     var diff =  ""
+    var puzzIndex = 0
     var puzzName = ""
     var exTime = ""
     var col = Color.black
@@ -20,7 +21,7 @@ struct HeaderView: View {
             Grid(alignment: .leading, horizontalSpacing: 30, verticalSpacing: 5) {
                 GridRow {
                     Text("Puzzle Name:")
-                    Text(puzzName)
+                    Text("\(puzzIndex).  \(puzzName)")
                 }
                 
                 GridRow {

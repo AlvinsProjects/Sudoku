@@ -57,7 +57,7 @@ struct ClearPuzzle {
         //---clear the stacks and backups---
         Globals.actualStack.removeAll()
         Globals.possibleStack.removeAll()
-        Globals.actualBackup.removeAll()
+//        Globals.actualBackup.removeAll()
         Globals.stepsTakenArray.removeAll()
         
         Globals.bruteForceStop = false

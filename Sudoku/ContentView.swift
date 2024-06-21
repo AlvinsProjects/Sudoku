@@ -34,15 +34,16 @@ struct ContentView: View {
         NavigationStack {
             VStack {
                 
-                let diffColIcon = getHeaderColor(difficulty: "\(Globals.bdDifficulty)")
-                let col = diffColIcon.col
-                let icon = diffColIcon.icon
+                let difficultyColorIcon = getHeaderColor(difficulty: "\(Globals.bdDifficulty)")
+                let col = difficultyColorIcon.col
+                let icon = difficultyColorIcon.icon
                 let diff = "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
                 
                 // call headerView to display header - common to possiblesView
                 HeaderView(diff: diff,
+                           puzzIndex: Globals.puzIndex,
                            puzzName: Globals.puzzName,
-                           exTime: Globals.exTime,
+                           exTime: Globals.exTime[0],
                            col: col,
                            icon: icon)
                 .padding(.bottom, 8)
@@ -200,10 +201,14 @@ struct ContentView: View {
         
         //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
         .alert("Change Difficulty or \nStart a New Game", isPresented: $showingNewGame) {
-            ForEach(Board.Difficulty.allCases, id: \.self) { difficulty in
-                Button(String(describing: difficulty).capitalized) {
-                    newGame(difficulty: difficulty)
-                    Globals.bdDifficulty = difficulty
+            
+            // if blank puzzle slected - allow choice of difficulty
+            if Globals.puzIndex == 12 {
+                ForEach(Board.Difficulty.allCases, id: \.self) { difficulty in
+                    Button(String(describing: difficulty).capitalized) {
+                        newGame(difficulty: difficulty)
+                        Globals.bdDifficulty = difficulty
+                    }
                 }
             }
             
