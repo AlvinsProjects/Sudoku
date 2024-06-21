@@ -16,19 +16,52 @@ struct PossiblesView: View {
     
     @State private var getNumbers = ""
     
+    var diff: String  {
+        var dif = ""
+        let descr = ContentView().getHeader(diff: Globals.blanks)
+        if Globals.puzIndex == 12 {
+            dif = "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
+        } else {
+            dif = "\(Globals.blanks)  \(descr.difDescr)"
+        }
+        return dif
+    }
+    
+    var col: Color {
+        var color = Color.red
+        if Globals.puzIndex == 12 {
+            let colorIcon = ContentView().getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
+            color = colorIcon.col
+        } else {
+            let ccc = ContentView().getHeader(diff: Globals.blanks)
+            color = ccc.col
+        }
+        return color
+    }
+    
+    var icon: String {
+        var ico = ""
+        if Globals.puzIndex == 12 {
+            let colorIcon = ContentView().getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
+            ico = colorIcon.icon
+        } else {
+            let ccTemp = ContentView().getHeader(diff: Globals.blanks)
+            ico = ccTemp.icon
+        }
+        return ico
+    }
+    
+    
+    
+    
     
     var body: some View {
         NavigationStack {
             VStack {
                 
-                let difficultyColorIcon = ContentView().getHeaderColor(difficulty: "\(Globals.bdDifficulty)")
-                let col = difficultyColorIcon.col
-                let icon = difficultyColorIcon.icon
-                
-                let diff = "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
-                
                 // call headerView to display header - common to possiblesView
                 HeaderView(diff: diff,
+                           puzzIndex: Globals.puzIndex,
                            puzzName: Globals.puzzName,
                            exTime: Globals.exTime[0],
                            col: col,

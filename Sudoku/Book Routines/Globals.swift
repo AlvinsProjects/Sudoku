@@ -7,7 +7,7 @@
 
 
 
-import SwiftUI
+import Foundation
 
 
 struct Globals {
@@ -31,6 +31,7 @@ struct Globals {
     
     static var stepsTakenArray = [StepsTaken]()
     static var stepsCount = 0
+    static var blanks = 0
 }
     
 

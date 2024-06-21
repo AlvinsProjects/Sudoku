@@ -42,7 +42,6 @@ struct HeaderView: View {
             .font(.footnote)
             .padding(10)
             .border(Color.secondary)
-//            .background(.secondary)
         }
     }
 }

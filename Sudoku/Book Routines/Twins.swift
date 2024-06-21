@@ -49,7 +49,7 @@ struct Twins {
                                             //MARK: Following has (0) in last term - used Prefix
                                             //---remove first twin number from
                                             //   possible values---
-                                            Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: Globals.possible[c][r].prefix(1), with: "")
+                                            Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: Globals.possible[c][r].prefix(0), with: "")
                                             
                                             //MARK: Following has (1) in last term - used Suffix
                                             //---remove second twin number from
@@ -127,7 +127,7 @@ struct Twins {
                                     
                                     // ---remove first twin number from possible
                                     //    values--- MARK: ########### (0)
-                                    Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: Globals.possible[c][r].prefix(1), with: "")
+                                    Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: Globals.possible[c][r].prefix(0), with: "")
                                     
                                     //---remove second twin number from possible
                                     //   values--- MARK: ########### (1)
@@ -201,7 +201,7 @@ struct Twins {
                                     
                                     //---remove first twin number from possible
                                     //   values---  MARK: ########### (0)
-                                    Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: Globals.possible[c][r].prefix(1), with: "")
+                                    Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: Globals.possible[c][r].prefix(0), with: "")
                                    
                                     //---remove second twin number from possible
                                     //   values---  MARK: ########### (1)

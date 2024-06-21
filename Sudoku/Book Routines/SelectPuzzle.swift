@@ -20,7 +20,7 @@ struct SelectPuzzle: Equatable {
         
         var testGrid = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))
         var count = 0
-        var blanks = 0
+        Globals.blanks = 0
         
         //put numbers into the puzzle matrix - use getNo() func
         for col in 0..<9 {
@@ -29,11 +29,11 @@ struct SelectPuzzle: Equatable {
                 count += 1
                 
                 if testGrid[col][row] == 0 {
-                    blanks += 1
+                    Globals.blanks += 1
                 }
             }
         }
-        print(blanks)
+        print(Globals.blanks)
 //        for j in 0..<9 {
 //            print(testGrid[j])
 //        }

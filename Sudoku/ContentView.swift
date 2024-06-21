@@ -30,15 +30,47 @@ struct ContentView: View {
     @State private var hintMode = false
     @State private var hints = ""
     
+
+    var diff: String  {
+        var dif = ""
+        let descr = getHeader(diff: Globals.blanks)
+        if Globals.puzIndex == 12 {
+            dif = "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
+        } else {
+            dif = "\(Globals.blanks)  \(descr.difDescr)"
+        }
+        return dif
+    }
+
+    var col: Color {
+        var color = Color.red
+        if Globals.puzIndex == 12 {
+            let colorIcon = getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
+            color = colorIcon.col
+        } else {
+            let ccc = getHeader(diff: Globals.blanks)
+            color = ccc.col
+        }
+        return color
+    }
+    
+    var icon: String {
+        var ico = ""
+        if Globals.puzIndex == 12 {
+            let colorIcon = getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
+            ico = colorIcon.icon
+        } else {
+            let ccc = getHeader(diff: Globals.blanks)
+            ico = ccc.icon
+        }
+        return ico
+    }
+    
+    
     var body: some View {
         NavigationStack {
             VStack {
-                
-                let difficultyColorIcon = getHeaderColor(difficulty: "\(Globals.bdDifficulty)")
-                let col = difficultyColorIcon.col
-                let icon = difficultyColorIcon.icon
-                let diff = "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
-                
+
                 // call headerView to display header - common to possiblesView
                 HeaderView(diff: diff,
                            puzzIndex: Globals.puzIndex,
@@ -46,6 +78,7 @@ struct ContentView: View {
                            exTime: Globals.exTime[0],
                            col: col,
                            icon: icon)
+
                 .padding(.bottom, 8)
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
@@ -317,7 +350,7 @@ struct ContentView: View {
     }
     
     
-    func getHeaderColor(difficulty: String) -> (col: Color, icon: String) {
+    func getHeaderColor12(difficulty: String) -> (col: Color, icon: String) {
         var col = Color.red
         var icon = ""
         switch difficulty {
@@ -343,6 +376,39 @@ struct ContentView: View {
         return (col, icon)
     }
     
+    func getHeader(diff: Int) -> (col: Color, difDescr: String, icon: String){
+        var col = Color.red
+        var difDescription = ""
+        var icon = ""
+        switch diff {
+            case 20...39:
+                col = Color.cyan
+                difDescription = "Trivial"
+                icon = "😃"
+            case 40...45:
+                col = Color.green
+                difDescription = "Easy"
+                icon = "☺️"
+            case 46...49:
+                col = Color.yellow
+                difDescription = "Medium"
+                icon = "🥸"
+            case 50...53:
+                col = Color.orange
+                difDescription = "Hard"
+                icon = "😠"
+            case 54...68:
+                col = Color.pink
+                difDescription = "Extreme"
+                icon = "😡"
+            default:
+                col = Color.pink
+                difDescription = "Extreme"
+                icon = "😡"
+        }
+        return (col, difDescription, icon)
+    }
+
     
     func updatePlayerBoard() {
         var str = ""

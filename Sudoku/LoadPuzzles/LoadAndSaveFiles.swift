@@ -18,6 +18,7 @@ struct Puzzle: Identifiable, Hashable {
 
 
 struct puzArray {
+    
     static var SudokuFiles = [
         Puzzle(number: 0, name: "CRME1", content: "400280010609430500070050040300840000097103480000092006080010070002079804050028001"),//CRME
         Puzzle(number: 1, name: "CRME2", content: "034000090600008214001027000409083050560000087020560401000210800857900006090000340"),
