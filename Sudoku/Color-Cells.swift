@@ -32,7 +32,7 @@ extension Color {
     static let squareOpen = Color(red: 0.38, green: 0.38, blue: 0.44) //Color.gray
     
     // Numbers under the puzzle - for data entry
-    static let hintMode = Color.yellow
+    static let hintColor = Color.yellow
     
     //Help screen background gradient
     static let centerColor = Color(red: 0.06, green: 0.23, blue: 0.90, opacity: 0.6)

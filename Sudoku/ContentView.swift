@@ -8,7 +8,6 @@
 import SwiftUI
 
 
-
 struct ContentView: View {
     
     @State private var board = Board()
@@ -42,6 +41,7 @@ struct ContentView: View {
         return dif
     }
 
+    
     var col: Color {
         var color = Color.red
         if Globals.puzIndex == 12 {
@@ -85,10 +85,21 @@ struct ContentView: View {
                     ForEach(0..<9) { row in
                         GridRow {
                             ForEach(0..<9) { col in
-                                CellView(number: board.playerBoard[row][col],
+                                CellView(hintMode: $hintMode,
+                                         number: board.playerBoard[row][col],
                                          selectedNumber: selectedNum,
                                          highlightState: highlightState(for: row, col: col),
                                          isCorrect: board.playerBoard[row][col] == board.fullBoard[row][col]) {
+
+                                
+                                
+                                
+                                
+//                                CellView(number: board.playerBoard[row][col],
+//                                         selectedNumber: selectedNum,
+//                                         highlightState: highlightState(for: row, col: col),
+//                                         isCorrect: board.playerBoard[row][col] == board.fullBoard[row][col]) {
+//                                         hintMode: $hintMode) {
                                     selectedRow = row
                                     selectedCol = col
                                     selectedNum = board.playerBoard[row][col]
@@ -103,7 +114,7 @@ struct ContentView: View {
                     }
                 }
                 
-                //draw numbers below puzzle for entering data
+                // draw numbers below puzzle for entering data
                 HStack {
                     ForEach(1..<10) { i in
                         Button(String(i)) {
@@ -113,13 +124,14 @@ struct ContentView: View {
                         .font(.largeTitle)
                         .foregroundColor(hintMode ? .yellow : .blue)
                         // hide the numbers that are no longer available
-                        .opacity(counts[i, default: 0] == 9 ? 0 : 1)
+                        .opacity(counts[i, default: 0] == 9 ? 0.4 : 1)
                     }
                 }
 
                 // Insert toggle for entry of possible numbers
                 Toggle("Enter Hints:",
-                       systemImage: "square.grid.3x3",isOn: $hintMode)
+                       systemImage: "square.grid.3x3",
+                       isOn: $hintMode)
                 .font(.title3)
                 .foregroundStyle(hintMode ? .yellow : .secondary)
                 .padding(.horizontal, 90)
@@ -132,7 +144,7 @@ struct ContentView: View {
                     }
                     // Navigate to load or save a new puzzle
                     NavigationLink("New Puzzle", destination: MenuView())
-//                        .disabled(true)
+                        .disabled(true)
                 }
                 .buttonStyle(.borderedProminent)
                 
@@ -224,7 +236,6 @@ struct ContentView: View {
         }
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         .environment(\.colorScheme, isDarkMode ? .dark : .light)
-        
         .onAppear(perform: updateCounts)
         .onChange(of: board, initial: true) {
             updateCounts()
@@ -233,7 +244,7 @@ struct ContentView: View {
         
         
         //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
-        .alert("Change Difficulty or \nStart a New Game", isPresented: $showingNewGame) {
+        .alert("Change Puzzle Difficulty", isPresented: $showingNewGame) {
             
             // if blank puzzle slected - allow choice of difficulty
             if Globals.puzIndex == 12 {
@@ -293,7 +304,6 @@ struct ContentView: View {
             if board.playerBoard[selectedRow][selectedCol] == board.fullBoard[selectedRow][selectedCol] { return }
             
             if !hintMode {
-                
                 if board.playerBoard[selectedRow][selectedCol] == number {
                     board.playerBoard[selectedRow][selectedCol] = 0
                     selectedNum = 0
@@ -301,15 +311,14 @@ struct ContentView: View {
                     board.playerBoard[selectedRow][selectedCol] = number
                     selectedNum = number
                 }
-            } //else {
-//                hints += String(number)
-//                print("\(number)  hello world  \(hints)")
-                //                let demo = 12345
-//                board.playerBoard[selectedRow][selectedCol] = number
-//                selectedNum = number
+            } else {
+//                print(number)
+                hints += String(number)
+                print("\(number)  hello world  \(hints)")
+               
+                board.pencilBoard[selectedRow][selectedCol] = hints
                 
-                
-//            }
+            }
         }
     }
         

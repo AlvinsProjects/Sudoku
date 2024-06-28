@@ -21,9 +21,9 @@ struct Board: Equatable {
     
     let size = 9
     let difficulty: Difficulty
-    var fullBoard = [[Int]]()
-    var playerBoard = [[Int]]()
-//    var count = 0
+    var fullBoard = [[Int]]()       //board with full solution
+    var playerBoard = [[Int]]()     //changes as numbers are added
+    var pencilBoard = Array(Array(repeating: Array(repeating: "", count: 9), count: 9))  //board with pencil marks
     
     init(difficulty: Difficulty = .Easy) {
         self.difficulty = difficulty
@@ -44,22 +44,20 @@ struct Board: Equatable {
         //---Measure the time it takes to complete a computer solution
         let start = CFAbsoluteTimeGetCurrent()
         
-        if SolvePuzzle.solvePuzzle() {
-            print("CRME Solution Succeded")
-        } else {
-            print("Puzzle Solved using Brute Force")
+        if !SolvePuzzle.solvePuzzle() {
             BruteForce.solvePuzzleByBruteForce()
+            print("Puzzle Solved using Brute Force")
         }
         
         let executionTime = CFAbsoluteTimeGetCurrent() - start
         Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
         
-        print(Globals.exTime)
+//        print(Globals.exTime)
         //---Print the solution (for reference)
-        print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")
-        for j in 0..<9 {
-            print(Globals.actual[j])
-        }
+//        print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")
+//        for j in 0..<9 {
+//            print(Globals.actual[j])
+//        }
         
         if Globals.stepsTakenArray.isEmpty {
             print("There were no solution steps available!")
@@ -68,7 +66,6 @@ struct Board: Equatable {
     
     
     mutating private func create() {
-        print("Hello")
         fullBoard = Globals.actual  //The solved puzzle
         
         if Globals.puzIndex == 12 { //Blank puzzle for brute force solution

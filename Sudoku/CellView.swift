@@ -10,7 +10,8 @@ import SwiftUI
 
 struct CellView: View {
     
-    @State private var hintMode = true
+    @Binding var hintMode: Bool
+//    @State private var hintMode = true
     
     enum HighlightState {
         case standard, highlighted, selected, open
@@ -35,7 +36,7 @@ struct CellView: View {
     let isCorrect: Bool
     var onSelected: () -> Void
 //    var hintMode: Bool
-//    var hintString: String
+    var pencilString = ""
     
     var displayNumber: String {
         if number == 0 {
@@ -70,8 +71,9 @@ struct CellView: View {
     
     var body: some View {
         Button(action: onSelected) {
+            
             ZStack {
-                if hintMode {
+                if !hintMode {
                     Text(displayNumber)
                         .font(.title)
                         .foregroundStyle(foregroundColor)
@@ -80,32 +82,28 @@ struct CellView: View {
                         .background(highlightState.color)
                     
                 } else {
-                    Text("1 2 3\n4 5 6\n7 8 9")
+                    Text(pencilString)
+//                    Text("")
                         .font(.system(size: 10, weight: .bold, design: .monospaced))
-                        .bold()
-//                        .multilineTextAlignment(.leading)
                         .frame(maxWidth: 100, maxHeight: 100)
 //                        .padding(.leading, 5)
                         .foregroundStyle(.white)
                         .background(highlightState.color)
-                    
                 }
             }
             .buttonStyle(.plain)
             .accessibilityShowsLargeContentViewer()
-            
-
         }
     }
 }
 
 
 
-#Preview {
-    CellView(number: 3,
-             selectedNumber: 3,
-             highlightState: .standard,
-             isCorrect: true,
-             onSelected: { })//, hintMode: true )  //, hintString: "123" )
-}
+//#Preview {
+//    CellView(number: 3,
+//             selectedNumber: 3,
+//             highlightState: .standard,
+//             isCorrect: true,
+//             onSelected: { })//, pencilString: "123")  //, hintString: "123" )
+//}
 

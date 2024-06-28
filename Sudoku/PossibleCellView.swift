@@ -33,7 +33,6 @@ struct PossibleCellView: View {
     var body: some View {
         Text(displayPoss)
             .font(.system(size: 10, weight: .bold, design: .monospaced))
-
             .padding(.leading, 5)
             .foregroundStyle(.yellow)  //.opacity(0.8)
             .frame(maxWidth: 70, maxHeight: 70)

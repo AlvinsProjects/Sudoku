@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct HeaderView: View {
     
     var diff =  ""
@@ -15,6 +16,7 @@ struct HeaderView: View {
     var exTime = ""
     var col = Color.black
     var icon = ""
+    
     
     var body: some View {
         Grid {

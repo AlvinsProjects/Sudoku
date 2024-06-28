@@ -12,58 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>139</string>
+					<string>299</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>138</string>
+					<string>298</string>
 					<key>Timestamp</key>
-					<string>740690379.768454</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>Sudoku/ContentView.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>            }
-</string>
-				<key>leading</key>
-				<string>                .buttonStyle(.borderedProminent)
-                
-</string>
-				<key>trailing</key>
-				<string>            .navigationTitle("Sudoku Puzzle")
-            Spacer()
-            
-</string>
-			</dict>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>288</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>287</string>
-					<key>Timestamp</key>
-					<string>740690379.768471</string>
+					<string>741294525.596424</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -92,7 +47,7 @@
 </string>
 			</dict>
 			<key>title</key>
-			<string>Enter the Cell Number</string>
+			<string>ENTER Function</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
@@ -104,13 +59,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>71</string>
+					<string>72</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>70</string>
+					<string>71</string>
 					<key>Timestamp</key>
-					<string>739727612.365465</string>
+					<string>741280956.3603359</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -134,10 +89,59 @@
 </string>
 				<key>trailing</key>
 				<string>        Button(action: onSelected) {
+            
             ZStack {
-                if hintMode {
 </string>
 			</dict>
+			<key>title</key>
+			<string>Enter Number Button</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>131</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>130</string>
+					<key>Timestamp</key>
+					<string>741294525.59641</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Sudoku/ContentView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                // Insert toggle for entry of possible numbers
+</string>
+				<key>leading</key>
+				<string>                }
+
+</string>
+				<key>trailing</key>
+				<string>                Toggle("Enter Hints:",
+                       systemImage: "square.grid.3x3",
+                       isOn: $hintMode)
+</string>
+			</dict>
+			<key>title</key>
+			<string>Toggle for entry of possible numbers</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

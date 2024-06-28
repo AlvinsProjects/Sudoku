@@ -27,13 +27,12 @@ struct SelectPuzzle: Equatable {
             for row in 0..<9 {
                 testGrid[col][row] = Triplets.getNo(str: testInfo, item: count)
                 count += 1
-                
                 if testGrid[col][row] == 0 {
                     Globals.blanks += 1
                 }
             }
         }
-        print(Globals.blanks)
+//        print(Globals.blanks)
 //        for j in 0..<9 {
 //            print(testGrid[j])
 //        }
