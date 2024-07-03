@@ -11,7 +11,6 @@ import SwiftUI
 struct CellView: View {
     
     @Binding var hintMode: Bool
-//    @State private var hintMode = true
     
     enum HighlightState {
         case standard, highlighted, selected, open
@@ -35,8 +34,8 @@ struct CellView: View {
     let highlightState: HighlightState
     let isCorrect: Bool
     var onSelected: () -> Void
-//    var hintMode: Bool
     var pencilString = ""
+    
     
     var displayNumber: String {
         if number == 0 {
@@ -45,15 +44,6 @@ struct CellView: View {
             return String(number)
         }
     }
-    
-    
-//    var backgroundCol: Color {
-//        if number == 0 {
-//            return .squareOpen
-//        } else {
-//            return .squareStandard
-//        }
-//    }
     
     
     var foregroundColor: Color {
@@ -73,22 +63,22 @@ struct CellView: View {
         Button(action: onSelected) {
             
             ZStack {
-                if !hintMode {
-                    Text(displayNumber)
-                        .font(.title)
-                        .foregroundStyle(foregroundColor)
+                Text(displayNumber)
+                    .font(.title)
+                    .foregroundStyle(foregroundColor)
+                    .frame(maxWidth: 100, maxHeight: 100)
+                    .aspectRatio(1, contentMode: .fit)
+                    .background(highlightState.color)
+                
+                
+                
+                if displayNumber == "" {
+                    Text(pencilString)
+                        .font(.system(size: 11, weight: .bold, design: .monospaced))
                         .frame(maxWidth: 100, maxHeight: 100)
                         .aspectRatio(1, contentMode: .fit)
-                        .background(highlightState.color)
-                    
-                } else {
-                    Text(pencilString)
-//                    Text("")
-                        .font(.system(size: 10, weight: .bold, design: .monospaced))
-                        .frame(maxWidth: 100, maxHeight: 100)
-//                        .padding(.leading, 5)
-                        .foregroundStyle(.white)
-                        .background(highlightState.color)
+                        .foregroundStyle(.orange)
+                        .background(.clear)
                 }
             }
             .buttonStyle(.plain)
@@ -99,11 +89,13 @@ struct CellView: View {
 
 
 
-//#Preview {
-//    CellView(number: 3,
-//             selectedNumber: 3,
-//             highlightState: .standard,
-//             isCorrect: true,
-//             onSelected: { })//, pencilString: "123")  //, hintString: "123" )
-//}
+
+#Preview {
+    CellView(hintMode: .constant(true), 
+             number: 3,
+             selectedNumber: 3,
+             highlightState: .standard,
+             isCorrect: true,
+             onSelected: { } )
+}
 

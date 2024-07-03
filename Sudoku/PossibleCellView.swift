@@ -32,7 +32,7 @@ struct PossibleCellView: View {
     
     var body: some View {
         Text(displayPoss)
-            .font(.system(size: 10, weight: .bold, design: .monospaced))
+            .font(.system(size: 11, weight: .bold, design: .monospaced))
             .padding(.leading, 5)
             .foregroundStyle(.yellow)  //.opacity(0.8)
             .frame(maxWidth: 70, maxHeight: 70)
@@ -44,5 +44,5 @@ struct PossibleCellView: View {
 
 
 #Preview {
-    PossibleCellView(number: "432159867")
+    PossibleCellView(number: "432167")
 }

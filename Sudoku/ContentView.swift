@@ -27,9 +27,10 @@ struct ContentView: View {
     @State private var numArray = Array(repeating: "", count: 9)
     
     @State private var hintMode = false
+    @State private var pencilString = ""
     @State private var hints = ""
     
-
+    
     var diff: String  {
         var dif = ""
         let descr = getHeader(diff: Globals.blanks)
@@ -89,17 +90,9 @@ struct ContentView: View {
                                          number: board.playerBoard[row][col],
                                          selectedNumber: selectedNum,
                                          highlightState: highlightState(for: row, col: col),
-                                         isCorrect: board.playerBoard[row][col] == board.fullBoard[row][col]) {
-
-                                
-                                
-                                
-                                
-//                                CellView(number: board.playerBoard[row][col],
-//                                         selectedNumber: selectedNum,
-//                                         highlightState: highlightState(for: row, col: col),
-//                                         isCorrect: board.playerBoard[row][col] == board.fullBoard[row][col]) {
-//                                         hintMode: $hintMode) {
+                                         isCorrect: board.playerBoard[row][col] == board.fullBoard[row][col],
+                                         pencilString: board.pencilBoard[row][col]) {
+ 
                                     selectedRow = row
                                     selectedCol = col
                                     selectedNum = board.playerBoard[row][col]
@@ -267,7 +260,7 @@ struct ContentView: View {
             Button("Cancel", role: .cancel) { }
         } message: {
             if solved {
-                Text("You solved the board correctly - goood job!")
+                Text("You solved the board correctly!")
             }
         }
         
@@ -300,7 +293,7 @@ struct ContentView: View {
         
         if selectedRow != -1 {   //Square must be selected
             
-            // Don't allow any original number to be changed
+            // Don't allow any original or correct number to be changed
             if board.playerBoard[selectedRow][selectedCol] == board.fullBoard[selectedRow][selectedCol] { return }
             
             if !hintMode {
@@ -312,16 +305,37 @@ struct ContentView: View {
                     selectedNum = number
                 }
             } else {
-//                print(number)
+                if board.pencilBoard[selectedRow][selectedCol] == "" {
+                    pencilString = ""
+                    hints = ""
+                }
                 hints += String(number)
-                print("\(number)  hello world  \(hints)")
-               
-                board.pencilBoard[selectedRow][selectedCol] = hints
-                
+                pencilString = displayPencils(number: hints)
+                board.pencilBoard[selectedRow][selectedCol] = pencilString
             }
         }
     }
         
+    
+    /// Format the pencil array numbers into a grid
+    /// - Parameter number: The string of numbers to be formatted
+    /// - Returns:          The formatted string
+    func displayPencils(number: String) -> String {
+        var newNo = ""
+        var numArray = Array(repeating: " ", count: 9)
+        var location = 0
+        
+        for j in 0..<number.count {
+            location = Triplets.getNo(str: number, item: j) - 1
+            numArray[location] = String(Triplets.getNo(str: number, item: j))
+        }
+        for k in 0..<9  {
+            if numArray[k] == "" { newNo += "" }
+            if k == 3 || k == 6 { newNo += "\n"}
+            newNo += numArray[k] + " "
+        }
+        return newNo
+    }
     
     
     func newGame(difficulty: Board.Difficulty) {
@@ -452,8 +466,7 @@ struct ContentView: View {
                 str = str.replacingOccurrences(of: String(board.playerBoard[col][r]), with: "")
             }
         }
-        
-        //---Step (2) check by row---
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          //---Step (2) check by row---
         for c in 0..<9 {
             if board.playerBoard[c][row] != 0 {
                 //---that means there is a actual value in it---

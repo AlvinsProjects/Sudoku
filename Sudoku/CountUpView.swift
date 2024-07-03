@@ -36,9 +36,6 @@ struct CountUpView: View {
                 }
             }
         }
-//        .onAppear() {
-//            self.startTimer()
-//        }
     }
     
     
@@ -74,7 +71,6 @@ struct CountUpView: View {
         minutes = 0
         seconds = 0
     }
-    
 }
 
 
