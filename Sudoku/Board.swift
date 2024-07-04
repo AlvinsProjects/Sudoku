@@ -51,7 +51,7 @@ struct Board: Equatable {
         
         let executionTime = CFAbsoluteTimeGetCurrent() - start
         Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
-        
+//        print(Globals.totalScore)
 //        print(Globals.exTime)
         //---Print the solution (for reference)
 //        print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")

@@ -33,10 +33,10 @@ struct CellView: View {
     let selectedNumber: Int
     let highlightState: HighlightState
     let isCorrect: Bool
-    var onSelected: () -> Void
     var pencilString = ""
     
-    
+    var onSelected: () -> Void
+
     var displayNumber: String {
         if number == 0 {
             return ""
@@ -70,14 +70,12 @@ struct CellView: View {
                     .aspectRatio(1, contentMode: .fit)
                     .background(highlightState.color)
                 
-                
-                
                 if displayNumber == "" {
                     Text(pencilString)
+                        .frame(maxWidth: 100, maxHeight: 100, alignment: .leading)
                         .font(.system(size: 11, weight: .bold, design: .monospaced))
-                        .frame(maxWidth: 100, maxHeight: 100)
                         .aspectRatio(1, contentMode: .fit)
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(.cyan)
                         .background(.clear)
                 }
             }

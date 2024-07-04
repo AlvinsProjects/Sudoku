@@ -305,13 +305,24 @@ struct ContentView: View {
                     selectedNum = number
                 }
             } else {
+                //if number exists, delete it
                 if board.pencilBoard[selectedRow][selectedCol] == "" {
                     pencilString = ""
                     hints = ""
                 }
-                hints += String(number)
-                pencilString = displayPencils(number: hints)
-                board.pencilBoard[selectedRow][selectedCol] = pencilString
+                let rawData = board.pencilBoard[selectedRow][selectedCol]
+                //delete all whiteSpaces and "\n"s
+                var hints = rawData.replacingOccurrences(of: "\\s", with: "", options: .regularExpression)
+
+                if hints.contains(String(number)) {
+                    hints = hints.replacingOccurrences(of: String(Triplets.getNo(str: String(number), item: 0)), with: "")
+                    pencilString = displayPencils(number: hints)
+                    board.pencilBoard[selectedRow][selectedCol] = pencilString
+                } else {
+                    hints += String(number)
+                    pencilString = displayPencils(number: hints)
+                    board.pencilBoard[selectedRow][selectedCol] = pencilString
+                }
             }
         }
     }
@@ -330,7 +341,7 @@ struct ContentView: View {
             numArray[location] = String(Triplets.getNo(str: number, item: j))
         }
         for k in 0..<9  {
-            if numArray[k] == "" { newNo += "" }
+            if numArray[k] == "" { newNo += " " }
             if k == 3 || k == 6 { newNo += "\n"}
             newNo += numArray[k] + " "
         }
