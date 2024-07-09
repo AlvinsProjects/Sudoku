@@ -55,6 +55,7 @@ struct ContentView: View {
         return color
     }
     
+    
     var icon: String {
         var ico = ""
         if Globals.puzIndex == 12 {
@@ -79,7 +80,6 @@ struct ContentView: View {
                            exTime: Globals.exTime[0],
                            col: col,
                            icon: icon)
-
                 .padding(.bottom, 8)
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
@@ -121,6 +121,7 @@ struct ContentView: View {
                     }
                 }
 
+
                 // Insert toggle for entry of possible numbers
                 Toggle("Enter Hints:",
                        systemImage: "square.grid.3x3",
@@ -137,7 +138,7 @@ struct ContentView: View {
                     }
                     // Navigate to load or save a new puzzle
                     NavigationLink("New Puzzle", destination: MenuView())
-                        .disabled(true)
+//                        .disabled(true)
                 }
                 .buttonStyle(.borderedProminent)
                 
@@ -269,7 +270,7 @@ struct ContentView: View {
         .alert("Possible Numbers", isPresented: $showingPossibles) {
             Button("OK", role: .cancel) { }
         } message: {
-            Text("Numbers available for this cell are:\n\n\(getNumbers)")
+            Text("Numbers available for this cell are:\n\(getNumbers)")
         }
     }
         
@@ -296,6 +297,8 @@ struct ContentView: View {
             // Don't allow any original or correct number to be changed
             if board.playerBoard[selectedRow][selectedCol] == board.fullBoard[selectedRow][selectedCol] { return }
             
+            //if NOT hintMode, enter the number.
+            //If number is incorrect, delete it.
             if !hintMode {
                 if board.playerBoard[selectedRow][selectedCol] == number {
                     board.playerBoard[selectedRow][selectedCol] = 0
@@ -305,7 +308,7 @@ struct ContentView: View {
                     selectedNum = number
                 }
             } else {
-                //if number exists, delete it
+                //if hints number exists, delete it
                 if board.pencilBoard[selectedRow][selectedCol] == "" {
                     pencilString = ""
                     hints = ""
@@ -316,13 +319,11 @@ struct ContentView: View {
 
                 if hints.contains(String(number)) {
                     hints = hints.replacingOccurrences(of: String(Triplets.getNo(str: String(number), item: 0)), with: "")
-                    pencilString = displayPencils(number: hints)
-                    board.pencilBoard[selectedRow][selectedCol] = pencilString
                 } else {
                     hints += String(number)
-                    pencilString = displayPencils(number: hints)
-                    board.pencilBoard[selectedRow][selectedCol] = pencilString
                 }
+                pencilString = displayPencils(number: hints)
+                board.pencilBoard[selectedRow][selectedCol] = pencilString
             }
         }
     }
@@ -373,7 +374,6 @@ struct ContentView: View {
             }
         }
         counts = newCounts
-        
         if correctCount == board.size * board.size {
             Task {
                 try await Task.sleep(for: .seconds(2.0))

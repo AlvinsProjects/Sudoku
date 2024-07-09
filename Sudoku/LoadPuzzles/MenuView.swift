@@ -34,12 +34,11 @@ struct MenuView: View {
     var body: some View {
         NavigationStack {
             Form() {
+                Text("Select a puzzle from the Picker below.")
                 Section(header: Text("SELECT THE PUZZLE TO LOAD OR SAVE")) {
-                    VStack {
-                        Picker("Please choose a puzzle:", selection: $puzzle) {
-                            ForEach(dm.content, id: \.self) {
-                                Text("\($0.number). \($0.name)")
-                            }
+                    Picker("Select puzzle:", selection: $puzzle) {
+                        ForEach(dm.content, id: \.self) {
+                            Text("\($0.number). \($0.name)")
                         }
                     }
                 }
@@ -94,10 +93,13 @@ struct MenuView: View {
         Globals.puzzle = puzzle
         Globals.puzIndex = puzzle.number
         
-        ContentView().newGame(difficulty: .Easy)
         ClearPuzzle().clearPreviousPuzzle()
+        ContentView().newGame(difficulty: .Easy)
         
-//        Board().getPuzzle()
+        
+//        print(puzzle)
+        
+        Board().getPuzzle()
 //        Board().create()
 //        Board().prepareForPlay()
 

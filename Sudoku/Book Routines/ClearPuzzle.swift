@@ -51,6 +51,7 @@ struct ClearPuzzle {
                 Globals.actual[j][k] = 0
                 Globals.possible[j][k] = ""
                 Globals.GlobePlayers[j][k] = ""
+
             }
         }
         
@@ -62,6 +63,7 @@ struct ClearPuzzle {
         
         Globals.bruteForceStop = false
         Globals.stepsCount = 0
+        
     }
 }
         
