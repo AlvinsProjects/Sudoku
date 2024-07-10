@@ -25,10 +25,8 @@ struct Twins {
                 if Globals.actual[c][r] == 0 && Globals.possible[c][r].count == 2 {
                     
                     //---scan by the mini-grid that the current cell is
-                    var startC = 0
-                    var startR = 0
-                    startC = c - (c % 3)
-                    startR = r - (r % 3)
+                    let startC = c - (c % 3)
+                    let startR = r - (r % 3)
                     for rr in startR...(startR + 2) {
                         for cc in startC...(startC + 2) {
                             
@@ -49,7 +47,7 @@ struct Twins {
                                             //MARK: Following has (0) in last term - used Prefix
                                             //---remove first twin number from
                                             //   possible values---
-                                            Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: Globals.possible[c][r].prefix(0), with: "")
+                                            Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: Globals.possible[c][r].prefix(1), with: "")
                                             
                                             //MARK: Following has (1) in last term - used Suffix
                                             //---remove second twin number from

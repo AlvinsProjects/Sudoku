@@ -28,10 +28,8 @@ struct Triplets {
                     var tripletsLocation = String(c) + String(r)
                     
                     //---scan by mini-grid---
-                    var startC = 0
-                    var startR = 0
-                    startC = c - (c % 3)
-                    startR = r - (r % 3)
+                    let startC = c - (c % 3)
+                    let startR = r - (r % 3)
                     for rr in startR...startR + 2 {
                         for cc in startC...startC + 2 {
                             if !((cc == c) && (rr == r)) &&

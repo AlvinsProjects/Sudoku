@@ -30,7 +30,7 @@ struct SolvePuzzle {
                                         repeat {    //---Look for Lone Rangers in Minigrids---
                                             repeat {    //---Perform Col/Row and Minigrid Elimination---
                                                 changes = checkColumnsAndRows()
-                                                if BruteForce.isPuzzleSolved() {
+                                                if isPuzzleSolved() {
                                                     exitLoop = true
                                                     break
                                                 }
@@ -39,7 +39,7 @@ struct SolvePuzzle {
                                             if exitLoop { break }
                                             //---Look for Lone Rangers in Minigrids---
                                             changes = LoneRangers.lookForLoneRangersInMinigrids()
-                                            if  BruteForce.isPuzzleSolved() {
+                                            if  isPuzzleSolved() {
                                                 exitLoop = true
                                                 break
                                             }
@@ -48,7 +48,7 @@ struct SolvePuzzle {
                                         if exitLoop { break }
                                         //---Look for Lone Rangers in Rows---
                                         changes = LoneRangers.lookForLoneRangersInRows()
-                                        if BruteForce.isPuzzleSolved() {
+                                        if isPuzzleSolved() {
                                             exitLoop = true
                                             break
                                         }
@@ -57,7 +57,7 @@ struct SolvePuzzle {
                                     if exitLoop { break }
                                     //---Look for Lone Rangers in Columns---
                                     changes = LoneRangers.lookForLoneRangersInColumns()
-                                    if BruteForce.isPuzzleSolved() {
+                                    if isPuzzleSolved() {
                                         exitLoop = true
                                         break
                                     }
@@ -66,7 +66,7 @@ struct SolvePuzzle {
                                 if exitLoop { break }
                                 //---Look For Twins in Minigrids---
                                 changes = Twins.lookForTwinsInMinigrids()
-                                if BruteForce.isPuzzleSolved() {
+                                if isPuzzleSolved() {
                                     exitLoop = true
                                     break
                                 }
@@ -75,7 +75,7 @@ struct SolvePuzzle {
                             if exitLoop { break }
                             //---Look For Twins in Rows---
                             changes = Twins.lookForTwinsInRows()
-                            if BruteForce.isPuzzleSolved() {
+                            if isPuzzleSolved() {
                                 exitLoop = true
                                 break
                             }
@@ -84,7 +84,7 @@ struct SolvePuzzle {
                         if exitLoop { break }
                         //---Look For Twins in Columns---
                         changes = Twins.lookForTwinsInColumns()
-                        if BruteForce.isPuzzleSolved() {
+                        if isPuzzleSolved() {
                             exitLoop = true
                             break
                         }
@@ -93,7 +93,7 @@ struct SolvePuzzle {
                     if exitLoop { break }
                     //---Look For Triplets in MiniGrids---
                     changes = Triplets.lookForTripletsInMinigrids()
-                    if BruteForce.isPuzzleSolved() {
+                    if isPuzzleSolved() {
                         exitLoop = true
                         break
                     }
@@ -102,7 +102,7 @@ struct SolvePuzzle {
                 if exitLoop { break }
                 //---Look For Triplets in Rows---
                 changes = Triplets.lookForTripletsInRows()
-                if BruteForce.isPuzzleSolved() {
+                if isPuzzleSolved() {
                     exitLoop = true
                     break
                 }
@@ -111,13 +111,13 @@ struct SolvePuzzle {
             if exitLoop { break }
             //---Look For Triplets in Columns---
             changes = Triplets.lookForTripletsInColumns()
-            if BruteForce.isPuzzleSolved() {
+            if isPuzzleSolved() {
                 exitLoop = true
                 break
             }
         } while changes
         
-        if BruteForce.isPuzzleSolved() {
+        if isPuzzleSolved() {
             return true
         } else {
             return false
@@ -203,5 +203,56 @@ struct SolvePuzzle {
         }
         return str
     }
+    
+    
+    
+    /*
+     ==================================================
+     Check if the puzzle is solved
+     ==================================================*/
+    static func isPuzzleSolved() -> Bool {
+        var pattern = ""
+        
+        // ---check row by row---
+        for r in 0..<9 {
+            pattern = "123456789"
+            for c in 0..<9 {
+                pattern = pattern.replacingOccurrences(of: String(Globals.actual[c][r]), with: "")
+            }
+            if pattern.count > 0 {
+                return false
+            }
+        }
+        
+        // ---check column by column---
+        for c in 0..<9 {
+            pattern = "123456789"
+            for r in 0..<9 {
+                pattern = pattern.replacingOccurrences(of: String(Globals.actual[c][r]), with: "")
+            }
+            if pattern.count > 0 {
+                print("Col by Col: pattern: \(pattern),  count = \(pattern.count)")
+                return false
+            }
+        }
+        
+        // ---check by minigrid---
+        for c in stride(from: 0, through: 8, by: 3) {
+            pattern = "123456789"
+            for r in stride(from: 0, through: 8, by: 3) {
+                for cc in 0..<3 {
+                    for rr in 0..<3 {
+                        pattern = pattern.replacingOccurrences(of: String(Globals.actual[c + cc][r + rr]), with: "")
+                    }
+                }
+            }
+            if pattern.count > 0 {
+                print("MiniGrid: pattern: \(pattern),  count = \(pattern.count)")
+                return false
+            }
+        }
+        return true
+    }
+    
 }
 

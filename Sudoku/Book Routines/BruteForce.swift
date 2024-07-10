@@ -34,7 +34,7 @@ struct BruteForce {
     
     /*
     ==================================================
-          Solve puzzle by Brute Force
+       Solve puzzle by Brute Force
     ==================================================*/
     static func solvePuzzleByBruteForce() {
         var c = 0
@@ -87,54 +87,6 @@ struct BruteForce {
     }
     
     
-    /*
-    ==================================================
-       Check if the puzzle is solved
-    ==================================================*/
-    static func isPuzzleSolved() -> Bool {
-        var pattern = ""
-        
-        // ---check row by row---
-        for r in 0..<9 {
-            pattern = "123456789"
-            for c in 0..<9 {
-                pattern = pattern.replacingOccurrences(of: String(Globals.actual[c][r]), with: "")
-            }
-            if pattern.count > 0 {
-                return false
-            }
-        }
-        
-        // ---check column by column---
-        for c in 0..<9 {
-            pattern = "123456789"
-            for r in 0..<9 {
-                pattern = pattern.replacingOccurrences(of: String(Globals.actual[c][r]), with: "")
-            }
-            if pattern.count > 0 {
-                print("Col by Col: pattern: \(pattern),  count = \(pattern.count)")
-                return false
-            }
-        }
-        
-        // ---check by minigrid---
-        for c in stride(from: 0, through: 8, by: 3) {
-            pattern = "123456789"
-            for r in stride(from: 0, through: 8, by: 3) {
-                for cc in 0..<3 {
-                    for rr in 0..<3 {
-                        pattern = pattern.replacingOccurrences(of: String(Globals.actual[c + cc][r + rr]), with: "")
-                    }
-                }
-            }
-            if pattern.count > 0 {
-                print("MiniGrid: pattern: \(pattern),  count = \(pattern.count)")
-                return false
-            }
-        }
-        return true
-    }
-    
     
     /*
     =========================================================
@@ -147,8 +99,7 @@ struct BruteForce {
             s.append(character)
         }
         s.shuffle()
-        let strg = String(s)
-        
+        let strg = String(s.shuffled())
         return strg
     }
 }

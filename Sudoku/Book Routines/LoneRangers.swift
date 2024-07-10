@@ -84,7 +84,6 @@ struct LoneRangers  {
                     if Globals.actual[c][r] == 0  && 
                         Globals.possible[c][r].contains(String(n))  {
                         occurence += 1
-                        
                         //---if multiple occurrence, not a lone ranger anymore
                         if occurence > 1 { break }
                         cPos = c
@@ -127,7 +126,6 @@ struct LoneRangers  {
                     if Globals.actual[c][r] == 0  && 
                         Globals.possible[c][r].contains(String(n))  {
                         occurence += 1
-                        
                         //---if multiple occurrence, not a lone ranger anymore
                         if occurence > 1 { break }
                         cPos = c
@@ -137,7 +135,6 @@ struct LoneRangers  {
                 if occurence == 1 {
                     // --number is confirmed---
                     if Globals.actual[cPos][rPos] == n {
-
                         Globals.stepsCount += 1
                         Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Lone Ranger Col.   Added \(Globals.actual[cPos][rPos]) to ((\(rPos), \(cPos))"))
                         

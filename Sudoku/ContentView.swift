@@ -141,7 +141,6 @@ struct ContentView: View {
 //                        .disabled(true)
                 }
                 .buttonStyle(.borderedProminent)
-                
             }
             .navigationTitle("Sudoku Puzzle")
             Spacer()
@@ -213,7 +212,6 @@ struct ContentView: View {
                         }
                     }
                     
-                    
                     //MARK: Add a new puzzle, change the difficulty, or cancel
                     Button {
                         Globals.totalScore = 0
@@ -239,8 +237,9 @@ struct ContentView: View {
         
         //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
         .alert("Change Puzzle Difficulty", isPresented: $showingNewGame) {
-            
+
             // if blank puzzle slected - allow choice of difficulty
+            // puzIndex = 12 is a blank puzzle that generates random puzzles
             if Globals.puzIndex == 12 {
                 ForEach(Board.Difficulty.allCases, id: \.self) { difficulty in
                     Button(String(describing: difficulty).capitalized) {
@@ -294,11 +293,11 @@ struct ContentView: View {
         
         if selectedRow != -1 {   //Square must be selected
             
-            // Don't allow any original or correct number to be changed
+            // Don't allow original or correct numbers to be changed
             if board.playerBoard[selectedRow][selectedCol] == board.fullBoard[selectedRow][selectedCol] { return }
             
-            //if NOT hintMode, enter the number.
-            //If number is incorrect, delete it.
+            // If NOT hintMode, enter the number.
+            // If number is incorrect, delete it.
             if !hintMode {
                 if board.playerBoard[selectedRow][selectedCol] == number {
                     board.playerBoard[selectedRow][selectedCol] = 0
@@ -307,14 +306,14 @@ struct ContentView: View {
                     board.playerBoard[selectedRow][selectedCol] = number
                     selectedNum = number
                 }
-            } else {
-                //if hints number exists, delete it
+            } else {   //if hintMode
+                // if hints number exists, delete it
                 if board.pencilBoard[selectedRow][selectedCol] == "" {
                     pencilString = ""
                     hints = ""
                 }
                 let rawData = board.pencilBoard[selectedRow][selectedCol]
-                //delete all whiteSpaces and "\n"s
+                // delete all whiteSpaces and "\n"s
                 var hints = rawData.replacingOccurrences(of: "\\s", with: "", options: .regularExpression)
 
                 if hints.contains(String(number)) {
@@ -477,7 +476,8 @@ struct ContentView: View {
                 str = str.replacingOccurrences(of: String(board.playerBoard[col][r]), with: "")
             }
         }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          //---Step (2) check by row---
+        
+        //---Step (2) check by row---
         for c in 0..<9 {
             if board.playerBoard[c][row] != 0 {
                 //---that means there is a actual value in it---
