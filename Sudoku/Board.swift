@@ -40,6 +40,8 @@ struct Board: Equatable {
         //---Get the puzzle that is to be solved
         Globals.actual = SelectPuzzle.readSelectedPuzzle()
         Globals.inputPuzzle = Globals.actual
+        
+//        Globals.inputPuzzle = SelectPuzzle.readSelectedPuzzle()
 
         //---Measure the time it takes to complete a computer solution
         let start = CFAbsoluteTimeGetCurrent()
@@ -51,8 +53,11 @@ struct Board: Equatable {
         
         let executionTime = CFAbsoluteTimeGetCurrent() - start
         Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
+        
 //        print(Globals.totalScore)
+        
         Globals.totalScore = 0
+        
 //        print(Globals.exTime)
         //---Print the solution (for reference)
 //        print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")

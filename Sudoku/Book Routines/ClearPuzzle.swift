@@ -10,35 +10,6 @@ import Foundation
 
 struct ClearPuzzle {
     
-    /*
-     ============================================================
-     Get Puzzle
-     ============================================================*/
-    //    static func getPuzzle(level: Int) -> String {
-    //        var score = 0
-    //        var result = (str: "", score: 0)
-    //
-    //        repeat {
-    //            result = generateNewPuzzle(level: level, score: score)
-    //            score = result.score
-    //
-    //            if result.str != "" {
-    //                //---check if puzzle matches the level of difficulty---
-    //                switch level {
-    //                    case 1: if score >= 42 && score <= 46 { break }     //Average 44
-    //                    case 2: if score >= 49 && score <= 53 { break }     //Average 51
-    //                    case 3: if score >= 56 && score <= 60 { break }     //Average 58
-    //                    case 4: if score >= 112 && score <= 116 { break }   //Average 114
-    //                    default:
-    //                        break
-    //                }
-    //            }
-    //        } while true
-    //
-    //        return result.str  //(from a tuple)
-    //    }
-    
-    
     
     /*
      ============================================================
@@ -51,14 +22,12 @@ struct ClearPuzzle {
                 Globals.actual[j][k] = 0
                 Globals.possible[j][k] = ""
                 Globals.GlobePlayers[j][k] = ""
-
             }
         }
         
         //---clear the stacks and backups---
         Globals.actualStack.removeAll()
         Globals.possibleStack.removeAll()
-//        Globals.actualBackup.removeAll()
         Globals.stepsTakenArray.removeAll()
         
         Globals.bruteForceStop = false
@@ -67,6 +36,11 @@ struct ClearPuzzle {
     }
 }
         
+
+
+
+
+
         
 
         //        //---populate the board with numbers by solving an empty grid---

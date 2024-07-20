@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>292</string>
+					<string>358</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>291</string>
+					<string>357</string>
 					<key>Timestamp</key>
-					<string>742312714.058097</string>
+					<string>743179847.361991</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,114 +34,66 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>    func enter(_ number: Int) {
+				<string>    func newGame(difficulty: Board.Difficulty) {
 </string>
 				<key>leading</key>
 				<string>    
     
 </string>
 				<key>trailing</key>
+				<string>        board = Board(difficulty: difficulty)
+        selectedRow = -1
+        selectedCol = -1
+</string>
+			</dict>
+			<key>title</key>
+			<string>NewGame</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>14</string>
+					<key>EndingLineNumber</key>
+					<string>246</string>
+					<key>StartingColumnNumber</key>
+					<string>9</string>
+					<key>StartingLineNumber</key>
+					<string>246</string>
+					<key>Timestamp</key>
+					<string>742675081.00883</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Sudoku/ContentView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>alert</string>
+				<key>leading</key>
 				<string>        
-        if selectedRow != -1 {   //Square must be selected
-            
-</string>
-			</dict>
-			<key>title</key>
-			<string>ENTER Function</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>62</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>61</string>
-					<key>Timestamp</key>
-					<string>742224075.439056</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>Sudoku/CellView.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>    var body: some View {
-</string>
-				<key>leading</key>
-				<string>    
-    
-</string>
+        //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
+        .</string>
 				<key>trailing</key>
-				<string>        Button(action: onSelected) {
+				<string>("Change Puzzle Difficulty", isPresented: $showingNewGame) {
             
-            ZStack {
+            // if blank puzzle slected - allow choice of difficulty
 </string>
 			</dict>
 			<key>title</key>
-			<string>Enter Number Button</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>125</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>124</string>
-					<key>Timestamp</key>
-					<string>742068990.465704</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>Sudoku/ContentView.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>                // Insert toggle for entry of possible numbers
-</string>
-				<key>leading</key>
-				<string>
-
-</string>
-				<key>trailing</key>
-				<string>                Toggle("Enter Hints:",
-                       systemImage: "square.grid.3x3",
-                       isOn: $hintMode)
-</string>
-			</dict>
-			<key>title</key>
-			<string>Toggle for entry of possible numbers</string>
+			<string>Alert to start new game and difficulty</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

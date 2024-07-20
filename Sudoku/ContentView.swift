@@ -31,6 +31,7 @@ struct ContentView: View {
     @State private var hints = ""
     
     
+    // Following 3 vars are data used in call to display the header
     var diff: String  {
         var dif = ""
         let descr = getHeader(diff: Globals.blanks)
@@ -41,7 +42,7 @@ struct ContentView: View {
         }
         return dif
     }
-
+    
     
     var col: Color {
         var color = Color.red
@@ -72,8 +73,8 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-
-                // call headerView to display header - common to possiblesView
+                
+                // call headerView to display header - common with possiblesView
                 HeaderView(diff: diff,
                            puzzIndex: Globals.puzIndex,
                            puzzName: Globals.puzzName,
@@ -92,7 +93,7 @@ struct ContentView: View {
                                          highlightState: highlightState(for: row, col: col),
                                          isCorrect: board.playerBoard[row][col] == board.fullBoard[row][col],
                                          pencilString: board.pencilBoard[row][col]) {
- 
+                                    
                                     selectedRow = row
                                     selectedCol = col
                                     selectedNum = board.playerBoard[row][col]
@@ -120,8 +121,8 @@ struct ContentView: View {
                         .opacity(counts[i, default: 0] == 9 ? 0.4 : 1)
                     }
                 }
-
-
+                
+                
                 // Insert toggle for entry of possible numbers
                 Toggle("Enter Hints:",
                        systemImage: "square.grid.3x3",
@@ -138,7 +139,14 @@ struct ContentView: View {
                     }
                     // Navigate to load or save a new puzzle
                     NavigationLink("New Puzzle", destination: MenuView())
-//                        .disabled(true)
+                    //                        .disabled(true)
+                    
+                    
+                    //                    Button("New Puzzle") {
+                    //                        self.newGame(difficulty: .Easy)
+                    //                    }
+                    
+                    
                 }
                 .buttonStyle(.borderedProminent)
             }
@@ -146,85 +154,85 @@ struct ContentView: View {
             Spacer()
             
             //MARK: Top Toolbar
-            .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    
-                    //MARK: Display all possible numbers
-                    NavigationLink {
-                        PossiblesView()
-                    } label: {
-                        VStack {
-                            Text(Image(systemName: "lightbulb.min.badge.exclamationmark"))
-                            Text("Possibles")
-                                .font(.footnote)
-                        }
-                    }
-                    
-                    //MARK: Display the possible numbers for the selected cell
-                    Button {
-                        let c = self.$selectedCol.wrappedValue
-                        let r = self.$selectedRow.wrappedValue
+                .toolbar {
+                    ToolbarItemGroup(placement: .topBarTrailing) {
                         
-                        // if no cell is selected, return
-                        if c == -1 || r == -1 { return }
-                        
-                        //if selected cell has a value, return
-                        if board.playerBoard[r][c] != 0 { return }
-                        
-                        // Re-set the variables
-                        getNumbers = ""
-                        newNo = ""
-                        for j in 0..<9 {
-                            numArray[j] = ""
+                        //MARK: Display all possible numbers
+                        NavigationLink {
+                            PossiblesView()
+                        } label: {
+                            VStack {
+                                Text(Image(systemName: "lightbulb.min.badge.exclamationmark"))
+                                Text("Possibles")
+                                    .font(.footnote)
+                            }
                         }
                         
-                        // get the numbers that are available for the selected cell
-                        getNumbers = calculatePlayerBoardValues(col: r, row: c)
-
-                        // Arrange the numbers into a grid
-                        for j in 0..<getNumbers.count {
-                            location = Triplets.getNo(str: getNumbers, item: j) - 1
-                            numArray[location] = String(Triplets.getNo(str: getNumbers, item: j))
+                        //MARK: Display the possible numbers for the selected cell
+                        Button {
+                            let c = self.$selectedCol.wrappedValue
+                            let r = self.$selectedRow.wrappedValue
+                            
+                            // if no cell is selected, return
+                            if c == -1 || r == -1 { return }
+                            
+                            //if selected cell has a value, return
+                            if board.playerBoard[r][c] != 0 { return }
+                            
+                            // Re-set the variables
+                            getNumbers = ""
+                            newNo = ""
+                            for j in 0..<9 {
+                                numArray[j] = ""
+                            }
+                            
+                            // get the numbers that are available for the selected cell
+                            getNumbers = calculatePlayerBoardValues(col: r, row: c)
+                            
+                            // Arrange the numbers into a grid
+                            for j in 0..<getNumbers.count {
+                                location = Triplets.getNo(str: getNumbers, item: j) - 1
+                                numArray[location] = String(Triplets.getNo(str: getNumbers, item: j))
+                            }
+                            for k in 0..<9  {
+                                if numArray[k] == "" { newNo += "" }
+                                if k == 3 || k == 6 { newNo += "\n"}
+                                newNo += numArray[k] + " "
+                            }
+                            getNumbers = newNo
+                            showingPossibles = true
+                        } label: {
+                            VStack {
+                                Text(Image(systemName: "questionmark.circle.fill"))
+                                Text("Hint")
+                                    .font(.footnote)
+                            }
                         }
-                        for k in 0..<9  {
-                            if numArray[k] == "" { newNo += "" }
-                            if k == 3 || k == 6 { newNo += "\n"}
-                            newNo += numArray[k] + " "
+                        
+                        //MARK: Display the steps taken by the computer solution of the puzzle
+                        NavigationLink {
+                            StepsTakenView()
+                        } label: {
+                            VStack {
+                                Text(Image(systemName: "list.number"))
+                                Text("Steps")
+                                    .font(.footnote)
+                            }
                         }
-                        getNumbers = newNo
-                        showingPossibles = true
-                    } label: {
-                        VStack {
-                            Text(Image(systemName: "questionmark.circle.fill"))
-                            Text("Hint")
-                                .font(.footnote)
-                        }
-                    }
-                    
-                    //MARK: Display the steps taken by the computer solution of the puzzle
-                    NavigationLink {
-                        StepsTakenView()
-                    } label: {
-                        VStack {
-                            Text(Image(systemName: "list.number"))
-                            Text("Steps")
-                                .font(.footnote)
-                        }
-                    }
-                    
-                    //MARK: Add a new puzzle, change the difficulty, or cancel
-                    Button {
-                        Globals.totalScore = 0
-                        showingNewGame = true
-                    } label: {
-                        VStack {
-                            Text(Image(systemName: "plus"))
-                            Text("Games")
-                                .font(.footnote)
+                        
+                        //MARK: Add a new puzzle, change the difficulty, or cancel
+                        Button {
+                            Globals.totalScore = 0
+                            showingNewGame = true
+                        } label: {
+                            VStack {
+                                Text(Image(systemName: "plus"))
+                                Text("Games")
+                                    .font(.footnote)
+                            }
                         }
                     }
                 }
-            }
         }
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         .environment(\.colorScheme, isDarkMode ? .dark : .light)
@@ -237,7 +245,7 @@ struct ContentView: View {
         
         //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
         .alert("Change Puzzle Difficulty", isPresented: $showingNewGame) {
-
+            
             // if blank puzzle slected - allow choice of difficulty
             // puzIndex = 12 is a blank puzzle that generates random puzzles
             if Globals.puzIndex == 12 {
@@ -256,7 +264,6 @@ struct ContentView: View {
                     .font(.footnote)
             }
             
-            
             Button("Cancel", role: .cancel) { }
         } message: {
             if solved {
@@ -272,7 +279,7 @@ struct ContentView: View {
             Text("Numbers available for this cell are:\n\(getNumbers)")
         }
     }
-        
+    
     
     func highlightState(for row: Int, col: Int) -> CellView.HighlightState {
         if row == selectedRow {
@@ -291,22 +298,12 @@ struct ContentView: View {
     
     func enter(_ number: Int) {
         
-        if selectedRow != -1 {   //Square must be selected
+        if selectedRow != -1 {  //Square must be selected
             
             // Don't allow original or correct numbers to be changed
             if board.playerBoard[selectedRow][selectedCol] == board.fullBoard[selectedRow][selectedCol] { return }
             
-            // If NOT hintMode, enter the number.
-            // If number is incorrect, delete it.
-            if !hintMode {
-                if board.playerBoard[selectedRow][selectedCol] == number {
-                    board.playerBoard[selectedRow][selectedCol] = 0
-                    selectedNum = 0
-                } else {
-                    board.playerBoard[selectedRow][selectedCol] = number
-                    selectedNum = number
-                }
-            } else {   //if hintMode
+            if hintMode {
                 // if hints number exists, delete it
                 if board.pencilBoard[selectedRow][selectedCol] == "" {
                     pencilString = ""
@@ -315,7 +312,7 @@ struct ContentView: View {
                 let rawData = board.pencilBoard[selectedRow][selectedCol]
                 // delete all whiteSpaces and "\n"s
                 var hints = rawData.replacingOccurrences(of: "\\s", with: "", options: .regularExpression)
-
+                
                 if hints.contains(String(number)) {
                     hints = hints.replacingOccurrences(of: String(Triplets.getNo(str: String(number), item: 0)), with: "")
                 } else {
@@ -323,11 +320,20 @@ struct ContentView: View {
                 }
                 pencilString = displayPencils(number: hints)
                 board.pencilBoard[selectedRow][selectedCol] = pencilString
+            } else {
+                // Don't allow original or correct numbers to be changed
+                if board.playerBoard[selectedRow][selectedCol] == number {
+                    board.playerBoard[selectedRow][selectedCol] = 0
+                    selectedNum = 0
+                } else {
+                    board.playerBoard[selectedRow][selectedCol] = number
+                    selectedNum = number
+                }
             }
         }
     }
-        
-    
+
+     
     /// Format the pencil array numbers into a grid
     /// - Parameter number: The string of numbers to be formatted
     /// - Returns:          The formatted string
@@ -354,6 +360,11 @@ struct ContentView: View {
         selectedRow = -1
         selectedCol = -1
         selectedNum = 0
+        ClearPuzzle().clearPreviousPuzzle()
+//        SelectPuzzle.readSelectedPuzzle()
+//        Board().getPuzzle()
+//        Board().create()
+        
     }
     
     
