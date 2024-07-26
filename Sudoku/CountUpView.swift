@@ -77,4 +77,5 @@ struct CountUpView: View {
 
 #Preview {
     CountUpView()
+        .preferredColorScheme(.dark)
 }

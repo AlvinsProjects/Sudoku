@@ -25,7 +25,7 @@ struct Globals {
     static var actualStack = [[[Int]]]()
     static var possibleStack = [[[String]]]()
     
-    static var totalScore = 0
+//    static var totalScore = 0
     static var exTime = [String]()  //save time for each of multiple runs - use first value
     static var GlobePlayers = Array(Array(repeating: Array(repeating: "", count: 9), count: 9))
     static var bdDifficulty = Board().difficulty

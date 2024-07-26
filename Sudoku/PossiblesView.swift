@@ -76,7 +76,7 @@ struct PossiblesView: View {
                                 }
                             }
                         }
-                        .padding(.bottom, row == 2 || row == 5 ? 2 : 1)
+                        .padding(.bottom, row == 2 || row == 5 ? spacing : 0)
                         .background(Color.squareStandard)
                     }
                 }
@@ -102,4 +102,5 @@ struct PossiblesView: View {
 
 #Preview {
     PossiblesView()
+        .preferredColorScheme(.dark)
 }

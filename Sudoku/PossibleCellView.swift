@@ -29,7 +29,7 @@ struct PossibleCellView: View {
         Grid {
             GridRow(alignment: .top) {
                 Text(displayPoss[0])
-                    .gridColumnAlignment(.leading)
+//                    .gridColumnAlignment(.leading)
                 Text(displayPoss[1])
                 Text(displayPoss[2])
             }
@@ -59,4 +59,5 @@ struct PossibleCellView: View {
 
 #Preview {
     PossibleCellView(number: "1579438")
+        .preferredColorScheme(.dark)
 }

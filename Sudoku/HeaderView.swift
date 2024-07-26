@@ -56,4 +56,5 @@ struct HeaderView: View {
 
 #Preview {
     HeaderView(diff: "48, Medium", puzzName: "BruteForce", exTime: "0h, 0,m, 34s")
+        .preferredColorScheme(.dark)
 }

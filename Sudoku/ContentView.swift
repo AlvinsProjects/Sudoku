@@ -220,7 +220,7 @@ struct ContentView: View {
                         
                         //MARK: Add a new puzzle, change the difficulty, or cancel
                         Button {
-                            Globals.totalScore = 0
+//                            Globals.totalScore = 0
                             showingNewGame = true
                         } label: {
                             VStack {
@@ -231,6 +231,23 @@ struct ContentView: View {
                         }
                     }
                 }
+            
+//                .toolbar {
+//                    ToolbarItemGroup(placement: .topBarLeading) {
+//
+//                        //MARK: Display all possible numbers
+//                        NavigationLink {
+//                            PossiblesView()
+//                        } label: {
+//                            VStack {
+//                                Text(Image(systemName: "lightbulb.min.badge.exclamationmark"))
+//                                Text("Possibles")
+//                                    .font(.footnote)
+//                            }
+//                        }
+//                    }
+//                }
+            
         }
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         .environment(\.colorScheme, isDarkMode ? .dark : .light)
@@ -239,11 +256,11 @@ struct ContentView: View {
             updateCounts()
             updatePlayerBoard()
         }
-        .onChange(of: Globals.puzIndex, {
-            print("Index changed to \(Globals.puzzle)")
-            Board().getPuzzle()
+//        .onChange(of: Globals.puzIndex, {
+//            print("Index changed to \(Globals.puzzle)")
+//            Board().getPuzzle()
 //            Board.create()
-        })
+//        })
         
         
         //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
@@ -280,6 +297,7 @@ struct ContentView: View {
             Button("OK", role: .cancel) { }
         } message: {
             Text("Numbers available for this cell are:\n\n\(getNumbers)")
+                
         }
     }
     
@@ -351,7 +369,7 @@ struct ContentView: View {
         
     }
     
-        
+
     
     
     func updateCounts() {

@@ -41,7 +41,7 @@ struct BruteForce {
         var r = 0
         
         // ---accumulate the total score---
-        Globals.totalScore += 5
+//        Globals.totalScore += 5
         
         // ---find out which cell has the smallest number of possible values---
         let cellWithMinValues = findCellWithFewestPossibleValues()
@@ -79,7 +79,7 @@ struct BruteForce {
             }
 
             //---accumulate the total score---
-            Globals.totalScore += 5
+//            Globals.totalScore += 5
             
             Globals.actual = Globals.actualStack.removeLast()
             Globals.possible = Globals.possibleStack.removeLast()

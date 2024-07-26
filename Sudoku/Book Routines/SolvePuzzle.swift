@@ -148,7 +148,7 @@ struct SolvePuzzle {
                         
                         changes = true
                         //---accumulate the total score---
-                        Globals.totalScore += 1
+//                        Globals.totalScore += 1
                     }
                 }
             }

@@ -39,4 +39,5 @@ struct StepsTakenView: View {
 
 #Preview {
     StepsTakenView()
+        .preferredColorScheme(.dark)
 }

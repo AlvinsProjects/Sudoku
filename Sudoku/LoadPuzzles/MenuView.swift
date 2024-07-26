@@ -121,5 +121,6 @@ struct MenuView: View {
 
 #Preview {
     MenuView()
+        .preferredColorScheme(.dark)
 }
 
