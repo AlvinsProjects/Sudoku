@@ -11,9 +11,9 @@ import SwiftUI
 struct PossibleCellView: View {
     
     var number: String
+//    var background: Bool
 
-    var displayPoss: String {
-        var newNo = ""
+    var displayPoss: [String] {
         var numArray = Array(repeating: "", count: 9)
         var location = 0
                         
@@ -21,28 +21,42 @@ struct PossibleCellView: View {
             location = Triplets.getNo(str: number, item: j) - 1
             numArray[location] = String(Triplets.getNo(str: number, item: j))
         }
-        for k in 0..<9  {
-            if numArray[k] == "" { newNo += " " }
-            if k == 3 || k == 6 { newNo += "\n"}
-            newNo += numArray[k] + " "
-        }
-        return newNo
+        return numArray
     }
     
     
     var body: some View {
-        Text(displayPoss)
-            .font(.system(size: 11, weight: .bold, design: .monospaced))
-            .padding(.leading, 5)
-            .foregroundStyle(.yellow) 
-            .frame(maxWidth: 80, maxHeight: 80)
-            .aspectRatio(1, contentMode: .fit)
-            .background(Color.squareStandard)
-            .accessibilityShowsLargeContentViewer()
+        Grid {
+            GridRow(alignment: .top) {
+                Text(displayPoss[0])
+                    .gridColumnAlignment(.leading)
+                Text(displayPoss[1])
+                Text(displayPoss[2])
+            }
+            
+            GridRow(alignment: .top) {
+                Text(displayPoss[3])
+                Text(displayPoss[4])
+                Text(displayPoss[5])
+                
+            }
+            GridRow(alignment: .top) {
+                Text(displayPoss[6])
+                Text(displayPoss[7])
+                Text(displayPoss[8])
+            }
+        }
+        .font(.system(size: 10, weight: .bold, design: .monospaced))
+        .padding(.leading, 2)
+        .foregroundStyle(.yellow)
+        .frame(maxWidth: 80, maxHeight: 80)
+        .aspectRatio(1, contentMode: .fit)
+//        .background(Color.squareStandard)
+        .accessibilityShowsLargeContentViewer()
     }
 }
 
 
 #Preview {
-    PossibleCellView(number: "157942368")
+    PossibleCellView(number: "1579438")
 }

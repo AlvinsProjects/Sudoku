@@ -14,7 +14,6 @@ struct PossiblesView: View {
     @State private var board = Board() 
     let spacing = 2.0
     
-    @State private var getNumbers = ""
     
     var diff: String  {
         var dif = ""
@@ -52,9 +51,6 @@ struct PossiblesView: View {
     }
     
     
-    
-    
-    
     var body: some View {
         NavigationStack {
             VStack {
@@ -68,6 +64,7 @@ struct PossiblesView: View {
                            icon: icon)
                 .padding(.bottom, 8)
                 
+                
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
                         GridRow {
@@ -75,11 +72,12 @@ struct PossiblesView: View {
                                 PossibleCellView(number: Globals.GlobePlayers[row][col])
                                 if col == 2 || col == 5 {
                                     Spacer()
-                                        .frame(width: spacing, height: 1)
+                                        .frame(width: spacing, height: 0)
                                 }
                             }
                         }
-                        .padding(.bottom, row == 2 || row == 5 ? spacing : 0)
+                        .padding(.bottom, row == 2 || row == 5 ? 2 : 1)
+                        .background(Color.squareStandard)
                     }
                 }
                 
@@ -93,7 +91,6 @@ struct PossiblesView: View {
                     }
                 }
                 Spacer()
-                
             }
             .navigationTitle("Possible Cell Values")
         }

@@ -32,7 +32,9 @@ struct ClearPuzzle {
         
         Globals.bruteForceStop = false
         Globals.stepsCount = 0
+        print(Globals.puzIndex, Globals.puzzle.name)
         
+//        ContentView().newGame(difficulty: .Easy)
     }
 }
         

@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>358</string>
+					<string>339</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>357</string>
+					<string>338</string>
 					<key>Timestamp</key>
-					<string>743179847.361991</string>
+					<string>743654984.763455</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -57,15 +57,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>14</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>246</string>
+					<string>250</string>
 					<key>StartingColumnNumber</key>
-					<string>9</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>246</string>
+					<string>249</string>
 					<key>Timestamp</key>
-					<string>742675081.00883</string>
+					<string>743654984.763438</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -81,15 +81,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>alert</string>
+				<string>        .alert("Change Puzzle Difficulty", isPresented: $showingNewGame) {
+</string>
 				<key>leading</key>
 				<string>        
         //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
-        .</string>
+</string>
 				<key>trailing</key>
-				<string>("Change Puzzle Difficulty", isPresented: $showingNewGame) {
-            
+				<string>            
             // if blank puzzle slected - allow choice of difficulty
+            // puzIndex = 12 is a blank puzzle that generates random puzzles
 </string>
 			</dict>
 			<key>title</key>

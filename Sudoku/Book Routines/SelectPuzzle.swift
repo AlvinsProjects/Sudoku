@@ -11,12 +11,10 @@ import Foundation
 struct SelectPuzzle: Equatable {
     
     
-    static func readSelectedPuzzle() -> [[Int]]  {
+    static func readSelectedPuzzle(puzIndex: Int) -> [[Int]]  {
         
-//        let name = Globals.puzzle.name
-        
-        let testInfo = puzArray.SudokuFiles[Globals.puzIndex].content
-        Globals.puzzName = puzArray.SudokuFiles[Globals.puzIndex].name
+        let testInfo = puzArray.SudokuFiles[puzIndex].content
+        Globals.puzzName = puzArray.SudokuFiles[puzIndex].name
 //        print(testInfo)
         
         var testGrid = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))

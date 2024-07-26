@@ -71,12 +71,7 @@ struct CellView: View {
                     .background(highlightState.color)
                 
                 if displayNumber == "" {
-                    Text(pencilString)
-                        .font(.system(size: 11, weight: .bold, design: .monospaced))
-                        .frame(maxWidth: 100, maxHeight: 100, alignment: .center)
-                        .aspectRatio(1, contentMode: .fit)
-                        .foregroundStyle(.cyan)
-                        .background(.clear)
+                    PossibleCellView(number: pencilString)
                 }
             }
             .buttonStyle(.plain)

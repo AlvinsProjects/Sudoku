@@ -38,12 +38,13 @@ struct Board: Equatable {
     func getPuzzle() {
         
         //---Get the puzzle that is to be solved
-        Globals.actual = SelectPuzzle.readSelectedPuzzle()
+        let puzIndex = Globals.puzIndex
+        Globals.actual = SelectPuzzle.readSelectedPuzzle(puzIndex: puzIndex)
         Globals.inputPuzzle = Globals.actual
         
 //        Globals.inputPuzzle = SelectPuzzle.readSelectedPuzzle()
 
-        //---Measure the time it takes to complete a computer solution
+        //Measure the time it takes to complete a computer solution
         let start = CFAbsoluteTimeGetCurrent()
         
         if !SolvePuzzle.solvePuzzle() {

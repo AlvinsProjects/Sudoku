@@ -308,9 +308,9 @@ struct Triplets {
     
 
     /*
-    ==================================================
-     Get the Integer by index number, from a string (of numbers)
-    ==================================================*/
+    ==============================================================
+      Get the Integer by index number, from a string (of numbers)
+    ==============================================================*/
     static func getNo(str: String, item: Int) -> Int {
         Int(String(str[str.index(str.startIndex, offsetBy: item)])) ?? 999
     }

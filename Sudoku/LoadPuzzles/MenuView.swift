@@ -101,9 +101,10 @@ struct MenuView: View {
         Globals.puzzle = puzzle
         Globals.puzIndex = puzzle.number
         
-        ClearPuzzle().clearPreviousPuzzle()
-        ContentView().newGame(difficulty: .Easy)
+//        ClearPuzzle().clearPreviousPuzzle()
         
+//        ContentView().newGame(difficulty: .Easy)
+//        print(Globals.puzIndex, "Hello")
         
 //        print(puzzle)
         

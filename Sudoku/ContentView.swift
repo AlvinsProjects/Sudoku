@@ -108,6 +108,7 @@ struct ContentView: View {
                     }
                 }
                 
+                
                 // draw numbers below puzzle for entering data
                 HStack {
                     ForEach(1..<10) { i in
@@ -124,12 +125,12 @@ struct ContentView: View {
                 
                 
                 // Insert toggle for entry of possible numbers
-                Toggle("Enter Hints:",
+                Toggle("Enter Pencil Marks:",
                        systemImage: "square.grid.3x3",
                        isOn: $hintMode)
                 .font(.title3)
                 .foregroundStyle(hintMode ? .yellow : .secondary)
-                .padding(.horizontal, 90)
+                .padding(.horizontal, 55)
                 .offset(x: 0, y: -10)
                 
                 HStack {
@@ -140,11 +141,6 @@ struct ContentView: View {
                     // Navigate to load or save a new puzzle
                     NavigationLink("New Puzzle", destination: MenuView())
                     //                        .disabled(true)
-                    
-                    
-                    //                    Button("New Puzzle") {
-                    //                        self.newGame(difficulty: .Easy)
-                    //                    }
                     
                     
                 }
@@ -168,6 +164,7 @@ struct ContentView: View {
                             }
                         }
                         
+                        
                         //MARK: Display the possible numbers for the selected cell
                         Button {
                             let c = self.$selectedCol.wrappedValue
@@ -176,7 +173,7 @@ struct ContentView: View {
                             // if no cell is selected, return
                             if c == -1 || r == -1 { return }
                             
-                            //if selected cell has a value, return
+                            // if selected cell has a value, return
                             if board.playerBoard[r][c] != 0 { return }
                             
                             // Re-set the variables
@@ -186,7 +183,7 @@ struct ContentView: View {
                                 numArray[j] = ""
                             }
                             
-                            // get the numbers that are available for the selected cell
+                            // Get the numbers that are available for the selected cell
                             getNumbers = calculatePlayerBoardValues(col: r, row: c)
                             
                             // Arrange the numbers into a grid
@@ -195,8 +192,8 @@ struct ContentView: View {
                                 numArray[location] = String(Triplets.getNo(str: getNumbers, item: j))
                             }
                             for k in 0..<9  {
-                                if numArray[k] == "" { newNo += "" }
-                                if k == 3 || k == 6 { newNo += "\n"}
+                                if numArray[k] == " " { newNo += "" }
+                                if k == 3 || k == 6 { newNo += " \n"}
                                 newNo += numArray[k] + " "
                             }
                             getNumbers = newNo
@@ -208,6 +205,7 @@ struct ContentView: View {
                                     .font(.footnote)
                             }
                         }
+                        
                         
                         //MARK: Display the steps taken by the computer solution of the puzzle
                         NavigationLink {
@@ -241,6 +239,11 @@ struct ContentView: View {
             updateCounts()
             updatePlayerBoard()
         }
+        .onChange(of: Globals.puzIndex, {
+            print("Index changed to \(Globals.puzzle)")
+            Board().getPuzzle()
+//            Board.create()
+        })
         
         
         //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
@@ -276,7 +279,7 @@ struct ContentView: View {
         .alert("Possible Numbers", isPresented: $showingPossibles) {
             Button("OK", role: .cancel) { }
         } message: {
-            Text("Numbers available for this cell are:\n\(getNumbers)")
+            Text("Numbers available for this cell are:\n\n\(getNumbers)")
         }
     }
     
@@ -318,8 +321,7 @@ struct ContentView: View {
                 } else {
                     hints += String(number)
                 }
-                pencilString = displayPencils(number: hints)
-                board.pencilBoard[selectedRow][selectedCol] = pencilString
+                board.pencilBoard[selectedRow][selectedCol] = hints
             } else {
                 // Don't allow original or correct numbers to be changed
                 if board.playerBoard[selectedRow][selectedCol] == number {
@@ -332,27 +334,6 @@ struct ContentView: View {
             }
         }
     }
-
-     
-    /// Format the pencil array numbers into a grid
-    /// - Parameter number: The string of numbers to be formatted
-    /// - Returns:          The formatted string
-    func displayPencils(number: String) -> String {
-        var newNo = ""
-        var numArray = Array(repeating: " ", count: 9)
-        var location = 0
-        
-        for j in 0..<number.count {
-            location = Triplets.getNo(str: number, item: j) - 1
-            numArray[location] = String(Triplets.getNo(str: number, item: j))
-        }
-        for k in 0..<9  {
-            if numArray[k] == "" { newNo += " " }
-            if k == 3 || k == 6 { newNo += "\n"}
-            newNo += numArray[k] + " "
-        }
-        return newNo
-    }
     
     
     func newGame(difficulty: Board.Difficulty) {
@@ -361,11 +342,16 @@ struct ContentView: View {
         selectedCol = -1
         selectedNum = 0
         ClearPuzzle().clearPreviousPuzzle()
+//        updateCounts()
+//        updatePlayerBoard()
+        
 //        SelectPuzzle.readSelectedPuzzle()
 //        Board().getPuzzle()
 //        Board().create()
         
     }
+    
+        
     
     
     func updateCounts() {
