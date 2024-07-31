@@ -11,44 +11,45 @@ import SwiftUI
 
 struct PossiblesView: View {
     
-    @State private var board = Board() 
+//    @State private var board = Board() 
     let spacing = 2.0
     
-    
-    var diff: String  {
-        var dif = ""
-        let descr = ContentView().getHeader(diff: Globals.blanks)
-        if Globals.puzIndex == 12 {
-            dif = "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
-        } else {
-            dif = "\(Globals.blanks)  \(descr.difDescr)"
-        }
-        return dif
-    }
-    
-    var col: Color {
-        var color = Color.red
-        if Globals.puzIndex == 12 {
-            let colorIcon = ContentView().getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
-            color = colorIcon.col
-        } else {
-            let ccc = ContentView().getHeader(diff: Globals.blanks)
-            color = ccc.col
-        }
-        return color
-    }
-    
-    var icon: String {
-        var ico = ""
-        if Globals.puzIndex == 12 {
-            let colorIcon = ContentView().getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
-            ico = colorIcon.icon
-        } else {
-            let ccTemp = ContentView().getHeader(diff: Globals.blanks)
-            ico = ccTemp.icon
-        }
-        return ico
-    }
+//    var diff: String  {
+//        var dif = ""
+//        let descr = ContentView().getHeader(diff: Globals.blanks)
+//        if Globals.puzIndex == 12 {
+//            dif = "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
+//        } else {
+//            dif = "\(Globals.blanks)  \(descr.difDescr)"
+//        }
+//        return dif
+//    }
+//    
+//    
+//    var col: Color {
+//        var color = Color.red
+//        if Globals.puzIndex == 12 {
+//            let colorIcon = ContentView().getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
+//            color = colorIcon.col
+//        } else {
+//            let ccc = ContentView().getHeader(diff: Globals.blanks)
+//            color = ccc.col
+//        }
+//        return color
+//    }
+//    
+//    
+//    var icon: String {
+//        var ico = ""
+//        if Globals.puzIndex == 12 {
+//            let colorIcon = ContentView().getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
+//            ico = colorIcon.icon
+//        } else {
+//            let ccTemp = ContentView().getHeader(diff: Globals.blanks)
+//            ico = ccTemp.icon
+//        }
+//        return ico
+//    }
     
     
     var body: some View {
@@ -56,14 +57,17 @@ struct PossiblesView: View {
             VStack {
                 
                 // call headerView to display header - common to possiblesView
-                HeaderView(diff: diff,
-                           puzzIndex: Globals.puzIndex,
-                           puzzName: Globals.puzzName,
-                           exTime: Globals.exTime[0],
-                           col: col,
-                           icon: icon)
-                .padding(.bottom, 8)
-                
+//                HeaderView(diff: diff,
+//                           puzzIndex: Globals.puzIndex,
+//                           puzzName: Globals.puzzName,
+//                           exTime: Globals.exTime[0],
+//                           col: col,
+//                           icon: icon)
+//                .padding(.bottom, 8)
+
+                Rectangle()
+                    .frame(width: 200, height: 108)
+                    .foregroundStyle(.clear)
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
@@ -75,12 +79,13 @@ struct PossiblesView: View {
                                         .frame(width: spacing, height: 0)
                                 }
                             }
+                            //TODO: Show horizontal mini grid separations
+                            .padding(.bottom, row == 3 || row == 5 ? spacing : 1)
+                            .background(Color.squareStandard)
                         }
-                        .padding(.bottom, row == 2 || row == 5 ? spacing : 0)
-                        .background(Color.squareStandard)
                     }
                 }
-                
+                    
                 //Selection numbers at the base of the puzzle
                 HStack {
                     ForEach(1..<10) { i in

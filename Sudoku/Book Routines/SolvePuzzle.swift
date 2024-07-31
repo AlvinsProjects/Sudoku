@@ -19,7 +19,7 @@ struct SolvePuzzle {
         var changes = false
         var exitLoop = false
         
-        repeat {   //---Look for Triplets in Columns---
+        repeat {    //---Look for Triplets in Columns---
             repeat {    //---Look for Triplets in Rows---
                 repeat {    //---Look for Triplets in Minigrids---
                     repeat {    //---Look for Twins in Columns---

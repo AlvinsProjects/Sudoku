@@ -45,7 +45,9 @@ struct Board: Equatable {
         //Measure the time it takes to complete a computer solution
         let start = CFAbsoluteTimeGetCurrent()
         
-        if !SolvePuzzle.solvePuzzle() {
+        if SolvePuzzle.solvePuzzle() {
+            print("Puzzle Solved using CRME methods")
+        } else {
             BruteForce.solvePuzzleByBruteForce()
             print("Puzzle Solved using Brute Force")
         }
@@ -54,7 +56,6 @@ struct Board: Equatable {
         Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
         
 //        print(Globals.totalScore)
-        
 //        Globals.totalScore = 0
         
 //        print(Globals.exTime)

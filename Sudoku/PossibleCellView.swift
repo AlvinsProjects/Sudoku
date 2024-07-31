@@ -11,7 +11,6 @@ import SwiftUI
 struct PossibleCellView: View {
     
     var number: String
-//    var background: Bool
 
     var displayPoss: [String] {
         var numArray = Array(repeating: "", count: 9)
@@ -29,7 +28,7 @@ struct PossibleCellView: View {
         Grid {
             GridRow(alignment: .top) {
                 Text(displayPoss[0])
-//                    .gridColumnAlignment(.leading)
+                    .gridColumnAlignment(.leading)
                 Text(displayPoss[1])
                 Text(displayPoss[2])
             }

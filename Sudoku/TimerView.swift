@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct CountUpView: View {
+struct TimerView: View {
     
     @State private var hours = 0
     @State private var minutes = 0
@@ -76,6 +76,6 @@ struct CountUpView: View {
 
 
 #Preview {
-    CountUpView()
+    TimerView()
         .preferredColorScheme(.dark)
 }

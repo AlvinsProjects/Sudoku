@@ -140,9 +140,6 @@ struct ContentView: View {
                     }
                     // Navigate to load or save a new puzzle
                     NavigationLink("New Puzzle", destination: MenuView())
-                    //                        .disabled(true)
-                    
-                    
                 }
                 .buttonStyle(.borderedProminent)
             }
@@ -231,23 +228,6 @@ struct ContentView: View {
                         }
                     }
                 }
-            
-//                .toolbar {
-//                    ToolbarItemGroup(placement: .topBarLeading) {
-//
-//                        //MARK: Display all possible numbers
-//                        NavigationLink {
-//                            PossiblesView()
-//                        } label: {
-//                            VStack {
-//                                Text(Image(systemName: "lightbulb.min.badge.exclamationmark"))
-//                                Text("Possibles")
-//                                    .font(.footnote)
-//                            }
-//                        }
-//                    }
-//                }
-            
         }
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         .environment(\.colorScheme, isDarkMode ? .dark : .light)
@@ -293,11 +273,10 @@ struct ContentView: View {
         
         
         //MARK: Alert to show the numbers available for the selected cell
-        .alert("Possible Numbers", isPresented: $showingPossibles) {
+        .alert("Candidate Numbers", isPresented: $showingPossibles) {
             Button("OK", role: .cancel) { }
         } message: {
-            Text("Numbers available for this cell are:\n\n\(getNumbers)")
-                
+            Text("Numbers available for\nColumn \(self.selectedCol), Row \(self.selectedRow):\n\n\(getNumbers)")
         }
     }
     
@@ -471,9 +450,9 @@ struct ContentView: View {
     
     
     /*
-     =====================================================
-     Calculates the possible values for a playerBoard cell
-     =====================================================*/
+     =========================================================
+       Calculates the possible values for a playerBoard cell
+     =========================================================*/
     func calculatePlayerBoardValues(col: Int, row: Int) -> String {
         var str = ""
         

@@ -32,9 +32,18 @@ struct ClearPuzzle {
         
         Globals.bruteForceStop = false
         Globals.stepsCount = 0
+        
+//        SolvePuzzle.solvePuzzle() = false
         print(Globals.puzIndex, Globals.puzzle.name)
         
 //        ContentView().newGame(difficulty: .Easy)
+        
+//        if SolvePuzzle.solvePuzzle() {
+//            print("Puzzle Solved using Other methods")
+//        } else {
+//            BruteForce.solvePuzzleByBruteForce()
+//            print("Puzzle Solved using Brute Force")
+//        }
     }
 }
         

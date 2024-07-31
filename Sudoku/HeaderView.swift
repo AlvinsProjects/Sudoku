@@ -38,7 +38,7 @@ struct HeaderView: View {
                 
                 GridRow {
                     Text("Puzzle Solve Time:")
-                    CountUpView()
+                    TimerView()
                 }
             }
             .font(.footnote)
