@@ -103,11 +103,10 @@ struct MenuView: View {
         
 //        ClearPuzzle().clearPreviousPuzzle()
         
-//        ContentView().newGame(difficulty: .Easy)
+        ContentView().newGame(difficulty: .Easy)
+        
 //        print(Globals.puzIndex, "Hello")
-        
 //        print(puzzle)
-        
 //        Board().getPuzzle()
 //        Board().create()
 //        Board().prepareForPlay()

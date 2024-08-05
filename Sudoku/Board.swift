@@ -25,6 +25,7 @@ struct Board: Equatable {
     var playerBoard = [[Int]]()     //changes as numbers are added
     var pencilBoard = Array(Array(repeating: Array(repeating: "", count: 9), count: 9))  //board with pencil marks
     
+    
     init(difficulty: Difficulty = .Easy) {
         self.difficulty = difficulty
         getPuzzle()
@@ -51,7 +52,7 @@ struct Board: Equatable {
             BruteForce.solvePuzzleByBruteForce()
             print("Puzzle Solved using Brute Force")
         }
-        
+       
         let executionTime = CFAbsoluteTimeGetCurrent() - start
         Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
         

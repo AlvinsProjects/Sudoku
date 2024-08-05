@@ -12,60 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>336</string>
+					<string>249</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>335</string>
+					<string>248</string>
 					<key>Timestamp</key>
-					<string>744088238.540898</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>Sudoku/ContentView.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>    func newGame(difficulty: Board.Difficulty) {
-</string>
-				<key>leading</key>
-				<string>    
-    
-</string>
-				<key>trailing</key>
-				<string>        board = Board(difficulty: difficulty)
-        selectedRow = -1
-        selectedCol = -1
-</string>
-			</dict>
-			<key>title</key>
-			<string>NewGame</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>0</string>
-					<key>EndingLineNumber</key>
-					<string>247</string>
-					<key>StartingColumnNumber</key>
-					<string>0</string>
-					<key>StartingLineNumber</key>
-					<string>246</string>
-					<key>Timestamp</key>
-					<string>744088238.54092</string>
+					<string>744558080.295354</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -94,7 +47,100 @@
 </string>
 			</dict>
 			<key>title</key>
-			<string>Alert to start new game and difficulty</string>
+			<string>Change Puzzle Difficulty</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>338</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>337</string>
+					<key>Timestamp</key>
+					<string>744558080.295334</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Sudoku/ContentView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    func newGame(difficulty: Board.Difficulty) {
+</string>
+				<key>leading</key>
+				<string>    
+    
+</string>
+				<key>trailing</key>
+				<string>        board = Board(difficulty: difficulty)
+        selectedRow = -1
+        selectedCol = -1
+</string>
+			</dict>
+			<key>title</key>
+			<string>NewGame Function</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>28</string>
+					<key>EndingLineNumber</key>
+					<string>17</string>
+					<key>StartingColumnNumber</key>
+					<string>9</string>
+					<key>StartingLineNumber</key>
+					<string>17</string>
+					<key>Timestamp</key>
+					<string>744221512.895697</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Sudoku/Book Routines/ClearPuzzle.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>clearPreviousPuzzle</string>
+				<key>leading</key>
+				<string>     Clear the previous Sudoku puzzle
+     ============================================================*/
+    func </string>
+				<key>trailing</key>
+				<string>() {
+        
+        for j in 0..&lt;9 {
+</string>
+			</dict>
+			<key>title</key>
+			<string>Clear the previous puzzle</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

@@ -57,7 +57,7 @@ struct LoneRangers  {
                         
                         changes = true
                         // ---accumulate the total score---
-//                        Globals.totalScore += 2
+                        Globals.totalScore += 2
                     }
                 }
             }
@@ -100,7 +100,7 @@ struct LoneRangers  {
                         changes = true
                     }
                     // ---accumulate the total score---
-//                    Globals.totalScore += 2
+                    Globals.totalScore += 2
                 }
             }
         }
@@ -141,7 +141,7 @@ struct LoneRangers  {
                         changes = true
                     }
                     // ---accumulate the total score---
-//                    Globals.totalScore += 2
+                    Globals.totalScore += 2
                 }
             }
         }

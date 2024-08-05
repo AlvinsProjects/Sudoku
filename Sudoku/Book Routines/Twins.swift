@@ -80,7 +80,7 @@ struct Twins {
                                                 Globals.stepsCount += 1
                                                 Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Twins MiniGrid.            Added \(Globals.actual[ccc][rrr]) to (\(ccc), \(rrr))"))
                                                 
-//                                                Globals.totalScore += 3
+                                                Globals.totalScore += 3
                                             }
                                         }
                                     }
@@ -156,7 +156,7 @@ struct Twins {
                                         Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Twins Row.                     Added \(Globals.actual[ccc][r]) to (\(ccc), \(r))"))
                                         
                                         //---accumulate the total score---
-//                                        Globals.totalScore += 3
+                                        Globals.totalScore += 3
                                     }
                                 }
                             }
@@ -229,7 +229,7 @@ struct Twins {
                                         Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Twins Column.                Added \(Globals.actual[c][rrr]) to (\(c), \(rrr))"))
                                                                                     
                                         //---accumulate the total score---
-//                                        Globals.totalScore += 3
+                                        Globals.totalScore += 3
                                     }
                                 }
                             }

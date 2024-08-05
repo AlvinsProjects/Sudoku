@@ -14,19 +14,21 @@ struct StepsTakenView: View {
 
     var body: some View {
         NavigationStack {
-            
-            if steps.isEmpty {
-                List {
-                    Text("There were no solution steps available!")
-                        .bold()
-                        .foregroundStyle(.red)
+            VStack {
+                
+                if steps.isEmpty {
+                    List {
+                        Text("There were no solution steps available!")
+                            .bold()
+                            .foregroundStyle(.red)
+                    }
+                } else {
+                    List(steps) {
+                        Text("\($0.index).  \($0.steps)")
+                            .font(.footnote)   //.bold()
+                            .foregroundStyle($0.steps.contains("Brute") ? .pink : .cyan)
+                    }
                 }
-            }
-            
-            List(steps) {
-                Text("\($0.index).  \($0.steps)")
-                    .font(.footnote).bold()
-                    .foregroundStyle($0.steps.contains("Brute") ? .pink : .cyan)
             }
             .navigationTitle("Solution Steps")
         }

@@ -79,7 +79,7 @@ struct BruteForce {
             }
 
             //---accumulate the total score---
-//            Globals.totalScore += 5
+            Globals.totalScore += 5
             
             Globals.actual = Globals.actualStack.removeLast()
             Globals.possible = Globals.possibleStack.removeLast()

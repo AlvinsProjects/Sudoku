@@ -22,10 +22,11 @@ struct PossiblesView: View {
 //        } else {
 //            dif = "\(Globals.blanks)  \(descr.difDescr)"
 //        }
+//
 //        return dif
 //    }
-//    
-//    
+//    var diff = "55"
+    
 //    var col: Color {
 //        var color = Color.red
 //        if Globals.puzIndex == 12 {
@@ -37,8 +38,8 @@ struct PossiblesView: View {
 //        }
 //        return color
 //    }
-//    
-//    
+    
+    
 //    var icon: String {
 //        var ico = ""
 //        if Globals.puzIndex == 12 {
@@ -56,7 +57,7 @@ struct PossiblesView: View {
         NavigationStack {
             VStack {
                 
-                // call headerView to display header - common to possiblesView
+//                 call headerView to display header - common to possiblesView
 //                HeaderView(diff: diff,
 //                           puzzIndex: Globals.puzIndex,
 //                           puzzName: Globals.puzzName,
@@ -79,10 +80,10 @@ struct PossiblesView: View {
                                         .frame(width: spacing, height: 0)
                                 }
                             }
-                            //TODO: Show horizontal mini grid separations
-                            .padding(.bottom, row == 3 || row == 5 ? spacing : 1)
-                            .background(Color.squareStandard)
                         }
+                        //TODO: Show horizontal mini grid separations
+                        .padding(.bottom, row == 3 || row == 5 ? spacing : 1)
+                        .background(Color.squareStandard)
                     }
                 }
                     

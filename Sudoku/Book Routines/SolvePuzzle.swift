@@ -118,8 +118,10 @@ struct SolvePuzzle {
         } while changes
         
         if isPuzzleSolved() {
+//            print("Puzzle Solved")
             return true
         } else {
+//            print("NOT Solved")
             return false
         }
     }
@@ -128,7 +130,7 @@ struct SolvePuzzle {
     
     /*
     =====================================================
-        Calculates the possible values for all the cells
+       Calculates the possible values for all the cells
     =====================================================*/
     static func checkColumnsAndRows() -> Bool {
         var changes = false
@@ -147,6 +149,7 @@ struct SolvePuzzle {
                         Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Col Row MiniGrid Elim.  Added \(Globals.actual[col][row]) to (\(row), \(col))"))
                         
                         changes = true
+                        
                         //---accumulate the total score---
 //                        Globals.totalScore += 1
                     }

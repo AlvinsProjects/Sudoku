@@ -133,11 +133,13 @@ struct ContentView: View {
                 .padding(.horizontal, 55)
                 .offset(x: 0, y: -10)
                 
+                
                 HStack {
                     // Button to toggle the display mode
                     Button(isDarkMode ? "Light Mode" : "Dark Mode") {
                         self.isDarkMode.toggle()
                     }
+                    
                     // Navigate to load or save a new puzzle
                     NavigationLink("New Puzzle", destination: MenuView())
                 }
@@ -276,7 +278,7 @@ struct ContentView: View {
         .alert("Candidate Numbers", isPresented: $showingPossibles) {
             Button("OK", role: .cancel) { }
         } message: {
-            Text("Numbers available for\nColumn \(self.selectedCol), Row \(self.selectedRow):\n\n\(getNumbers)")
+            Text("Numbers available for\nColumn \(self.selectedCol + 1), Row \(self.selectedRow + 1):\n\n\(getNumbers)")
         }
     }
     
@@ -338,6 +340,9 @@ struct ContentView: View {
         selectedRow = -1
         selectedCol = -1
         selectedNum = 0
+        
+//        Globals.stepsTakenArray.removeAll()
+        
         ClearPuzzle().clearPreviousPuzzle()
 //        updateCounts()
 //        updatePlayerBoard()

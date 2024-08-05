@@ -101,7 +101,7 @@ struct Triplets {
                                         Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Triplet MiniGrid.  Added \(Globals.actual[ccc][rrr]) to (\(ccc), \(rrr))"))
                                         
                                         //---accumulate the total score---
-//                                        Globals.totalScore += 4
+                                        Globals.totalScore += 4
                                     }
                                 }
                             }
@@ -200,7 +200,7 @@ struct Triplets {
                                                                                 
                                                                                 
                                     //---accumulate the total score---
-//                                    Globals.totalScore += 4
+                                    Globals.totalScore += 4
                                 }
                             }
                         }
@@ -295,7 +295,7 @@ struct Triplets {
                                     Globals.stepsTakenArray.append(StepsTaken(index: Globals.stepsCount, steps: "Triplet Columns.                Added \(Globals.actual[c][rrr]) to (\(c), \(rrr))"))
                                     
                                     //---accumulate the total score---
-//                                    Globals.totalScore += 4
+                                    Globals.totalScore += 4
                                 }
                             }
                         }
