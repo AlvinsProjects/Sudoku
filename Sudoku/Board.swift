@@ -12,9 +12,9 @@ struct Board: Equatable {
     
     enum Difficulty: Int, CaseIterable {
         case Trivial = 10
-        case Easy = 20
-        case Medium = 24
-        case Hard = 27
+        case Easy    = 20
+        case Medium  = 24
+        case Hard    = 27
         case Extreme = 29
     }
     
@@ -38,13 +38,20 @@ struct Board: Equatable {
     
     func getPuzzle() {
         
+        ClearPuzzle().clearPreviousPuzzle()
+        
         //---Get the puzzle that is to be solved
         let puzIndex = Globals.puzIndex
         Globals.actual = SelectPuzzle.readSelectedPuzzle(puzIndex: puzIndex)
         Globals.inputPuzzle = Globals.actual
-
+        
+        //MARK: Test Print
+//                print(Globals.actual[0])
+//                print(Globals.inputPuzzle[0])
+//        Globals.blanks = 999
+        
         //Measure the time it takes to complete a computer solution
-        let start = CFAbsoluteTimeGetCurrent()
+//        let start = CFAbsoluteTimeGetCurrent()
         
         if SolvePuzzle.solvePuzzle() {
             print("Puzzle Solved using CRME methods")
@@ -52,14 +59,15 @@ struct Board: Equatable {
             BruteForce.solvePuzzleByBruteForce()
             print("Puzzle Solved using Brute Force")
         }
-       
-        let executionTime = CFAbsoluteTimeGetCurrent() - start
-        Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
         
-//        print(Globals.totalScore)
-//        Globals.totalScore = 0
         
-//        print(Globals.exTime)
+//        let executionTime = CFAbsoluteTimeGetCurrent() - start
+//        Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
+        
+        //        print(Globals.totalScore)
+        //        Globals.totalScore = 0
+        //        print(Globals.exTime)
+        
         //---Print the solution (for reference)
 //        print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")
 //        for j in 0..<9 {
@@ -79,6 +87,7 @@ struct Board: Equatable {
             playerBoard = Globals.actual
         } else {
             playerBoard = Globals.inputPuzzle
+            print("not 12")
         }
     }
     
@@ -94,8 +103,7 @@ struct Board: Equatable {
             playerBoard[8 - row][8 - column] = 0
         }
     }
-    
-    
+}
     
     
     
@@ -115,4 +123,4 @@ struct Board: Equatable {
 //        create()
 //        prepareForPlay()
 //    }
-}
+//}

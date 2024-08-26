@@ -13,6 +13,7 @@ struct PossiblesView: View {
     
 //    @State private var board = Board() 
     let spacing = 2.0
+
     
 //    var diff: String  {
 //        var dif = ""
@@ -38,8 +39,8 @@ struct PossiblesView: View {
 //        }
 //        return color
 //    }
-    
-    
+//    
+//    
 //    var icon: String {
 //        var ico = ""
 //        if Globals.puzIndex == 12 {
@@ -57,7 +58,11 @@ struct PossiblesView: View {
         NavigationStack {
             VStack {
                 
-//                 call headerView to display header - common to possiblesView
+                Rectangle()
+                    .frame(width: 200, height: 65)  //108
+                    .foregroundStyle(.clear)
+                
+                //call headerView to display header - common to possiblesView
 //                HeaderView(diff: diff,
 //                           puzzIndex: Globals.puzIndex,
 //                           puzzName: Globals.puzzName,
@@ -65,10 +70,8 @@ struct PossiblesView: View {
 //                           col: col,
 //                           icon: icon)
 //                .padding(.bottom, 8)
-
-                Rectangle()
-                    .frame(width: 200, height: 108)
-                    .foregroundStyle(.clear)
+                
+//                TimerView()
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in

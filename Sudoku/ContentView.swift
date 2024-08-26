@@ -36,52 +36,68 @@ struct ContentView: View {
         var dif = ""
         let descr = getHeader(diff: Globals.blanks)
         if Globals.puzIndex == 12 {
-            dif = "\(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
+            dif = "Difficulty:  \(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
         } else {
-            dif = "\(Globals.blanks)  \(descr.difDescr)"
+            dif = "Difficulty:  \(Globals.blanks)  \(descr.difDescr)"
         }
         return dif
     }
     
     
-    var col: Color {
-        var color = Color.red
-        if Globals.puzIndex == 12 {
-            let colorIcon = getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
-            color = colorIcon.col
-        } else {
-            let ccc = getHeader(diff: Globals.blanks)
-            color = ccc.col
-        }
-        return color
-    }
+//    var col: Color {
+//        var color = Color.red
+//        if Globals.puzIndex == 12 {
+//            let colorIcon = getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
+//            color = colorIcon.col
+//        } else {
+//            let ccc = getHeader(diff: Globals.blanks)
+//            color = ccc.col
+//        }
+//        return color
+//    }
     
     
-    var icon: String {
-        var ico = ""
-        if Globals.puzIndex == 12 {
-            let colorIcon = getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
-            ico = colorIcon.icon
-        } else {
-            let ccc = getHeader(diff: Globals.blanks)
-            ico = ccc.icon
-        }
-        return ico
-    }
+//    var icon: String {
+//        var ico = ""
+//        if Globals.puzIndex == 12 {
+//            let colorIcon = getHeaderColor12(difficulty: "\(Globals.bdDifficulty)")
+//            ico = colorIcon.icon
+//        } else {
+//            let ccc = getHeader(diff: Globals.blanks)
+//            ico = ccc.icon
+//        }
+//        return ico
+//    }
     
     
     var body: some View {
         NavigationStack {
             VStack {
                 
+//                Rectangle()
+//                    .frame(width: 200, height: 10)   //108
+//                    .foregroundStyle(.clear)
+                
+//                HeaderView()
+
                 // call headerView to display header - common with possiblesView
-                HeaderView(diff: diff,
-                           puzzIndex: Globals.puzIndex,
-                           puzzName: Globals.puzzName,
-                           exTime: Globals.exTime[0],
-                           col: col,
-                           icon: icon)
-                .padding(.bottom, 8)
+//                HeaderView(diff: diff,
+//                           puzzIndex: Globals.puzIndex,
+//                           puzzName: Globals.puzzName,
+//                           exTime: Globals.exTime[0],
+//                           col: col,
+//                           icon: icon)
+//                .padding(.bottom, 8)
+
+                VStack {
+                    Text(diff)
+                        .frame(width: 250, height: 10, alignment: .center)
+                        .foregroundStyle(.cyan)
+                        .padding(.top, 10)
+                    TimerView()
+                }
+                .border(.secondary, width: 1)
+                .padding(.bottom, 7)
                 
                 GridLayout(horizontalSpacing: 1, verticalSpacing: 1) {
                     ForEach(0..<9) { row in
@@ -117,11 +133,25 @@ struct ContentView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .font(.largeTitle)
-                        .foregroundColor(hintMode ? .yellow : .blue)
+                        .foregroundStyle(hintMode ? .yellow : .blue)
                         // hide the numbers that are no longer available
                         .opacity(counts[i, default: 0] == 9 ? 0.4 : 1)
                     }
                 }
+                
+                // draw numbers to indicate quantities remaining to be solved
+                HStack {
+                    ForEach(counts.sorted(by: <), id: \.key) { key, value in
+                        Text("\(value)")
+                            .frame(width: 20, height: 20)
+                            .border(.secondary)
+                            .foregroundStyle(value == 9 ? .red : .green)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .font(.caption)
+                        .offset(y: -25)
+                }
+                
                 
                 
                 // Insert toggle for entry of possible numbers
@@ -142,6 +172,14 @@ struct ContentView: View {
                     
                     // Navigate to load or save a new puzzle
                     NavigationLink("New Puzzle", destination: MenuView())
+                        .disabled(true)
+//                    NavigationLink {
+//                        HeaderView()
+//                    } label: {
+//                        Text("Header View")
+////                            .font(.footnote)
+//                    }
+                    
                 }
                 .buttonStyle(.borderedProminent)
             }
@@ -219,7 +257,6 @@ struct ContentView: View {
                         
                         //MARK: Add a new puzzle, change the difficulty, or cancel
                         Button {
-//                            Globals.totalScore = 0
                             showingNewGame = true
                         } label: {
                             VStack {
@@ -238,11 +275,7 @@ struct ContentView: View {
             updateCounts()
             updatePlayerBoard()
         }
-//        .onChange(of: Globals.puzIndex, {
-//            print("Index changed to \(Globals.puzzle)")
-//            Board().getPuzzle()
-//            Board.create()
-//        })
+
         
         
         //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
@@ -266,12 +299,24 @@ struct ContentView: View {
                     .font(.footnote)
             }
             
+            
+
+//            NavigationLink {
+//                HeaderView()
+//            } label: {
+//                Text("Header View")
+//                    .font(.footnote)
+//            }
+
+            
             Button("Cancel", role: .cancel) { }
         } message: {
             if solved {
                 Text("You solved the board correctly!")
             }
         }
+        
+        
         
         
         //MARK: Alert to show the numbers available for the selected cell
@@ -340,20 +385,8 @@ struct ContentView: View {
         selectedRow = -1
         selectedCol = -1
         selectedNum = 0
-        
-//        Globals.stepsTakenArray.removeAll()
-        
-        ClearPuzzle().clearPreviousPuzzle()
-//        updateCounts()
-//        updatePlayerBoard()
-        
-//        SelectPuzzle.readSelectedPuzzle()
-//        Board().getPuzzle()
-//        Board().create()
-        
     }
     
-
     
     
     func updateCounts() {
@@ -371,7 +404,9 @@ struct ContentView: View {
                 }
             }
         }
+       
         counts = newCounts
+
         if correctCount == board.size * board.size {
             Task {
                 try await Task.sleep(for: .seconds(2.0))
@@ -382,31 +417,32 @@ struct ContentView: View {
     }
     
     
-    func getHeaderColor12(difficulty: String) -> (col: Color, icon: String) {
-        var col = Color.red
-        var icon = ""
-        switch difficulty {
-            case "Trivial":
-                col = Color.cyan
-                icon = "😃"
-            case "Easy":
-                col = Color.green
-                icon = "☺️"
-            case "Medium":
-                col = Color.yellow
-                icon = "🥸"
-            case "Hard":
-                col = Color.orange
-                icon = "😠"
-            case "Extreme":
-                col = Color.pink
-                icon = "😡"
-            default:
-                col = Color.orange
-                icon = ""
-        }
-        return (col, icon)
-    }
+//    func getHeaderColor12(difficulty: String) -> (col: Color, icon: String) {
+//        var col = Color.red
+//        var icon = ""
+//        switch difficulty {
+//            case "Trivial":
+//                col = Color.cyan
+//                icon = "😃"
+//            case "Easy":
+//                col = Color.green
+//                icon = "☺️"
+//            case "Medium":
+//                col = Color.yellow
+//                icon = "🥸"
+//            case "Hard":
+//                col = Color.orange
+//                icon = "😠"
+//            case "Extreme":
+//                col = Color.pink
+//                icon = "😡"
+//            default:
+//                col = Color.orange
+//                icon = ""
+//        }
+//        return (col, icon)
+//    }
+    
     
     func getHeader(diff: Int) -> (col: Color, difDescr: String, icon: String){
         var col = Color.red

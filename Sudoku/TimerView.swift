@@ -19,9 +19,12 @@ struct TimerView: View {
     
     var body: some View {
         
+//        Text("\(Globals.bdDifficulty)")
         HStack {
-            Text("\(hours)h,  \(minutes)m,  \(seconds)s")
-            
+            Text("Timer:  \(hours)h,  \(minutes)m,  \(seconds)s")
+                .font(.headline).bold()
+                .foregroundStyle(minutes >= 10 ? .red : .cyan)
+                
             if timerIsPaused {
                 Button(action: { self.restartTimer() } )  {
                     Image(systemName: "backward.end.alt")
@@ -36,6 +39,9 @@ struct TimerView: View {
                 }
             }
         }
+        .frame(width: 220, height: 30)//, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+//        .border(.secondary, width: 1)
+        .padding(.bottom, 5)
     }
     
     

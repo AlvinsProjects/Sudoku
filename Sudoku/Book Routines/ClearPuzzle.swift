@@ -22,6 +22,7 @@ struct ClearPuzzle {
                 Globals.actual[j][k] = 0
                 Globals.possible[j][k] = ""
                 Globals.GlobePlayers[j][k] = ""
+                Globals.inputPuzzle[j][k] = 0
             }
         }
         
@@ -29,7 +30,7 @@ struct ClearPuzzle {
         Globals.actualStack.removeAll()
         Globals.possibleStack.removeAll()
         Globals.stepsTakenArray.removeAll()
-        Globals.stepsTakenArray.append(StepsTaken(index: 4, steps: "Hello"))
+//        Globals.stepsTakenArray.append(StepsTaken(index: 4, steps: "Hello"))
         
         Globals.bruteForceStop = false
         Globals.stepsCount = 0

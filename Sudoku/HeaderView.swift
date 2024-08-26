@@ -10,25 +10,27 @@ import SwiftUI
 
 struct HeaderView: View {
     
+    @State private var board = Board()
+    
     var diff =  ""
     var puzzIndex = 0
     var puzzName = ""
     var exTime = ""
     var col = Color.black
     var icon = ""
-    
+
     
     var body: some View {
         Grid {
             Grid(alignment: .leading, horizontalSpacing: 30, verticalSpacing: 5) {
-                GridRow {
-                    Text("Puzzle Name:")
-                    Text("\(puzzIndex).  \(puzzName)")
-                }
+//                GridRow {
+//                    Text("Puzzle Name:")
+//                    Text("\(Globals.puzIndex).  \(puzzName)")
+//                }
                 
                 GridRow {
                     Text("Difficulty:")
-                    Text(diff + " " + icon).foregroundStyle(col)
+                    Text(diff)  // + " " + icon).foregroundStyle(col)
                 }
                 
                 GridRow {
@@ -46,6 +48,7 @@ struct HeaderView: View {
             .border(Color.secondary)
         }
     }
+
 }
 
 

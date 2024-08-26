@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>249</string>
+					<string>142</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>248</string>
+					<string>141</string>
 					<key>Timestamp</key>
-					<string>744558080.295354</string>
+					<string>746313673.9363641</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,20 +34,18 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>        .alert("Change Puzzle Difficulty", isPresented: $showingNewGame) {
+				<string>                // draw numbers to indicate quantities remaining to be solved
 </string>
 				<key>leading</key>
-				<string>        
-        //MARK: Alert to allow changes in difficulty and to start a new game, or cancel
+				<string>                }
+                
 </string>
 				<key>trailing</key>
-				<string>            
-            // if blank puzzle slected - allow choice of difficulty
-            // puzIndex = 12 is a blank puzzle that generates random puzzles
+				<string>                HStack {
+                    ForEach(counts.sorted(by: &lt;), id: \.key) { key, value in
+                        Text("\(value)")
 </string>
 			</dict>
-			<key>title</key>
-			<string>Change Puzzle Difficulty</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
@@ -59,13 +57,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>338</string>
+					<string>392</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>337</string>
+					<string>391</string>
 					<key>Timestamp</key>
-					<string>744558080.295334</string>
+					<string>746313673.936352</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -81,66 +79,18 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>    func newGame(difficulty: Board.Difficulty) {
+				<string>    func updateCounts() {
 </string>
 				<key>leading</key>
 				<string>    
     
 </string>
 				<key>trailing</key>
-				<string>        board = Board(difficulty: difficulty)
-        selectedRow = -1
-        selectedCol = -1
+				<string>        solved = false
+        var newCounts = [Int: Int]()
+        var correctCount = 0
 </string>
 			</dict>
-			<key>title</key>
-			<string>NewGame Function</string>
-			<key>type</key>
-			<string>bookmark</string>
-		</dict>
-		<dict>
-			<key>destination</key>
-			<dict>
-				<key>location-parameters</key>
-				<dict>
-					<key>EndingColumnNumber</key>
-					<string>28</string>
-					<key>EndingLineNumber</key>
-					<string>17</string>
-					<key>StartingColumnNumber</key>
-					<string>9</string>
-					<key>StartingLineNumber</key>
-					<string>17</string>
-					<key>Timestamp</key>
-					<string>744221512.895697</string>
-				</dict>
-				<key>rebasable-url</key>
-				<dict>
-					<key>base</key>
-					<string>workspace</string>
-					<key>payload</key>
-					<dict>
-						<key>relative-path</key>
-						<string>Sudoku/Book Routines/ClearPuzzle.swift</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>text-context</key>
-			<dict>
-				<key>focused</key>
-				<string>clearPreviousPuzzle</string>
-				<key>leading</key>
-				<string>     Clear the previous Sudoku puzzle
-     ============================================================*/
-    func </string>
-				<key>trailing</key>
-				<string>() {
-        
-        for j in 0..&lt;9 {
-</string>
-			</dict>
-			<key>title</key>
-			<string>Clear the previous puzzle</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
