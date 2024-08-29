@@ -48,10 +48,11 @@ struct PossibleCellView: View {
         }
         .font(.system(size: 10, weight: .bold, design: .monospaced))
         .padding(.leading, 2)
-        .foregroundStyle(.yellow)
+        .foregroundStyle(.cyan).bold()
         .frame(maxWidth: 80, maxHeight: 80)
         .aspectRatio(1, contentMode: .fit)
 //        .background(Color.squareStandard)
+//        .background(.gray)
         .accessibilityShowsLargeContentViewer()
     }
 }

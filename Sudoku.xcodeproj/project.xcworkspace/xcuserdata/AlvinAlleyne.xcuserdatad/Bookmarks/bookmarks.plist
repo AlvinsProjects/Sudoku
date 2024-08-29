@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>142</string>
+					<string>250</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>141</string>
+					<string>249</string>
 					<key>Timestamp</key>
-					<string>746313673.9363641</string>
+					<string>746637517.416935</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,18 +34,20 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>                // draw numbers to indicate quantities remaining to be solved
+				<string>                            }
 </string>
 				<key>leading</key>
-				<string>                }
-                
+				<string>                                Text("Steps")
+                                    .font(.footnote)
 </string>
 				<key>trailing</key>
-				<string>                HStack {
-                    ForEach(counts.sorted(by: &lt;), id: \.key) { key, value in
-                        Text("\(value)")
+				<string>                        }
+                        
+                        
 </string>
 			</dict>
+			<key>title</key>
+			<string>MenuBar display Candidates</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
@@ -57,13 +59,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>392</string>
+					<string>418</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>391</string>
+					<string>417</string>
 					<key>Timestamp</key>
-					<string>746313673.936352</string>
+					<string>746637517.416912</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -79,16 +81,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>    func updateCounts() {
+				<string>    func showAllCandidates(isHidden: Bool)  {
 </string>
 				<key>leading</key>
-				<string>    
+				<string>    }
     
 </string>
 				<key>trailing</key>
-				<string>        solved = false
-        var newCounts = [Int: Int]()
-        var correctCount = 0
+				<string>        if isHidden {
+            showCandidates = true
+        }
 </string>
 			</dict>
 			<key>type</key>

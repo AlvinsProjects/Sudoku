@@ -33,6 +33,7 @@ struct Board: Equatable {
         if Globals.puzIndex == 12 {  //Blank puzzle for brute force solution
             prepareForPlay()
         }
+//        prepareForPlay()
     }
     
     
@@ -46,12 +47,12 @@ struct Board: Equatable {
         Globals.inputPuzzle = Globals.actual
         
         //MARK: Test Print
-//                print(Globals.actual[0])
-//                print(Globals.inputPuzzle[0])
-//        Globals.blanks = 999
+        //                print(Globals.actual[0])
+        //                print(Globals.inputPuzzle[0])
+        //        Globals.blanks = 999
         
         //Measure the time it takes to complete a computer solution
-//        let start = CFAbsoluteTimeGetCurrent()
+        //        let start = CFAbsoluteTimeGetCurrent()
         
         if SolvePuzzle.solvePuzzle() {
             print("Puzzle Solved using CRME methods")
@@ -61,18 +62,18 @@ struct Board: Equatable {
         }
         
         
-//        let executionTime = CFAbsoluteTimeGetCurrent() - start
-//        Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
+        //        let executionTime = CFAbsoluteTimeGetCurrent() - start
+        //        Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
         
         //        print(Globals.totalScore)
         //        Globals.totalScore = 0
         //        print(Globals.exTime)
         
         //---Print the solution (for reference)
-//        print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")
-//        for j in 0..<9 {
-//            print(Globals.actual[j])
-//        }
+        //        print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")
+        //        for j in 0..<9 {
+        //            print(Globals.actual[j])
+        //        }
         
         if Globals.stepsTakenArray.isEmpty {
             print("There were no solution steps available!")
@@ -80,16 +81,16 @@ struct Board: Equatable {
     }
     
     
-    mutating private func create() {
-        fullBoard = Globals.actual  //The solved puzzle
-        
-        if Globals.puzIndex == 12 { //Blank puzzle for brute force solution
-            playerBoard = Globals.actual
-        } else {
-            playerBoard = Globals.inputPuzzle
-            print("not 12")
+        mutating private func create() {
+            fullBoard = Globals.actual  //The solved puzzle
+            
+            if Globals.puzIndex == 12 { //Blank puzzle for brute force solution
+                playerBoard = Globals.actual
+            } else {
+                playerBoard = Globals.inputPuzzle
+                print("not 12")
+            }
         }
-    }
     
     
     mutating private func prepareForPlay() {
@@ -103,9 +104,39 @@ struct Board: Equatable {
             playerBoard[8 - row][8 - column] = 0
         }
     }
+    
+    
+    
+//    mutating private func create() {
+//        let numbers = Array(1...size).shuffled()
+//        let positions = [0, 3, 6, 1, 4, 7, 2, 5, 8]
+//        
+//        let rows = Array([[0, 1, 2].shuffled(), [3, 4, 5].shuffled(), [6, 7, 8].shuffled()].shuffled()).joined()
+//        let columns = Array([[0, 1, 2].shuffled(), [3, 4, 5].shuffled(), [6, 7, 8].shuffled()].shuffled()).joined()
+//        
+//        for row in rows {
+//            var newRow = [Int]()
+//            
+//            for column in columns {
+//                let position = (positions[row] + column) % size
+//                newRow.append(numbers[position])
+//            }
+//            fullBoard.append(newRow)
+//        }
+//        playerBoard = fullBoard
+//    }
 }
-    
-    
+
+
+
+
+
+
+
+
+
+
+
     
 //    func printSolution() {
 //        //---Print the solution (for reference)

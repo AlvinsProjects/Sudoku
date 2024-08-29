@@ -256,6 +256,5 @@ struct SolvePuzzle {
         }
         return true
     }
-    
 }
 

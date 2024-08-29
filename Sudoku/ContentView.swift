@@ -29,6 +29,7 @@ struct ContentView: View {
     @State private var hintMode = false
     @State private var pencilString = ""
     @State private var hints = ""
+    @State private var showCandidates = true
     
     
     // Following 3 vars are data used in call to display the header
@@ -153,7 +154,6 @@ struct ContentView: View {
                 }
                 
                 
-                
                 // Insert toggle for entry of possible numbers
                 Toggle("Enter Pencil Marks:",
                        systemImage: "square.grid.3x3",
@@ -173,13 +173,7 @@ struct ContentView: View {
                     // Navigate to load or save a new puzzle
                     NavigationLink("New Puzzle", destination: MenuView())
                         .disabled(true)
-//                    NavigationLink {
-//                        HeaderView()
-//                    } label: {
-//                        Text("Header View")
-////                            .font(.footnote)
-//                    }
-                    
+
                 }
                 .buttonStyle(.borderedProminent)
             }
@@ -191,12 +185,12 @@ struct ContentView: View {
                     ToolbarItemGroup(placement: .topBarTrailing) {
                         
                         //MARK: Display all possible numbers
-                        NavigationLink {
-                            PossiblesView()
+                        Button {
+                            showAllCandidates(isHidden: false)
                         } label: {
                             VStack {
                                 Text(Image(systemName: "lightbulb.min.badge.exclamationmark"))
-                                Text("Possibles")
+                                Text("Candidates")
                                     .font(.footnote)
                             }
                         }
@@ -219,6 +213,7 @@ struct ContentView: View {
                             for j in 0..<9 {
                                 numArray[j] = ""
                             }
+                            
                             
                             // Get the numbers that are available for the selected cell
                             getNumbers = calculatePlayerBoardValues(col: r, row: c)
@@ -254,6 +249,7 @@ struct ContentView: View {
                                     .font(.footnote)
                             }
                         }
+                        
                         
                         //MARK: Add a new puzzle, change the difficulty, or cancel
                         Button {
@@ -376,6 +372,9 @@ struct ContentView: View {
                     selectedNum = number
                 }
             }
+            if !showCandidates {
+                showAllCandidates(isHidden: true)
+            }
         }
     }
     
@@ -415,6 +414,30 @@ struct ContentView: View {
             }
         }
     }
+    
+    func showAllCandidates(isHidden: Bool)  {
+        if isHidden {
+            showCandidates = true
+        }
+        
+        if showCandidates {
+            for j in 0..<9 {
+                for k in 0..<9 {
+                    board.pencilBoard[j][k] = calculatePlayerBoardValues(col: j, row: k)
+                }
+            }
+        } else {
+            for j in 0..<9 {
+                for k in 0..<9 {
+                    board.pencilBoard[j][k] = ""
+                }
+            }
+        }
+        showCandidates.toggle()
+    }
+    
+    
+    
     
     
 //    func getHeaderColor12(difficulty: String) -> (col: Color, icon: String) {
