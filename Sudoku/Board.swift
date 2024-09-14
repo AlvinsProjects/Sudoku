@@ -52,7 +52,7 @@ struct Board: Equatable {
         //        Globals.blanks = 999
         
         //Measure the time it takes to complete a computer solution
-        //        let start = CFAbsoluteTimeGetCurrent()
+        let start = CFAbsoluteTimeGetCurrent()
         
         if SolvePuzzle.solvePuzzle() {
             print("Puzzle Solved using CRME methods")
@@ -62,22 +62,22 @@ struct Board: Equatable {
         }
         
         
-        //        let executionTime = CFAbsoluteTimeGetCurrent() - start
-        //        Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
+        let executionTime = CFAbsoluteTimeGetCurrent() - start
+        Globals.exTime.append("\(String(format: "%.4f", executionTime)) secs")
         
-        //        print(Globals.totalScore)
-        //        Globals.totalScore = 0
-        //        print(Globals.exTime)
+        print("Execution Time: \(Globals.exTime[0]) secs")
         
         //---Print the solution (for reference)
-        //        print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")
-        //        for j in 0..<9 {
-        //            print(Globals.actual[j])
-        //        }
+                print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")
+                for j in 0..<9 {
+                    print(Globals.actual[j])
+                }
         
         if Globals.stepsTakenArray.isEmpty {
             print("There were no solution steps available!")
         }
+        
+//        print(Globals.stepsTakenArray)
     }
     
     

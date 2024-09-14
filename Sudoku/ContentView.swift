@@ -92,7 +92,7 @@ struct ContentView: View {
 
                 VStack {
                     Text(diff)
-                        .frame(width: 250, height: 10, alignment: .center)
+                        .frame(width: 330, height: 10, alignment: .center)
                         .foregroundStyle(.cyan)
                         .padding(.top, 10)
                     TimerView()
@@ -373,7 +373,9 @@ struct ContentView: View {
                 }
             }
             if !showCandidates {
-                showAllCandidates(isHidden: true)
+                if !hintMode {
+                    showAllCandidates(isHidden: true)
+                }
             }
         }
     }

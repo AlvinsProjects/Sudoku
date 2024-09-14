@@ -61,7 +61,6 @@ struct BruteForce {
         // ---select one value and try---
         for i in 0..<possibleValues.count {
             Globals.actual[c][r] = Triplets.getNo(str: possibleValues, item: i)
-            
             Globals.stepsCount += 1
             Globals.stepsTakenArray.append(
                 StepsTaken(index: Globals.stepsCount,

@@ -26,26 +26,17 @@ struct ClearPuzzle {
             }
         }
         
+        
         //---clear the stacks and backups---
         Globals.actualStack.removeAll()
         Globals.possibleStack.removeAll()
         Globals.stepsTakenArray.removeAll()
-//        Globals.stepsTakenArray.append(StepsTaken(index: 4, steps: "Hello"))
+        Globals.stepsTakenArray.removeAll()
         
         Globals.bruteForceStop = false
+        Globals.stepsTakenArray.removeAll()
         Globals.stepsCount = 0
         
-//        SolvePuzzle.solvePuzzle() = false
-//        print(Globals.puzIndex, Globals.puzzle.name)
-        
-//        ContentView().newGame(difficulty: .Easy)
-        
-//        if SolvePuzzle.solvePuzzle() {
-//            print("Puzzle Solved using Other methods")
-//        } else {
-//            BruteForce.solvePuzzleByBruteForce()
-//            print("Puzzle Solved using Brute Force")
-//        }
     }
 }
         

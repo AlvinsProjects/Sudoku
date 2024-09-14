@@ -19,7 +19,6 @@ struct TimerView: View {
     
     var body: some View {
         
-//        Text("\(Globals.bdDifficulty)")
         HStack {
             Text("Timer:  \(hours)h,  \(minutes)m,  \(seconds)s")
                 .font(.headline).bold()

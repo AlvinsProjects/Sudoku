@@ -118,10 +118,10 @@ struct SolvePuzzle {
         } while changes
         
         if isPuzzleSolved() {
-//            print("Puzzle Solved")
+            print("Puzzle Solved")
             return true
         } else {
-//            print("NOT Solved")
+            print("NOT Solved")
             return false
         }
     }
