@@ -13,9 +13,12 @@ struct SelectPuzzle: Equatable {
     
     static func readSelectedPuzzle(puzIndex: Int) -> [[Int]]  {
         
-        let testInfo = puzArray.SudokuFiles[puzIndex].content
+        let tempInfo = puzArray.SudokuFiles[puzIndex].content
         Globals.puzzName = puzArray.SudokuFiles[puzIndex].name
-//        print(testInfo)
+//        print(Globals.puzzName)
+        
+        let testInfo = convertZeros(arg: tempInfo)
+        print(testInfo)
         
         var testGrid = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))
         var count = 0
@@ -37,5 +40,12 @@ struct SelectPuzzle: Equatable {
 //        }
         return testGrid
     }
+    
+    static func convertZeros(arg: String) -> String {
+        //    if arg.count != 81 { return "Length of string is not 81" }
+        let replaced = arg.replacingOccurrences(of: ".", with: "0")
+        return replaced
+    }
 }
+
 

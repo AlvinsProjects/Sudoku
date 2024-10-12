@@ -30,6 +30,7 @@ struct ContentView: View {
     @State private var pencilString = ""
     @State private var hints = ""
     @State private var showCandidates = true
+    var puzzName = Globals.puzzName
     
     
     // Following 3 vars are data used in call to display the header
@@ -92,7 +93,7 @@ struct ContentView: View {
 
                 VStack {
                     Text(diff)
-                        .frame(width: 330, height: 10, alignment: .center)
+                        .frame(width: 200, height: 10, alignment: .center)
                         .foregroundStyle(.cyan)
                         .padding(.top, 10)
                     TimerView()
@@ -172,12 +173,12 @@ struct ContentView: View {
                     
                     // Navigate to load or save a new puzzle
                     NavigationLink("New Puzzle", destination: MenuView())
-                        .disabled(true)
+//                        .disabled(true)
 
                 }
                 .buttonStyle(.borderedProminent)
             }
-            .navigationTitle("Sudoku Puzzle")
+            .navigationTitle(puzzName)
             Spacer()
             
             //MARK: Top Toolbar
@@ -194,7 +195,6 @@ struct ContentView: View {
                                     .font(.footnote)
                             }
                         }
-                        
                         
                         //MARK: Display the possible numbers for the selected cell
                         Button {

@@ -38,6 +38,7 @@ struct MenuView: View {
                 Text("Select a puzzle from the Picker below.")
                 
                 Section(header: Text("SELECT THE PUZZLE TO LOAD OR SAVE")) {
+                   
                     Picker("Select puzzle:", selection: $puzzle) {
                         ForEach(dm.content, id: \.self) {
                             Text("\($0.number). \($0.name)")
