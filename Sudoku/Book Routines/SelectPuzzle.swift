@@ -15,7 +15,7 @@ struct SelectPuzzle: Equatable {
         
         let tempInfo = puzArray.SudokuFiles[puzIndex].content
         Globals.puzzName = puzArray.SudokuFiles[puzIndex].name
-//        print(Globals.puzzName)
+        Globals.puzIndex = puzArray.SudokuFiles[puzIndex].number
         
         let testInfo = convertZeros(arg: tempInfo)
         print(testInfo)

@@ -20,6 +20,11 @@ struct PossibleCellView: View {
             location = Triplets.getNo(str: number, item: j) - 1
             numArray[location] = String(Triplets.getNo(str: number, item: j))
         }
+        // Add a space for "" to fix display of candidate numbers
+        for j in 0..<9 {
+            if numArray[j] == "" { numArray[j] = " " }
+        }
+        
         return numArray
     }
     
@@ -29,7 +34,7 @@ struct PossibleCellView: View {
         Grid {
             GridRow(alignment: .top) {
                 Text(displayPoss[0])
-                    .gridColumnAlignment(.leading)
+                    .gridColumnAlignment(.trailing)
                 Text(displayPoss[1])
                 Text(displayPoss[2])
             }
@@ -47,9 +52,9 @@ struct PossibleCellView: View {
             }
         }
         .font(.system(size: 10, weight: .bold, design: .monospaced))
-        .padding(.leading, 2)
+        .padding(.horizontal, 2)
         .foregroundStyle(.cyan).bold()
-        .frame(maxWidth: 80, maxHeight: 80)
+        .frame(maxWidth: 100, maxHeight: 100)
         .aspectRatio(1, contentMode: .fit)
 //        .background(Color.squareStandard)
 //        .background(.gray)
@@ -59,6 +64,6 @@ struct PossibleCellView: View {
 
 
 #Preview {
-    PossibleCellView(number: "987654321")
+    PossibleCellView(number: "471286359")
         .preferredColorScheme(.dark)
 }

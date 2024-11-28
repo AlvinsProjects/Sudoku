@@ -193,16 +193,15 @@ struct Twins {
                             for rrr in 0..<9 {
                                 if Globals.actual[c][rrr] == 0 && (rrr != r) && (rrr != rr) {
                                     
-                                    //---save a copy of the original possible
-                                    //   values (twins)---
+                                    //---save a copy of the original possible values (twins)---
                                     let original_possible = Globals.possible[c][rrr]
                                     
-                                    //---remove first twin number from possible
-                                    //   values---  MARK: ########### (0)
+                                    //---remove first twin number from possible values---
+                                    //    MARK: ########### (0)
                                     Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: Globals.possible[c][r].prefix(0), with: "")
                                    
-                                    //---remove second twin number from possible
-                                    //   values---  MARK: ########### (1)
+                                    //---remove second twin number from possible values---
+                                    //    MARK: ########### (1)
                                     Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: Globals.possible[c][r].suffix(1), with: "")
                                     
                                     //---if the possible values are modified, then

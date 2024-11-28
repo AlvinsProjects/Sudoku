@@ -33,7 +33,7 @@ struct Board: Equatable {
         if Globals.puzIndex == 12 {  //Blank puzzle for brute force solution
             prepareForPlay()
         }
-//        prepareForPlay()
+        //        prepareForPlay()
     }
     
     
@@ -68,29 +68,29 @@ struct Board: Equatable {
         print("Execution Time: \(Globals.exTime[0]) secs")
         
         //---Print the solution (for reference)
-                print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")
-                for j in 0..<9 {
-                    print(Globals.actual[j])
-                }
+        print("\nSolution for \(Globals.puzzName), Index: \(Globals.puzIndex)")
+        for j in 0..<9 {
+            print(Globals.actual[j])
+        }
         
         if Globals.stepsTakenArray.isEmpty {
             print("There were no solution steps available!")
         }
         
-//        print(Globals.stepsTakenArray)
+        //        print(Globals.stepsTakenArray)
     }
     
     
-        mutating private func create() {
-            fullBoard = Globals.actual  //The solved puzzle
-            
-            if Globals.puzIndex == 12 { //Blank puzzle for brute force solution
-                playerBoard = Globals.actual
-            } else {
-                playerBoard = Globals.inputPuzzle
-                print("not 12")
-            }
+    mutating private func create() {
+        fullBoard = Globals.actual  //The solved puzzle
+        
+        if Globals.puzIndex == 12 { //Blank puzzle for brute force solution
+            playerBoard = Globals.actual
+        } else {
+            playerBoard = Globals.inputPuzzle
+            print("not 12")
         }
+    }
     
     
     mutating private func prepareForPlay() {
@@ -104,9 +104,11 @@ struct Board: Equatable {
             playerBoard[8 - row][8 - column] = 0
         }
     }
+}
     
     
-    
+
+
 //    mutating private func create() {
 //        let numbers = Array(1...size).shuffled()
 //        let positions = [0, 3, 6, 1, 4, 7, 2, 5, 8]
@@ -125,7 +127,7 @@ struct Board: Equatable {
 //        }
 //        playerBoard = fullBoard
 //    }
-}
+
 
 
 

@@ -17,7 +17,7 @@ struct Globals {
     static var possible = Array(Array(repeating: Array(repeating: "", count: 9), count: 9))
     static var inputPuzzle = Array(Array(repeating: Array(repeating: 0, count: 9), count: 9))
     static var puzzName = ""
-    static var puzIndex = 12
+    static var puzIndex = 42
     
     static var puzzle = puzArray.SudokuFiles[puzIndex]  //default blank puzzle
     static var bruteForceStop = false

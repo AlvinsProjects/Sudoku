@@ -61,26 +61,26 @@ struct Triplets {
                                     ccc != getNo(str: tripletsLocation, item: 4) &&
                                     rrr != getNo(str: tripletsLocation, item: 5) {
                                     
-                                    /* ---save the original possible values--- */
+                                    //---save the original possible values---
                                     let originalPossible = Globals.possible[ccc][rrr]
                                     
-                                    /*---remove first triplet number from possible
-                                         values--- */  //MARK: (0)
+                                    //---remove first triplet number from possible values---
+                                    //   MARK: (0)
                                     let str = Globals.possible[c][r]
                                     Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: String(getNo(str: str, item: 0)), with: "")
                                     
-                                    /*---remove second triplet number from possible
-                                         values--- */  //MARK: (1)
+                                    //---remove second triplet number from possible values---
+                                    //   MARK: (1)
                                     Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: String(getNo(str: str, item: 1)), with: "")
                                     
-                                    /*---remove third triplet number from possible
-                                         values--- */  //MARK: (2)
+                                    //---remove third triplet number from possible values---
+                                    //   MARK: (2)
                                     Globals.possible[ccc][rrr] = Globals.possible[ccc][rrr].replacingOccurrences(of: String(getNo(str: str, item: 2)), with: "")
                                     
                                     /*---if the possible values are modified, then
-                                         set the changes variable to true to indicate
-                                         that the possible values of cells in the
-                                         minigrid have been modified---*/
+//                                         set the changes variable to true to indicate
+//                                         that the possible values of cells in the
+//                                         minigrid have been modified--- */
                                     if originalPossible != Globals.possible[ccc][rrr] {
                                         changes = true
                                     }
@@ -162,17 +162,17 @@ struct Triplets {
                                 //---save the original possible values ---
                                 let originalPossible = Globals.possible[ccc][r]
                                 
-                                //---remove first triplet number from possible
-                                //   values--- //MARK:  (0)
+                                //---remove first triplet number from possible values---
+                                //   MARK:  (0)
                                 let strg = Globals.possible[c][r]
                                 Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: String(getNo(str: strg, item: 0)), with: "")
                                 
-                                //---remove second triplet number from possible
-                                //   values--- //MARK:  (1)
+                                //---remove second triplet number from possible values---
+                                //   MARK:  (1)
                                 Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: String(getNo(str: strg, item: 1)), with: "")
                                 
-                                //---remove third triplet number from possible
-                                //   values--- //MARK:  (2)
+                                //---remove third triplet number from possible values---
+                                //   MARK:  (2)
                                 Globals.possible[ccc][r] = Globals.possible[ccc][r].replacingOccurrences(of: String(getNo(str: strg, item: 2)), with: "")
                                 
                                 //---if the possible values are modified, then
@@ -258,16 +258,16 @@ struct Triplets {
                                 let originalPossible = Globals.possible[c][rrr]
                                 
                                 let str = Globals.possible[c][r]    //simplify the code
-                                //---remove first triplet number from possible
-                                //   values---MARK: (0)
+                                //---remove first triplet number from possible values---
+                                //   MARK: (0)
                                 Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: String(getNo(str: str, item: 0)), with: "")
                                 
-                                //---remove second triplet number from possible
-                                //   values---MARK: (1)
+                                //---remove second triplet number from possible values---
+                                //   MARK: (1)
                                 Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: String(getNo(str: str, item: 1)), with: "")
                                 
-                                //---remove third triplet number from possible
-                                //   values---MARK: (2)
+                                //---remove third triplet number from possible values---
+                                //   MARK: (2)
                                 Globals.possible[c][rrr] = Globals.possible[c][rrr].replacingOccurrences(of: String(getNo(str: str, item: 2)), with: "")
                                 
                                 

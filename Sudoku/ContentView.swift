@@ -31,7 +31,7 @@ struct ContentView: View {
     @State private var hints = ""
     @State private var showCandidates = true
     var puzzName = Globals.puzzName
-    
+    var fileNo = Globals.puzIndex
     
     // Following 3 vars are data used in call to display the header
     var diff: String  {
@@ -178,7 +178,7 @@ struct ContentView: View {
                 }
                 .buttonStyle(.borderedProminent)
             }
-            .navigationTitle(puzzName)
+            .navigationTitle("\(puzzName):   File: \(fileNo)")
             Spacer()
             
             //MARK: Top Toolbar
@@ -224,8 +224,8 @@ struct ContentView: View {
                                 numArray[location] = String(Triplets.getNo(str: getNumbers, item: j))
                             }
                             for k in 0..<9  {
-                                if numArray[k] == " " { newNo += "" }
-                                if k == 3 || k == 6 { newNo += " \n"}
+                                if numArray[k] == "" { numArray[k] = " " }
+                                if k == 2 || k == 5 { numArray[k] += "\n"}
                                 newNo += numArray[k] + " "
                             }
                             getNumbers = newNo
@@ -311,8 +311,6 @@ struct ContentView: View {
                 Text("You solved the board correctly!")
             }
         }
-        
-        
         
         
         //MARK: Alert to show the numbers available for the selected cell

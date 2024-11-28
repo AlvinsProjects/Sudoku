@@ -202,7 +202,7 @@ struct SolvePuzzle {
         }
         //---if possible value is string.Empty, then error because of invalid move------
         if str.isEmpty {
-                print("Invalid Move:  string.Empty - CalculatePossibleValues, line 202")
+                print("Invalid Move:  string.Empty - CalculatePossibleValues, line 205")
         }
         return str
     }
