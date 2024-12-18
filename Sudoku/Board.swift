@@ -30,7 +30,7 @@ struct Board: Equatable {
         self.difficulty = difficulty
         getPuzzle()
         create()
-        if Globals.puzIndex == 12 {  //Blank puzzle for brute force solution
+        if Globals.puzIndex == 54 {  //Blank puzzle for brute force solution
             prepareForPlay()
         }
         //        prepareForPlay()
@@ -39,7 +39,7 @@ struct Board: Equatable {
     
     func getPuzzle() {
         
-        ClearPuzzle().clearPreviousPuzzle()
+        ClearPuzzle().clearPreviousPuzzle()                                                                                         
         
         //---Get the puzzle that is to be solved
         let puzIndex = Globals.puzIndex
@@ -84,11 +84,11 @@ struct Board: Equatable {
     mutating private func create() {
         fullBoard = Globals.actual  //The solved puzzle
         
-        if Globals.puzIndex == 12 { //Blank puzzle for brute force solution
+        if Globals.puzIndex == 54 { //Blank puzzle for brute force solution
             playerBoard = Globals.actual
         } else {
             playerBoard = Globals.inputPuzzle
-            print("not 12")
+            print("not 54")
         }
     }
     

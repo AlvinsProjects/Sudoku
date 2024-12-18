@@ -37,7 +37,7 @@ struct ContentView: View {
     var diff: String  {
         var dif = ""
         let descr = getHeader(diff: Globals.blanks)
-        if Globals.puzIndex == 12 {
+        if Globals.puzIndex == 54 {
             dif = "Difficulty:  \(board.difficulty.rawValue * 2),  \(Globals.bdDifficulty)"
         } else {
             dif = "Difficulty:  \(Globals.blanks)  \(descr.difDescr)"
@@ -278,8 +278,8 @@ struct ContentView: View {
         .alert("Change Puzzle Difficulty", isPresented: $showingNewGame) {
             
             // if blank puzzle slected - allow choice of difficulty
-            // puzIndex = 12 is a blank puzzle that generates random puzzles
-            if Globals.puzIndex == 12 {
+            // puzIndex = 54 is a blank puzzle that generates random puzzles
+            if Globals.puzIndex == 54 {
                 ForEach(Board.Difficulty.allCases, id: \.self) { difficulty in
                     Button(String(describing: difficulty).capitalized) {
                         newGame(difficulty: difficulty)

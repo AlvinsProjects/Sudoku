@@ -64,6 +64,6 @@ struct PossibleCellView: View {
 
 
 #Preview {
-    PossibleCellView(number: "471286359")
+    PossibleCellView(number: "812347659")
         .preferredColorScheme(.dark)
 }
